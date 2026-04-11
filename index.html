@@ -348,19 +348,122 @@
       </div>
 
       <!-- Poster Card (Full Width) -->
-      <div class="recon-card reveal-up" style="grid-column: 1 / -1;">
-        <div class="recon-card-icon poster"><i class="fa-solid fa-chart-column"></i></div>
-        <h3>Póster Digital</h3>
-        <p>Síntesis de la justificación y los objetivos del proyecto de investigación.</p>
-        <div class="poster-content">
-          <h4>Justificación</h4>
-          <p>El juego es un derecho fundamental y una herramienta esencial para el desarrollo integral. Se busca
-            reintegrar la lúdica mediante Wordwall para mejorar la motivación y el rendimiento académico.</p>
-          <h4>Objetivo General</h4>
-          <p>Analizar el impacto del uso del juego, apoyado en la plataforma digital Wordwall, en el rendimiento
-            académico en la competencia comunicativa de los estudiantes de grado primero del Colegio Colombo Inglés del
-            Huila.</p>
+      <!-- Poster Card (Full Width Vertical Redesign) -->
+      <div class="recon-card poster-card reveal-up">
+
+        <!-- Floating Decorations (Background) -->
+        <div class="poster-floating-games" aria-hidden="true">
+          <i class="fa-solid fa-puzzle-piece float-icon" style="top: 8%; left: 4%; animation-delay: 0s;"></i>
+          <i class="fa-solid fa-gamepad float-icon" style="top: 35%; left: 48%; animation-delay: 1.5s;"></i>
+          <i class="fa-solid fa-dice float-icon" style="top: 75%; left: 6%; animation-delay: 3s;"></i>
+          <i class="fa-solid fa-dharmachakra float-icon" style="top: 15%; right: 10%; animation-delay: 2s;"></i>
+          <i class="fa-solid fa-trophy float-icon" style="top: 55%; right: 4%; animation-delay: 0.5s;"></i>
+          <i class="fa-solid fa-check float-icon" style="top: 85%; right: 40%; animation-delay: 2.5s;"></i>
         </div>
+
+        <header class="poster-header">
+          <h2>Póster Digital: El Juego como Motor de Aprendizaje</h2>
+        </header>
+
+        <div class="poster-body">
+
+          <!-- Bloque Izquierdo - El "Por qué" (Justificación) -->
+          <div class="poster-left justify-block">
+            <h3 class="poster-subheading">El Porqué <span class="doodle-line"></span></h3>
+            <p><strong>El juego es un derecho fundamental</strong> reconocido por la UNESCO, esencial para el desarrollo
+              integral en la primera infancia.</p>
+
+            <div class="poster-illustration-wrapper">
+              <img src="assets/poster/backpack.png" alt="La Maleta de Ilusiones" class="poster-ill ill-bubble"
+                loading="lazy">
+              <p class="ill-caption">La Maleta de Ilusiones</p>
+            </div>
+
+            <p>Se hace imperativo combatir la "quietud" de los métodos tradicionales en el <strong>Colegio Colombo
+                Inglés</strong> para despertar la motivación en primer grado.</p>
+
+            <div class="poster-illustration-wrapper">
+              <img src="assets/poster/student-desk-jump.png" alt="El Salto de la Tradición" class="poster-ill ill-boy"
+                loading="lazy">
+              <p class="ill-caption">El Salto de la Tradición</p>
+            </div>
+          </div>
+
+          <!-- Bloque Central - El "Qué" (Objetivo General) -->
+          <div class="poster-center objective-block">
+            <h3 class="poster-subheading">El Qué <span class="doodle-line"></span></h3>
+            <div class="objective-card">
+              <i class="fa-solid fa-bullseye objective-icon"></i>
+              <p class="highlight-objective">
+                Analizar el impacto del uso del juego, apoyado en la web <span
+                  class="highlight wordwall-sketch">Wordwall</span>, en el rendimiento de la competencia comunicativa de
+                los estudiantes de grado primero.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bloque Derecho - El "Cómo" (Objetivos Específicos / Roadmap) -->
+          <div class="poster-right roadmap-block">
+            <h3 class="poster-subheading">El Cómo <span class="doodle-line"></span></h3>
+
+            <div class="roadmap-timeline">
+              <!-- Step 1: Diagnosticar -->
+              <div class="roadmap-step">
+                <div class="step-icon-wrapper">
+                  <img src="assets/poster/magnifying-glass-letter.png" alt="Diagnosticar" class="poster-ill ill-bubble"
+                    loading="lazy">
+                </div>
+                <div class="step-content">
+                  <h4>1. Diagnosticar</h4>
+                  <p>Evaluar el estado inicial de la competencia comunicativa (Pre-test).</p>
+                </div>
+              </div>
+
+              <!-- Step 2: Diseñar -->
+              <div class="roadmap-step">
+                <div class="step-icon-wrapper">
+                  <img src="assets/poster/tablet-touch.png" alt="Diseñar" class="poster-ill ill-boy" loading="lazy">
+                </div>
+                <div class="step-content">
+                  <h4>2. Diseñar</h4>
+                  <p>Crear secuencias didácticas gamificadas en entorno interactivo.</p>
+                </div>
+              </div>
+
+              <!-- Step 3: Implementar -->
+              <div class="roadmap-step">
+                <div class="step-icon-wrapper">
+                  <img src="assets/poster/high-five.png" alt="Implementar" class="poster-ill ill-bubble" loading="lazy">
+                </div>
+                <div class="step-content">
+                  <h4>3. Implementar</h4>
+                  <p>Aplicar las estrategias lúdicas en el aula de clases.</p>
+                </div>
+              </div>
+
+              <!-- Step 4: Evaluar -->
+              <div class="roadmap-step">
+                <div class="step-icon-wrapper">
+                  <img src="assets/poster/flag.png" alt="Evaluar" class="poster-ill ill-boy" loading="lazy">
+                </div>
+                <div class="step-content">
+                  <h4>4. Evaluar</h4>
+                  <p>Medir el impacto cualitativo final tras la implementación (Post-test).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="poster-footer">
+          <div class="footer-logos">
+            <img src="assets/Logo_Oficial_Unicartagena.png" alt="Universidad de Cartagena" class="footer-logo">
+          </div>
+          <div class="footer-authors">
+            <p><strong>Autores:</strong> Alexandra Catalina Lozada Babativa · Juan Diego
+              Cuellar Mazabel · Karla Fabiana Cabrera Roa</p>
+          </div>
+        </footer>
       </div>
     </div>
   </section>

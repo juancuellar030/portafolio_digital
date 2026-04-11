@@ -1725,47 +1725,247 @@ body {
   opacity: 1;
 }
 
-/* Full-width poster card */
-.recon-card-full {
+/* ================================
+   POSTER DIGITAL - VERTICAL REDESIGN
+   ================================ */
+.poster-card {
   grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-2xl) var(--space-xl);
 }
 
-/* Poster inner layout — 2 columns for text */
-.poster-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl) var(--space-2xl);
-  margin-top: var(--space-md);
+.poster-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  position: relative;
+  z-index: 2;
 }
 
-.poster-content h4 {
-  grid-column: span 1;
+.poster-header h2 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--ink-black);
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--highlight-yellow);
+  transform: rotate(-1deg);
+  border: 2px solid var(--ink-dark);
+  box-shadow: 6px 6px 0 var(--ink-dark);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  /* Doodle style */
+}
+
+/* Base Body Layout */
+.poster-body {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr 1.3fr;
+  gap: var(--space-2xl);
+  position: relative;
+  z-index: 2;
+}
+
+/* Shared Subheading */
+.poster-subheading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink-dark);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  display: inline-block;
+}
+
+.doodle-line {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--ink-dark);
+  border-radius: 4px;
+  transform: rotate(-1.5deg);
+}
+
+/* ── LEFT BLOCK: Justification ── */
+.poster-left p {
   color: var(--ink-medium);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.poster-left strong {
+  color: var(--ink-dark);
+}
+
+.poster-illustration-wrapper {
+  text-align: center;
+  margin: var(--space-xl) 0;
+}
+
+.poster-ill {
+  max-width: 160px;
+  height: auto;
+  margin: 0 auto var(--space-sm);
+  display: block;
+}
+
+.ill-caption {
+  font-family: var(--font-display);
+  font-size: 0.9rem !important;
+  color: var(--ink-light) !important;
+  font-style: italic;
+  margin: 0 !important;
+}
+
+/* ── CENTER BLOCK: Objective ── */
+.objective-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.objective-card {
+  background: var(--paper-cream);
+  border: 2px dashed var(--ink-dark);
+  padding: var(--space-xl);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-align: center;
+  margin-top: var(--space-sm);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.objective-icon {
+  font-size: 2.5rem;
+  color: #f5576c;
+  margin-bottom: var(--space-md);
+}
+
+.highlight-objective {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink-dark);
+  font-weight: 500;
+}
+
+/* ── RIGHT BLOCK: Roadmap Timeline ── */
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  position: relative;
+}
+
+/* Connecting dashed line */
+.roadmap-timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 40px;
+  /* center of the 80px icons */
+  width: 2px;
+  border-left: 3px dashed var(--paper-line);
+  z-index: 0;
+}
+
+.roadmap-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.step-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: var(--paper-cream);
+  border: 2px solid var(--ink-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--highlight-yellow);
+}
+
+.step-icon-wrapper .poster-ill {
+  max-width: 45px;
+  margin: 0;
+}
+
+.step-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--ink-dark);
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  color: var(--ink-medium);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── FLOATING DECORATIONS ── */
+.poster-floating-games {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.float-icon {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--ink-dark);
+  opacity: 0.06;
+  animation: floatIcon 6s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+  }
+}
+
+/* ── FOOTER ── */
+.poster-footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 2px dashed var(--paper-line);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-logo {
+  max-width: 150px;
   margin-bottom: var(--space-sm);
+  filter: grayscale(100%) opacity(0.7);
+  transition: filter 0.3s ease;
 }
 
-.poster-content p {
-  margin-top: 0;
+.footer-logo:hover {
+  filter: grayscale(0%) opacity(1);
 }
 
-/* On mobile collapse poster to single column */
-@media (max-width: 768px) {
-  .poster-content {
-    grid-template-columns: 1fr;
-  }
-
-  .avatar-frame-stack {
-    width: 180px;
-    height: 180px;
-  }
-
-  .avatar-pulse-ring {
-    width: 200px;
-    height: 200px;
-  }
+.footer-authors p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
 }
 
 /* reveal-up utility (for the poster row) */
@@ -1779,6 +1979,42 @@ body {
 .reveal-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Responsive adjustments for poster and avatars */
+@media (max-width: 1024px) {
+  .poster-body {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .objective-block {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .poster-body {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-timeline::before {
+    left: 30px;
+  }
+
+  .step-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .step-icon-wrapper .poster-ill {
+    max-width: 35px;
+  }
+
+  .avatar-pulse-ring {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 /* ================================
