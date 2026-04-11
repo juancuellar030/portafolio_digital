@@ -428,26 +428,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
   // ================================================
-  // INTERACTIVE AVATAR 2 — Audio + Lip-Sync Engine
+  // INTERACTIVE AVATARS — Audio + Lip-Sync Engine
   // ================================================
-  (function initAvatarPlayer() {
-    const audio = document.getElementById('avatarAudio2');
-    const playBtn = document.getElementById('playBtn2');
-    const playIcon = document.getElementById('playIcon2');
-    const pulseRing = document.getElementById('pulseRing2');
-    const mouthImg = document.getElementById('avatarMouth2');
-    const blinkImg = document.getElementById('avatarBlink2');
+  function createAvatarPlayer(config) {
+    const audio = document.getElementById(config.audioId);
+    const playBtn = document.getElementById(config.playBtnId);
+    const playIcon = document.getElementById(config.playIconId);
+    const pulseRing = document.getElementById(config.pulseRingId);
+    const mouthImg = document.getElementById(config.mouthId);
+    const blinkImg = document.getElementById(config.blinkId);
 
     if (!audio || !playBtn) return; // guard if elements missing
 
-    // Mouth frame paths
-    const MOUTH_FRAMES = [
-      'assets/avatars/avatar-2-a.png',
-      'assets/avatars/avatar-2-f.png',
-      'assets/avatars/avatar-2-l.png',
-      'assets/avatars/avatar-2-o.png',
-      'assets/avatars/avatar-2-s.png',
-    ];
     const SILENCE_THRESHOLD = 8;  // RMS below this = silence
     const FRAME_INTERVAL_MS = 90; // how often to swap mouth frames (~11fps)
     const BLINK_MIN_MS = 5000;
@@ -463,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
 
     // Preload all mouth frames
-    MOUTH_FRAMES.forEach(src => { const img = new Image(); img.src = src; });
+    config.mouthFrames.forEach(src => { const img = new Image(); img.src = src; });
 
     // ── Helper: compute RMS amplitude ──
     function getRMS() {
@@ -497,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Silence — hide mouth overlay
           mouthImg.classList.remove('visible');
         } else {
-          const src = MOUTH_FRAMES[Math.floor(Math.random() * MOUTH_FRAMES.length)];
+          const src = config.mouthFrames[Math.floor(Math.random() * config.mouthFrames.length)];
           if (mouthImg.src !== src) mouthImg.src = src;
           mouthImg.classList.add('visible');
         }
@@ -584,7 +576,40 @@ document.addEventListener('DOMContentLoaded', () => {
       stopMouthAnim();
       stopBlink();
     });
-  })();
+  }
+
+  // Initialize Avatar 1 Player
+  createAvatarPlayer({
+    audioId: 'avatarAudio1',
+    playBtnId: 'playBtn1',
+    playIconId: 'playIcon1',
+    pulseRingId: 'pulseRing1',
+    mouthId: 'avatarMouth1',
+    blinkId: 'avatarBlink1',
+    mouthFrames: [
+      'assets/avatars/avatar-1-a.png',
+      'assets/avatars/avatar-1-l.png',
+      'assets/avatars/avatar-1-o.png',
+      'assets/avatars/avatar-1-s.png',
+    ]
+  });
+
+  // Initialize Avatar 2 Player
+  createAvatarPlayer({
+    audioId: 'avatarAudio2',
+    playBtnId: 'playBtn2',
+    playIconId: 'playIcon2',
+    pulseRingId: 'pulseRing2',
+    mouthId: 'avatarMouth2',
+    blinkId: 'avatarBlink2',
+    mouthFrames: [
+      'assets/avatars/avatar-2-a.png',
+      'assets/avatars/avatar-2-f.png',
+      'assets/avatars/avatar-2-l.png',
+      'assets/avatars/avatar-2-o.png',
+      'assets/avatars/avatar-2-s.png',
+    ]
+  });
 
 });
 

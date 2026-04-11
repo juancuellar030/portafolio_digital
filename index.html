@@ -289,8 +289,29 @@
         <div class="recon-card-icon avatars"><i class="fa-solid fa-user-group"></i></div>
         <h3>Avatar 1 — Presentación</h3>
         <p>Presentación del equipo de trabajo, el título del proyecto y los directores de investigación.</p>
-        <div class="avatar-embed-placeholder">
-          <i class="fa-solid fa-image"></i> Espacio para incrustar Avatar 1
+        <!-- ── Interactive Avatar Player 1 ── -->
+        <div class="avatar-player" id="avatarPlayer1">
+
+          <!-- Play / Pause button (Moved above avatar) -->
+          <button class="avatar-play-btn" id="playBtn1" aria-label="Reproducir presentación del Avatar 1">
+            <i class="fa-solid fa-play" id="playIcon1"></i> <span id="playText1">Escuchar</span>
+          </button>
+
+          <!-- Pulse ring (audio visualizer) behind avatar -->
+          <div class="avatar-pulse-ring" id="pulseRing1"></div>
+
+          <!-- Stacked image frames (sits unclipped at bottom) -->
+          <div class="avatar-frame-stack">
+            <img class="avatar-base" src="assets/avatars/avatar-1.png" alt="Avatar 1 base">
+            <img class="avatar-mouth" id="avatarMouth1" src="" alt="" aria-hidden="true">
+            <img class="avatar-blink" id="avatarBlink1" src="assets/avatars/avatar-1-blink.png" alt=""
+              aria-hidden="true">
+          </div>
+
+          <!-- Hidden audio element -->
+          <audio id="avatarAudio1" preload="auto">
+            <source src="assets/avatars/Juan Portafolio avatar 1.mp3" type="audio/mpeg">
+          </audio>
         </div>
       </div>
 

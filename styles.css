@@ -1326,7 +1326,7 @@ body {
   background-color: var(--paper-white);
   padding: 12px 28px;
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  border: 2px solid var(--ink-dark);
+  border: 3.5px solid var(--ink-dark);
   box-shadow: 4px 4px 0 var(--highlight-yellow);
 }
 
@@ -1446,21 +1446,26 @@ body {
 .recon-card-icon {
   width: 56px;
   height: 56px;
-  border-radius: var(--radius-md);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 2px solid var(--ink-dark);
+  box-shadow: 4px 4px 0 var(--ink-dark);
+  background-color: var(--paper-white);
+  color: var(--ink-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
   margin-bottom: var(--space-lg);
-  color: var(--paper-white);
 }
 
 .recon-card-icon.avatars {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  /* Use matching purple-blue shade as doodle shadow */
+  box-shadow: 4px 4px 0 #667eea;
 }
 
 .recon-card-icon.poster {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
+  /* Match poster theme pink as shadow */
+  box-shadow: 4px 4px 0 #f093fb;
 }
 
 .recon-card h3 {
@@ -1635,7 +1640,7 @@ body {
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: rgba(255, 179, 186, 0.8);
+  background: var(--pulse-bg, rgba(255, 179, 186, 0.8));
   transform-origin: center;
   /* JS will animate `scale` via CSS custom property */
   scale: var(--pulse-scale, 1);
@@ -1650,9 +1655,24 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 3px dashed rgba(255, 179, 186, 1);
+  border: 3px dashed var(--pulse-border, rgba(255, 179, 186, 1));
   opacity: var(--pulse-opacity, 0);
   transition: opacity 80ms linear;
+}
+
+/* Specific Avatar 1 Pulse Colors (Blue) */
+#pulseRing1,
+#pulseRing1::after {
+  --pulse-bg: rgba(168, 216, 234, 0.8);
+  --pulse-border: #A8D8EA;
+  /* rgb 168, 216, 234 */
+}
+
+/* Specific Avatar 2 Pulse Colors (Coral/Pink) */
+#pulseRing2,
+#pulseRing2::after {
+  --pulse-bg: rgba(255, 179, 186, 0.8);
+  --pulse-border: rgba(255, 179, 186, 1);
 }
 
 /* Frame stack container */
