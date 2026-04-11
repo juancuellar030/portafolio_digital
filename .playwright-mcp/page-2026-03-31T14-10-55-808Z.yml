@@ -1,0 +1,341 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Escudo Universidad de Cartagena Portafolio Digital" [ref=e3] [cursor=pointer]:
+      - /url: "#inicio"
+      - img "Escudo Universidad de Cartagena" [ref=e4]
+      - generic [ref=e5]: Portafolio Digital
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Inicio" [ref=e8] [cursor=pointer]:
+          - /url: "#inicio"
+      - listitem [ref=e9]:
+        - link "Reconociendo" [ref=e10] [cursor=pointer]:
+          - /url: "#reconociendo"
+      - listitem [ref=e11]:
+        - button "Referenciando " [ref=e12] [cursor=pointer]:
+          - text: Referenciando
+          - generic [ref=e14]: 
+      - listitem [ref=e15]:
+        - button "Diseñando " [ref=e16] [cursor=pointer]:
+          - text: Diseñando
+          - generic [ref=e18]: 
+      - listitem [ref=e19]:
+        - button "Créditos " [ref=e20] [cursor=pointer]:
+          - text: Créditos
+          - generic [ref=e22]: 
+  - generic:
+    - generic:
+      - generic:
+        - generic: 
+      - heading "Próximamente" [level=3]
+      - paragraph: Este contenido estará disponible pronto.
+      - button "Entendido"
+  - generic [ref=e23]:
+    - generic [ref=e24]:
+      - img "Escudo Universidad de Cartagena" [ref=e26]
+      - 'heading "I n t e g r a c i ó n d e l j u e g o y l a p l a t a f o r m a d i g i t a l W o r d w a l l c o m o e s t r a t e g i a p e d a g ó g i c a : a n á l i s i s d e s u i n f l u e n c i a e n e l r e n d i m i e n t o a c a d é m i c o e n l a c o m p e t e n c i a c o m u n i c a t i v a d e e s t u d i a n t e s d e g r a d o p r i m e r o d e l C o l e g i o C o l o m b o I n g l é s d e l H u i l a" [level=1] [ref=e27]':
+        - generic [ref=e28]:
+          - generic [ref=e29]: I
+          - generic [ref=e30]: "n"
+          - generic [ref=e31]: t
+          - generic [ref=e32]: e
+          - generic [ref=e33]: g
+          - generic [ref=e34]: r
+          - generic [ref=e35]: a
+          - generic [ref=e36]: c
+          - generic [ref=e37]: i
+          - generic [ref=e38]: ó
+          - generic [ref=e39]: "n"
+        - generic [ref=e40]:
+          - generic [ref=e41]: d
+          - generic [ref=e42]: e
+          - generic [ref=e43]: l
+        - generic [ref=e44]:
+          - generic [ref=e45]: j
+          - generic [ref=e46]: u
+          - generic [ref=e47]: e
+          - generic [ref=e48]: g
+          - generic [ref=e49]: o
+        - generic [ref=e51]: "y"
+        - generic [ref=e52]:
+          - generic [ref=e53]: l
+          - generic [ref=e54]: a
+        - generic [ref=e55]:
+          - generic [ref=e56]: p
+          - generic [ref=e57]: l
+          - generic [ref=e58]: a
+          - generic [ref=e59]: t
+          - generic [ref=e60]: a
+          - generic [ref=e61]: f
+          - generic [ref=e62]: o
+          - generic [ref=e63]: r
+          - generic [ref=e64]: m
+          - generic [ref=e65]: a
+        - generic [ref=e66]:
+          - generic [ref=e67]: d
+          - generic [ref=e68]: i
+          - generic [ref=e69]: g
+          - generic [ref=e70]: i
+          - generic [ref=e71]: t
+          - generic [ref=e72]: a
+          - generic [ref=e73]: l
+        - generic [ref=e74]:
+          - generic [ref=e75]: W
+          - generic [ref=e76]: o
+          - generic [ref=e77]: r
+          - generic [ref=e78]: d
+          - generic [ref=e79]: w
+          - generic [ref=e80]: a
+          - generic [ref=e81]: l
+          - generic [ref=e82]: l
+        - generic [ref=e83]:
+          - generic [ref=e84]: c
+          - generic [ref=e85]: o
+          - generic [ref=e86]: m
+          - generic [ref=e87]: o
+        - generic [ref=e88]:
+          - generic [ref=e89]: e
+          - generic [ref=e90]: s
+          - generic [ref=e91]: t
+          - generic [ref=e92]: r
+          - generic [ref=e93]: a
+          - generic [ref=e94]: t
+          - generic [ref=e95]: e
+          - generic [ref=e96]: g
+          - generic [ref=e97]: i
+          - generic [ref=e98]: a
+        - generic [ref=e99]:
+          - generic [ref=e100]: p
+          - generic [ref=e101]: e
+          - generic [ref=e102]: d
+          - generic [ref=e103]: a
+          - generic [ref=e104]: g
+          - generic [ref=e105]: ó
+          - generic [ref=e106]: g
+          - generic [ref=e107]: i
+          - generic [ref=e108]: c
+          - generic [ref=e109]: a
+          - generic [ref=e110]: ":"
+        - generic [ref=e111]:
+          - generic [ref=e112]: a
+          - generic [ref=e113]: "n"
+          - generic [ref=e114]: á
+          - generic [ref=e115]: l
+          - generic [ref=e116]: i
+          - generic [ref=e117]: s
+          - generic [ref=e118]: i
+          - generic [ref=e119]: s
+        - generic [ref=e120]:
+          - generic [ref=e121]: d
+          - generic [ref=e122]: e
+        - generic [ref=e123]:
+          - generic [ref=e124]: s
+          - generic [ref=e125]: u
+        - generic [ref=e126]:
+          - generic [ref=e127]: i
+          - generic [ref=e128]: "n"
+          - generic [ref=e129]: f
+          - generic [ref=e130]: l
+          - generic [ref=e131]: u
+          - generic [ref=e132]: e
+          - generic [ref=e133]: "n"
+          - generic [ref=e134]: c
+          - generic [ref=e135]: i
+          - generic [ref=e136]: a
+        - generic [ref=e137]:
+          - generic [ref=e138]: e
+          - generic [ref=e139]: "n"
+        - generic [ref=e140]:
+          - generic [ref=e141]: e
+          - generic [ref=e142]: l
+        - generic [ref=e143]:
+          - generic [ref=e144]: r
+          - generic [ref=e145]: e
+          - generic [ref=e146]: "n"
+          - generic [ref=e147]: d
+          - generic [ref=e148]: i
+          - generic [ref=e149]: m
+          - generic [ref=e150]: i
+          - generic [ref=e151]: e
+          - generic [ref=e152]: "n"
+          - generic [ref=e153]: t
+          - generic [ref=e154]: o
+        - generic [ref=e155]:
+          - generic [ref=e156]: a
+          - generic [ref=e157]: c
+          - generic [ref=e158]: a
+          - generic [ref=e159]: d
+          - generic [ref=e160]: é
+          - generic [ref=e161]: m
+          - generic [ref=e162]: i
+          - generic [ref=e163]: c
+          - generic [ref=e164]: o
+        - generic [ref=e165]:
+          - generic [ref=e166]: e
+          - generic [ref=e167]: "n"
+        - generic [ref=e168]:
+          - generic [ref=e169]: l
+          - generic [ref=e170]: a
+        - generic [ref=e171]:
+          - generic [ref=e172]: c
+          - generic [ref=e173]: o
+          - generic [ref=e174]: m
+          - generic [ref=e175]: p
+          - generic [ref=e176]: e
+          - generic [ref=e177]: t
+          - generic [ref=e178]: e
+          - generic [ref=e179]: "n"
+          - generic [ref=e180]: c
+          - generic [ref=e181]: i
+          - generic [ref=e182]: a
+        - generic [ref=e183]:
+          - generic [ref=e184]: c
+          - generic [ref=e185]: o
+          - generic [ref=e186]: m
+          - generic [ref=e187]: u
+          - generic [ref=e188]: "n"
+          - generic [ref=e189]: i
+          - generic [ref=e190]: c
+          - generic [ref=e191]: a
+          - generic [ref=e192]: t
+          - generic [ref=e193]: i
+          - generic [ref=e194]: v
+          - generic [ref=e195]: a
+        - generic [ref=e196]:
+          - generic [ref=e197]: d
+          - generic [ref=e198]: e
+        - generic [ref=e199]:
+          - generic [ref=e200]: e
+          - generic [ref=e201]: s
+          - generic [ref=e202]: t
+          - generic [ref=e203]: u
+          - generic [ref=e204]: d
+          - generic [ref=e205]: i
+          - generic [ref=e206]: a
+          - generic [ref=e207]: "n"
+          - generic [ref=e208]: t
+          - generic [ref=e209]: e
+          - generic [ref=e210]: s
+        - generic [ref=e211]:
+          - generic [ref=e212]: d
+          - generic [ref=e213]: e
+        - generic [ref=e214]:
+          - generic [ref=e215]: g
+          - generic [ref=e216]: r
+          - generic [ref=e217]: a
+          - generic [ref=e218]: d
+          - generic [ref=e219]: o
+        - generic [ref=e220]:
+          - generic [ref=e221]: p
+          - generic [ref=e222]: r
+          - generic [ref=e223]: i
+          - generic [ref=e224]: m
+          - generic [ref=e225]: e
+          - generic [ref=e226]: r
+          - generic [ref=e227]: o
+        - generic [ref=e228]:
+          - generic [ref=e229]: d
+          - generic [ref=e230]: e
+          - generic [ref=e231]: l
+        - generic [ref=e232]:
+          - generic [ref=e233]: C
+          - generic [ref=e234]: o
+          - generic [ref=e235]: l
+          - generic [ref=e236]: e
+          - generic [ref=e237]: g
+          - generic [ref=e238]: i
+          - generic [ref=e239]: o
+        - generic [ref=e240]:
+          - generic [ref=e241]: C
+          - generic [ref=e242]: o
+          - generic [ref=e243]: l
+          - generic [ref=e244]: o
+          - generic [ref=e245]: m
+          - generic [ref=e246]: b
+          - generic [ref=e247]: o
+        - generic [ref=e248]:
+          - generic [ref=e249]: I
+          - generic [ref=e250]: "n"
+          - generic [ref=e251]: g
+          - generic [ref=e252]: l
+          - generic [ref=e253]: é
+          - generic [ref=e254]: s
+        - generic [ref=e255]:
+          - generic [ref=e256]: d
+          - generic [ref=e257]: e
+          - generic [ref=e258]: l
+        - generic [ref=e259]:
+          - generic [ref=e260]: H
+          - generic [ref=e261]: u
+          - generic [ref=e262]: i
+          - generic [ref=e263]: l
+          - generic [ref=e264]: a
+      - generic [ref=e265]:
+        - paragraph [ref=e267]: Estudiantes Autores
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - img "Alexandra Catalina Lozada Babativa" [ref=e271]
+            - heading "Alexandra Catalina" [level=3] [ref=e272]
+            - paragraph [ref=e273]: Lozada Babativa
+            - generic [ref=e274]: Estudiante Autora
+          - generic [ref=e275]:
+            - img "Juan Diego Cuellar Mazabel" [ref=e277]
+            - heading "Juan Diego" [level=3] [ref=e278]
+            - paragraph [ref=e279]: Cuellar Mazabel
+            - generic [ref=e280]: Estudiante Autor
+          - generic [ref=e281]:
+            - img "Karla Fabiana Cabrera Roa" [ref=e283]
+            - heading "Karla Fabiana" [level=3] [ref=e284]
+            - paragraph [ref=e285]: Cabrera Roa
+            - generic [ref=e286]: Estudiante Autora
+        - generic [ref=e287]:
+          - paragraph [ref=e288]: Director del Trabajo de Grado
+          - paragraph [ref=e289]:
+            - strong [ref=e290]: John Mauricio Sandoval Granados
+            - text: /
+            - strong [ref=e291]: Yuliet Ximena Villamil Rodríguez
+        - generic [ref=e292]:
+          - paragraph [ref=e293]: Docente de Asignatura
+          - paragraph [ref=e294]:
+            - strong [ref=e295]: Marilin Oviedo Contreras
+      - img "Gamificación y educación digital" [ref=e297]
+    - generic [ref=e299]: Explorar
+  - generic [ref=e301]:
+    - generic [ref=e302]:
+      - generic [ref=e303]: Pestaña 2
+      - heading "Reconociendo" [level=2] [ref=e304]
+      - paragraph [ref=e305]: Identificando la problemática y definiendo los objetivos del proyecto a través de avatares interactivos y un póster digital.
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - generic [ref=e309]: 
+        - heading "Avatares Interactivos" [level=3] [ref=e310]
+        - paragraph [ref=e311]: Presentación del equipo y la problemática del proyecto mediante avatares creados en Voki.
+        - heading "Avatar 1 — Presentación" [level=4] [ref=e312]
+        - paragraph [ref=e313]: Presenta el título del trabajo de grado, los autores y el director del proyecto.
+        - generic [ref=e314]:
+          - generic [ref=e315]: 
+          - text: Espacio para incrustar el Avatar 1 (Voki)
+        - heading "Avatar 2 — El Problema" [level=4] [ref=e316]
+        - paragraph [ref=e317]: "Expone la problemática identificada: la reducción del uso del juego en las aulas de primer grado debido a enfoques tradicionales y presiones curriculares, y cómo esto afecta el aprendizaje significativo."
+        - generic [ref=e318]:
+          - generic [ref=e319]: 
+          - text: Espacio para incrustar el Avatar 2 (Voki)
+      - generic [ref=e320]:
+        - generic [ref=e322]: 
+        - heading "Póster Digital" [level=3] [ref=e323]
+        - paragraph [ref=e324]: Síntesis de la justificación y los objetivos del proyecto de investigación.
+        - heading "Justificación" [level=4] [ref=e325]
+        - paragraph [ref=e326]: El juego es un derecho fundamental y una herramienta esencial para el desarrollo integral (cognitivo, social y emocional). Se busca reintegrar la lúdica mediante Wordwall para mejorar la motivación y el rendimiento académico.
+        - heading "Objetivo General" [level=4] [ref=e327]
+        - paragraph [ref=e328]: Analizar el impacto del uso del juego, apoyado en la plataforma digital Wordwall, en el rendimiento académico en la competencia comunicativa de los estudiantes de grado primero del Colegio Colombo Inglés del Huila.
+        - heading "Objetivos Específicos" [level=4] [ref=e329]
+        - list [ref=e330]:
+          - listitem [ref=e331]: ▸ Diagnosticar el nivel inicial de competencia comunicativa (Pre-test).
+          - listitem [ref=e332]: ▸ Diseñar secuencias didácticas gamificadas en Wordwall.
+          - listitem [ref=e333]: ▸ Implementar la intervención pedagógica en el aula.
+          - listitem [ref=e334]: ▸ Evaluar la influencia final comparando Pre-test y Post-test.
+  - contentinfo [ref=e335]:
+    - paragraph [ref=e336]:
+      - strong [ref=e337]: Universidad de Cartagena
+      - text: — Portafolio Digital de Posgrado
+    - paragraph [ref=e338]: © 2025. Todos los derechos reservados.

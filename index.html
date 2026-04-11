@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portafolio Digital de Posgrado — Integración de Wordwall como estrategia pedagógica. Universidad de Cartagena.">
+  <title>Portafolio Digital | Integración de Wordwall — Universidad de Cartagena</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+
+  <!-- ======== NAVIGATION ======== -->
+  <nav class="navbar" id="navbar">
+    <a href="#inicio" class="nav-brand">
+      <img id="navLogo" src="assets/Logo_Oficial_Unicartagena.png" alt="Escudo Universidad de Cartagena">
+      <span>Portafolio Digital</span>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+      <li><a href="#reconociendo" class="nav-link" data-section="reconociendo">Reconociendo</a></li>
+      <li>
+        <button class="nav-link locked" data-coming-soon="Referenciando" data-cs-message="E-book informativo">
+          Referenciando
+          <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-link locked" data-coming-soon="Diseñando" data-cs-message="Unidad Didáctica e Infografía">
+          Diseñando
+          <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-link locked" data-coming-soon="Créditos" data-cs-message="Referencias y Licenciamiento">
+          Créditos
+          <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ======== COMING SOON OVERLAY ======== -->
+  <div class="coming-soon-overlay" id="comingSoonOverlay">
+    <div class="coming-soon-card">
+      <div class="cs-icon"><i class="fa-solid fa-person-digging"></i></div>
+      <h3 id="csTitle">Próximamente</h3>
+      <p id="csDescription">Este contenido estará disponible pronto.</p>
+      <button class="cs-close" id="csClose">Entendido</button>
+    </div>
+  </div>
+
+  <!-- ======== CUSTOM CONTEXT MENU ======== -->
+  <nav id="customContextMenu" class="context-menu" aria-label="Menú contextual" role="menu">
+    <div class="context-menu-header">
+      <span class="context-menu-title"><i class="fa-solid fa-map"></i> Navegar</span>
+    </div>
+    <ul class="context-menu-list">
+      <li class="context-menu-item" data-action="scroll-top">
+        <i class="fa-solid fa-arrow-up"></i> Inicio de la página
+      </li>
+      <li class="context-menu-item" data-action="scroll-bottom">
+        <i class="fa-solid fa-arrow-down"></i> Final de la página
+      </li>
+      <li class="context-menu-divider" role="separator"></li>
+      <li class="context-menu-item" data-action="toggle-theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Modo oscuro</span>
+      </li>
+      <li class="context-menu-divider" role="separator"></li>
+      <li class="context-menu-item" data-action="goto" data-section="inicio">
+        <i class="fa-solid fa-house"></i> Inicio
+      </li>
+      <li class="context-menu-item" data-action="goto" data-section="reconociendo">
+        <i class="fa-solid fa-users"></i> Reconociendo
+      </li>
+      <li class="context-menu-item" data-action="goto" data-section="referenciando">
+        <i class="fa-solid fa-book"></i> Referenciando
+      </li>
+      <li class="context-menu-item" data-action="goto" data-section="disenando">
+        <i class="fa-solid fa-palette"></i> Diseñando
+      </li>
+      <li class="context-menu-item" data-action="goto" data-section="creditos">
+        <i class="fa-solid fa-star"></i> Créditos
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <!-- SVG line: drawn as user scrolls through this section -->
+    <div class="scroll-line-wrapper" aria-hidden="true">
+      <svg id="scroll-line-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701.19 2059.2"
+        preserveAspectRatio="xMidYMid meet">
+        <path id="stroke-path"
+          d="M380.3,76.8c-79.2-10.5-203.7-14.5-340.6,35.3-80,29.1-185.2,67.4-256.2,175.8-10.6,16.2-63.3,99.3-63.5,218.1,0,23.6,3,223.3,169.4,338.8,122.6,85,268,79,364.2,42.4,25.4-9.7,51.9-20.1,79.1-44.5,94.5-84.9,136.3-286,24-381.2-79.5-67.3-215.5-64.1-290.8,4.2C11.8,514.9,1.9,586,0,616.8c-11.4,186.3,187.5,239.5,207.1,457.4,1.9,20.9,9.9,129.6-49.4,234.4-47.4,83.6-107.6,111.6-173.6,166.6-70.5,58.7-160.9,159.2-228.7,338.8"
+          fill="none" stroke="#B492F0" stroke-linecap="round" stroke-miterlimit="10" stroke-width="250" />
+      </svg>
+    </div>
+
+    <!-- Top 2-column layout for Title and Illustration -->
+    <div class="hero-top-layout">
+      <div class="hero-text-col">
+        <!-- Shield -->
+        <div class="hero-shield-wrapper reveal-scale">
+          <img id="heroLogo" src="assets/Logo_Oficial_Unicartagena.png" alt="Escudo Universidad de Cartagena"
+            class="hero-shield">
+        </div>
+
+        <!-- Title — Letter Animation -->
+        <h1 class="hero-title" id="heroTitle">
+          Integración del juego y la plataforma digital <span class="highlight wordwall-sketch">Wordwall</span> como
+          estrategia
+          pedagógica: análisis de su influencia en el rendimiento académico en la competencia comunicativa de
+          estudiantes
+          de grado primero del Colegio Colombo Inglés del Huila
+        </h1>
+      </div>
+
+      <!-- Illustration -->
+      <div class="hero-illustration-col">
+        <div class="hero-illustration">
+          <img src="assets/image_1_bubble1.svg" class="ill-bubble bubble1" alt="">
+          <img src="assets/image_1_bubble3.svg" class="ill-bubble bubble3" alt="">
+          <img src="assets/image_1_bubble2.svg" class="ill-bubble bubble2" alt="">
+          <img src="assets/image_1_bubble4.svg" class="ill-bubble bubble4" alt="">
+          <img src="assets/image_1_boy_tablet.svg" class="ill-boy" alt="Boy holding tablet">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom metadata layout -->
+    <div class="hero-content">
+      <div class="hero-meta stagger-children">
+        <div class="hero-meta-group reveal">
+          <p class="hero-meta-label">Estudiantes Autores</p>
+        </div>
+
+        <div class="author-cards">
+          <!-- Author 1 -->
+          <div class="author-card reveal">
+            <div class="author-card-photo">
+              <div class="photo-inner">
+                <div class="photo-front">
+                  <img src="assets/illustration_alexandra_losada.svg" alt="Avatar Alexandra Catalina Lozada Babativa">
+                </div>
+                <div class="photo-back">
+                  <img src="assets/photo_alexandra_losada.png" alt="Foto Alexandra Catalina Lozada Babativa">
+                </div>
+              </div>
+            </div>
+            <h3 class="author-card-name">Alexandra Catalina</h3>
+            <p class="author-card-surname">Lozada Babativa</p>
+            <span class="author-card-role">Estudiante Autora</span>
+          </div>
+
+          <!-- Author 2 (Center - Arc) -->
+          <div class="author-card reveal">
+            <div class="author-card-photo">
+              <div class="photo-inner">
+                <div class="photo-front">
+                  <img src="assets/illustration_juan_cuellar.svg" alt="Avatar Juan Diego Cuellar Mazabel">
+                </div>
+                <div class="photo-back">
+                  <img src="assets/photo_juan_cuellar.png" alt="Foto Juan Diego Cuellar Mazabel">
+                </div>
+              </div>
+            </div>
+            <h3 class="author-card-name">Juan Diego</h3>
+            <p class="author-card-surname">Cuellar Mazabel</p>
+            <span class="author-card-role">Estudiante Autor</span>
+          </div>
+
+          <!-- Author 3 -->
+          <div class="author-card reveal">
+            <div class="author-card-photo">
+              <div class="photo-inner">
+                <div class="photo-front">
+                  <img src="assets/illustration_karla_cabrera.svg" alt="Avatar Karla Fabiana Cabrera Roa">
+                </div>
+                <div class="photo-back">
+                  <img src="assets/photo_karla_cabrera.png" alt="Foto Karla Fabiana Cabrera Roa">
+                </div>
+              </div>
+            </div>
+            <h3 class="author-card-name">Karla Fabiana</h3>
+            <p class="author-card-surname">Cabrera Roa</p>
+            <span class="author-card-role">Estudiante Autora</span>
+          </div>
+        </div>
+
+        <div class="hero-meta-group reveal" style="margin-top: 3rem;">
+          <p class="hero-meta-label">Directores y Docente de Asignatura</p>
+        </div>
+
+        <!-- Advisors -->
+        <div class="advisor-cards">
+          <!-- Advisor 1 (Slides from left) -->
+          <div class="advisor-card reveal-left">
+            <div class="advisor-card-photo">
+              <div class="advisor-photo-inner">
+                <img src="assets/photo_director2_mauricio_sandoval.png" alt="Foto John Mauricio Sandoval Granados">
+              </div>
+            </div>
+            <h3 class="author-card-name">John Mauricio</h3>
+            <p class="author-card-surname">Sandoval Granados</p>
+            <span class="author-card-role">Director del Trabajo</span>
+          </div>
+
+          <!-- Advisor 2 (Center - Slides from bottom) -->
+          <div class="advisor-card reveal">
+            <div class="advisor-card-photo">
+              <div class="advisor-photo-inner">
+                <img src="assets/course-teacher-Marilin-Oviedo-Contreras.png" alt="Foto Marilin Oviedo Contreras">
+              </div>
+            </div>
+            <h3 class="author-card-name">Marilin</h3>
+            <p class="author-card-surname">Oviedo Contreras</p>
+            <span class="author-card-role">Docente de Asignatura</span>
+          </div>
+
+          <!-- Advisor 3 (Slides from right) -->
+          <div class="advisor-card reveal-right">
+            <div class="advisor-card-photo">
+              <div class="advisor-photo-inner">
+                <img src="assets/photo_director2_yuliet_villamil.png" alt="Foto Yuliet Ximena Villamil Rodríguez">
+              </div>
+            </div>
+            <h3 class="author-card-name">Yuliet Ximena</h3>
+            <p class="author-card-surname">Villamil Rodríguez</p>
+            <span class="author-card-role">Directora del Trabajo</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================== -->
+    <!-- LANDSCAPE DIVIDER        -->
+    <!-- ======================== -->
+    <div class="landscape-divider" aria-hidden="true">
+      <!-- Layer 3 (Back): clouds scrolling right-to-left -->
+      <div class="ld-clouds">
+        <!-- Three copies: each renders at 2/3 viewport width, showing ~1.5 at once -->
+        <img src="assets/continuous-cloud-layer.svg" class="ld-cloud-strip" alt="">
+        <img src="assets/continuous-cloud-layer.svg" class="ld-cloud-strip" alt="">
+        <img src="assets/continuous-cloud-layer.svg" class="ld-cloud-strip" alt="">
+      </div>
+      <!-- Layer 2 (Mid): rolling hills -->
+      <img src="assets/hills-layer.svg" class="ld-hills" alt="">
+      <!-- Layer 1 (Front): soil cross-section -->
+      <img src="assets/ground-layer.svg" class="ld-ground" alt="">
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <span>Explorar</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ======== RECONOCIENDO (underground) ======== -->
+  <section class="section reconociendo" id="reconociendo" style="background-color: #f5efe6;">
+    <div class="section-header reveal">
+      <span class="section-tag">Pestaña 2</span>
+      <h2 class="section-title">Reconociendo</h2>
+      <p class="section-subtitle">
+        Identificando la problemática y definiendo los objetivos del proyecto a través de avatares interactivos y un
+        póster digital.
+      </p>
+    </div>
+
+    <div class="recon-grid">
+      <!-- Avatar 1 Card (Left) -->
+      <div class="recon-card avatar-card reveal-left">
+        <div class="recon-card-icon avatars"><i class="fa-solid fa-user-group"></i></div>
+        <h3>Avatar 1 — Presentación</h3>
+        <p>Presentación del equipo de trabajo, el título del proyecto y los directores de investigación.</p>
+        <div class="avatar-embed-placeholder">
+          <i class="fa-solid fa-image"></i> Espacio para incrustar Avatar 1
+        </div>
+      </div>
+
+      <!-- Avatar 2 Card (Right) -->
+      <div class="recon-card avatar-card reveal-right">
+        <div class="recon-card-icon avatars"><i class="fa-solid fa-video"></i></div>
+        <h3>Avatar 2 — El Problema</h3>
+        <p>Expone la problemática identificada: la reducción del uso del juego en las aulas de primer grado debido a
+          enfoques tradicionales y presiones curriculares.</p>
+        <!-- ── Interactive Avatar Player ── -->
+        <div class="avatar-player" id="avatarPlayer2">
+
+          <!-- Play / Pause button (Moved above avatar) -->
+          <button class="avatar-play-btn" id="playBtn2" aria-label="Reproducir presentación del Avatar 2">
+            <i class="fa-solid fa-play" id="playIcon2"></i> <span id="playText2">Escuchar</span>
+          </button>
+
+          <!-- Pulse ring (audio visualizer) behind avatar -->
+          <div class="avatar-pulse-ring" id="pulseRing2"></div>
+
+          <!-- Stacked image frames (sits unclipped at bottom) -->
+          <div class="avatar-frame-stack">
+            <img class="avatar-base" src="assets/avatars/avatar-2.png" alt="Avatar 2 base">
+            <img class="avatar-mouth" id="avatarMouth2" src="" alt="" aria-hidden="true">
+            <img class="avatar-blink" id="avatarBlink2" src="assets/avatars/avatar-2-blink.png" alt=""
+              aria-hidden="true">
+          </div>
+
+          <!-- Hidden audio element -->
+          <audio id="avatarAudio2" preload="auto">
+            <source src="assets/avatars/Karla Portafolio avatar 2.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <!-- Poster Card (Full Width) -->
+      <div class="recon-card reveal-up" style="grid-column: 1 / -1;">
+        <div class="recon-card-icon poster"><i class="fa-solid fa-chart-column"></i></div>
+        <h3>Póster Digital</h3>
+        <p>Síntesis de la justificación y los objetivos del proyecto de investigación.</p>
+        <div class="poster-content">
+          <h4>Justificación</h4>
+          <p>El juego es un derecho fundamental y una herramienta esencial para el desarrollo integral. Se busca
+            reintegrar la lúdica mediante Wordwall para mejorar la motivación y el rendimiento académico.</p>
+          <h4>Objetivo General</h4>
+          <p>Analizar el impacto del uso del juego, apoyado en la plataforma digital Wordwall, en el rendimiento
+            académico en la competencia comunicativa de los estudiantes de grado primero del Colegio Colombo Inglés del
+            Huila.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <p><strong>Universidad de Cartagena</strong> — Portafolio Digital de Posgrado</p>
+    <p>© 2025. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger for scroll-driven SVG animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
