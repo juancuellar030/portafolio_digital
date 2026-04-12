@@ -1782,10 +1782,24 @@ body {
 }
 
 .poster-zone:hover {
-  background-color: var(--paper-white);
   border-color: var(--ink-dark);
   box-shadow: 6px 6px 0 var(--highlight-yellow);
   transform: translateY(-4px);
+}
+
+.poster-left.poster-zone:hover {
+  background-color: #fffdf0;
+  /* Watercolor soft warm yellow */
+}
+
+.poster-center.poster-zone:hover {
+  background-color: #f0f7fc;
+  /* Watercolor soft light blue */
+}
+
+.poster-right.poster-zone:hover {
+  background-color: #fdf0f5;
+  /* Watercolor soft pink/lavender */
 }
 
 /* Shared Subheading */
@@ -1858,6 +1872,13 @@ body {
   height: auto;
   margin: 0 auto var(--space-sm);
   display: block;
+  transition: transform var(--duration-normal) var(--ease-spring),
+    filter var(--duration-normal) var(--ease-out);
+}
+
+.poster-ill:hover {
+  transform: translateY(-6px) scale(1.06) rotate(-2deg);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.08));
 }
 
 .ill-caption {
