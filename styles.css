@@ -1737,7 +1737,7 @@ body {
 
 .poster-header {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-lg);
   position: relative;
   z-index: 2;
 }
@@ -1747,7 +1747,7 @@ body {
   font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   color: var(--ink-black);
   display: inline-block;
-  padding: 10px 24px;
+  padding: 10px 22px;
   background: var(--highlight-yellow);
   transform: rotate(-1deg);
   border: 2px solid var(--ink-dark);
@@ -1759,10 +1759,33 @@ body {
 /* Base Body Layout */
 .poster-body {
   display: grid;
-  grid-template-columns: 1.1fr 1.2fr 1.3fr;
-  gap: var(--space-2xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
   position: relative;
   z-index: 2;
+  align-items: stretch;
+}
+
+.poster-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── INTERACTIVE HOVER ZONES ── */
+.poster-zone {
+  border: 2px solid transparent;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: var(--space-md);
+  transition: all var(--duration-normal) var(--ease-out);
+  background-color: transparent;
+}
+
+.poster-zone:hover {
+  background-color: var(--paper-white);
+  border-color: var(--ink-dark);
+  box-shadow: 6px 6px 0 var(--highlight-yellow);
+  transform: translateY(-4px);
 }
 
 /* Shared Subheading */
@@ -1787,11 +1810,38 @@ body {
 }
 
 /* ── LEFT BLOCK: Justification ── */
+.poster-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--space-xs);
+}
+
+.porque-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.porque-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.porque-text {
+  flex: 1;
+}
+
+.porque-row .poster-illustration-wrapper {
+  flex: 0 0 35%;
+  margin: 0;
+}
+
 .poster-left p {
   color: var(--ink-medium);
   font-size: 1.05rem;
   line-height: 1.6;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
+  /* Remove fixed margin to let space-between work */
 }
 
 .poster-left strong {
@@ -1800,11 +1850,11 @@ body {
 
 .poster-illustration-wrapper {
   text-align: center;
-  margin: var(--space-xl) 0;
+  margin: var(--space-sm) 0;
 }
 
 .poster-ill {
-  max-width: 160px;
+  max-width: 120px;
   height: auto;
   margin: 0 auto var(--space-sm);
   display: block;
@@ -1823,22 +1873,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .objective-card {
-  background: var(--paper-cream);
-  border: 2px dashed var(--ink-dark);
-  padding: var(--space-xl);
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
   text-align: center;
-  margin-top: var(--space-sm);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
-}
-
-.objective-icon {
-  font-size: 2.5rem;
-  color: #f5576c;
-  margin-bottom: var(--space-md);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  width: 100%;
 }
 
 .highlight-objective {
@@ -1846,35 +1888,79 @@ body {
   line-height: 1.8;
   color: var(--ink-dark);
   font-weight: 500;
+  margin: 0;
 }
 
 /* ── RIGHT BLOCK: Roadmap Timeline ── */
+.poster-right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .roadmap-timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-xs);
+  margin: auto 0;
   position: relative;
+  z-index: 1;
 }
 
-/* Connecting dashed line */
+/* Connecting dashed line - Removed for maze layout */
 .roadmap-timeline::before {
-  content: '';
-  position: absolute;
-  top: 40px;
-  bottom: 40px;
-  left: 40px;
-  /* center of the 80px icons */
-  width: 2px;
-  border-left: 3px dashed var(--paper-line);
-  z-index: 0;
+  display: none;
 }
 
 .roadmap-step {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-md);
   position: relative;
   z-index: 1;
+  width: 75%;
+}
+
+/* Zig-zag maze layout */
+.roadmap-step:nth-child(odd) {
+  align-self: flex-start;
+  flex-direction: row;
+  text-align: left;
+}
+
+.roadmap-step:nth-child(even) {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Connecting maze lines */
+.roadmap-step:nth-child(odd):not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  /* center of 80px icon */
+  left: 40px;
+  width: calc(133.33% - 80px);
+  /* spans to center of opposite side icon (100% / 0.75 = 133.3%) */
+  height: calc(100% + var(--space-2xl));
+  border-top: 3px dashed var(--paper-line);
+  border-right: 3px dashed var(--paper-line);
+  border-top-right-radius: 20px;
+  z-index: -1;
+}
+
+.roadmap-step:nth-child(even):not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: calc(133.33% - 80px);
+  height: calc(100% + var(--space-2xl));
+  border-top: 3px dashed var(--paper-line);
+  border-left: 3px dashed var(--paper-line);
+  border-top-left-radius: 20px;
+  z-index: -1;
 }
 
 .step-icon-wrapper {
@@ -1924,7 +2010,7 @@ body {
 
 .float-icon {
   position: absolute;
-  font-size: 2rem;
+  font-size: 4rem;
   color: var(--ink-dark);
   opacity: 0.06;
   animation: floatIcon 6s ease-in-out infinite;
@@ -1944,7 +2030,7 @@ body {
 
 /* ── FOOTER ── */
 .poster-footer {
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-lg);
   padding-top: var(--space-xl);
   border-top: 2px dashed var(--paper-line);
   text-align: center;
@@ -1954,7 +2040,8 @@ body {
 
 .footer-logo {
   max-width: 150px;
-  margin-bottom: var(--space-sm);
+  margin: 0 auto var(--space-sm);
+  display: block;
   filter: grayscale(100%) opacity(0.7);
   transition: filter 0.3s ease;
 }
@@ -1998,8 +2085,22 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .roadmap-timeline::before {
-    left: 30px;
+  .roadmap-timeline {
+    margin: 0;
+  }
+
+  .roadmap-step {
+    width: 100%;
+  }
+
+  .roadmap-step:nth-child(n) {
+    align-self: flex-start;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .roadmap-step::after {
+    display: none !important;
   }
 
   .step-icon-wrapper {
