@@ -107,64 +107,6 @@
   --duration-slow: 700ms;
 }
 
-/* ============================================
-   GLOBAL DARK MODE THEME
-============================================ */
-[data-theme="dark"] {
-  /* Ink & Paper inverted palette */
-  --paper-white: #16161b;
-  --paper-cream: #1e1e24;
-  --paper-warm: #26262e;
-  --paper-line: #30303a;
-
-  --ink-black: #fdfcfa;
-  --ink-dark: #eae8e1;
-  --ink-medium: #c0bdaf;
-  --ink-light: #8a887d;
-  --ink-faint: #5a5a6a;
-
-  /* Accent colors tuned for neon/dark readability */
-  --highlight-yellow: #e6c229;
-  --highlight-yellow-soft: rgba(230, 194, 41, 0.25);
-  --highlight-pink: #d97381;
-  --highlight-blue: #63a8c7;
-  --highlight-green: #7dc28f;
-  --pencil-red: #ff7461;
-
-  /* Navbar dark background overrides */
-  --navbar-bg: rgba(22, 22, 27, 0.85);
-  --navbar-bg-scrolled: rgba(22, 22, 27, 0.97);
-}
-
-/* Invert illustrations globally in dark mode */
-[data-theme="dark"] .boy-illustration,
-[data-theme="dark"] .ill-boy,
-[data-theme="dark"] .ill-bubble,
-[data-theme="dark"] .landscape-layer img,
-[data-theme="dark"] .author-card-photo,
-[data-theme="dark"] .advisor-card-photo,
-[data-theme="dark"] .author-avatar-img,
-[data-theme="dark"] .dark-invert {
-  filter: invert(1) hue-rotate(180deg) brightness(1.2);
-}
-
-/* Undo inversion on real photos that act as children inside mirrored doodle-frame containers */
-[data-theme="dark"] .photo-inner img,
-[data-theme="dark"] .advisor-photo-inner img {
-  filter: brightness(0.833) hue-rotate(-180deg) invert(1);
-}
-
-/* Modify the paper texture overlay for dark mode (bright particles) */
-[data-theme="dark"] body::after {
-  mix-blend-mode: color-dodge;
-  filter: invert(1) brightness(1.5) opacity(0.4);
-}
-
-/* Base text color transition */
-body {
-  transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
-}
-
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -251,6 +193,19 @@ a {
 }
 
 /* --- Scroll Reveal Animations --- */
+.ud-rocks {
+  top: 0;
+  transform: translateY(4px);
+  z-index: 1;
+  /* Rocks sit slightly behind based on HTML, but can be adjusted */
+}
+
+.ud-stalactites {
+  top: 0;
+  transform: translateY(8px);
+  z-index: 2;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -414,7 +369,7 @@ a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='3' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='3' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cpath d='M10,12 L50,9 L100,11 L150,9 L190,11 L194,20 L195,40 L192,50 L150,48 L100,51 L50,49 L10,51 L6,40 L8,20 Z' fill='%23ffcccb' filter='url(%23r)'/%3E%3C/svg%3E");
 }
 
-.nav-link[data-coming-soon="Referenciando"]::after {
+.nav-link[data-section="referenciando"]::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='3' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='3' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cpath d='M10,12 L50,9 L100,11 L150,9 L190,11 L194,20 L195,40 L192,50 L150,48 L100,51 L50,49 L10,51 L6,40 L8,20 Z' fill='%23c1e1c1' filter='url(%23r)'/%3E%3C/svg%3E");
 }
 
@@ -728,6 +683,18 @@ a {
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes ebookPromptBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -1417,7 +1384,11 @@ body {
    RECONOCIENDO SECTION
    ================================ */
 .reconociendo {
-  background: var(--paper-cream);
+  background-color: #E8CCA7;
+  background-image: url('assets/soil-waves.svg');
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
 .recon-grid {
@@ -2226,6 +2197,149 @@ body {
   .recon-card {
     padding: var(--space-lg);
   }
+}
+
+/* ================================
+   UNDERGROUND DIVIDER
+   Cave transition between Reconociendo → Referenciando
+   ================================ */
+
+/* Wrapper: full-viewport width, transition from paper texture to dark cave */
+.underground-divider {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  /* Shift the whole block up to overlap Reconociendo's bottom padding */
+  margin-top: -100px;
+  margin-bottom: 0;
+  padding-bottom: 25px;
+  overflow: hidden;
+  line-height: 0;
+  /* Seamless color transition behind the SVG layers */
+  background: linear-gradient(to bottom, #BC9F7A 0%, #BC9F7A 61%, #232c40 65%, #232c40 100%);
+  pointer-events: none;
+  z-index: 10;
+  /* Ensure it stays above the sections it bridges */
+}
+
+/* Rocks layer – sits in the upper light transition zone */
+.ud-rocks {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1%;
+  /* Moderate overlap with stalactites */
+}
+
+.ud-rocks img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Stalactites layer – hangs down from the rocks into the dark void */
+.ud-stalactites {
+  position: relative;
+  z-index: 2;
+  transform: translateY(12px);
+  /* Lowered slightly to cover the section boundary line */
+}
+
+.ud-stalactites img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Referenciando dark section */
+.referenciando {
+  background-color: #232c40 !important;
+  color: #fdfcfa;
+  /* Light text for readability */
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+  padding-bottom: calc(var(--space-4xl) + 150px);
+}
+
+.referenciando .section-title {
+  color: #fdfcfa;
+}
+
+.referenciando .section-subtitle,
+.referenciando .section-tag {
+  color: #c0bdaf;
+  /* Soft light color for secondary text */
+}
+
+.referenciando .section-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Override any leftover inline background on inner dark wrapper */
+.referenciando-inner-dark {
+  background-color: transparent !important;
+}
+
+/* ================================
+   UNDERWATER EFFECT
+   ================================ */
+.water-tide-system {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: 0;
+  height: 220px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.water-tide-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  animation: tideAnim 8s ease-in-out infinite alternate;
+}
+
+@keyframes tideAnim {
+  0% {
+    transform: translateY(25px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.water-waves {
+  width: 100%;
+  height: 60px;
+  background-image: url('assets/water-wave.svg');
+  background-size: 600px 100%;
+  background-repeat: repeat-x;
+  background-position-x: 0;
+  animation: waveAnim 8s linear infinite;
+}
+
+@keyframes waveAnim {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: -600px;
+  }
+}
+
+.water-body {
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: #5ab4c8;
 }
 
 /* ================================

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800" preserveAspectRatio="none">
+    <!-- Wave 1: Lightest layer of dark dirt -->
+    <path fill="#BC9F7A" fill-opacity="0.25" d="M0,150 Q360,250 720,150 T1440,150 L1440,800 L0,800 Z" />
+    
+    <!-- Wave 2: Medium layer -->
+    <path fill="#BC9F7A" fill-opacity="0.4" d="M0,350 C300,280 500,420 800,350 C1100,280 1300,380 1440,350 L1440,800 L0,800 Z" />
+    
+    <!-- Wave 3: Deeper layer -->
+    <path fill="#BC9F7A" fill-opacity="0.65" d="M0,550 Q360,650 720,550 T1440,550 L1440,800 L0,800 Z" />
+
+    <!-- Wave 4: Deepest layer just before the cave -->
+    <path fill="#BC9F7A" fill-opacity="0.85" d="M0,720 C400,680 600,750 900,720 C1200,690 1350,730 1440,720 L1440,800 L0,800 Z" />
+</svg>

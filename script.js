@@ -23,19 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const csClose = document.getElementById('csClose');
 
   const navLogo = document.getElementById('navLogo');
-  const themeIcon = document.getElementById('themeIcon');
-  const themeText = document.getElementById('themeText');
-
-  // --- Theme Toggle Initialization ---
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-    if (themeText) themeText.textContent = 'Modo claro';
-    if (navLogo) navLogo.src = 'assets/Logo_Oficial_Unicartagena-dark-mode.png';
-    const heroLogo = document.getElementById('heroLogo');
-    if (heroLogo) heroLogo.src = 'assets/Logo_Oficial_Unicartagena-dark-mode.png';
-  }
 
   // --- Custom Context Menu ---
   const contextMenu = document.getElementById('customContextMenu');
@@ -103,27 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (action === 'scroll-bottom') {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else if (action === 'toggle-theme') {
-        const heroLogo = document.getElementById('heroLogo');
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
-        if (isDark) {
-          // Switch to Light Mode
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('theme', 'light');
-          if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
-          if (themeText) themeText.textContent = 'Modo oscuro';
-          if (navLogo) navLogo.src = 'assets/Logo_Oficial_Unicartagena.png';
-          if (heroLogo) heroLogo.src = 'assets/Logo_Oficial_Unicartagena.png';
-        } else {
-          // Switch to Dark Mode
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-          if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-          if (themeText) themeText.textContent = 'Modo claro';
-          if (navLogo) navLogo.src = 'assets/Logo_Oficial_Unicartagena-dark-mode.png';
-          if (heroLogo) heroLogo.src = 'assets/Logo_Oficial_Unicartagena-dark-mode.png';
-        }
       } else if (action === 'goto' && sectionId) {
         const target = document.getElementById(sectionId);
         if (target) {
@@ -359,9 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = width;
   canvas.height = height;
 
-  // Set the 50% opacity here, so the rendering inside the canvas 
-  // is solid (1.0 alpha), stopping overlapping line caps from creating dots!
+  // Render solid locally to avoid intersection dots, scale down overall opacity on the CSS canvas element
   canvas.style.opacity = '0.5';
+  canvas.style.transition = 'opacity 0.4s ease-out';
+  let canvasVisible = true;
 
   window.addEventListener('resize', () => {
     width = window.innerWidth;
@@ -372,15 +339,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lastPoint = null;
   let moveTimeout = null;
+  let lastDrawTime = Date.now();
 
   function addPoint(x, y) {
+    if (!canvasVisible) {
+      // Instantly restore opacity without transition when starting to draw again
+      canvas.style.transition = 'none';
+      canvas.style.opacity = '0.5';
+      ctx.clearRect(0, 0, width, height); // ensure clean slate
+
+      // Force reflow to apply 'none' transition immediately
+      canvas.offsetHeight;
+
+      // Restore smooth transition for the next fade out
+      canvas.style.transition = 'opacity 0.4s ease-out';
+      canvasVisible = true;
+    }
+
     if (lastPoint) {
       ctx.beginPath();
       ctx.moveTo(lastPoint.x, lastPoint.y);
       ctx.lineTo(x, y);
-
-      // Draw SOLID color so overlaps don't multiply their transparency
-      ctx.strokeStyle = '#FF7373'; // 158, 98, 245
+      ctx.strokeStyle = '#FF7373';
       ctx.lineWidth = 15;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -388,8 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     lastPoint = { x, y };
+    lastDrawTime = Date.now();
 
-    // Stop connecting points if the mouse stops for a bit
     clearTimeout(moveTimeout);
     moveTimeout = setTimeout(() => {
       lastPoint = null;
@@ -411,12 +391,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function fadeTrail() {
-    // Fade everything uniformly each frame
+    const timeSinceLastDraw = Date.now() - lastDrawTime;
+
+    // After 1 sec of no drawing, smoothly fade the whole canvas via CSS to hide the sub-pixel residue perfectly
+    if (timeSinceLastDraw > 1000 && canvasVisible) {
+      canvas.style.opacity = '0';
+      canvasVisible = false;
+    }
+
+    // Always keep decaying the internal canvas pixels so it performs the core effect naturally
     ctx.globalCompositeOperation = 'destination-out';
     ctx.fillStyle = `rgba(0, 0, 0, ${TRAIL_FADE_SPEED})`;
     ctx.fillRect(0, 0, width, height);
-
     ctx.globalCompositeOperation = 'source-over';
+
     requestAnimationFrame(fadeTrail);
   }
 

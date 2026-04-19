@@ -8,6 +8,7 @@
     content="Portafolio Digital de Posgrado — Integración de Wordwall como estrategia pedagógica. Universidad de Cartagena.">
   <title>Portafolio Digital | Integración de Wordwall — Universidad de Cartagena</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="flipbook.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
 </head>
@@ -31,12 +32,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
       <li><a href="#reconociendo" class="nav-link" data-section="reconociendo">Reconociendo</a></li>
-      <li>
-        <button class="nav-link locked" data-coming-soon="Referenciando" data-cs-message="E-book informativo">
-          Referenciando
-          <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
-        </button>
-      </li>
+      <li><a href="#referenciando" class="nav-link" data-section="referenciando">Referenciando</a></li>
       <li>
         <button class="nav-link locked" data-coming-soon="Diseñando" data-cs-message="Unidad Didáctica e Infografía">
           Diseñando
@@ -73,10 +69,6 @@
       </li>
       <li class="context-menu-item" data-action="scroll-bottom">
         <i class="fa-solid fa-arrow-down"></i> Final de la página
-      </li>
-      <li class="context-menu-divider" role="separator"></li>
-      <li class="context-menu-item" data-action="toggle-theme">
-        <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Modo oscuro</span>
       </li>
       <li class="context-menu-divider" role="separator"></li>
       <li class="context-menu-item" data-action="goto" data-section="inicio">
@@ -136,6 +128,7 @@
           <img src="assets/image_1_bubble1.svg" class="ill-bubble bubble1" alt="">
           <img src="assets/image_1_bubble3.svg" class="ill-bubble bubble3" alt="">
           <img src="assets/image_1_bubble2.svg" class="ill-bubble bubble2" alt="">
+
           <img src="assets/image_1_bubble4.svg" class="ill-bubble bubble4" alt="">
           <img src="assets/image_1_boy_tablet.svg" class="ill-boy" alt="Boy holding tablet">
         </div>
@@ -273,7 +266,7 @@
   </section>
 
   <!-- ======== RECONOCIENDO (underground) ======== -->
-  <section class="section reconociendo" id="reconociendo" style="background-color: #f5efe6;">
+  <section class="section reconociendo" id="reconociendo">
     <div class="section-header reveal">
       <span class="section-tag">Pestaña 2</span>
       <h2 class="section-title">Reconociendo</h2>
@@ -477,6 +470,310 @@
     </div>
   </section>
 
+  <!-- ======================== -->
+  <!-- UNDERGROUND DIVIDER      -->
+  <!-- ======================== -->
+  <div class="underground-divider" aria-hidden="true">
+    <!-- Layer 1 (Back): underground rocks — sits above stalactites -->
+    <div class="ud-rocks">
+      <img src="assets/underground-rocks.svg?v=11" alt="">
+    </div>
+    <!-- Layer 2 (Front): stalactites — hangs down into the dark cave -->
+    <div class="ud-stalactites">
+      <img src="assets/stalactites.svg?v=11" alt="">
+    </div>
+  </div>
+
+  <!-- ======== REFERENCIANDO ======== -->
+  <section class="section referenciando" id="referenciando">
+    <div class="section-header reveal">
+      <span class="section-tag">Pestaña 3</span>
+      <h2 class="section-title">Referenciando</h2>
+      <p class="section-subtitle">
+        Marco de Referencia: Explorando el sustento teórico, normativo, y conceptual a través del E-book interactivo.
+      </p>
+    </div>
+
+    <!-- ---- INTERACTIVE FLIPBOOK ---- -->
+    <div id="flipbook-viewport">
+      <div id="flipbook-scene" class="closed">
+        <button id="fb-prev" class="fb-nav fb-nav-prev" aria-label="Página anterior">‹</button>
+        <button id="fb-next" class="fb-nav fb-nav-next" aria-label="Siguiente página">›</button>
+
+        <div id="flipbook">
+
+          <!-- LEAF 0: Cover / Page 2 -->
+          <div class="fb-leaf" data-leaf="0">
+            <div class="fb-face fb-front cover-front">
+              <div class="fb-page-content">
+                <h1 class="cover-title">Marco de Referencia:<br>El Corazón del Laboratorio Pedagógico Virtual</h1>
+                <p class="cover-subtitle">Sustento legal, teórico y conceptual del uso de Wordwall en el Colegio Colombo
+                  Inglés.</p>
+                <img src="assets/e-book/cover-illustration.png" alt="Portada"
+                  class="cover-illustration fb-illustration">
+              </div>
+            </div>
+            <div class="fb-face fb-back page-wallpaper page-wallpaper-left">
+              <div class="fb-text-card" style="margin-top:auto; margin-bottom:auto;">
+                <h2>Marco Contextual</h2>
+                <h3>Donde nace la idea</h3>
+                <p>La investigación se sitúa en el <strong>Colegio Bilingüe Nacional Colombo Inglés</strong> en Neiva,
+                  Huila (Comuna 10). Es una institución de alta calidad con una planta física campestre de 30,000 m²,
+                  enfocada en un modelo pedagógico afectivo y bilingüe.</p>
+              </div>
+              <span class="fb-page-num">2</span>
+            </div>
+          </div>
+
+          <!-- LEAF 1: Page 3 / Page 4 -->
+          <div class="fb-leaf" data-leaf="1">
+            <div class="fb-face fb-front page-wallpaper page-wallpaper-right" style="padding:0;">
+              <div class="fb-map-container">
+                <iframe
+                  src="https://maps.google.com/maps?q=Colegio+Bilingue+Nacional+Colombo+Ingles+Neiva+Huila&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="fb-social-btns">
+                <a href="https://www.facebook.com/reel/837250942466893" target="_blank" rel="noopener"
+                  class="fb-social-btn">
+                  <i class="fa-brands fa-facebook"></i> Video FB
+                </a>
+                <a href="https://youtu.be/tuWXGFWPm-c?si=uqaSs6L4NiX0wszR" target="_blank" rel="noopener"
+                  class="fb-social-btn">
+                  <i class="fa-brands fa-youtube"></i> Video YT
+                </a>
+              </div>
+              <span class="fb-page-num">3</span>
+            </div>
+            <div class="fb-face fb-back">
+              <div class="fb-page-content">
+                <h2>Marco Normativo</h2>
+                <h3>El respaldo legal</h3>
+                <p>Nos amparamos en la <strong>Ley 115 de 1994</strong> para la autonomía curricular y el
+                  <strong>Decreto 1290</strong> para una evaluación formativa.
+                </p>
+                <p>La <strong>Ley 1978 de 2019</strong> respalda nuestra autonomía para integrar recursos digitales como
+                  Wordwall.</p>
+                <img src="assets/e-book/page-3-illustration.png" alt="Marco normativo" class="fb-illustration"
+                  style="width:70%; margin:auto; max-width:180px;">
+              </div>
+              <span class="fb-page-num">4</span>
+            </div>
+          </div>
+
+          <!-- LEAF 2: Page 5 / Page 6 -->
+          <div class="fb-leaf" data-leaf="2">
+            <div class="fb-face fb-front">
+              <div class="fb-page-content">
+                <h2>Marco Teórico y Pedagógico</h2>
+                <h3>La ciencia del juego</h3>
+                <p>Basado en el <strong>Constructivismo de Piaget y Vygotsky</strong>, donde el juego es el mediador
+                  para transitar por la zona de desarrollo próximo.</p>
+                <p>Integramos la <strong>Gamificación</strong> para transformar el aula en un espacio de motivación
+                  intrínseca.</p>
+                <img src="assets/e-book/UNICEF_Logo_(cropped).png" alt="UNICEF Logo"
+                  style="width:50%; max-width:130px; margin: auto; display:block; opacity: 0.85; mix-blend-mode: multiply;">
+                <a href="https://www.unicef.org/lac/crianza/aprendizaje-inicial/desarrollando-cerebro-bebe-hijo-con-juego-video"
+                  target="_blank" rel="noopener" class="fb-doodle-btn" style="margin-top:auto;">
+                  <i class="fa-solid fa-globe"></i> Ver recurso UNICEF
+                </a>
+              </div>
+              <span class="fb-page-num">5</span>
+            </div>
+            <div class="fb-face fb-back">
+              <div class="fb-page-content mindmap-page">
+                <div class="mindmap-centerfold left-side">
+                  <div class="mm-tree">
+                    <div class="mm-row">
+                      <div class="mm-box mm-title">Integración del juego y la plataforma digital Wordwall como
+                        estrategia pedagógica
+                        <br>Análisis de su influencia en el rendimiento académico de estudiantes
+                        de grado primero del Colegio Colombo Inglés del Huila.
+                      </div>
+                    </div>
+                    <div class="mm-line-v"></div>
+                    <div class="mm-row">
+                      <div class="mm-box mm-hub">Marco conceptual</div>
+                    </div>
+                    <div class="mm-line-v"></div>
+                    <div class="mm-line-h-container"></div>
+                    <div class="mm-row mm-level-3">
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Tecnologías de la Información y la Comunicación (TIC)</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es el conjunto de herramientas que engloba y facilita el uso de
+                          recursos digitales. Wordwall se enmarca como un recurso TIC.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Wordwall</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es la herramienta tecnológica digital seleccionada (Recurso
+                          Educativo Digital - RED) que se incorpora como medio interactivo. Su uso facilita el diseño de
+                          contenidos interactivos y apoya la estrategia de gamificación.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Juego</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es la estrategia fundamental y el elemento lúdico central, esencial
+                          para el desarrollo saludable e integral del niño. La propuesta busca reintegrar el juego en el
+                          proceso educativo de grado primero.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Motivación Intrínseca</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es el objetivo actitudinal central de la intervención. Es la
+                          voluntad de aprender que surge del interés propio. La gamificación busca aumentar esta
+                          motivación.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Desarrollo Integral</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Objetivo final de la propuesta. Formación holística del educando
+                          (aspectos cognitivos, emocional y social). Se busca potenciar este desarrollo
+                          integral más allá del rendimiento académico.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="fb-page-num">6</span>
+            </div>
+          </div>
+
+          <!-- LEAF 3: Page 7 / Page 8 -->
+          <div class="fb-leaf" data-leaf="3">
+            <div class="fb-face fb-front">
+              <div class="fb-page-content mindmap-page">
+                <div class="mindmap-centerfold right-side">
+                  <div class="mm-tree">
+                    <div class="mm-row">
+                      <div class="mm-box mm-title">Integración del juego y la plataforma digital Wordwall como
+                        estrategia pedagógica
+                        <br>Análisis de su influencia en el rendimiento académico de estudiantes
+                        de grado primero del Colegio Colombo Inglés del Huila.
+                      </div>
+                    </div>
+                    <div class="mm-line-v"></div>
+                    <div class="mm-row">
+                      <div class="mm-box mm-hub">Marco conceptual</div>
+                    </div>
+                    <div class="mm-line-v"></div>
+                    <div class="mm-line-h-container"></div>
+                    <div class="mm-row mm-level-3">
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Tecnologías de la Información y la Comunicación (TIC)</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es el conjunto de herramientas que engloba y facilita el uso de
+                          recursos digitales. Wordwall se enmarca como un recurso TIC.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Wordwall</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es la herramienta tecnológica digital seleccionada (Recurso
+                          Educativo Digital - RED) que se incorpora como medio interactivo. Su uso facilita el diseño de
+                          contenidos interactivos y apoya la estrategia de gamificación.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Juego</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es la estrategia fundamental y el elemento lúdico central, esencial
+                          para el desarrollo saludable e integral del niño. La propuesta busca reintegrar el juego en el
+                          proceso educativo de grado primero.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Motivación Intrínseca</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Es el objetivo actitudinal central de la intervención. Es la
+                          voluntad de aprender que surge del interés propio. La gamificación busca aumentar esta
+                          motivación.</div>
+                      </div>
+                      <div class="mm-col">
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-cat">Desarrollo Integral</div>
+                        <div class="mm-line-v-small"></div>
+                        <div class="mm-box mm-desc">Objetivo final de la propuesta. Formación holística del educando
+                          (aspectos cognitivos, emocional y social). Se busca potenciar este desarrollo
+                          integral más allá del rendimiento académico.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="fb-page-num">7</span>
+            </div>
+            <div class="fb-face fb-back">
+              <div class="fb-page-content podcast-page">
+                <h2>Podcast</h2>
+                <p>Escucha nuestra reflexión pedagógica.</p>
+                <button id="podcastPlayBtn" class="podcast-play-btn" aria-label="Reproducir podcast">
+                  <i id="podcastPlayIcon" class="fa-solid fa-play"></i>
+                </button>
+                <p style="font-size:0.7rem; color:var(--ink-faint);">Karla Podcast</p>
+              </div>
+              <span class="fb-page-num">8</span>
+            </div>
+          </div>
+
+          <!-- LEAF 4: Page 9 / Back Cover -->
+          <div class="fb-leaf" data-leaf="4">
+            <div class="fb-face fb-front">
+              <div class="fb-page-content"
+                style="align-items:center; justify-content:center; text-align:center; gap:1rem;">
+                <div class="video-placeholder">
+                  <i class="fa-solid fa-video"></i>
+                  <h3>Video Pitch</h3>
+                  <p style="font-size:0.75rem;">Próximamente</p>
+                </div>
+              </div>
+              <span class="fb-page-num">9</span>
+            </div>
+            <div class="fb-face fb-back back-cover">
+              <div class="fb-page-content"
+                style="align-items:center; justify-content:center; text-align:center; gap:0.6rem;">
+                <h2 style="font-size:1.1rem;">Marco de Referencia</h2>
+                <p style="font-size:0.75rem;">Portafolio Digital — Universidad de Cartagena</p>
+                <p style="font-size:0.65rem; color:var(--ink-faint); margin-top:auto;">© 2026</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /#flipbook -->
+      </div><!-- /#flipbook-scene -->
+
+      <div
+        style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.5rem; z-index: 30; position: relative;">
+        <button id="fb-toggle-expand" class="fb-download-btn" style="background: #eaf2fe;">
+          <i class="fa-solid fa-expand"></i> <span id="fb-expand-text">Ampliar Vista</span>
+        </button>
+        <button id="fb-download" class="fb-download-btn"><i class="fa-solid fa-file-pdf"></i> Descargar como
+          PDF</button>
+      </div>
+      <p class="fb-helper-text">Haz clic en las páginas o arrastra para pasar. También puedes usar las flechas.</p>
+    </div><!-- /#flipbook-viewport -->
+
+    <!-- Flipbook and Podcast Audio -->
+    <audio id="page-flip-audio" src="assets/e-book/page-flip.mp3" preload="auto"></audio>
+    <audio id="podcastAudio" src="assets/e-book/Karla Podcast.mp3" preload="metadata"></audio>
+    <canvas id="podcast-visualizer"></canvas>
+
+    <!-- ======== UNDERWATER EFFECT ======== -->
+    <div class="water-tide-system" aria-hidden="true">
+      <div class="water-tide-inner">
+        <div class="water-waves"></div>
+        <div class="water-body"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ======== FOOTER ======== -->
   <footer class="footer">
     <p><strong>Universidad de Cartagena</strong> — Portafolio Digital de Posgrado</p>
@@ -487,6 +784,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
+  <script src="flipbook.js"></script>
 </body>
 
 </html>

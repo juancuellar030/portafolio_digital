@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100" preserveAspectRatio="none">
+    <!-- Back wave (Dark teal) -->
+    <!-- Oscillates between y=20 and y=60 -->
+    <path fill="#13829f" d="M0,40 Q150,0 300,40 T600,40 L600,100 L0,100 Z" />
+    <path fill="none" stroke="#000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M0,40 Q150,0 300,40 T600,40" />
+
+    <!-- Front wave (Light teal) -->
+    <!-- Oscillates between y=40 and y=80 -->
+    <path fill="#5ab4c8" d="M0,60 Q150,100 300,60 T600,60 L600,100 L0,100 Z" />
+    <path fill="none" stroke="#000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M0,60 Q150,100 300,60 T600,60" />
+</svg>
