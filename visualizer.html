@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar 1 Visualizer Recorder</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Background matches the Reconociendo tab to preserve exact appearance with 0.8 opacity */
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .avatar-pulse-ring {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: rgba(168, 216, 234, 0.8);
+            transform-origin: center;
+            scale: var(--pulse-scale, 1);
+            transition: scale 80ms linear;
+            z-index: 0;
+        }
+
+        .avatar-pulse-ring::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 3px dashed #A8D8EA;
+            opacity: var(--pulse-opacity, 0);
+            transition: opacity 80ms linear;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #1a1a2e;
+            border-radius: 20px;
+            background-color: #fdfcfa;
+            color: #1a1a2e;
+            box-shadow: 4px 4px 0 #A8D8EA;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 #A8D8EA;
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 2px 2px 0 #A8D8EA;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio visualizer perfectly centered -->
+    <div class="avatar-pulse-ring" id="pulseRing"></div>
+
+    <!-- Player controls -->
+    <div class="controls">
+        <button id="playBtn">Reproducir / Play</button>
+    </div>
+
+    <!-- Audio source points to the requested wav file -->
+    <audio id="audioElement" preload="auto">
+        <source src="AUDIO-JUAN-DIEGO-2026-04-18-21-30-25.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('audioElement');
+        const playBtn = document.getElementById('playBtn');
+        const pulseRing = document.getElementById('pulseRing');
+
+        let audioCtx = null;
+        let analyser = null;
+        let dataArray = null;
+        let rafId = null;
+        let isPlaying = false;
+
+        // RMS calculation with identical sensitivity to original script
+        function getRMS() {
+            if (!analyser) return 0;
+            analyser.getByteTimeDomainData(dataArray);
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                const v = (dataArray[i] - 128) / 128;
+                sum += v * v;
+            }
+            return Math.sqrt(sum / dataArray.length) * 255;
+        }
+
+        // Identical rendering loop math
+        function visualizerLoop() {
+            rafId = requestAnimationFrame(visualizerLoop);
+            const rms = getRMS();
+            const scale = 1 + Math.min(rms / 60, 1) * 0.35;
+            const opacity = Math.min(rms / 30, 1) * 0.8;
+            pulseRing.style.setProperty('--pulse-scale', scale);
+            pulseRing.style.setProperty('--pulse-opacity', opacity);
+        }
+
+        // AudioContext setup on first user interaction
+        function setupAudioContext() {
+            if (audioCtx) return;
+            // Provide backwards compatibility
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+            const source = audioCtx.createMediaElementSource(audio);
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+            dataArray = new Uint8Array(analyser.fftSize);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+        }
+
+        // Toggle playback mechanism
+        playBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                setupAudioContext();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                audio.play();
+                isPlaying = true;
+                playBtn.textContent = 'Pausar / Pause';
+                visualizerLoop();
+            } else {
+                audio.pause();
+                isPlaying = false;
+                playBtn.textContent = 'Reproducir / Play';
+                cancelAnimationFrame(rafId);
+                // Reset styles when paused
+                pulseRing.style.setProperty('--pulse-scale', 1);
+                pulseRing.style.setProperty('--pulse-opacity', 0);
+            }
+        });
+
+        // Reset styles seamlessly when audio finishes
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playBtn.textContent = 'Reproducir / Play';
+            cancelAnimationFrame(rafId);
+            pulseRing.style.setProperty('--pulse-scale', 1);
+            pulseRing.style.setProperty('--pulse-opacity', 0);
+        });
+    </script>
+</body>
+
+</html>

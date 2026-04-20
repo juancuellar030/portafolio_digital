@@ -728,10 +728,14 @@
             <div class="fb-face fb-front">
               <div class="fb-page-content"
                 style="align-items:center; justify-content:center; text-align:center; gap:1rem;">
-                <div class="video-placeholder">
-                  <i class="fa-solid fa-video"></i>
-                  <h3>Video Pitch</h3>
-                  <p style="font-size:0.75rem;">Próximamente</p>
+                <div class="video-thumbnail-trigger" id="video-pitch-trigger">
+                  <h3 style="margin-bottom: 0.8rem; font-size: 1.1rem; color: var(--ink-black);">Video Pitch</h3>
+                  <div class="video-thumb-container">
+                    <img src="https://img.youtube.com/vi/gWz4uMo9FlQ/hqdefault.jpg" alt="Video Pitch Thumbnail">
+                    <div class="play-overlay">
+                      <i class="fa-solid fa-play"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
               <span class="fb-page-num">9</span>
@@ -773,6 +777,18 @@
       </div>
     </div>
   </section>
+
+  <!-- ======== VIDEO PITCH MODAL ======== -->
+  <div id="video-modal" class="video-modal">
+    <div class="video-modal-content">
+      <button class="close-video-modal" aria-label="Cerrar video"><i class="fa-solid fa-xmark"></i></button>
+      <div class="video-iframe-container">
+        <iframe id="video-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- ======== FOOTER ======== -->
   <footer class="footer">
