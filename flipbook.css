@@ -236,12 +236,12 @@
 
 /* Google Maps container */
 .fb-map-container {
-    flex: 1;
+    flex: none;
+    height: 180px;
     border-radius: 8px;
     overflow: hidden;
-    margin: 1rem;
+    margin: 1rem 1rem 0.5rem;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    min-height: 160px;
 }
 
 .fb-map-container iframe {
