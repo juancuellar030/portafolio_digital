@@ -33,11 +33,44 @@
       <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
       <li><a href="#reconociendo" class="nav-link" data-section="reconociendo">Reconociendo</a></li>
       <li><a href="#referenciando" class="nav-link" data-section="referenciando">Referenciando</a></li>
-      <li>
-        <button class="nav-link locked" data-coming-soon="Diseñando" data-cs-message="Unidad Didáctica e Infografía">
+      <li class="nav-dropdown-item">
+        <button class="nav-link locked nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
           Diseñando
+          <i class="fa-solid fa-chevron-down nav-dropdown-arrow"></i>
           <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
         </button>
+        <ul class="nav-dropdown-menu" role="menu">
+          <li role="menuitem">
+            <span class="nav-subtab-item">
+              <span class="nav-subtab-left"><i class="fa-solid fa-book-open"></i> Unidad Didáctica</span>
+              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+            </span>
+          </li>
+          <li role="menuitem">
+            <span class="nav-subtab-item">
+              <span class="nav-subtab-left"><i class="fa-solid fa-image"></i> Infografía</span>
+              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+            </span>
+          </li>
+          <li role="menuitem">
+            <span class="nav-subtab-item">
+              <span class="nav-subtab-left"><i class="fa-solid fa-chalkboard-user"></i> Diseño Instruccional</span>
+              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+            </span>
+          </li>
+          <li role="menuitem">
+            <span class="nav-subtab-item">
+              <span class="nav-subtab-left"><i class="fa-solid fa-star"></i> Producto Final</span>
+              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+            </span>
+          </li>
+          <li role="menuitem">
+            <span class="nav-subtab-item">
+              <span class="nav-subtab-left"><i class="fa-solid fa-video"></i> Video Tutorial</span>
+              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
+            </span>
+          </li>
+        </ul>
       </li>
       <li>
         <button class="nav-link locked" data-coming-soon="Créditos" data-cs-message="Referencias y Licenciamiento">
@@ -734,11 +767,10 @@
                 <h2>Podcast</h2>
                 <p>Escucha nuestra reflexión pedagógica.</p>
                 <img src="assets/e-book/podcast-mic.png" alt="Microfono Podcast"
-                  style="width: 80px; margin: 0.5rem auto;">
+                  style="width: 100px; margin: 0.5rem auto;">
                 <button id="podcastPlayBtn" class="podcast-play-btn" aria-label="Reproducir podcast">
                   <i id="podcastPlayIcon" class="fa-solid fa-play"></i>
                 </button>
-                <p style="font-size:0.7rem; color:var(--ink-faint);">Karla Podcast</p>
               </div>
               <span class="fb-page-num">8</span>
             </div>

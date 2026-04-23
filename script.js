@@ -175,6 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Specifically for the new nav subtabs
+  document.querySelectorAll('.nav-subtab-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const name = item.querySelector('.nav-subtab-left').textContent.trim();
+      csTitle.textContent = `${name} — Próximamente`;
+      csDescription.textContent = `Esta subpestaña aún está en construcción. ¡Estén atentos!`;
+      overlay.classList.add('active');
+    });
+  });
+
   csClose.addEventListener('click', () => {
     overlay.classList.remove('active');
   });

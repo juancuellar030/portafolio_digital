@@ -426,6 +426,106 @@ a {
   font-family: var(--font-body);
 }
 
+/* ================================
+   NAV DROPDOWN (Diseñando submenu)
+   ================================ */
+.nav-dropdown-item {
+  position: relative;
+}
+
+.nav-dropdown-arrow {
+  font-size: 0.6rem;
+  margin-left: 4px;
+  transition: transform var(--duration-fast) var(--ease-out);
+  vertical-align: middle;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: var(--paper-white);
+  border: 2px solid var(--ink-dark);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 6px 6px 0 var(--highlight-yellow);
+  list-style: none;
+  min-width: 240px;
+  padding: 12px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  z-index: 1100;
+  /* Doodle border feel */
+  background-image: url('assets/paper_texture.jpg');
+  background-size: 300% auto;
+  background-repeat: repeat;
+}
+
+/* Show on hover */
+.nav-dropdown-item:hover .nav-dropdown-menu,
+.nav-dropdown-item:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Rotate arrow on open */
+.nav-dropdown-item:hover .nav-dropdown-arrow,
+.nav-dropdown-item:focus-within .nav-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Bridge gap so mouse can travel from button to menu */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.nav-subtab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--ink-medium);
+  opacity: 0.75;
+  transition: background var(--duration-fast), color var(--duration-fast);
+  border-radius: var(--radius-sm);
+  margin: 0 0.3rem;
+  white-space: nowrap;
+}
+
+.nav-subtab-item:hover {
+  background-color: var(--highlight-blue);
+  color: var(--ink-black);
+  opacity: 1;
+}
+
+.nav-subtab-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-subtab-left i {
+  width: 1.1em;
+  text-align: center;
+  color: var(--ink-light);
+}
+
+/* Divider between items */
+.nav-dropdown-menu li+li {
+  border-top: 1px dashed var(--paper-line);
+}
+
 /* Mobile hamburger */
 .hamburger {
   display: none;
