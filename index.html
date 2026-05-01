@@ -41,10 +41,12 @@
         </button>
         <ul class="nav-dropdown-menu" role="menu">
           <li role="menuitem">
-            <span class="nav-subtab-item">
+            <a href="https://canva.link/xv79d8aturmkod3" target="_blank" rel="noopener"
+              class="nav-subtab-item nav-subtab-active"
+              style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-decoration: none; color: inherit;">
               <span class="nav-subtab-left"><i class="fa-solid fa-book-open"></i> Unidad Didáctica</span>
-              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
-            </span>
+              <!-- No lock badge as it is active -->
+            </a>
           </li>
           <li role="menuitem">
             <span class="nav-subtab-item">
@@ -823,6 +825,87 @@
       </div>
     </div>
   </section>
+
+  <!-- ======== DISEÑANDO SECTION ======== -->
+  <section class="section disenando-section" id="disenando" aria-label="Diseñando">
+
+    <div class="disenando-header reveal">
+      <h2 class="section-title">Diseñando</h2>
+      <p class="section-subtitle">Explora los artefactos de diseño de esta propuesta pedagógica</p>
+    </div>
+
+    <!-- Lake container: water gradient body, floating items, lake-floor illustration -->
+    <div class="lake-container">
+
+      <!-- Water gradient that goes from wave-blue to deep-lake blue -->
+      <div class="lake-gradient-body"></div>
+
+      <!-- Floating interactive buttons -->
+      <div class="lake-items-layer">
+
+        <!-- ANCHOR – Unidad Didáctica (ACTIVE) -->
+        <div class="lake-item" data-label="Unidad Didáctica" style="--float-delay:0s; --float-left:10%;">
+          <a href="https://canva.link/xv79d8aturmkod3" target="_blank" rel="noopener" class="lake-item__btn"
+            aria-label="Abrir Unidad Didáctica">
+            <img src="assets/design-tab-buttons/anchor.svg" alt="Ancla" class="lake-item__img">
+          </a>
+          <span class="lake-item__label">Unidad Didáctica</span>
+        </div>
+
+        <!-- LAMP – Infografía (LOCKED) -->
+        <div class="lake-item" data-coming-soon="Infografía"
+          data-cs-message="Representación visual de la propuesta pedagógica"
+          style="--float-delay:1.2s; --float-left:28%;">
+          <button class="lake-item__btn lake-item__btn--locked" aria-label="Infografía – Próximamente">
+            <img src="assets/design-tab-buttons/lamp.svg" alt="Lámpara" class="lake-item__img">
+            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
+          </button>
+          <span class="lake-item__label">Infografía</span>
+        </div>
+
+        <!-- CRYSTAL – Diseño Instruccional (LOCKED) -->
+        <div class="lake-item" data-coming-soon="Diseño Instruccional"
+          data-cs-message="Estructuración pedagógica de la secuencia de aprendizaje"
+          style="--float-delay:0.6s; --float-left:48%;">
+          <button class="lake-item__btn lake-item__btn--locked" aria-label="Diseño Instruccional – Próximamente">
+            <img src="assets/design-tab-buttons/crystal.svg" alt="Cristal" class="lake-item__img">
+            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
+          </button>
+          <span class="lake-item__label">Diseño Instruccional</span>
+        </div>
+
+        <!-- OYSTER – Producto Final (LOCKED) -->
+        <div class="lake-item" data-coming-soon="Producto Final"
+          data-cs-message="El artefacto educativo final de la investigación"
+          style="--float-delay:1.8s; --float-left:68%;">
+          <button class="lake-item__btn lake-item__btn--locked" aria-label="Producto Final – Próximamente">
+            <img src="assets/design-tab-buttons/oyster.svg" alt="Ostra" class="lake-item__img">
+            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
+          </button>
+          <span class="lake-item__label">Producto Final</span>
+        </div>
+
+        <!-- LAMP (periscope placeholder) – Video Tutorial (LOCKED) -->
+        <div class="lake-item" data-coming-soon="Video Tutorial"
+          data-cs-message="Recorrido audiovisual por la propuesta pedagógica"
+          style="--float-delay:0.9s; --float-left:86%;">
+          <button class="lake-item__btn lake-item__btn--locked" aria-label="Video Tutorial – Próximamente">
+            <img src="assets/design-tab-buttons/lamp.svg" alt="Periscopio" class="lake-item__img">
+            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
+          </button>
+          <span class="lake-item__label">Video Tutorial</span>
+        </div>
+
+      </div><!-- /.lake-items-layer -->
+
+      <!-- Lake floor SVG — on top of the water, below the items -->
+      <div class="lake-floor-wrapper">
+        <img src="assets/design-tab-buttons/lake-floor.svg" alt="Fondo del lago" class="lake-floor-img">
+      </div>
+
+    </div><!-- /.lake-container -->
+
+  </section><!-- /#disenando -->
 
   <!-- ======== VIDEO PITCH MODAL ======== -->
   <div id="video-modal" class="video-modal">

@@ -44,3 +44,50 @@ El portafolio contará con los siguientes botones de acceso rápido:
 3.  **Referenciando** (Mensaje: "Próximamente - E-book informativo").
 4.  **Diseñando** (Mensaje: "Próximamente - Unidad Didáctica e Infografía").
 5.  **Créditos** (Mensaje: "Próximamente - Referencias y Licenciamiento").
+    {
+        "id": "student-1",
+        "name": "David Santiago Amaya Osorio",
+        "grade": 1,
+        "password": "83DLCD",
+        "assignedStories": [
+            "grade-1-story-1-flipbook",
+            "grade-1-story-1",
+            "grade-1-story-2",
+            "grade-1-story-3"
+        ]
+    },
+	
+	    {
+        "id": "student-26",
+        "name": "Antonella Cepeda Pulido",
+        "grade": 2,
+        "password": "93FZSX",
+        "assignedStories": [
+            "grade-2-story-1-flipbook"
+        ]
+    },
+	
+	    {
+        "id": "student-44",
+        "name": "Santiago Javier Arias Buelvas",
+        "grade": 3,
+        "password": "Y9VFET",
+        "assignedStories": [
+            "grade-3-story-1",
+            "grade-3-story-2",
+            "grade-3-story-3"
+        ]
+    },
+	
+	   {
+        "id": "student-69",
+        "name": "Joaquín Anacona Gutiérrez",
+        "grade": 4,
+        "password": "43FWHF",
+        "assignedStories": [
+            "grade-4-story-1",
+            "grade-4-story-2",
+            "grade-4-story-3"
+        ]
+    },
+	

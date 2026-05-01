@@ -185,6 +185,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Lake items (wrapper divs with data-coming-soon) — Diseñando section
+  document.querySelectorAll('.lake-item[data-coming-soon]').forEach(item => {
+    item.addEventListener('click', () => {
+      const name = item.dataset.comingSoon;
+      const message = item.dataset.csMessage;
+      csTitle.textContent = `${name} — Próximamente`;
+      csDescription.textContent = `Esta sección aún está en construcción. Contenido: ${message}. ¡Estén atentos!`;
+      overlay.classList.add('active');
+    });
+  });
+
   csClose.addEventListener('click', () => {
     overlay.classList.remove('active');
   });
