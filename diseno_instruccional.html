@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Instruccional | Portafolio Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="diseno_instruccional.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a href="index.html#disenando" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver al Portafolio</a>
+
+    <!-- PDF Download FAB button -->
+    <a href="#" onclick="downloadPDF(event)" class="pdf-fab-btn" aria-label="Descargar Diseño Instruccional PDF">
+        <i class="fa-solid fa-gears"></i>
+        <span class="fab-tooltip">Descargar Documento</span>
+    </a>
+
+    <!-- Main section -->
+    <main class="tablet-container">
+        <div class="tablet-wrapper">
+            <img src="assets/tablet.svg" class="tablet-bg" alt="Tablet gráfica" aria-hidden="true" />
+
+            <!-- Wordwall UI inside the screen area -->
+            <div class="tablet-screen">
+
+                <!-- Wordwall Header -->
+                <header class="ww-header">
+                    <div class="ww-breadcrumbs">
+                        <span class="ww-crumb">Ingeniería del Laboratorio</span>
+                        <i class="fa-solid fa-chevron-right ww-separator"></i>
+                        <span class="ww-crumb-active">El Plano Maestro ADDIE</span>
+                    </div>
+                    <div class="ww-searchbox">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search templates..." disabled />
+                    </div>
+                </header>
+
+                <!-- Wordwall Content -->
+                <div class="ww-main-content">
+                    <div class="ww-white-wrapper">
+                        <div class="ww-sort-bar">
+                            <span>Sort by: <strong class="ww-active-sort">Recommended</strong> <span
+                                    class="ww-inactive-sort">Alphabetical</span></span>
+                        </div>
+
+                        <div class="ww-grid">
+
+                            <!-- Step 1: Análisis -->
+                            <div class="ww-card">
+                                <div class="ww-card-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                <div class="ww-card-text">
+                                    <h3>Análisis</h3>
+                                    <p>Identificamos la necesidad de rescatar el juego frente a los métodos
+                                        tradicionales en
+                                        el Colegio Colombo Inglés.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Diseño -->
+                            <div class="ww-card">
+                                <div class="ww-card-icon"><i class="fa-solid fa-compass"></i></div>
+                                <div class="ww-card-text">
+                                    <h3>Diseño</h3>
+                                    <p>Estructuramos objetivos claros y seleccionamos la gamificación como el motor de
+                                        nuestra intervención.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Desarrollo -->
+                            <div class="ww-card">
+                                <div class="ww-card-icon"><i class="fa-solid fa-gears"></i></div>
+                                <div class="ww-card-text">
+                                    <h3>Desarrollo</h3>
+                                    <p>Construimos secuencias didácticas bilingües y retos interactivos en la plataforma
+                                        Wordwall.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Implementación -->
+                            <div class="ww-card">
+                                <div class="ww-card-icon"><i class="fa-solid fa-box-open"></i></div>
+                                <div class="ww-card-text">
+                                    <h3>Implementación</h3>
+                                    <p>Llevamos la tecnología al aula, permitiendo que los 40 estudiantes sean los
+                                        protagonistas de su aprendizaje.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Evaluación -->
+                            <div class="ww-card">
+                                <div class="ww-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                                <div class="ww-card-text">
+                                    <h3>Evaluación</h3>
+                                    <p>Validamos el éxito del proyecto mediante el análisis de ganancia de aprendizaje
+                                        entre
+                                        el pre-test y el post-test.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!-- /.ww-main-content -->
+            </div><!-- /.tablet-screen -->
+        </div><!-- /.tablet-wrapper -->
+    </main>
+
+    <!-- PDF Generation Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function downloadPDF(event) {
+            // Prevent anchor jump
+            event.preventDefault();
+
+            const element = document.querySelector('.ww-white-wrapper');
+
+            const opt = {
+                margin: [10, 10],   // Top/bottom, Left/right
+                filename: 'Diseno_Instruccional_ADDIE.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Save it directly!
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+
+</html>

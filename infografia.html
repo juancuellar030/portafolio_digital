@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía | Portafolio Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="infografia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Underwater background layer -->
+    <div class="info-bg-gradient"></div>
+
+    <!-- Full-viewport cave frame -->
+    <img src="assets/infographic/underwater-cave-frame.svg" class="cave-frame" alt="Cuevas Submarinas"
+        aria-hidden="true" />
+
+    <!-- Navigation -->
+    <a href="index.html#disenando" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver al Portafolio</a>
+
+    <!-- Main visualizer area -->
+    <main class="infographic-container">
+
+        <!-- Central text display -->
+        <div class="content-display" aria-live="polite">
+            <h1 id="info-title">Explora la Investigación</h1>
+            <p id="info-desc">Pasa el cursor o toca los elementos marinos para descubrir cada componente del diseño
+                metodológico.</p>
+        </div>
+
+        <!-- Orbit System (clockwise rotation) -->
+        <div class="orbit-system">
+
+            <!-- Anchor -->
+            <div class="orbit-arm" style="--angle: 0deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(0deg)">
+                        <button class="info-item" data-id="anchor" aria-label="El Ancla">
+                            <img src="assets/design-tab-buttons/anchor.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prism -->
+            <div class="orbit-arm" style="--angle: 51.428deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-51.428deg)">
+                        <button class="info-item" data-id="prism" aria-label="Prisma de Cristal">
+                            <img src="assets/infographic/prism.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jellyfish -->
+            <div class="orbit-arm" style="--angle: 102.857deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-102.857deg)">
+                        <button class="info-item" data-id="jellyfish" aria-label="Medusas">
+                            <img src="assets/infographic/jellyfish.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School of fish -->
+            <div class="orbit-arm" style="--angle: 154.285deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-154.285deg)">
+                        <button class="info-item" data-id="school" aria-label="Cardumen de Peces">
+                            <img src="assets/infographic/fish-school.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seashell -->
+            <div class="orbit-arm" style="--angle: 205.714deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-205.714deg)">
+                        <button class="info-item" data-id="seashell" aria-label="La Concha Marina">
+                            <img src="assets/infographic/seashell.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treasure Chest -->
+            <div class="orbit-arm" style="--angle: 257.142deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-257.142deg)">
+                        <button class="info-item" data-id="chest" aria-label="Cofre del Tesoro">
+                            <img src="assets/infographic/treasure-chest.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bubbles -->
+            <div class="orbit-arm" style="--angle: 308.571deg;">
+                <div class="counter-spin">
+                    <div class="counter-angle" style="transform: rotate(-308.571deg)">
+                        <button class="info-item" data-id="bubbles" aria-label="Burbujas">
+                            <img src="assets/infographic/bubbles.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="infografia.js"></script>
+</body>
+
+</html>

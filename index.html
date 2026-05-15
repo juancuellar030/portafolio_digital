@@ -49,16 +49,16 @@
             </a>
           </li>
           <li role="menuitem">
-            <span class="nav-subtab-item">
+            <a href="infografia.html" class="nav-subtab-item nav-subtab-active"
+              style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-decoration: none; color: inherit;">
               <span class="nav-subtab-left"><i class="fa-solid fa-image"></i> Infografía</span>
-              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
-            </span>
+            </a>
           </li>
           <li role="menuitem">
-            <span class="nav-subtab-item">
+            <a href="diseno_instruccional.html" class="nav-subtab-item nav-subtab-active"
+              style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-decoration: none; color: inherit;">
               <span class="nav-subtab-left"><i class="fa-solid fa-chalkboard-user"></i> Diseño Instruccional</span>
-              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
-            </span>
+            </a>
           </li>
           <li role="menuitem">
             <span class="nav-subtab-item">
@@ -829,7 +829,7 @@
   <!-- ======== DISEÑANDO SECTION ======== -->
   <section class="section disenando-section" id="disenando" aria-label="Diseñando">
 
-    <div class="disenando-header reveal">
+    <div class="disenando-header">
       <h2 class="section-title">Diseñando</h2>
       <p class="section-subtitle">Explora los artefactos de diseño de esta propuesta pedagógica</p>
     </div>
@@ -852,25 +852,19 @@
           <span class="lake-item__label">Unidad Didáctica</span>
         </div>
 
-        <!-- LAMP – Infografía (LOCKED) -->
-        <div class="lake-item" data-coming-soon="Infografía"
-          data-cs-message="Representación visual de la propuesta pedagógica"
-          style="--float-delay:1.2s; --float-left:28%;">
-          <button class="lake-item__btn lake-item__btn--locked" aria-label="Infografía – Próximamente">
+        <!-- LAMP – Infografía (ACTIVE) -->
+        <div class="lake-item" data-label="Infografía" style="--float-delay:1.2s; --float-left:28%;">
+          <a href="infografia.html" class="lake-item__btn" aria-label="Abrir Infografía">
             <img src="assets/design-tab-buttons/lamp.svg" alt="Lámpara" class="lake-item__img">
-            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
-          </button>
+          </a>
           <span class="lake-item__label">Infografía</span>
         </div>
 
-        <!-- CRYSTAL – Diseño Instruccional (LOCKED) -->
-        <div class="lake-item" data-coming-soon="Diseño Instruccional"
-          data-cs-message="Estructuración pedagógica de la secuencia de aprendizaje"
-          style="--float-delay:0.6s; --float-left:48%;">
-          <button class="lake-item__btn lake-item__btn--locked" aria-label="Diseño Instruccional – Próximamente">
+        <!-- CRYSTAL – Diseño Instruccional (ACTIVE) -->
+        <div class="lake-item" data-label="Diseño Instruccional" style="--float-delay:0.6s; --float-left:48%;">
+          <a href="diseno_instruccional.html" class="lake-item__btn" aria-label="Abrir Diseño Instruccional">
             <img src="assets/design-tab-buttons/crystal.svg" alt="Cristal" class="lake-item__img">
-            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
-          </button>
+          </a>
           <span class="lake-item__label">Diseño Instruccional</span>
         </div>
 
