@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Specifically for the new nav subtabs
-  document.querySelectorAll('.nav-subtab-item').forEach(item => {
+  document.querySelectorAll('.nav-subtab-item:not(.nav-subtab-active)').forEach(item => {
     item.addEventListener('click', () => {
       const name = item.querySelector('.nav-subtab-left').textContent.trim();
       csTitle.textContent = `${name} — Próximamente`;

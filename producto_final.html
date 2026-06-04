@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Producto final del proyecto: integración de Wordwall como estrategia pedagógica en grado primero del Colegio Colombo Inglés del Huila.">
+  <title>Producto Final | Dashboard Wordwall de Innovación</title>
+  <link rel="stylesheet" href="producto_final.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
+</head>
+
+<body>
+  <div id="pfOuterWrapper">
+    <header class="pf-shell-header">
+      <a class="pf-logo-block" href="index.html#disenando">
+        <span class="pf-logo-mark">Wordwall</span>
+        <span class="pf-tagline">Creando mejores aprendizajes, más rápido</span>
+      </a>
+
+      <div class="pf-header-actions">
+        <a class="pf-header-link" href="index.html#disenando"><i class="fa-solid fa-arrow-left"></i> Portafolio</a>
+        <button class="pf-default-btn pf-login-btn" type="button" data-open-nav-modal>
+          <i class="fa-solid fa-user"></i> Log In
+        </button>
+      </div>
+    </header>
+
+    <section class="pf-top-banner">
+      <div class="pf-top-banner-inner">
+        <img src="assets/Logo_Oficial_Unicartagena.png" alt="Universidad de Cartagena" class="pf-uni-shield">
+        <div>
+          <p class="pf-banner-kicker">Dashboard del Proyecto · Niveles de Innovación</p>
+          <h1>Integración de Wordwall como estrategia pedagógica</h1>
+          <p class="pf-banner-meta">
+            Alexandra Lozada · Juan Diego Cuellar · Karla Cabrera · Universidad de Cartagena · Colegio Colombo Inglés
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main class="pf-create-wrapper">
+      <div class="pf-create-header">
+        <nav class="pf-breadcrumbs" aria-label="Ruta del dashboard">
+          <span class="pf-breadcrumb pf-breadcrumb-active">Elegir plantilla</span>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span class="pf-breadcrumb">Explorar fase</span>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span class="pf-breadcrumb">Producto final</span>
+        </nav>
+
+        <label class="pf-search-templates">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Buscar plantillas:</span>
+          <input type="search" placeholder="Escribe el nombre o descripción..." disabled aria-label="Buscar plantillas">
+        </label>
+      </div>
+
+      <div class="pf-create-panel">
+        <div class="pf-sort-bar">
+          <span>Ordenar por:</span>
+          <button type="button" class="pf-sort-option is-active">Recomendado</button>
+          <button type="button" class="pf-sort-option">Alfabético</button>
+        </div>
+
+        <p class="pf-panel-instruction">Selecciona una plantilla para explorar las fases de nuestra investigación.</p>
+
+        <div class="pf-template-grid-v2" id="actividades">
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="identificando">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/open-the-box.png" alt="Abre la caja">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Identificando · Abre la caja</span>
+              <span class="pf-template-desc">Abre las cajas para descubrir los desafíos del aula, la pregunta problema y el objetivo central.</span>
+              <span class="pf-template-pill"><i class="fa-solid fa-box-open"></i> Capítulo 1</span>
+            </span>
+          </button>
+
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="referenciando">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/flip-tiles.png" alt="Tarjetas de intercambio">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Referenciando · Tarjetas de intercambio</span>
+              <span class="pf-template-desc">Revela cartas del mazo para descubrir el contexto, los marcos y los conceptos del proyecto.</span>
+              <span class="pf-template-pill"><i class="fa-solid fa-clone"></i> Capítulo 2</span>
+            </span>
+          </button>
+
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="metodologia">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/rank-order.png" alt="Orden de clasificación">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Metodología · Orden de clasificación</span>
+              <span class="pf-template-desc">Arrastra las cartas a cada casilla y ordena la ruta de investigación.</span>
+              <span class="pf-template-pill"><i class="fa-solid fa-arrow-down-1-9"></i> Capítulo 3</span>
+            </span>
+          </button>
+
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="disenando">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/gameshow-quiz.png" alt="Cuestionario de juego">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Diseñando · Cuestionario de juego</span>
+              <span class="pf-template-desc">Entra al concurso de luces donde viven ADDIE, las 12 actividades y la estrategia ABSD.</span>
+              <span class="pf-template-pill pf-template-pill-star"><i class="fa-solid fa-star"></i> Capítulo 4</span>
+            </span>
+          </button>
+
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="resultados">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/maze-chase.png" alt="Persecución en laberinto">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Resultados · Persecución en laberinto</span>
+              <span class="pf-template-desc">Recorre el laberinto del progreso y evita la desmotivación hasta llegar al impacto académico.</span>
+              <span class="pf-template-pill"><i class="fa-solid fa-route"></i> Impacto</span>
+            </span>
+          </button>
+
+          <button class="pf-template-item pf-reveal" type="button" data-open-activity="creditos">
+            <span class="pf-template-preview">
+              <img src="assets/producto-final/templates/wordsearch.png" alt="Sopa de letras">
+            </span>
+            <span class="pf-template-body">
+              <span class="pf-template-name">Créditos · Sopa de letras</span>
+              <span class="pf-template-desc">Encuentra los nombres del equipo en la red de conocimiento del proyecto.</span>
+              <span class="pf-template-pill"><i class="fa-solid fa-table-cells"></i> Cierre</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="pf-footer">
+      <img src="assets/producto-final/colombo-ingles-logo.svg" alt="Logo Colegio Colombo Inglés">
+      <p><strong>Universidad de Cartagena</strong> · Maestría en Recursos Digitales Aplicados a la Educación</p>
+      <p class="pf-license"><i class="fa-brands fa-creative-commons"></i> Contenidos bajo licencia Creative Commons</p>
+    </footer>
+  </div>
+
+  <!-- Activity overlay (Wordwall-style modal) -->
+  <div class="pf-overlay-mask" id="pfActivityOverlay" aria-hidden="true">
+    <div class="pf-modal-view pf-activity-modal" role="dialog" aria-modal="true" aria-labelledby="pfActivityTitle">
+      <button class="pf-close-modal" type="button" data-close-activity aria-label="Cerrar actividad">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <header class="pf-modal-header">
+        <img class="pf-modal-thumb" id="pfActivityThumb" src="" alt="">
+        <div>
+          <p class="pf-modal-kicker" id="pfActivityKicker"></p>
+          <h2 id="pfActivityTitle"></h2>
+        </div>
+      </header>
+
+      <div class="pf-modal-content" id="pfActivityContent">
+        <!-- Identificando -->
+        <div class="pf-activity-panel pf-openbox" data-activity-panel="identificando">
+          <div class="pf-openbox-game" id="pfOpenBoxGame">
+            <header class="pf-openbox-header">
+              <span class="pf-openbox-timer">0:30</span>
+              <p class="pf-openbox-instruction">Toca una para abrirla</p>
+            </header>
+            <div class="pf-openbox-stage" id="pfOpenBoxStage">
+              <div class="pf-openbox-grid" id="pfOpenBoxGrid" aria-label="Cuadrícula de cajas"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referenciando -->
+        <div class="pf-activity-panel pf-revealcards" data-activity-panel="referenciando" hidden>
+          <div class="pf-revealcards-game" id="pfRevealCardsGame">
+            <div class="pf-revealcards-stage" id="pfRevealCardsStage">
+              <header class="pf-revealcards-header">
+                <span class="pf-revealcards-timer">0:30</span>
+                <p class="pf-revealcards-instruction">Toca una para abrirla</p>
+              </header>
+              <div class="pf-revealcards-row" id="pfRevealCardsRow" aria-label="Mazo de cartas"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metodología -->
+        <div class="pf-activity-panel pf-rankorder" data-activity-panel="metodologia" hidden>
+          <div class="pf-rankorder-game" id="pfRankOrderGame">
+            <header class="pf-rankorder-header">
+              <span class="pf-rankorder-timer">0:30</span>
+              <p class="pf-rankorder-instruction">¿Cuál es la ruta de la investigación? ¡Pon los pasos en orden!</p>
+            </header>
+            <div class="pf-rankorder-body">
+              <div class="pf-rankorder-source" id="pfRankOrderSource" aria-label="Cartas disponibles"></div>
+              <div class="pf-rankorder-targets" id="pfRankOrderTargets">
+                <div class="pf-rankorder-slot" data-slot="1">
+                  <span class="pf-rankorder-slot-label">1°</span>
+                  <div class="pf-rankorder-dropzone" data-dropzone="1"></div>
+                </div>
+                <div class="pf-rankorder-slot" data-slot="2">
+                  <span class="pf-rankorder-slot-label">2°</span>
+                  <div class="pf-rankorder-dropzone" data-dropzone="2"></div>
+                </div>
+                <div class="pf-rankorder-slot" data-slot="3">
+                  <span class="pf-rankorder-slot-label">3°</span>
+                  <div class="pf-rankorder-dropzone" data-dropzone="3"></div>
+                </div>
+                <div class="pf-rankorder-slot" data-slot="4">
+                  <span class="pf-rankorder-slot-label">4°</span>
+                  <div class="pf-rankorder-dropzone" data-dropzone="4"></div>
+                </div>
+              </div>
+            </div>
+            <footer class="pf-rankorder-footer">
+              <p class="pf-rankorder-feedback" id="pfRankOrderFeedback" aria-live="polite"></p>
+              <button type="button" class="pf-rankorder-submit" id="pfRankOrderSubmit" disabled>Enviar respuestas</button>
+            </footer>
+          </div>
+        </div>
+
+        <!-- Diseñando -->
+        <div class="pf-activity-panel pf-gameshow" data-activity-panel="disenando" hidden>
+          <div class="pf-gameshow-game" id="pfGameshowGame">
+            <div class="pf-gameshow-frame">
+              <div class="pf-gameshow-screen">
+                <div class="pf-gameshow-hud">
+                  <span class="pf-gameshow-timer" id="pfQuizTimer">0:20</span>
+                  <div class="pf-gameshow-progress"><span class="pf-gameshow-progress-fill" id="pfQuizProgress"></span></div>
+                  <span class="pf-gameshow-tally"><i class="fa-solid fa-check"></i> <span id="pfQuizScore">0</span></span>
+                </div>
+
+                <div class="pf-gameshow-ready" id="pfQuizReady">
+                  <div class="pf-gameshow-ready-box">
+                    <p class="pf-gameshow-ready-label" id="pfQuizReadyLabel">Pregunta 1</p>
+                    <p class="pf-gameshow-ready-title">Prepárate...</p>
+                  </div>
+                </div>
+
+                <div class="pf-gameshow-question" id="pfQuizQuestion" hidden>
+                  <h3 class="pf-gameshow-prompt" id="pfQuizPrompt"></h3>
+                  <div class="pf-gameshow-answers" id="pfQuizAnswers"></div>
+                </div>
+
+                <div class="pf-gameshow-result" id="pfQuizResult" hidden>
+                  <div class="pf-gameshow-ready-box">
+                    <p class="pf-gameshow-ready-label">Resultado</p>
+                    <p class="pf-gameshow-ready-title" id="pfQuizResultScore">0 / 6</p>
+                    <button type="button" class="pf-gameshow-restart" id="pfQuizRestart">Jugar de nuevo</button>
+                  </div>
+                </div>
+
+                <div class="pf-gameshow-counter" id="pfQuizCounter">1 de 6</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div class="pf-activity-panel pf-maze" data-activity-panel="resultados" hidden>
+          <div class="pf-maze-board">
+            <div class="pf-maze-path" aria-hidden="true">
+              <span class="pf-maze-runner"><i class="fa-solid fa-child-reaching"></i></span>
+              <span class="pf-maze-goal"><i class="fa-solid fa-star"></i></span>
+            </div>
+            <div class="pf-result-cards">
+              <article><span>Pre-test</span><strong data-count-to="80">0</strong><small>% promedio</small></article>
+              <article><span>Post-test</span><strong data-count-to="88.75">0</strong><small>% promedio</small></article>
+              <article><span>Ganancia Hake</span><strong data-count-to="0.65">0</strong><small>media-alta</small></article>
+            </div>
+            <p class="pf-impact-note">La gamificación redujo la ansiedad lingüística y aumentó la confianza de los niños al expresarse en inglés.</p>
+          </div>
+        </div>
+
+        <!-- Créditos -->
+        <div class="pf-activity-panel pf-wordsearch-section" data-activity-panel="creditos" hidden>
+          <div class="pf-credits-layout">
+            <div class="pf-wordsearch" aria-label="Sopa de letras con nombres del proyecto"></div>
+            <aside class="pf-credit-card">
+              <h3>Créditos y licencia</h3>
+              <p><strong>Autores:</strong> Alexandra Catalina Lozada Babativa, Juan Diego Cuellar Mazabel y Karla Fabiana Cabrera Roa.</p>
+              <p><strong>Directores:</strong> John Mauricio Sandoval Granados y Yuliet Ximena Villamil Rodríguez.</p>
+              <p><strong>Docente:</strong> Marilin Oviedo Contreras.</p>
+              <p><strong>Agradecimientos:</strong> a la comunidad del Colegio Colombo Inglés por abrir las puertas a la innovación.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Log In / navigation modal -->
+  <div class="pf-overlay-mask pf-nav-overlay" id="pfNavModal" aria-hidden="true">
+    <div class="pf-modal-view pf-modal-view-small" role="dialog" aria-modal="true" aria-labelledby="pfNavTitle">
+      <button class="pf-close-modal" type="button" data-close-nav-modal aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <header class="pf-modal-header pf-modal-header-simple">
+        <h2 id="pfNavTitle">Mapa de navegación</h2>
+      </header>
+      <div class="pf-modal-content pf-modal-content-simple">
+        <p>Este dashboard reúne problema, referentes, metodología, diseño, resultados y créditos del trabajo de grado.</p>
+        <div class="pf-nav-modal-links">
+          <button type="button" data-open-activity="identificando">Identificando</button>
+          <button type="button" data-open-activity="referenciando">Referenciando</button>
+          <button type="button" data-open-activity="metodologia">Metodología</button>
+          <button type="button" data-open-activity="disenando">Diseñando</button>
+          <button type="button" data-open-activity="resultados">Resultados</button>
+          <button type="button" data-open-activity="creditos">Créditos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="producto_final.js"></script>
+</body>
+
+</html>

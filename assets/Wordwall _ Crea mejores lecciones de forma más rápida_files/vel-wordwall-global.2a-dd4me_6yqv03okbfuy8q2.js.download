@@ -1,0 +1,1058 @@
+(function(){var aa={};global.VEL=global.VEL||{};global.VEL.Wordwall=global.VEL.Wordwall||{};
+global.VEL.Wordwall.Global=global.VEL.Wordwall.Global||{};
+global.VEL.Wordwall.Global.Controls=global.VEL.Wordwall.Global.Controls||{};
+global.VEL.Wordwall.Global.Enums=global.VEL.Wordwall.Global.Enums||{};
+global.VEL.Wordwall.Global.Extensions=global.VEL.Wordwall.Global.Extensions||{};
+global.VEL.Wordwall.Global.Interop=global.VEL.Wordwall.Global.Interop||{};
+global.VEL.Wordwall.Global.Json=global.VEL.Wordwall.Global.Json||{};
+global.VEL.Wordwall.Global.Json.GenAI=global.VEL.Wordwall.Global.Json.GenAI||{};
+global.VEL.Wordwall.Global.Json.GoogleClassroom=global.VEL.Wordwall.Global.Json.GoogleClassroom||{};
+global.VEL.Wordwall.Global.Serialization=global.VEL.Wordwall.Global.Serialization||{};
+global.VEL.Wordwall.Global.Server=global.VEL.Wordwall.Global.Server||{};
+ss.initAssembly(aa,"VEL.Wordwall.Global");var ac=function(){};
+ac.__typeName="VEL.Wordwall.Global.IActivityPreloader";
+global.VEL.Wordwall.Global.IActivityPreloader=ac;var a5=function(){};
+a5.__typeName="VEL.Wordwall.Global.PreloaderLogEnum";
+global.VEL.Wordwall.Global.PreloaderLogEnum=a5;var eU=function(){};
+eU.__typeName="VEL.Wordwall.Global.Controls.ValidationTrigger";
+global.VEL.Wordwall.Global.Controls.ValidationTrigger=eU;
+var fL=function(){};fL.__typeName="VEL.Wordwall.Global.Enums.ActivityOptionsScope";
+global.VEL.Wordwall.Global.Enums.ActivityOptionsScope=fL;
+var ge=function(){};ge.__typeName="VEL.Wordwall.Global.Enums.ActivityTagType";
+global.VEL.Wordwall.Global.Enums.ActivityTagType=ge;
+var gg=function(){};gg.__typeName="VEL.Wordwall.Global.Enums.AudioSetting";
+global.VEL.Wordwall.Global.Enums.AudioSetting=gg;var gi=function(){};
+gi.__typeName="VEL.Wordwall.Global.Enums.CancellationModalMessageEnum";
+global.VEL.Wordwall.Global.Enums.CancellationModalMessageEnum=gi;
+var gk=function(){};gk.__typeName="VEL.Wordwall.Global.Enums.CancellationReasonEnum";
+global.VEL.Wordwall.Global.Enums.CancellationReasonEnum=gk;
+var gm=function(){};gm.__typeName="VEL.Wordwall.Global.Enums.CancellationSubReasonEnum";
+global.VEL.Wordwall.Global.Enums.CancellationSubReasonEnum=gm;
+var go=function(){};go.__typeName="VEL.Wordwall.Global.Enums.ClickIdType";
+global.VEL.Wordwall.Global.Enums.ClickIdType=go;var gq=function(){};
+gq.__typeName="VEL.Wordwall.Global.Enums.ConsentSource";
+global.VEL.Wordwall.Global.Enums.ConsentSource=gq;var gs=function(){};
+gs.__typeName="VEL.Wordwall.Global.Enums.ConsentType";
+global.VEL.Wordwall.Global.Enums.ConsentType=gs;var gu=function(){};
+gu.__typeName="VEL.Wordwall.Global.Enums.DeviceType";
+global.VEL.Wordwall.Global.Enums.DeviceType=gu;var gw=function(){};
+gw.__typeName="VEL.Wordwall.Global.Enums.EventType";
+global.VEL.Wordwall.Global.Enums.EventType=gw;var gy=function(){};
+gy.__typeName="VEL.Wordwall.Global.Enums.ExperimentTriggerType";
+global.VEL.Wordwall.Global.Enums.ExperimentTriggerType=gy;
+var gA=function(){};gA.__typeName="VEL.Wordwall.Global.Enums.ExportEnum";
+global.VEL.Wordwall.Global.Enums.ExportEnum=gA;var gC=function(){};
+gC.__typeName="VEL.Wordwall.Global.Enums.FeatureRuleTargetType";
+global.VEL.Wordwall.Global.Enums.FeatureRuleTargetType=gC;
+var gE=function(){};gE.__typeName="VEL.Wordwall.Global.Enums.FeatureSwitchType";
+global.VEL.Wordwall.Global.Enums.FeatureSwitchType=gE;
+var gG=function(){};gG.__typeName="VEL.Wordwall.Global.Enums.FeatureSwitchTypeExtensions";
+gG.isCodeDefined=function(a){return ss.contains(gG.codeDefinedTypes,a)
+};global.VEL.Wordwall.Global.Enums.FeatureSwitchTypeExtensions=gG;
+var gI=function(){};gI.__typeName="VEL.Wordwall.Global.Enums.FeedbackTypeEnum";
+global.VEL.Wordwall.Global.Enums.FeedbackTypeEnum=gI;
+var gK=function(){};gK.__typeName="VEL.Wordwall.Global.Enums.FolderColor";
+global.VEL.Wordwall.Global.Enums.FolderColor=gK;var gM=function(){};
+gM.__typeName="VEL.Wordwall.Global.Enums.FormatEnum";
+global.VEL.Wordwall.Global.Enums.FormatEnum=gM;var gO=function(){};
+gO.__typeName="VEL.Wordwall.Global.Enums.GameOverOptionsEnum";
+global.VEL.Wordwall.Global.Enums.GameOverOptionsEnum=gO;
+var gQ=function(){};gQ.__typeName="VEL.Wordwall.Global.Enums.GenAiFeedback";
+global.VEL.Wordwall.Global.Enums.GenAiFeedback=gQ;var gS=function(){};
+gS.__typeName="VEL.Wordwall.Global.Enums.GenAiMethod";
+global.VEL.Wordwall.Global.Enums.GenAiMethod=gS;var ab=function(){};
+ab.__typeName="VEL.Wordwall.Global.Enums.GoogleClassroomAssignToOption";
+global.VEL.Wordwall.Global.Enums.GoogleClassroomAssignToOption=ab;
+var ad=function(){};ad.__typeName="VEL.Wordwall.Global.Enums.HomeworkType";
+global.VEL.Wordwall.Global.Enums.HomeworkType=ad;var a6=function(){};
+a6.__typeName="VEL.Wordwall.Global.Enums.LoginRequiredFeatureEnum";
+global.VEL.Wordwall.Global.Enums.LoginRequiredFeatureEnum=a6;
+var eV=function(){};eV.__typeName="VEL.Wordwall.Global.Enums.MyActivitiesVariation";
+global.VEL.Wordwall.Global.Enums.MyActivitiesVariation=eV;
+var fM=function(){};fM.__typeName="VEL.Wordwall.Global.Enums.NotificationCtaBehaviour";
+global.VEL.Wordwall.Global.Enums.NotificationCtaBehaviour=fM;
+var gf=function(){};gf.__typeName="VEL.Wordwall.Global.Enums.NotificationInteractionType";
+global.VEL.Wordwall.Global.Enums.NotificationInteractionType=gf;
+var gh=function(){};gh.__typeName="VEL.Wordwall.Global.Enums.NotificationType";
+global.VEL.Wordwall.Global.Enums.NotificationType=gh;
+var gj=function(){};gj.__typeName="VEL.Wordwall.Global.Enums.NpsSurveyUserProfileEnum";
+global.VEL.Wordwall.Global.Enums.NpsSurveyUserProfileEnum=gj;
+var gl=function(){};gl.__typeName="VEL.Wordwall.Global.Enums.OptionalEditorActions";
+global.VEL.Wordwall.Global.Enums.OptionalEditorActions=gl;
+var gn=function(){};gn.__typeName="VEL.Wordwall.Global.Enums.OptionalModeEnum";
+global.VEL.Wordwall.Global.Enums.OptionalModeEnum=gn;
+var gp=function(){};gp.__typeName="VEL.Wordwall.Global.Enums.PageIds";
+global.VEL.Wordwall.Global.Enums.PageIds=gp;var gr=function(){};
+gr.__typeName="VEL.Wordwall.Global.Enums.PersonalDetailsTabEnum";
+global.VEL.Wordwall.Global.Enums.PersonalDetailsTabEnum=gr;
+var gt=function(){};gt.__typeName="VEL.Wordwall.Global.Enums.PolicyUpdateMode";
+global.VEL.Wordwall.Global.Enums.PolicyUpdateMode=gt;
+var gv=function(){};gv.__typeName="VEL.Wordwall.Global.Enums.PrintActions";
+global.VEL.Wordwall.Global.Enums.PrintActions=gv;var gx=function(){};
+gx.__typeName="VEL.Wordwall.Global.Enums.ProSubscriptionRequiredFeatureEnum";
+global.VEL.Wordwall.Global.Enums.ProSubscriptionRequiredFeatureEnum=gx;
+var gz=function(){};gz.__typeName="VEL.Wordwall.Global.Enums.RegionalSocialMedia";
+global.VEL.Wordwall.Global.Enums.RegionalSocialMedia=gz;
+var gB=function(){};gB.__typeName="VEL.Wordwall.Global.Enums.RegistrationMode";
+global.VEL.Wordwall.Global.Enums.RegistrationMode=gB;
+var gD=function(){};gD.__typeName="VEL.Wordwall.Global.Enums.SampledEventType";
+global.VEL.Wordwall.Global.Enums.SampledEventType=gD;
+var gF=function(){};gF.__typeName="VEL.Wordwall.Global.Enums.ShareLocation";
+global.VEL.Wordwall.Global.Enums.ShareLocation=gF;var gH=function(){};
+gH.__typeName="VEL.Wordwall.Global.Enums.SubscriptionRequiredFeatureEnum";
+global.VEL.Wordwall.Global.Enums.SubscriptionRequiredFeatureEnum=gH;
+var gJ=function(){};gJ.__typeName="VEL.Wordwall.Global.Enums.TemplateVisibility";
+global.VEL.Wordwall.Global.Enums.TemplateVisibility=gJ;
+var gL=function(){};gL.__typeName="VEL.Wordwall.Global.Enums.TemplateVisibilityExtension";
+gL.isTemplateVisible=function(a){return gL.$0(a)};gL.isTemplateVisible$1=function(a){return gL.$0(a)
+};gL.$0=function(a){return a===2||a===5||a===6};global.VEL.Wordwall.Global.Enums.TemplateVisibilityExtension=gL;
+var gN=function(){};gN.__typeName="VEL.Wordwall.Global.Enums.TextToSpeechSpeedOption";
+global.VEL.Wordwall.Global.Enums.TextToSpeechSpeedOption=gN;
+var gP=function(){};gP.__typeName="VEL.Wordwall.Global.Enums.TextToSpeechSpeedOptionExtensions";
+gP.getRate=function(a){switch(a){case 0:return"0.6";
+case 1:return"0.8";case 2:return"1.0";case 3:return"1.3";
+default:throw new ss.NotImplementedException("Not supported TTS speed value: "+ss.Enum.getName(gN,a)+".")
+}};global.VEL.Wordwall.Global.Enums.TextToSpeechSpeedOptionExtensions=gP;
+var gR=function(){};gR.__typeName="VEL.Wordwall.Global.Enums.ThemeActions";
+global.VEL.Wordwall.Global.Enums.ThemeActions=gR;var gT=function(){};
+gT.__typeName="VEL.Wordwall.Global.Enums.TutorialType";
+global.VEL.Wordwall.Global.Enums.TutorialType=gT;var ae=function(){};
+ae.__typeName="VEL.Wordwall.Global.Enums.UserCriterionType";
+global.VEL.Wordwall.Global.Enums.UserCriterionType=ae;
+var ag=function(){};ag.__typeName="VEL.Wordwall.Global.Enums.UserProfileTeachingRoleEnum";
+global.VEL.Wordwall.Global.Enums.UserProfileTeachingRoleEnum=ag;
+var ai=function(){};ai.__typeName="VEL.Wordwall.Global.Enums.UserProfileUsageEnum";
+global.VEL.Wordwall.Global.Enums.UserProfileUsageEnum=ai;
+var ak=function(){};ak.__typeName="VEL.Wordwall.Global.Extensions.DateTimeExtensions";
+ak.toUnix=function(a){return a-new Date(1970,1-1,1)
+};ak.fromUnix=function(a){return new Date(a)};global.VEL.Wordwall.Global.Extensions.DateTimeExtensions=ak;
+var am=function(){this.x=0;this.y=0};am.__typeName="VEL.Wordwall.Global.Extensions.IntPoint";
+am.$ctor1=function(a,b){this.x=0;this.y=0;this.x=a;
+this.y=b};global.VEL.Wordwall.Global.Extensions.IntPoint=am;
+var ao=function(){};ao.__typeName="VEL.Wordwall.Global.Extensions.NumberExtensions";
+ao.clamp$1=function(a){return function(b,c,d){if(ss.isNullOrUndefined(b)){return b
+}if(ss.compare(b,c)<0){return c}if(ss.compare(b,d)>0){return d
+}return b}};ao.clamp=function(a,b,c){if(ss.isValue(b)&&a<ss.unbox(b)){return ss.unbox(b)
+}if(ss.isValue(c)&&a>ss.unbox(c)){return ss.unbox(c)
+}return a};global.VEL.Wordwall.Global.Extensions.NumberExtensions=ao;
+var aq=function(){};aq.__typeName="VEL.Wordwall.Global.Extensions.StringExtensions";
+aq.toArrayOfIntegers=function(a){return(ss.isNullOrEmptyString(a)?[]:Enumerable.from(a.split(String.fromCharCode(44))).select(function(b){return parseInt(b)
+}).toArray())};aq.toArrayOfDoubles=function(a){return(ss.isNullOrEmptyString(a)?[]:Enumerable.from(a.split(String.fromCharCode(44))).select(function(b){return parseFloat(b)
+}).toArray())};aq.toSwitchDictionary=function(a){return ss.cast(Enumerable.from(a.split(String.fromCharCode(44))).select(function(b){return ss.netSplit(b,[58].map(function(c){return String.fromCharCode(c)
+}),2)}).where(function(b){return b.length===2&&Enumerable.from(b).all(function(c){return !ss.isNullOrEmptyString(c.trim())
+})}).toDictionary(function(b){return b[0]},function(b){return b[1]
+},String,String),ss.makeGenericType(ss.Dictionary$2,[String,String]))
+};aq.toPascal=function(a){if(ss.isNullOrEmptyString(a)){return""
+}if(a.length===1){return a.toUpperCase()}return a.substr(0,1).toUpperCase()+a.substring(1)
+};aq.toCamel=function(a){if(ss.isNullOrEmptyString(a)){return""
+}if(a.length===1){return a.toLowerCase()}return a.substr(0,1).toLowerCase()+a.substring(1)
+};aq.removeEnclosed=function(a,b,c){do{var d=a.indexOf(b);
+if(d===-1){return a}var e=a.indexOf(c,d+b.length);if(e===-1){return a
+}a=a.substr(0,d)+a.substring(e+c.length)}while(true)
+};global.VEL.Wordwall.Global.Extensions.StringExtensions=aq;
+var at=function(){this.alpha=true;this.desynchronized=false;
+this.colorSpace="srgb";this.willReadFrequently=false
+};at.__typeName="VEL.Wordwall.Global.Interop.CanvasRenderingContext2DSettings";
+global.VEL.Wordwall.Global.Interop.CanvasRenderingContext2DSettings=at;
+var av=function(){};av.__typeName="VEL.Wordwall.Global.Interop.Constants";
+global.VEL.Wordwall.Global.Interop.Constants=av;var ax=function(){};
+ax.__typeName="VEL.Wordwall.Global.Interop.Constants$App";
+global.VEL.Wordwall.Global.Interop.Constants$App=ax;
+var az=function(){};az.__typeName="VEL.Wordwall.Global.Interop.Constants$App$Containers";
+global.VEL.Wordwall.Global.Interop.Constants$App$Containers=az;
+var aB=function(){};aB.__typeName="VEL.Wordwall.Global.Interop.Constants$AttributionParams";
+global.VEL.Wordwall.Global.Interop.Constants$AttributionParams=aB;
+var aD=function(){};aD.__typeName="VEL.Wordwall.Global.Interop.Constants$Cache";
+global.VEL.Wordwall.Global.Interop.Constants$Cache=aD;
+var aF=function(){};aF.__typeName="VEL.Wordwall.Global.Interop.Constants$Cache$Containers";
+global.VEL.Wordwall.Global.Interop.Constants$Cache$Containers=aF;
+var aH=function(){};aH.__typeName="VEL.Wordwall.Global.Interop.Constants$CapabilityIds";
+global.VEL.Wordwall.Global.Interop.Constants$CapabilityIds=aH;
+var aJ=function(){};aJ.__typeName="VEL.Wordwall.Global.Interop.Constants$ContentSounds";
+global.VEL.Wordwall.Global.Interop.Constants$ContentSounds=aJ;
+var aL=function(){};aL.__typeName="VEL.Wordwall.Global.Interop.Constants$CookieConsent";
+global.VEL.Wordwall.Global.Interop.Constants$CookieConsent=aL;
+var aN=function(){};aN.__typeName="VEL.Wordwall.Global.Interop.Constants$Css";
+global.VEL.Wordwall.Global.Interop.Constants$Css=aN;
+var aP=function(){};aP.__typeName="VEL.Wordwall.Global.Interop.Constants$Data";
+global.VEL.Wordwall.Global.Interop.Constants$Data=aP;
+var aR=function(){};aR.__typeName="VEL.Wordwall.Global.Interop.Constants$Data$Containers";
+global.VEL.Wordwall.Global.Interop.Constants$Data$Containers=aR;
+var aT=function(){};aT.__typeName="VEL.Wordwall.Global.Interop.Constants$DebugExperimentalPriceIds";
+global.VEL.Wordwall.Global.Interop.Constants$DebugExperimentalPriceIds=aT;
+var aV=function(){};aV.__typeName="VEL.Wordwall.Global.Interop.Constants$EventSampling";
+global.VEL.Wordwall.Global.Interop.Constants$EventSampling=aV;
+var aX=function(){};aX.__typeName="VEL.Wordwall.Global.Interop.Constants$Icons";
+global.VEL.Wordwall.Global.Interop.Constants$Icons=aX;
+var aZ=function(){};aZ.__typeName="VEL.Wordwall.Global.Interop.Constants$NotificationSettings";
+global.VEL.Wordwall.Global.Interop.Constants$NotificationSettings=aZ;
+var a1=function(){};a1.__typeName="VEL.Wordwall.Global.Interop.Constants$Password";
+global.VEL.Wordwall.Global.Interop.Constants$Password=a1;
+var a3=function(){};a3.__typeName="VEL.Wordwall.Global.Interop.Constants$Screens";
+global.VEL.Wordwall.Global.Interop.Constants$Screens=a3;
+var af=function(){};af.__typeName="VEL.Wordwall.Global.Interop.Constants$Sound";
+global.VEL.Wordwall.Global.Interop.Constants$Sound=af;
+var ah=function(){};ah.__typeName="VEL.Wordwall.Global.Interop.Constants$Tags";
+global.VEL.Wordwall.Global.Interop.Constants$Tags=ah;
+var aj=function(){};aj.__typeName="VEL.Wordwall.Global.Interop.Constants$Themes";
+global.VEL.Wordwall.Global.Interop.Constants$Themes=aj;
+var al=function(){};al.__typeName="VEL.Wordwall.Global.Interop.Constants$User";
+global.VEL.Wordwall.Global.Interop.Constants$User=al;
+var an=function(){};an.__typeName="VEL.Wordwall.Global.Interop.Constants$User$Containers";
+global.VEL.Wordwall.Global.Interop.Constants$User$Containers=an;
+var ap=function(){};ap.__typeName="VEL.Wordwall.Global.Interop.InteropHelper";
+ap.waitFor$1=function(a,b,c){var d=0,e=new ss.TaskCompletionSource(),f;
+var g=function(){try{$sm1:for(;;){switch(d){case 0:d=-1;
+f=ap.waitFor(function(){return typeof(window[a])!=="undefined"
+},b,c);d=1;f.continueWith(g);return;case 1:d=-1;f.getAwaitedResult();
+d=-1;break $sm1;default:break $sm1}}e.setResult(null)
+}catch(h){e.setException(ss.Exception.wrap(h))}};g();
+return e.task};ap.waitFor=function(a,b,c){var d=0,e=new ss.TaskCompletionSource(),f,g;
+var h=function(){try{$sm1:for(;;){switch(d){case 0:d=-1;
+f=0;d=1;continue $sm1;case 1:d=-1;if(!!a()){d=-1;break $sm1
+}if(c>0&&f>=c){throw new ss.Exception("Condition was not met within the timeout period.")
+}g=ss.Task.delay(b);d=2;g.continueWith(h);return;case 2:d=-1;
+g.getAwaitedResult();f+=b;d=1;continue $sm1;default:break $sm1
+}}e.setResult(null)}catch(i){e.setException(ss.Exception.wrap(i))
+}};h();return e.task};global.VEL.Wordwall.Global.Interop.InteropHelper=ap;
+var ar=function(a,b){fg.call(this);this.Type=5;this.Min=a;
+this.Max=b};ar.__typeName="VEL.Wordwall.Global.Json.AccountAgeUserCriterionJson";
+global.VEL.Wordwall.Global.Json.AccountAgeUserCriterionJson=ar;
+var au=function(a,b){fg.call(this);this.Type=1;this.Min=a;
+this.Max=b};au.__typeName="VEL.Wordwall.Global.Json.ActivityCountUserCriterionJson";
+global.VEL.Wordwall.Global.Json.ActivityCountUserCriterionJson=au;
+var aw=function(){this.ActivityId=0;this.ThemeId=0;
+this.BookmarkId=0;this.TemplateId=0;this.Author=null;
+this.AuthorUserId=0;this.ParentFolderId=0;this.TemplateName=null;
+this.Guid=null;this.IsShared=false;this.IsShareable=false;
+this.IsEditable=false;this.HomeworkType=0;this.Thumbnail=null;
+this.HasCopyrightInfringement=false;this.Likes=0;this.FontStackId=0;
+aS.call(this)};aw.__typeName="VEL.Wordwall.Global.Json.ActivityInfo";
+global.VEL.Wordwall.Global.Json.ActivityInfo=aw;var ay=function(){this.$1$1=0;
+this.$1$2=0;this.$1$3=null;this.$1$4=0;this.$1$5=null;
+this.$1$6=0;this.$1$7=false;this.$1$8=false;this.$1$9=0;
+this.$1$10=0;this.$1$11=0;this.$1$12=0;this.$1$13=0;
+this.$1$14=0;this.$1$15=0;this.$1$16=0;this.$1$17=0;
+this.$1$18=0;this.$1$19=0;this.$1$20=0;this.$1$21=0;
+this.$1$22=null;this.$1$23=null};ay.__typeName="VEL.Wordwall.Global.Json.ActivityMetadata";
+global.VEL.Wordwall.Global.Json.ActivityMetadata=ay;
+var aA=function(){this.ActivityId=0;this.ActivityGuid=null
+};aA.__typeName="VEL.Wordwall.Global.Json.ActivityReference";
+global.VEL.Wordwall.Global.Json.ActivityReference=aA;
+var aC=function(a){var b=function(){this.Asset=ss.getDefaultValue(a);
+this.Message=null};ss.registerGenericClassInstance(b,aC,[a],{},function(){return null
+},function(){return[]});return b};aC.__typeName="VEL.Wordwall.Global.Json.AddAssetResponse$1";
+ss.initGenericClass(aC,aa,1);global.VEL.Wordwall.Global.Json.AddAssetResponse$1=aC;
+var aE=function(){this.Name=null;this.AgeBandId=null
+};aE.__typeName="VEL.Wordwall.Global.Json.AgeBandData";
+global.VEL.Wordwall.Global.Json.AgeBandData=aE;var aG=function(){this.ThemeId=0;
+this.Index=0;this.SortIndex=0;this.FileName=null;this.BlobName=null;
+this.Src=null;this.Url=null;this.Parts=null;this.FileSize=0
+};aG.__typeName="VEL.Wordwall.Global.Json.Asset";global.VEL.Wordwall.Global.Json.Asset=aG;
+var aI=function(){this.TagName=null;this.Type=null;
+this.Animation="";this.Shuffle=false;this.MuteWithMusic=false;
+this.Volume=1;this.SoundAssets=null};aI.__typeName="VEL.Wordwall.Global.Json.AudioAsset";
+global.VEL.Wordwall.Global.Json.AudioAsset=aI;var aK=function(){this.TagName=null;
+this.Type=null;this.LiveAudioAsset=null;this.EditAudioAsset=null
+};aK.__typeName="VEL.Wordwall.Global.Json.AudioWorkItem";
+global.VEL.Wordwall.Global.Json.AudioWorkItem=aK;var aM=function(){};
+aM.__typeName="VEL.Wordwall.Global.Json.BannerDisplayMode";
+global.VEL.Wordwall.Global.Json.BannerDisplayMode=aM;
+var aO=function(){this.BannerId=null;this.Header=null;
+this.Msg=null;this.Description=null;this.ButtonText=null;
+this.Url=null;this.OpenInAnotherTab=false;this.BackgroundColour=null;
+this.PrefixIcon=null;this.TextColour=null;this.DismissalRecurrence=0;
+this.EngagementRecurrence=0;this.ReminderDate=null;
+this.DisplayMode=0};aO.__typeName="VEL.Wordwall.Global.Json.BannerJson";
+global.VEL.Wordwall.Global.Json.BannerJson=aO;var aQ=function(){};
+aQ.__typeName="VEL.Wordwall.Global.Json.BannerRecurrence";
+global.VEL.Wordwall.Global.Json.BannerRecurrence=aQ;
+var aS=function(){this.Name=null;this.Plays=0;this.ModifiedUnix=0;
+this.LastPlayedUnix=0;this.IsInRecycleBin=false};aS.__typeName="VEL.Wordwall.Global.Json.BaseInfo";
+global.VEL.Wordwall.Global.Json.BaseInfo=aS;var aU=function(){this.EmphasizeLossInCancel=false;
+this.SurveyBeforeConfirmInCancel=false;this.CancellationModalMessageEnum=0;
+this.CancellationPage=false;this.IsDay0=false};aU.__typeName="VEL.Wordwall.Global.Json.BeginCancellationJson";
+global.VEL.Wordwall.Global.Json.BeginCancellationJson=aU;
+var aW=function(a){fg.call(this);this.Type=2;this.Value=(a?1:0)
+};aW.__typeName="VEL.Wordwall.Global.Json.BillingCadenceUserCriterionJson";
+global.VEL.Wordwall.Global.Json.BillingCadenceUserCriterionJson=aW;
+var aY=function(){this.CancelFeedbackId=0};aY.__typeName="VEL.Wordwall.Global.Json.CancelFeedbackJson";
+global.VEL.Wordwall.Global.Json.CancelFeedbackJson=aY;
+var a0=function(){this.CanSave=false;this.Message=null
+};a0.__typeName="VEL.Wordwall.Global.Json.CanSaveXmlData";
+global.VEL.Wordwall.Global.Json.CanSaveXmlData=a0;var a2=function(a){fg.call(this);
+this.Type=3;this.Value=a};a2.__typeName="VEL.Wordwall.Global.Json.CapabilityUserCriterionJson";
+a2.$ctor1=function(a){fg.call(this);this.Type=3;this.Values=a
+};global.VEL.Wordwall.Global.Json.CapabilityUserCriterionJson=a2;
+var a4=function(){this.BannerId=null;this.DismissedDate=null;
+this.IsEngaged=false};a4.__typeName="VEL.Wordwall.Global.Json.DismissedBannerJson";
+global.VEL.Wordwall.Global.Json.DismissedBannerJson=a4;
+var a7=function(a,b){fg.call(this);this.Type=0;this.Min=a;
+this.Max=b};a7.__typeName="VEL.Wordwall.Global.Json.DurationUserCriterionJson";
+global.VEL.Wordwall.Global.Json.DurationUserCriterionJson=a7;
+var a9=function(){this.Themes=null;this.RootFolderPath=null;
+this.TemplatesRequirements=null};a9.__typeName="VEL.Wordwall.Global.Json.EditSoundAssetsData";
+global.VEL.Wordwall.Global.Json.EditSoundAssetsData=a9;
+var b1=function(){this.ErrorMessage=null};b1.__typeName="VEL.Wordwall.Global.Json.ErrorJson";
+global.VEL.Wordwall.Global.Json.ErrorJson=b1;var b3=function(){this.Evaluated=null;
+this.PermanentlyExcludedIds=null};b3.__typeName="VEL.Wordwall.Global.Json.EvaluatedNotificationsJson";
+global.VEL.Wordwall.Global.Json.EvaluatedNotificationsJson=b3;
+var b5=function(){this.screenshotUrls=null;this.variations=null;
+this.goalType=null;this.goalDevice=null;this.triggers=null;
+this.targets=null};b5.__typeName="VEL.Wordwall.Global.Json.ExperimentDuplicate";
+global.VEL.Wordwall.Global.Json.ExperimentDuplicate=b5;
+var b7=function(){this.targetType=0;this.targetValue=0;
+this.targetMinimum=null;this.targetMaximum=null};b7.__typeName="VEL.Wordwall.Global.Json.ExperimentDuplicateTarget";
+global.VEL.Wordwall.Global.Json.ExperimentDuplicateTarget=b7;
+var b9=function(){this.triggerType=0;this.triggerDetail=0;
+this.triggerDevice=null};b9.__typeName="VEL.Wordwall.Global.Json.ExperimentDuplicateTrigger";
+global.VEL.Wordwall.Global.Json.ExperimentDuplicateTrigger=b9;
+var c1=function(){this.name=null;this.actions=null};
+c1.__typeName="VEL.Wordwall.Global.Json.ExperimentDuplicateVariation";
+global.VEL.Wordwall.Global.Json.ExperimentDuplicateVariation=c1;
+var c3=function(){this.featureSwitchId=0;this.key=null;
+this.type=0;this.value=null;this.action=null;this.typeDescription=null
+};c3.__typeName="VEL.Wordwall.Global.Json.ExperimentDuplicateVariationAction";
+global.VEL.Wordwall.Global.Json.ExperimentDuplicateVariationAction=c3;
+var c5=function(){this.FeedbackId=0};c5.__typeName="VEL.Wordwall.Global.Json.FeedbackSubmittedJson";
+global.VEL.Wordwall.Global.Json.FeedbackSubmittedJson=c5;
+var c7=function(){this.FolderId=0;this.ParentFolderId=0;
+this.Level=0;this.Path=null;this.ItemCount=0;this.Color=0;
+this.ParentColor=0;aS.call(this)};c7.__typeName="VEL.Wordwall.Global.Json.FolderInfo";
+global.VEL.Wordwall.Global.Json.FolderInfo=c7;var c9=function(){this.CurrentUserId=0;
+this.FollowedIds=null};c9.__typeName="VEL.Wordwall.Global.Json.FollowCreatorsStateJson";
+global.VEL.Wordwall.Global.Json.FollowCreatorsStateJson=c9;
+var d1=function(){this.Data=null;this.Url=null;this.Error=null
+};d1.__typeName="VEL.Wordwall.Global.Json.GenerateTextToSpeechResponse";
+global.VEL.Wordwall.Global.Json.GenerateTextToSpeechResponse=d1;
+var d3=function(){this.AgeBands=null};d3.__typeName="VEL.Wordwall.Global.Json.GetAgeBandsResultJson";
+global.VEL.Wordwall.Global.Json.GetAgeBandsResultJson=d3;
+var d5=function(){this.Subjects=null};d5.__typeName="VEL.Wordwall.Global.Json.GetSubjectsResultJson";
+global.VEL.Wordwall.Global.Json.GetSubjectsResultJson=d5;
+var d7=function(){this.Title=null;this.ActivityId=0;
+this.ActivityGuid=null;this.HomeworkGameId=0;this.ParentFolderId=0;
+this.PlayUrl=null;this.TemplateName=null;this.NumberOfPlayers=0;
+this.Modified=null;this.Deadline=null;this.IsClosed=false;
+this.ResultsUrl=null;this.ShareableResultsUrl=null;
+this.IsInRecycleBin=false;this.IsGoogleClassroom=false;
+this.Thumbnail=null;this.HasNewSubmission=false};d7.__typeName="VEL.Wordwall.Global.Json.HomeworkInfo";
+global.VEL.Wordwall.Global.Json.HomeworkInfo=d7;var d9=function(){this.HomeworkSubmissionId=0
+};d9.__typeName="VEL.Wordwall.Global.Json.HomeworkSubmissionInfo";
+global.VEL.Wordwall.Global.Json.HomeworkSubmissionInfo=d9;
+var eC=function(){aG.call(this)};eC.__typeName="VEL.Wordwall.Global.Json.ImageAsset";
+global.VEL.Wordwall.Global.Json.ImageAsset=eC;var eE=function(){};
+eE.__typeName="VEL.Wordwall.Global.Json.ImageSizeEnum";
+global.VEL.Wordwall.Global.Json.ImageSizeEnum=eE;var eG=function(){this.query=null;
+this.size=0;this.page=0;this.urls=null};eG.__typeName="VEL.Wordwall.Global.Json.InvalidateImageSearchRequest";
+global.VEL.Wordwall.Global.Json.InvalidateImageSearchRequest=eG;
+var eI=function(a){fg.call(this);this.Type=8;this.Value=a
+};eI.__typeName="VEL.Wordwall.Global.Json.LanguageUserCriterionJson";
+eI.$ctor1=function(a){fg.call(this);this.Type=8;this.Values=a
+};global.VEL.Wordwall.Global.Json.LanguageUserCriterionJson=eI;
+var eK=function(){this.EntryId=0;this.Name=null;this.Score=0;
+this.Time=0};eK.__typeName="VEL.Wordwall.Global.Json.LeaderboardEntryJson";
+global.VEL.Wordwall.Global.Json.LeaderboardEntryJson=eK;
+var eM=function(){};eM.__typeName="VEL.Wordwall.Global.Json.LeaderboardEnum";
+global.VEL.Wordwall.Global.Json.LeaderboardEnum=eM;
+var eO=function(){this.Enabled=false;this.AllowDuplicates=false;
+this.EntryCount=0;this.RemovalTime=0;this.Error=null
+};eO.__typeName="VEL.Wordwall.Global.Json.LeaderboardOptionJson";
+global.VEL.Wordwall.Global.Json.LeaderboardOptionJson=eO;
+var eQ=function(){this.IsPaid=false;this.IsGuest=false;
+this.CommunityTagPageResultsLimit=0};eQ.__typeName="VEL.Wordwall.Global.Json.LimitCommunityTagsUserStateJson";
+global.VEL.Wordwall.Global.Json.LimitCommunityTagsUserStateJson=eQ;
+var eS=function(a){fg.call(this);this.Type=7;this.Value=a
+};eS.__typeName="VEL.Wordwall.Global.Json.LocaleUserCriterionJson";
+eS.$ctor1=function(a){fg.call(this);this.Type=7;this.Values=a
+};global.VEL.Wordwall.Global.Json.LocaleUserCriterionJson=eS;
+var a8=function(){this.ImageAssets=null;this.RootFolderPath=null
+};a8.__typeName="VEL.Wordwall.Global.Json.ManageImageAssetsData";
+global.VEL.Wordwall.Global.Json.ManageImageAssetsData=a8;
+var b0=function(){this.SoundAssets=null;this.RootFolderPath=null
+};b0.__typeName="VEL.Wordwall.Global.Json.ManageSoundAssetsData";
+global.VEL.Wordwall.Global.Json.ManageSoundAssetsData=b0;
+var b2=function(a){fg.call(this);this.Type=6;this.Value=(a?1:0)
+};b2.__typeName="VEL.Wordwall.Global.Json.MarketingConsentUserCriterionJson";
+global.VEL.Wordwall.Global.Json.MarketingConsentUserCriterionJson=b2;
+var b4=function(){this.Activities=null;this.Folders=null;
+this.Bookmarks=null;this.Breadcrumbs=null};b4.__typeName="VEL.Wordwall.Global.Json.MyActivitiesData";
+global.VEL.Wordwall.Global.Json.MyActivitiesData=b4;
+var b6=function(){this.Data=null;this.IsBlocked=false;
+this.IsOk=false};b6.__typeName="VEL.Wordwall.Global.Json.MyActivitiesDuplicateResponse";
+global.VEL.Wordwall.Global.Json.MyActivitiesDuplicateResponse=b6;
+var b8=function(){this.Homeworks=null;this.Folders=null;
+this.Breadcrumbs=null};b8.__typeName="VEL.Wordwall.Global.Json.MyResultsData";
+global.VEL.Wordwall.Global.Json.MyResultsData=b8;var c0=function(){this.Id=null;
+this.Type=0;this.Title=null;this.Text=null;this.CtaText=null;
+this.CtaUrl=null;this.IsTrustedCtaUrl=false;this.CtaBehaviour=0;
+this.PageIds=null;this.TextColor=null;this.BackgroundColor=null;
+this.Icon=null;this.Priority=0;this.IsUntracked=false;
+this.Criteria=null};c0.__typeName="VEL.Wordwall.Global.Json.NotificationJson";
+global.VEL.Wordwall.Global.Json.NotificationJson=c0;
+var c2=function(){this.Success=false;this.Code=null;
+this.ConnectionId=null};c2.__typeName="VEL.Wordwall.Global.Json.OpenInfo";
+global.VEL.Wordwall.Global.Json.OpenInfo=c2;var c4=function(){this.Version=0;
+this.Timestamp=null};c4.__typeName="VEL.Wordwall.Global.Json.PolicyNotificationDismissalJson";
+global.VEL.Wordwall.Global.Json.PolicyNotificationDismissalJson=c4;
+var c6=function(){this.Version=0;fe.call(this);this.ConsentType=1
+};c6.__typeName="VEL.Wordwall.Global.Json.PolicyUpdateConsentJson";
+global.VEL.Wordwall.Global.Json.PolicyUpdateConsentJson=c6;
+var c8=function(){this.Found=false;this.Result=null
+};c8.__typeName="VEL.Wordwall.Global.Json.PolicyUpdateConsentResultJson";
+global.VEL.Wordwall.Global.Json.PolicyUpdateConsentResultJson=c8;
+var d0=function(){this.Amount=0;this.Currency=null};
+d0.__typeName="VEL.Wordwall.Global.Json.PriceJson";
+global.VEL.Wordwall.Global.Json.PriceJson=d0;var d2=function(){this.PrinterId=0;
+this.Tag=null;this.Title=null;this.ShowFeedbackBanner=false
+};d2.__typeName="VEL.Wordwall.Global.Json.PrintConversion";
+global.VEL.Wordwall.Global.Json.PrintConversion=d2;
+var d4=function(){this.Conversions=null};d4.__typeName="VEL.Wordwall.Global.Json.PrintConversionsJson";
+global.VEL.Wordwall.Global.Json.PrintConversionsJson=d4;
+var d6=function(){this.Url=null;this.Name=null};d6.__typeName="VEL.Wordwall.Global.Json.PrintPreviewJson";
+global.VEL.Wordwall.Global.Json.PrintPreviewJson=d6;
+var d8=function(){this.Ok=false;this.Message=null};
+d8.__typeName="VEL.Wordwall.Global.Json.RenewalJson";
+global.VEL.Wordwall.Global.Json.RenewalJson=d8;var eB=function(){this.StandardPrice=null;
+this.ProPrice=null;this.TaxLabel=null;this.StandardUsers=0;
+this.StandardForThePriceOf=0;this.ProUsers=0;this.ProForThePriceOf=0
+};eB.__typeName="VEL.Wordwall.Global.Json.SchoolPricingJson";
+global.VEL.Wordwall.Global.Json.SchoolPricingJson=eB;
+var eD=function(){this.HomeworkGameId=0;this.Title=null;
+this.Url=null;this.Screenshot=null;this.ActivityId=0;
+this.AuthorUserId=0;this.ActivityGuid=null;this.ThemeId=0;
+this.EndTime=null;this.EndTimeString=null;this.Registration=0;
+this.GameOver=0};eD.__typeName="VEL.Wordwall.Global.Json.ShareHomeworkJson";
+global.VEL.Wordwall.Global.Json.ShareHomeworkJson=eD;
+var eF=function(){this.Volume=1;this.Pitch=0;this.Scene="";
+aG.call(this)};eF.__typeName="VEL.Wordwall.Global.Json.SoundAsset";
+global.VEL.Wordwall.Global.Json.SoundAsset=eF;var eH=function(){this.Audios=null;
+this.Id=0;this.Name=null;this.ThemeIconUrl=null;this.CurrentUserId=null;
+this.XmlContent=null;this.Requirements=null};eH.__typeName="VEL.Wordwall.Global.Json.SoundAssetTheme";
+global.VEL.Wordwall.Global.Json.SoundAssetTheme=eH;
+var eJ=function(){this.Name=null;this.SubjectId=null
+};eJ.__typeName="VEL.Wordwall.Global.Json.SubjectData";
+global.VEL.Wordwall.Global.Json.SubjectData=eJ;var eL=function(){this.RedirectTo=null;
+this.Error=null;this.ClientSecret=null};eL.__typeName="VEL.Wordwall.Global.Json.SubscribeJson";
+global.VEL.Wordwall.Global.Json.SubscribeJson=eL;var eN=function(a,b){fg.call(this);
+this.Type=4;this.Min=a;this.Max=b};eN.__typeName="VEL.Wordwall.Global.Json.SubscriptionAgeUserCriterionJson";
+global.VEL.Wordwall.Global.Json.SubscriptionAgeUserCriterionJson=eN;
+var eP=function(){this.Success=false;this.Error=null
+};eP.__typeName="VEL.Wordwall.Global.Json.TagResultJson";
+global.VEL.Wordwall.Global.Json.TagResultJson=eP;var eR=function(){this.Tag=null;
+this.Text=null;this.SoundTypes=null};eR.__typeName="VEL.Wordwall.Global.Json.TemplateRequirements";
+global.VEL.Wordwall.Global.Json.TemplateRequirements=eR;
+var eT=function(){this.Name=null;this.AnimationSounds=null
+};eT.__typeName="VEL.Wordwall.Global.Json.ThemeRequirements";
+global.VEL.Wordwall.Global.Json.ThemeRequirements=eT;
+var eW=function(){this.UserId=null;this.WorkName=null;
+this.IsMyWork=false};eW.__typeName="VEL.Wordwall.Global.Json.ThemeResourceWork";
+global.VEL.Wordwall.Global.Json.ThemeResourceWork=eW;
+var eY=function(){this.Text=null;this.Value=null;this.ValidationMessage=null
+};eY.__typeName="VEL.Wordwall.Global.Json.ThemeTemplateOption";
+global.VEL.Wordwall.Global.Json.ThemeTemplateOption=eY;
+var e0=function(){this.PlayUrlPattern=null;this.TemplateOptions=null
+};e0.__typeName="VEL.Wordwall.Global.Json.ThemeTemplatesData";
+global.VEL.Wordwall.Global.Json.ThemeTemplatesData=e0;
+var e2=function(){this.Unix=0;this.Readable=null;this.Editable=null
+};e2.__typeName="VEL.Wordwall.Global.Json.TimeInfo";
+global.VEL.Wordwall.Global.Json.TimeInfo=e2;var e4=function(){this.Translation=null
+};e4.__typeName="VEL.Wordwall.Global.Json.TranslateResultJson";
+global.VEL.Wordwall.Global.Json.TranslateResultJson=e4;
+var e6=function(){this.MaleId=null;this.FemaleId=null;
+this.DisplayName=null;this.LanguageId=0;this.LocaleId=0;
+this.IsDefault=false};e6.__typeName="VEL.Wordwall.Global.Json.TtsOption";
+global.VEL.Wordwall.Global.Json.TtsOption=e6;var e8=function(){this.Timestamp=null;
+c6.call(this)};e8.__typeName="VEL.Wordwall.Global.Json.UnsubmittedPolicyUpdateConsentJson";
+global.VEL.Wordwall.Global.Json.UnsubmittedPolicyUpdateConsentJson=e8;
+var fa=function(){this.userId=0;this.url=null;this.guid=null;
+this.dataSrc=null};fa.__typeName="VEL.Wordwall.Global.Json.UploadImage";
+global.VEL.Wordwall.Global.Json.UploadImage=fa;var fc=function(){this.title=null;
+this.userId=0;this.activityGuid=null;this.activityId=0;
+this.templateId=0;this.genAiMethod=null;this.screenshot=false;
+this.originalActivityId=0;this.folderId=0;this.contentModel=null;
+this.soundUrls=null;this.hasImages=false};fc.__typeName="VEL.Wordwall.Global.Json.UploadModel";
+global.VEL.Wordwall.Global.Json.UploadModel=fc;var fe=function(){this.ConsentType=0
+};fe.__typeName="VEL.Wordwall.Global.Json.UserConsentJson";
+global.VEL.Wordwall.Global.Json.UserConsentJson=fe;
+var fg=function(){this.Type=0;this.Min=null;this.Max=null;
+this.Value=null;this.Values=null};fg.__typeName="VEL.Wordwall.Global.Json.UserCriterionJson";
+global.VEL.Wordwall.Global.Json.UserCriterionJson=fg;
+var fi=function(){this.UserName=null;this.Email=null
+};fi.__typeName="VEL.Wordwall.Global.Json.UserDetailJson";
+global.VEL.Wordwall.Global.Json.UserDetailJson=fi;var fk=function(){this.Content=null;
+this.Deleted=false;this.Changed=false;aG.call(this)
+};fk.__typeName="VEL.Wordwall.Global.Json.XmlAsset";
+global.VEL.Wordwall.Global.Json.XmlAsset=fk;var fm=function(){this.method=0;
+this.userInput=null;this.existingContent=null;this.attemptNumber=0;
+this.activityGuid=null;this.templateId=0;this.optionalMode=0;
+this.sessionId=null;this.allowFiles=false;this.promptContext=null
+};fm.__typeName="VEL.Wordwall.Global.Json.GenAI.GenerateRequest";
+global.VEL.Wordwall.Global.Json.GenAI.GenerateRequest=fm;
+var fp=function(){this.contentModel=null;this.error=null
+};fp.__typeName="VEL.Wordwall.Global.Json.GenAI.GenerateResponse";
+global.VEL.Wordwall.Global.Json.GenAI.GenerateResponse=fp;
+var fr=function(){this.maxItemCount=0;this.maxItemsPerGroup=0
+};fr.__typeName="VEL.Wordwall.Global.Json.GenAI.PromptContext";
+global.VEL.Wordwall.Global.Json.GenAI.PromptContext=fr;
+var ft=function(){this.id=null;this.name=null};ft.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Course";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.Course=ft;
+var fv=function(){this.courseId=null;this.id=null;this.title=null;
+this.materials=null;this.state=null;this.alternateLink=null;
+this.dueDate=null;this.dueTime=null;this.maxPoints=null;
+this.workType=null;this.assigneeMode=null;this.individualStudentsOptions=null
+};fv.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.CourseWork";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.CourseWork=fv;
+var fx=function(){this.year=0;this.month=0;this.day=0
+};fx.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Date";
+fx.create=function(a){var b=ss.toUTC(a);var c=new fx();
+c.year=b.getFullYear();c.month=b.getMonth()+1;c.day=b.getDate();
+return c};fx.create$1=function(a){return(ss.isValue(a)?fx.create(ss.unbox(a)):null)
+};global.VEL.Wordwall.Global.Json.GoogleClassroom.Date=fx;
+var fz=function(){this.message=null;this.statusCode=0;
+this.errorCode=null};fz.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.GoogleClassroomError";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.GoogleClassroomError=fz;
+var fB=function(){this.studentIds=null};fB.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.IndividualStudentsOptions";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.IndividualStudentsOptions=fB;
+var fD=function(){this.url=null;this.title=null;this.thumbnailUrl=null
+};fD.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Link";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.Link=fD;
+var fF=function(){this.link=null};fF.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Material";
+fF.createLinkMaterial=function(a){var b=new fF();var c=new fD();
+c.url=a;b.link=c;return b};global.VEL.Wordwall.Global.Json.GoogleClassroom.Material=fF;
+var fH=function(){this.fullName=null};fH.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Name";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.Name=fH;
+var fJ=function(){this.courseId=null;this.userId=null;
+this.profile=null};fJ.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.Student";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.Student=fJ;
+var eX=function(){this.courseId=null;this.courseWorkId=null;
+this.id=null;this.userId=null;this.state=null;this.draftGrade=0
+};eX.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.StudentSubmission";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.StudentSubmission=eX;
+var eZ=function(){this.hours=0;this.minutes=0;this.seconds=0;
+this.nanos=0};eZ.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.TimeOfDay";
+eZ.create=function(a){var b=ss.toUTC(a);var c=new eZ();
+c.hours=b.getHours();c.minutes=b.getMinutes();c.seconds=b.getSeconds();
+return c};eZ.create$1=function(a){return(ss.isValue(a)?eZ.create(ss.unbox(a)):null)
+};global.VEL.Wordwall.Global.Json.GoogleClassroom.TimeOfDay=eZ;
+var e1=function(){this.id=null;this.name=null;this.emailAddress=null;
+this.photoUrl=null};e1.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.UserProfile";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.UserProfile=e1;
+var e3=function(){this.isSignedIn=false;this.hasGrantedPermissions=false;
+this.userProfile=null};e3.__typeName="VEL.Wordwall.Global.Json.GoogleClassroom.UserState";
+global.VEL.Wordwall.Global.Json.GoogleClassroom.UserState=e3;
+var e5=function(a){var b=function(){};ss.registerGenericInterfaceInstance(b,e5,[a],{get_children:null,set_children:null},function(){return[]
+});return b};e5.__typeName="VEL.Wordwall.Global.Serialization.IXmlArray$1";
+ss.initGenericInterface(e5,aa,1);global.VEL.Wordwall.Global.Serialization.IXmlArray$1=e5;
+var e7=function(a){this.tag=null;this.tag=a};e7.__typeName="VEL.Wordwall.Global.Serialization.XmlClassAttribute";
+global.VEL.Wordwall.Global.Serialization.XmlClassAttribute=e7;
+var e9=function(a){ss.makeGenericType(fu,[Boolean]).call(this,a,false,false)
+};e9.__typeName="VEL.Wordwall.Global.Server.$0";var fb=function(a){ss.makeGenericType(fu,[ss.Int32]).call(this,a,0,false)
+};fb.__typeName="VEL.Wordwall.Global.Server.$1";var fd=function(a){ss.makeGenericType(fu,[String]).call(this,a,"",false)
+};fd.__typeName="VEL.Wordwall.Global.Server.$2";var ff=function(a,b){ss.makeGenericType(fu,[Boolean]).call(this,a,b,true)
+};ff.__typeName="VEL.Wordwall.Global.Server.$3";var fh=function(a,b){ss.makeGenericType(fu,[ss.Int32]).call(this,a,b,true)
+};fh.__typeName="VEL.Wordwall.Global.Server.$4";var fj=function(a,b){ss.makeGenericType(fu,[String]).call(this,a,ss.coalesce(b,""),true)
+};fj.__typeName="VEL.Wordwall.Global.Server.$5";var fl=function(){f0.call(this)
+};fl.__typeName="VEL.Wordwall.Global.Server.AboutTemplatePageData";
+global.VEL.Wordwall.Global.Server.AboutTemplatePageData=fl;
+var fn=function(){this.activityId=0;this.activityGuid=null;
+this.activityTitle=null;this.fontStackId=0;this.authorUserId=0;
+this.googleClassroomClientID=null;this.googleClassroomApiKey=null;
+this.googleClassroomCourseID=null;this.googleClassroomCourseWorkID=null;
+f0.call(this)};fn.__typeName="VEL.Wordwall.Global.Server.ActivityPageData";
+global.VEL.Wordwall.Global.Server.ActivityPageData=fn;
+var fo=function(){this.experimentDuplicate=null;f0.call(this)
+};fo.__typeName="VEL.Wordwall.Global.Server.AddExperimentPageData";
+global.VEL.Wordwall.Global.Server.AddExperimentPageData=fo;
+var fq=function(){};fq.__typeName="VEL.Wordwall.Global.Server.AssetHelper";
+fq.getFolderImage=function(a){var b="/content/images/my_activities/";
+switch(a){case 0:return Assets.cdn[(b+"folder-blue.png").toLowerCase()];
+case 1:return Assets.cdn[(b+"folder-grey.png").toLowerCase()];
+case 2:return Assets.cdn[(b+"folder-green.png").toLowerCase()];
+case 3:return Assets.cdn[(b+"folder-yellow.png").toLowerCase()];
+case 4:return Assets.cdn[(b+"folder-orange.png").toLowerCase()];
+case 5:return Assets.cdn[(b+"folder-red.png").toLowerCase()];
+case 6:return Assets.cdn[(b+"folder-purple.png").toLowerCase()];
+case 7:return Assets.cdn[(b+"folder-indigo.png").toLowerCase()]
+}return null};global.VEL.Wordwall.Global.Server.AssetHelper=fq;
+var fs=function(){};fs.__typeName="VEL.Wordwall.Global.Server.BaseSwitchKeyList";
+fs.initializeAll=function(){if(fs.$0){return}fs.$0=true;
+var a=Enumerable.from(ss.getAssemblies()).where(function(d){return ss.startsWithString(d.toString(),"VEL.Wordwall.")
+}).selectMany(function(d){return ss.getAssemblyTypes(d)
+}).where(function(d){return d.prototype instanceof fs
+});var b=a.getEnumerator();try{while(b.moveNext()){var c=b.current();
+ss.createInstance(c)}}finally{b.dispose()}};fs.register=function(a){fs.keys;
+if(fs.keys.containsKey(a.get_key())){throw new ss.InvalidOperationException("Cannot add duplicate key '"+a.get_key()+"'")
+}fs.keys.set_item(a.get_key(),a)};fs.getKey=function(a){if(ss.isNullOrEmptyString(a)){return null
+}fs.initializeAll();var b={};if(!fs.keys.tryGetValue(a,b)){return null
+}return b.$};fs.getKeys=function(){fs.initializeAll();
+return fs.keys.get_values()};fs.createTestKeyObject=function(a,b){switch(b){case 1:return new e9(a);
+case 2:return new fb(a);case 13:return new fd(a);default:throw new ss.ArgumentException("type must be a code defined switch type, but it was "+b)
+}};fs.getSwitchType=function(a){if(ss.isInstanceOfType(a,fP)){return 1
+}else{if(ss.isInstanceOfType(a,fQ)){return 2}else{if(ss.isInstanceOfType(a,fR)){return 13
+}else{throw new ss.ArgumentException("key must be a known switch key type")
+}}}};global.VEL.Wordwall.Global.Server.BaseSwitchKeyList=fs;
+var fu=function(a){var b=function(c,d,e){this.$1=null;
+this.$0=ss.getDefaultValue(a);this.$1=c;this.$0=d;if(ss.isNullOrEmptyString(c)){throw new ss.ArgumentException("key must be specified")
+}if(e){fs.register(this)}};ss.registerGenericClassInstance(b,fu,[a],{get_key:function(){return this.$1
+},get_defaultValue:function(){return this.$0},get_untypedDefaultValue:function(){return this.$0
+},toString:function(){return ss.getTypeName(ss.getInstanceType(this))+"("+this.$1+")"
+}},function(){return null},function(){return[fT,ss.makeGenericType(fU,[a])]
+});return b};fu.__typeName="VEL.Wordwall.Global.Server.BaseSwitchKeyList$BaseSwitchKey$1";
+ss.initGenericClass(fu,aa,1);global.VEL.Wordwall.Global.Server.BaseSwitchKeyList$BaseSwitchKey$1=fu;
+var fw=function(a,b){this.$1$1=null;this.$1$2=false;
+this.$1$3=false;this.$1$4=false;this.$1$5=false;this.$1$6=0;
+this.$1$7=0;this.$1$8=0;this.$1$9=0;this.$1$10=0;this.$1$11=0;
+this.$1$12=null;var c=window.pageData;this.set_experiments((ss.isNullOrUndefined(a)?[]:aq.toArrayOfIntegers(a)));
+this.set_userId(c.userId);this.set_languageId(c.languageId);
+this.set_localeId(c.localeId);this.set_isBasic(c.isBasic);
+this.set_isPro(c.isPro);this.set_isTest(c.isTest);this.set_isGuest(this.get_userId()===0);
+this.set_page(c.pageId);this.set_templateId(c.templateId);
+this.set_themeId(c.themeId);this.set_overrides((ss.isNullOrUndefined(b)?new (ss.makeGenericType(ss.Dictionary$2,[String,String]))():aq.toSwitchDictionary(b)))
+};fw.__typeName="VEL.Wordwall.Global.Server.ClientSwitchContext";
+global.VEL.Wordwall.Global.Server.ClientSwitchContext=fw;
+var fy=function(){};fy.__typeName="VEL.Wordwall.Global.Server.CookieNames";
+global.VEL.Wordwall.Global.Server.CookieNames=fy;var fA=function(){this.isEmbed=false;
+fn.call(this)};fA.__typeName="VEL.Wordwall.Global.Server.EmbedPageData";
+global.VEL.Wordwall.Global.Server.EmbedPageData=fA;
+var fC=function(){this.folderId=null;this.makeCopy=false;
+this.isAutoSave=false;this.isCreation=false;this.originalActivityId=0;
+fn.call(this)};fC.__typeName="VEL.Wordwall.Global.Server.EnterContentPageData";
+global.VEL.Wordwall.Global.Server.EnterContentPageData=fC;
+var fE=function(){this.id=0;this.value=null};fE.__typeName="VEL.Wordwall.Global.Server.GlobalAction";
+global.VEL.Wordwall.Global.Server.GlobalAction=fE;var fG=function(){this.type=0;
+this.id=0};fG.__typeName="VEL.Wordwall.Global.Server.GlobalRule";
+global.VEL.Wordwall.Global.Server.GlobalRule=fG;var fI=function(){this.type=0;
+this.key=null;this.value=null;this.isTest=false;this.isServerOnly=false;
+this.actions=null;this.values=null};fI.__typeName="VEL.Wordwall.Global.Server.GlobalSwitch";
+global.VEL.Wordwall.Global.Server.GlobalSwitch=fI;var fK=function(){this.value=null;
+this.rules=null};fK.__typeName="VEL.Wordwall.Global.Server.GlobalValue";
+global.VEL.Wordwall.Global.Server.GlobalValue=fK;var fN=function(){this.resourceIncrease=0;
+this.resourceCount=0;f0.call(this)};fN.__typeName="VEL.Wordwall.Global.Server.HomePageData";
+global.VEL.Wordwall.Global.Server.HomePageData=fN;var fP=function(){};
+fP.__typeName="VEL.Wordwall.Global.Server.IBoolSwitchKey";
+global.VEL.Wordwall.Global.Server.IBoolSwitchKey=fP;
+var fQ=function(){};fQ.__typeName="VEL.Wordwall.Global.Server.IIntSwitchKey";
+global.VEL.Wordwall.Global.Server.IIntSwitchKey=fQ;
+var fR=function(){};fR.__typeName="VEL.Wordwall.Global.Server.IStringSwitchKey";
+global.VEL.Wordwall.Global.Server.IStringSwitchKey=fR;
+var fS=function(){};fS.__typeName="VEL.Wordwall.Global.Server.ISwitchContext";
+global.VEL.Wordwall.Global.Server.ISwitchContext=fS;
+var fT=function(){};fT.__typeName="VEL.Wordwall.Global.Server.ISwitchKey";
+global.VEL.Wordwall.Global.Server.ISwitchKey=fT;var fU=function(a){var b=function(){};
+ss.registerGenericInterfaceInstance(b,fU,[a],{get_defaultValue:null},function(){return[fT]
+});return b};fU.__typeName="VEL.Wordwall.Global.Server.ISwitchKey$1";
+ss.initGenericInterface(fU,aa,1);global.VEL.Wordwall.Global.Server.ISwitchKey$1=fU;
+var fV=function(){this.licenceId=0;f0.call(this)};fV.__typeName="VEL.Wordwall.Global.Server.LicencePageData";
+global.VEL.Wordwall.Global.Server.LicencePageData=fV;
+var fW=function(){this.minForTemplate=0;this.maxForTemplate=0;
+this.maxUnique=0;f0.call(this)};fW.__typeName="VEL.Wordwall.Global.Server.MathsGeneratorPageData";
+global.VEL.Wordwall.Global.Server.MathsGeneratorPageData=fW;
+var fX=function(){this.authorUserId=0;this.folderIds=null;
+this.hasCreated=false;this.myActivitiesVariation=0;
+this.appBundleUrl=null;this.regionalSocialMedia=0;this.googleClassroomClientID=null;
+this.googleClassroomApiKey=null;this.isBlocked=false;
+this.showAnnualUpgradeNudge=false;this.searchParameter=null;
+this.authorUsername=null;this.authorIsTopCreator=false;
+f0.call(this)};fX.__typeName="VEL.Wordwall.Global.Server.MyActivitiesPageData";
+global.VEL.Wordwall.Global.Server.MyActivitiesPageData=fX;
+var fY=function(){this.folderIds=null;this.activityId=0;
+this.authorUserId=0;this.activityTitle=null;f0.call(this)
+};fY.__typeName="VEL.Wordwall.Global.Server.MyResultsPageData";
+global.VEL.Wordwall.Global.Server.MyResultsPageData=fY;
+var fZ=function(){this.emailData=null;this.licenceId=0;
+f0.call(this)};fZ.__typeName="VEL.Wordwall.Global.Server.MySchoolPageData";
+global.VEL.Wordwall.Global.Server.MySchoolPageData=fZ;
+var f0=function(){this.pageId=0;this.userId=0;this.isPro=false;
+this.isBasic=false;this.isTest=false;this.languageId=0;
+this.localeId=0;this.languageCode=null;this.iso6391Code=null;
+this.footerAjax=null;this.guestExperimentVariations=null;
+this.policyVersion=0;this.policyTestOnly=false;this.templateId=0;
+this.themeId=0;this.isCached=false};f0.__typeName="VEL.Wordwall.Global.Server.PageData";
+global.VEL.Wordwall.Global.Server.PageData=f0;var f1=function(){this.stripeKey=null;
+this.clientSecret=null;this.dataUrl=null;this.emailData=null;
+this.cancelSurveyPending=false;this.cancelSurveyIsDay0=false;
+f0.call(this)};f1.__typeName="VEL.Wordwall.Global.Server.PaymentPageData";
+global.VEL.Wordwall.Global.Server.PaymentPageData=f1;
+var f2=function(){this.isBlocked=false;this.sortMethod=null;
+f0.call(this)};f2.__typeName="VEL.Wordwall.Global.Server.PickTemplatePageData";
+global.VEL.Wordwall.Global.Server.PickTemplatePageData=f2;
+var f3=function(){this.registration=0;this.homeworkGameId=0;
+this.resultGuid=null;this.gameOver=0;this.isEmbed=false;
+this.deadlineEdit=null;this.deadlineUnix=0;this.isFull=false;
+this.appBundleUrl=null;fn.call(this)};f3.__typeName="VEL.Wordwall.Global.Server.PlayPageData";
+global.VEL.Wordwall.Global.Server.PlayPageData=f3;var f4=function(){this.isAnnualUser=false;
+f0.call(this)};f4.__typeName="VEL.Wordwall.Global.Server.PricePlanPageData";
+global.VEL.Wordwall.Global.Server.PricePlanPageData=f4;
+var f5=function(){this.folderId=null;this.activityIsShared=false;
+this.isAuthor=false;this.canManageLeaderboard=false;
+this.feedbackTemplateId=0;this.hasCopyrightInfringement=false;
+this.standardTemplates=null;this.regionalSocialMedia=0;
+this.isBlocked=false;this.showPmfSurvey2026Q1=false;
+fn.call(this)};f5.__typeName="VEL.Wordwall.Global.Server.ResourcePageData";
+global.VEL.Wordwall.Global.Server.ResourcePageData=f5;
+var f6=function(){this.resultGuid=null;this.homeworkGameId=0;
+this.canLeaderboard=false;this.shareableLink=null;this.deadlineEdit=null;
+this.deadlineUnix=0;fn.call(this)};f6.__typeName="VEL.Wordwall.Global.Server.ResultPageData";
+global.VEL.Wordwall.Global.Server.ResultPageData=f6;
+var f7=function(){fn.call(this)};f7.__typeName="VEL.Wordwall.Global.Server.ScreenPageData";
+global.VEL.Wordwall.Global.Server.ScreenPageData=f7;
+var f8=function(){this.query=null;this.searchId=0;f0.call(this)
+};f8.__typeName="VEL.Wordwall.Global.Server.SearchPageData";
+global.VEL.Wordwall.Global.Server.SearchPageData=f8;
+var f9=function(){};f9.__typeName="VEL.Wordwall.Global.Server.ServerOnlyCookieNames";
+global.VEL.Wordwall.Global.Server.ServerOnlyCookieNames=f9;
+var ga=function(){this.accountCreated=false;f0.call(this)
+};ga.__typeName="VEL.Wordwall.Global.Server.SetupYourAccountPageData";
+global.VEL.Wordwall.Global.Server.SetupYourAccountPageData=ga;
+var gb=function(){};gb.__typeName="VEL.Wordwall.Global.Server.Switches";
+gb.initialize=function(a){gb.$6=a;gb.$7.clear();for(var b=0;
+b<a.length;b++){var c=a[b];if(ss.isNullOrEmptyString(c.key)){continue
+}var d=gb.$2(c.type,c.key);if(gb.$7.containsKey(d)&&Enumerable.from(c.actions).any()){var e=gb.$7.get_item(d);
+var f=gb.$7;var g=new fI();g.type=e.type;g.key=e.key;
+g.value=e.value;g.isTest=e.isTest;g.isServerOnly=e.isServerOnly;
+g.values=e.values;g.actions=c.actions;f.set_item(d,g)
+}else{gb.$7.set_item(d,c)}}};gb.getBoolean=function(a,b){var c=gb.$3(a,b.get_key(),1);
+var d={};if(ss.tryParseBool(c,d)){return d.$}else{return b.get_defaultValue()
+}};gb.getInteger=function(a,b){var c=gb.$0(a,b.get_key(),2);
+if(ss.isValue(c)){return ss.unbox(c)}else{return b.get_defaultValue()
+}};gb.getString=function(a,b){var c=gb.$3(a,b.get_key(),13);
+if(ss.isValue(c)){return c}else{return b.get_defaultValue()
+}};gb.getTranslationString=function(a,b){return gb.$3(a,b,3)
+};gb.getStringsScript=function(a){var b=new ss.StringBuilder();
+var c=Enumerable.from(gb.$6).where(function(f){return f.type===3
+}).select(function(f){return f.key}).distinct().getEnumerator();
+try{while(c.moveNext()){var d=c.current();var e=gb.$3(a,d,3);
+if(ss.isValue(e)){b.append("window.Strings."+aq.toCamel(d)+'="'+ss.replaceAllString(e,'"','\\"')+'";')
+}}}finally{c.dispose()}return b.toString()};gb.getScripts=function(a){return gb.$1(a,5,59)
+};gb.getStyles=function(a){return gb.$1(a,6,32)};gb.getGameOption=function(a,b,c){return gb.$3(a,b+"_"+c,4)
+};gb.getThemeAction=function(a,b,c){return ss.coalesce(gb.$0(a,b+"_"+c,7),0)
+};gb.getOptionalEditorAction=function(a,b){return ss.coalesce(gb.$0(a,b.toString(),8),0)
+};gb.getTemplateVisibility=function(a,b){return ss.coalesce(gb.$0(a,b.toString(),10),0)
+};gb.getPrintAction=function(a,b,c){var d=(ss.isNullOrUndefined(c)?"0":c.toString())+"_"+b.toString();
+return ss.coalesce(gb.$0(a,d,11),0)};gb.getPrintOption=function(a,b,c){return gb.$3(a,b+"_"+c,9)
+};gb.getThemeAudio=function(a,b){return gb.$3(a,b.toString(),12)
+};gb.$0=function(a,b,c){var d=gb.$3(a,b,c);var e={};
+if(ss.Int32.tryParse(d,e)){return e.$}else{return null
+}};gb.$1=function(a,b,c){var d=a.get_page().toString();
+var e=Enumerable.from(gb.$6).where(function(g){return g.type===b&&(ss.referenceEquals(g.key,gb.allPagesSwitchKey)||ss.referenceEquals(g.key,d))
+});var f=e.selectMany(function(g){return gb.$4(a,g)
+}).select(function(g){return(ss.isValue(g)?g.trim():null)
+}).where(function(g){return !ss.isNullOrEmptyString(g)
+});return ss.arrayFromEnumerable(f).join(String.fromCharCode(c))
+};gb.$3=function(a,b,c){var d={};if(a.get_overrides().tryGetValue(b,d)){return d.$
+}var e={};if(gb.$7.tryGetValue(gb.$2(c,b),e)){return Enumerable.from(gb.$4(a,e.$)).firstOrDefault(null,ss.getDefaultValue(String))
+}else{return null}};gb.$4=function(a,b){if(ss.isNullOrUndefined(a)){throw new ss.InvalidOperationException()
+}if(Enumerable.from(b.actions).any()){var c=a.get_experiments();
+for(var d=0;d<c.length;d++){var e={$:c[d]};var f=Enumerable.from(b.actions).where(ss.mkdel({id:e},function(r){return r.id===this.id.$
+}));if(f.any()){return f.select(function(r){return r.value
+}).toArray()}}}if(a.get_isTest()&&!b.isTest){var g=Enumerable.from(b.values).firstOrDefault(function(r){return Enumerable.from(r.rules).where(function(s){return s.type===1
+}).any(function(s){return s.id===a.get_userId()})},ss.getDefaultValue(fK));
+if(ss.isValue(g)){return[g.value]}var h=fs.getKey(b.key);
+if(ss.isValue(h)){return[h.get_untypedDefaultValue().toString()]
+}else{return[b.value]}}for(var i=0;i<b.values.length;
+i++){var j=b.values[i];if(j.rules.length===0){continue
+}var k=Enumerable.from(j.rules).where(function(r){return r.type===1
+});if(k.any()){if(!k.any(function(r){return r.id===a.get_userId()
+})){continue}}var l=Enumerable.from(j.rules).where(function(r){return r.type===2
+});if(l.any()){if(!l.any(function(r){return r.id===a.get_localeId()
+})){continue}}var m=Enumerable.from(j.rules).where(function(r){return r.type===3
+});if(m.any()){if(!m.any(function(r){return r.id===a.get_languageId()
+})){continue}}var n=Enumerable.from(j.rules).where(function(r){return r.type===5
+});if(n.any()){if(!n.any(function(r){return r.id===10000||r.id===a.get_page()
+})){continue}}var o=Enumerable.from(j.rules).where(function(r){return r.type===4
+});if(o.any()){if(!o.any(function(r){return gb.$5(a,r.id)
+})){continue}}var p=Enumerable.from(j.rules).where(function(r){return r.type===6
+});if(p.any()){if(!p.any(function(r){return a.get_templateId()===r.id
+})){continue}}var q=Enumerable.from(j.rules).where(function(r){return r.type===7
+});if(q.any()){if(!q.any(function(r){return a.get_themeId()===r.id
+})){continue}}return[j.value]}return[b.value]};gb.$5=function(a,b){if(a.get_isGuest()){return b===0
+}if(a.get_isBasic()){return b===10}if(a.get_isPro()){return b===16
+}return b===15};gb.$2=function(a,b){return a+"_"+b};
+global.VEL.Wordwall.Global.Server.Switches=gb;var gc=function(){fs.call(this)
+};gc.__typeName="VEL.Wordwall.Global.Server.SwitchKeys";
+global.VEL.Wordwall.Global.Server.SwitchKeys=gc;var gd=function(){this.testConfig=null;
+this.testModel=null;this.testConvertToTemplateId=null;
+this.alternateSoundAssetsXml=null;fn.call(this)};gd.__typeName="VEL.Wordwall.Global.Server.TestGamePageData";
+global.VEL.Wordwall.Global.Server.TestGamePageData=gd;
+var fO=function(){};fO.__typeName="VEL.Wordwall.Global.Server.UnknownSwitchContext";
+global.VEL.Wordwall.Global.Server.UnknownSwitchContext=fO;
+ss.initInterface(ac,aa,{info:null,onAssetLoaded:null});
+ss.initEnum(a5,aa,{initializePage:0,startInteractive:1,loadLeaderboard:2,leaderboardLoaded:3,setFontstack:4,setTheme:5,startGame:6,onDocumentOpened:7,documentOpened:8,populatePage:9,pagePopulated:10,preloadGame:11});
+ss.initEnum(eU,aa,{input:1,blur:2,submit:4,blurOrSubmit:6});
+ss.initEnum(fL,aa,{thisActivity:0,defaultForTemplate:1,revertToDefault:2,revertToAuthor:3});
+ss.initEnum(ge,aa,{ageBand:0,subject:1,topic:2});ss.initEnum(gg,aa,{muteMusic:0,muteSounds:1});
+ss.initEnum(gi,aa,{none:0,lossOfFeatures:1,lossOfAssignments:2,lossOfEditing:3});
+ss.initEnum(gk,aa,{undefined:0,dontNeedNow:11,lacksFeatures:12,tooExpensive:13,confusing:14,technicalIssues:15,badForStudents:16,other:8,refusedAnswer:9,day0_SpecificTask:101,day0_DidntWantToBeCharged:102,day0_JustTryingItOut:103,day0_SubscribedByMistake:104,day0_ComingBackLater:105,notUseful:1,createdEnough:2,timeOfYear:3,lacksFeaturesLegacy:4,tooExpensiveLegacy:5,noLongerTeaching:6,paymentProblem:7,temporary:10});
+ss.initEnum(gm,aa,{undefined:0,notNow_SchoolBreak:1,notNow_CreatedEnough:2,notNow_FinishedTopic:3,features_Templates:4,features_Community:5,features_ClassroomControl:6,features_Multiplayer:7,features_Media:10,features_ImportExport:11,features_CombineActivities:12,features_TrackResults:13,features_Design:14,features_ChangedExisting:15,expensive_Frequency:16,expensive_Alternatives:17,expensive_Value:18,expensive_School:19,confusing_Create:20,confusing_Features:21,confusing_Community:22,confusing_Settings:23,confusing_Share:24,confusing_Navigation:25,technical_Performance:26,technical_Bugs:27,technical_Payment:28,students_Templates:29,students_Styles:30,students_Confused:31,students_Personalise:32,students_Cohort:33,students_Distracting:34,other_Switching:35,other_SecondAccount:36,other:8,refusedAnswer:9,day0Packaging_DayPass:101,day0Packaging_BundleOfActivities:102,day0Packaging_NoneStillCancel:103});
+ss.initEnum(go,aa,{gclid:1,fbclid:2,gbraid:3,wbraid:4});
+ss.initEnum(gq,aa,{signUp:1,accountDetails:2});ss.initEnum(gs,aa,{policyUpdate:1,emailMarketing:2});
+ss.initEnum(gu,aa,{unknown:0,mobile:1,tablet:2,desktop:3,bot:4});
+ss.initEnum(gw,aa,{subscribe:101,_ManualCancel:102,_AutoCancel:103,upgradePlan:104,downgradePlan:105,_AddCard:106,_ChangeCard:107,authorizeCard:108,require3dSecure:109,failedPayment:110,renewalNotice:111,paymentReceived:112,paymentBlocked:113,_SchoolStep4Completed:114,cancel:115,changeToMonthly:116,changeToAnnual:117,changeCard:118,changeCapability:119,clickIndividualFaq:120,beginCheckout:121,successfulPayment:122,pickTemplate:201,createResource:202,editedResource:203,_PlayYourOwn:204,printOrDownload:205,deleteResource:206,shareResource:207,restoreResource:208,makePrivate:209,contentGenerated:210,play10Times:211,deleteFolder:213,restoreFolder:214,createFolder:215,setAssignment:216,loadPrintable:217,changeTheme:218,_Play10Assignment:219,_ChangeBooleanGameOption:220,_ChangeIntegerGameOption:221,shareQrCode:222,shareEmbed:223,playConverted:224,playAssignment:225,duplicateActivity:226,renameResource:227,toggleMusic:228,toggleSound:229,_ChangeBooleanPrintOption:230,_ChangeIntegerPrintOption:231,_ChangeStringPrintOption:232,shareFacebook:234,shareTwitter:235,shareGoogleClassroom:236,shareEmail:237,createActivityButton:238,recolorFolder:239,_CreatedWithImage:241,_CreatedWithSound:242,sharePinterest:243,shareVk:244,changeFontStack:245,printDialogueOpened:246,_PinTemplate:247,leaderboardInteraction:248,_SwitchPrintable:249,editConverted:250,leaderboardRemoveEntry:253,changePrintOption:260,changeGameOption:261,genAI_Generate:251,genAI_Failure:252,genAI_Click:240,genAI_Feedback:259,_GenAI_Import:257,_GenAI_ClickImport:256,_GenAI_FailureImport:258,_GenAI_FailureAssist:255,_GenAI_Assist:254,signUp:301,dailyVisit:302,basicLimitPageVisit:303,basicLimitPageButton:304,googleSignUpStart:305,googleSignUpEnd:306,skipNewUserProfiling:307,_GcAddOnAttachmentDiscovery:401,jsError:501,jobFail:502,unauthorisedUsage:503,pageReferral:550,editorFakeDoorClicked:551,searchFakeDoorClicked:552,leaderboardScrollButtonClicked:553,communitySearch:601,_PlayCommunity:602,bookmarkResource:603,likeResource:604,_ReceiveLike:605,tagResource:606,resourceSelect:607,authorSelect:608,communityEdit:212,communityHome:609,followCreator:610,unfollowCreator:611,viewAssignment:701,exportResult:702,changeDeadline:703,moveResults:704,createResultFolder:705,recolorResultFolder:706,school1SelectPlan:800,school2EnterDetails:801,school3GetQuote:802,school4MakePayment:803,school5StartPlan:804,visitMySchool:805,inviteMyself:806,adminMyself:807,changeAdmin:808,detachSchool:809,detachUser:810,inviteVisit:811,inviteAttach:812,inviteSignUp:813,emailInvoice:814,printInvoice:815,downloadInvoice:816,schoolCardPayment:817,orderByName:900,orderByModified:901,orderByLastPlayed:902,orderByPlays:903,viewAsLargeIcons:904,viewAsSmallIcons:905,viewAsPublic:906,searchActivities:907,moveActivity:908,likedActivitiesFolderClick:909,researchPanelLinkClick:1201,managePaymentsEmailSupportClick:1301,managePaymentsHelpCentreClick:1302,clickResubscribeExpired:1303,duplicateActivityFromResult:1401,createNewActivityFromResult:1402});
+ss.initEnum(gy,aa,{signUp:1,pickTemplateFirstTime:2,createTemplateFirstTime:3,subscribe_Any:4,createFolder:6,viewPrintable:7,guestVisit:9,basicLimit:14,mature:15,communitySearch_UserMatch:16,communitySearch_First:17,openPrintModal:18,noSchool:19,cancellation:20,visitAfterCancellation:21,beginCancellation:22,registeredUserVisit:23,subscribe_New:26,subscribe_Reactivate:27,importFile:28,pickTemplate:29,createTemplate:30,guestVisitResourceFromCommunity:31,createWithGenAi:32,test:666});
+ss.initEnum(gA,aa,{excel:0,csv:1});ss.initEnum(gC,aa,{user:1,locale:2,language:3,tier:4,page:5,template:6,theme:7});
+ss.initEnum(gE,aa,{Boolean:1,Integer:2,String:13,Translations:3,GameOption:4,Script:5,Style:6,Theme:7,OptionalEditor:8,PrintOption:9,Template:10,PrintAction:11,ThemeAudio:12,Test:666});
+ss.initClass(gG,aa,{});ss.initEnum(gI,aa,{unknown:0,reportBug:1,badTranslation:2,suggestImprovement:3,template:5,theme:6,switchTemplate:8,printer:9,page:10,leaderboard:12,generateContent:13,generateSimilar:14,ttsLanguageRequest:15,mergeActivities:16});
+ss.initEnum(gK,aa,{blue:0,grey:1,green:2,yellow:3,orange:4,red:5,purple:6,indigo:7});
+ss.initEnum(gM,aa,{game:1,printable:4});ss.initEnum(gO,aa,{none:0,showAnswers:1,leaderboard:2,restart:4,all:7});
+ss.initEnum(gQ,aa,{none:0,thumbsUp:1,thumbsDown:2});
+ss.initEnum(gS,aa,{unknown:0,text:1,file:2,textAndFile:3});
+ss.initEnum(ab,aa,{allStudents:0,selectedStudents:1});
+ss.initEnum(ad,aa,{none:0,openEnded:1,scored:2});ss.initEnum(a6,aa,{signUpFree:1});
+ss.initEnum(eV,aa,{default$1:0,teacherSharedActivities:1});
+ss.initEnum(fM,aa,{openInSameTab:0,openInNewTab:1,postRequest:2});
+ss.initEnum(gf,aa,{impression:1,engagement:2,dismissal:4,action:6});
+ss.initEnum(gh,aa,{banner:0,popUp:1});ss.initEnum(gj,aa,{teacherClassroom:0,teacherOnline:1,teacherBoth:2,parentGuardian:3,student:4,other:5});
+ss.initEnum(gl,aa,{None:0,ForceOption1:1,DefaultOption1:2,ForceOption2:3,DefaultOption2:4});
+ss.initEnum(gn,aa,{undetermined:0,option1:1,option2:2});
+ss.initEnum(gp,aa,{Unknown:0,Resource:1,Teacher:2,Embed:21,Play:22,Community_Search:3,Community_Tags:27,Community_Examples:28,Home:20,PricePlans:4,PricePlans_School:5,Contact:6,About:18,AboutTemplate:23,Features:24,Account_BasicSignUp:29,Account_LogIn:30,Account_LicenceInvite:31,Account_ActivateKey:32,Account_SignUpWithKey:33,Account_FinishGoogleSignUp:37,Account_SetupYourAccount:39,Result:7,MyActivities:8,MyResults:9,Account_MySchool:10,Account_AccountDetails:11,Account_ChangePassword:34,Account_UserProfile:38,Payment_Subscribe:12,Payment_SchoolPlan:13,Payment_ManagePayments:14,Payment_FailedPayment:15,Payment_Subscribed:35,Payment_CancelSubscription:40,Create_PickTemplate:16,Create_EnterOrEditContent:17,Share_Resource_Modal:25,Assignment_Setup_Modal:26,Assignment_Nudge_In_Share_Modal:41,NpsSurvey:36,Test_Recruit:666,Test_SwitchesOnTestUsers:667,AllPages:10000});
+ss.initEnum(gr,aa,{accountDetails:0,userProfile:1});
+ss.initEnum(gt,aa,{unknown:0,ignored:1,warning:2,active:3});
+ss.initEnum(gv,aa,{None:0,Hide:1,Show:2,SetDefault:3});
+ss.initEnum(gx,aa,{EditProContent:0});ss.initEnum(gz,aa,{Pinterest:0,None:1});
+ss.initEnum(gB,aa,{anonymous:0,enterNames:1,googleClassroom:2,googleClassroomAddOn:3});
+ss.initEnum(gD,aa,{_CommunitySearch:601,resourcePlay:1000,_ResourcePageVisit:233,playConverted:1007,editorSessionStarts:1004,editorSessionEnds:1005,editorValidationFailed:1006,editorFirstScriptEntry:1010,addImageStart:1001,searchImage:1002,uploadImage:1003,addImageComplete:1008,addSoundStart:1011,uploadSound:1012,generateSound:1013,addSoundComplete:1014,pageUniqueLanding:1102,pageVisit:1103});
+ss.initEnum(gF,aa,{none:0,shareModal:1,setAssignment:2,sideBar:3,actionMenu:4});
+ss.initEnum(gH,aa,{Printables:0,SetAssignment:1,AI:2,GameOptions:3,EditContent:4,Community:5,Styles:6});
+ss.initEnum(gJ,aa,{Default:0,Hide:1,Show:2,Discontinue:3,Beta:4,ProOnly:5,StandardOnly:6});
+ss.initClass(gL,aa,{});ss.initEnum(gN,aa,{extraSlow:0,slow:1,normal:2,fast:3});
+ss.initClass(gP,aa,{});ss.initEnum(gR,aa,{None:0,Hide:1,Show:2,Default:3,Promote:4,Demote:5,Replace:6});
+ss.initEnum(gT,aa,{gameOptionsDiscovery:1,resourceTooltips:2});
+ss.initEnum(ae,aa,{duration:0,activityCount:1,billingCadence:2,capabilityId:3,subscriptionAge:4,accountAge:5,marketingConsent:6,localeId:7,languageId:8});
+ss.initEnum(ag,aa,{teacher:0,tutor:1,administrator:2,parent:3,student:4,other:5});
+ss.initEnum(ai,aa,{inPerson:0,online:1,blended:2,other:3});
+ss.initClass(ak,aa,{});ss.initClass(am,aa,{});am.$ctor1.prototype=am.prototype;
+ss.initClass(ao,aa,{});ss.initClass(aq,aa,{});ss.initClass(at,aa,{});
+ss.initClass(av,aa,{});ss.initClass(ax,aa,{});ss.initClass(az,aa,{});
+ss.initClass(aB,aa,{});ss.initClass(aD,aa,{});ss.initClass(aF,aa,{});
+ss.initClass(aH,aa,{});ss.initClass(aJ,aa,{});ss.initClass(aL,aa,{});
+ss.initClass(aN,aa,{});ss.initClass(aP,aa,{});ss.initClass(aR,aa,{});
+ss.initClass(aT,aa,{});ss.initClass(aV,aa,{});ss.initClass(aX,aa,{});
+ss.initClass(aZ,aa,{});ss.initClass(a1,aa,{});ss.initClass(a3,aa,{});
+ss.initClass(af,aa,{});ss.initClass(ah,aa,{});ss.initClass(aj,aa,{});
+ss.initClass(al,aa,{});ss.initClass(an,aa,{});ss.initClass(ap,aa,{});
+ss.initClass(fg,aa,{});ss.initClass(ar,aa,{},fg);ss.initClass(au,aa,{},fg);
+ss.initClass(aS,aa,{});ss.initClass(aw,aa,{},aS);ss.initClass(ay,aa,{get_activityId:function(){return this.$1$1
+},set_activityId:function(a){this.$1$1=a},get_tier:function(){return this.$1$2
+},set_tier:function(a){this.$1$2=a},get_title:function(){return this.$1$3
+},set_title:function(a){this.$1$3=a},get_template:function(){return this.$1$4
+},set_template:function(a){this.$1$4=a},get_instructions:function(){return this.$1$5
+},set_instructions:function(a){this.$1$5=a},get_createIndex:function(){return this.$1$6
+},set_createIndex:function(a){this.$1$6=a},get_shared:function(){return this.$1$7
+},set_shared:function(a){this.$1$7=a},get_deleted:function(){return this.$1$8
+},set_deleted:function(a){this.$1$8=a},get_language:function(){return this.$1$9
+},set_language:function(a){this.$1$9=a},get_locale:function(){return this.$1$10
+},set_locale:function(a){this.$1$10=a},get_words:function(){return this.$1$11
+},set_words:function(a){this.$1$11=a},get_characters:function(){return this.$1$12
+},set_characters:function(a){this.$1$12=a},get_items:function(){return this.$1$13
+},set_items:function(a){this.$1$13=a},get_option:function(){return this.$1$14
+},set_option:function(a){this.$1$14=a},get_texts:function(){return this.$1$15
+},set_texts:function(a){this.$1$15=a},get_images:function(){return this.$1$16
+},set_images:function(a){this.$1$16=a},get_ttsSounds:function(){return this.$1$17
+},set_ttsSounds:function(a){this.$1$17=a},get_fileSounds:function(){return this.$1$18
+},set_fileSounds:function(a){this.$1$18=a},get_bold:function(){return this.$1$19
+},set_bold:function(a){this.$1$19=a},get_super:function(){return this.$1$20
+},set_super:function(a){this.$1$20=a},get_sub:function(){return this.$1$21
+},set_sub:function(a){this.$1$21=a},get_screenshotGuid:function(){return this.$1$22
+},set_screenshotGuid:function(a){this.$1$22=a},get_error:function(){return this.$1$23
+},set_error:function(a){this.$1$23=a}});ss.initClass(aA,aa,{});
+ss.initClass(aE,aa,{});ss.initClass(aG,aa,{});ss.initClass(aI,aa,{});
+ss.initClass(aK,aa,{});ss.initEnum(aM,aa,{topBanner:0,floatingBanner:1});
+ss.initClass(aO,aa,{});ss.initEnum(aQ,aa,{daily:0,untilClicked:1,untilClickedWithReminder:2});
+ss.initClass(aU,aa,{});ss.initClass(aW,aa,{},fg);ss.initClass(aY,aa,{});
+ss.initClass(a0,aa,{});ss.initClass(a2,aa,{},fg);a2.$ctor1.prototype=a2.prototype;
+ss.initClass(a4,aa,{});ss.initClass(a7,aa,{},fg);ss.initClass(a9,aa,{});
+ss.initClass(b1,aa,{});ss.initClass(b3,aa,{});ss.initClass(b5,aa,{});
+ss.initClass(b7,aa,{});ss.initClass(b9,aa,{});ss.initClass(c1,aa,{});
+ss.initClass(c3,aa,{});ss.initClass(c5,aa,{});ss.initClass(c7,aa,{},aS);
+ss.initClass(c9,aa,{});ss.initClass(d1,aa,{});ss.initClass(d3,aa,{});
+ss.initClass(d5,aa,{});ss.initClass(d7,aa,{});ss.initClass(d9,aa,{});
+ss.initClass(eC,aa,{},aG);ss.initEnum(eE,aa,{all:0,small:1,medium:2,large:3});
+ss.initClass(eG,aa,{});ss.initClass(eI,aa,{},fg);eI.$ctor1.prototype=eI.prototype;
+ss.initClass(eK,aa,{});ss.initEnum(eM,aa,{unknown:-1,none:0,scoreAndTime:1,scoreOnly:2,timeOnly:3});
+ss.initClass(eO,aa,{});ss.initClass(eQ,aa,{});ss.initClass(eS,aa,{},fg);
+eS.$ctor1.prototype=eS.prototype;ss.initClass(a8,aa,{});
+ss.initClass(b0,aa,{});ss.initClass(b2,aa,{},fg);ss.initClass(b4,aa,{});
+ss.initClass(b6,aa,{});ss.initClass(b8,aa,{});ss.initClass(c0,aa,{});
+ss.initClass(c2,aa,{});ss.initClass(c4,aa,{});ss.initClass(fe,aa,{});
+ss.initClass(c6,aa,{},fe);ss.initClass(c8,aa,{});ss.initClass(d0,aa,{});
+ss.initClass(d2,aa,{});ss.initClass(d4,aa,{});ss.initClass(d6,aa,{});
+ss.initClass(d8,aa,{});ss.initClass(eB,aa,{});ss.initClass(eD,aa,{});
+ss.initClass(eF,aa,{},aG);ss.initClass(eH,aa,{});ss.initClass(eJ,aa,{});
+ss.initClass(eL,aa,{});ss.initClass(eN,aa,{},fg);ss.initClass(eP,aa,{});
+ss.initClass(eR,aa,{});ss.initClass(eT,aa,{});ss.initClass(eW,aa,{});
+ss.initClass(eY,aa,{});ss.initClass(e0,aa,{});ss.initClass(e2,aa,{});
+ss.initClass(e4,aa,{});ss.initClass(e6,aa,{});ss.initClass(e8,aa,{},c6);
+ss.initClass(fa,aa,{});ss.initClass(fc,aa,{});ss.initClass(fi,aa,{});
+ss.initClass(fk,aa,{},aG);ss.initClass(fm,aa,{});ss.initClass(fp,aa,{});
+ss.initClass(fr,aa,{});ss.initClass(ft,aa,{});ss.initClass(fv,aa,{});
+ss.initClass(fx,aa,{});ss.initClass(fz,aa,{});ss.initClass(fB,aa,{});
+ss.initClass(fD,aa,{});ss.initClass(fF,aa,{});ss.initClass(fH,aa,{});
+ss.initClass(fJ,aa,{});ss.initClass(eX,aa,{});ss.initClass(eZ,aa,{});
+ss.initClass(e1,aa,{});ss.initClass(e3,aa,{});ss.initClass(e7,aa,{});
+ss.initInterface(fT,aa,{get_key:null,get_untypedDefaultValue:null});
+ss.initInterface(fP,aa,{},[fT,ss.makeGenericType(fU,[Boolean])]);
+ss.initClass(e9,aa,{},ss.makeGenericType(fu,[Boolean]),[fT,ss.makeGenericType(fU,[Boolean]),fP]);
+ss.initInterface(fQ,aa,{},[fT,ss.makeGenericType(fU,[ss.Int32])]);
+ss.initClass(fb,aa,{},ss.makeGenericType(fu,[ss.Int32]),[fT,ss.makeGenericType(fU,[ss.Int32]),fQ]);
+ss.initInterface(fR,aa,{},[fT,ss.makeGenericType(fU,[String])]);
+ss.initClass(fd,aa,{},ss.makeGenericType(fu,[String]),[fT,ss.makeGenericType(fU,[String]),fR]);
+ss.initClass(ff,aa,{},ss.makeGenericType(fu,[Boolean]),[fT,ss.makeGenericType(fU,[Boolean]),fP]);
+ss.initClass(fh,aa,{},ss.makeGenericType(fu,[ss.Int32]),[fT,ss.makeGenericType(fU,[ss.Int32]),fQ]);
+ss.initClass(fj,aa,{},ss.makeGenericType(fu,[String]),[fT,ss.makeGenericType(fU,[String]),fR]);
+ss.initClass(f0,aa,{});ss.initClass(fl,aa,{},f0);ss.initClass(fn,aa,{},f0);
+ss.initClass(fo,aa,{},f0);ss.initClass(fq,aa,{});ss.initClass(fs,aa,{});
+ss.initInterface(fS,aa,{get_experiments:null,get_isGuest:null,get_isBasic:null,get_isPro:null,get_isTest:null,get_userId:null,get_localeId:null,get_languageId:null,get_page:null,get_templateId:null,get_themeId:null,get_overrides:null});
+ss.initClass(fw,aa,{get_experiments:function(){return this.$1$1
+},set_experiments:function(a){this.$1$1=a},get_isGuest:function(){return this.$1$2
+},set_isGuest:function(a){this.$1$2=a},get_isBasic:function(){return this.$1$3
+},set_isBasic:function(a){this.$1$3=a},get_isPro:function(){return this.$1$4
+},set_isPro:function(a){this.$1$4=a},get_isTest:function(){return this.$1$5
+},set_isTest:function(a){this.$1$5=a},get_userId:function(){return this.$1$6
+},set_userId:function(a){this.$1$6=a},get_localeId:function(){return this.$1$7
+},set_localeId:function(a){this.$1$7=a},get_languageId:function(){return this.$1$8
+},set_languageId:function(a){this.$1$8=a},get_page:function(){return this.$1$9
+},set_page:function(a){this.$1$9=a},get_templateId:function(){return this.$1$10
+},set_templateId:function(a){this.$1$10=a},get_themeId:function(){return this.$1$11
+},set_themeId:function(a){this.$1$11=a},get_overrides:function(){return this.$1$12
+},set_overrides:function(a){this.$1$12=a}},null,[fS]);
+ss.initClass(fy,aa,{});ss.initClass(fA,aa,{},fn);ss.initClass(fC,aa,{},fn);
+ss.initClass(fE,aa,{});ss.initClass(fG,aa,{});ss.initClass(fI,aa,{});
+ss.initClass(fK,aa,{});ss.initClass(fN,aa,{},f0);ss.initClass(fV,aa,{},f0);
+ss.initClass(fW,aa,{},f0);ss.initClass(fX,aa,{},f0);
+ss.initClass(fY,aa,{},f0);ss.initClass(fZ,aa,{},f0);
+ss.initClass(f1,aa,{},f0);ss.initClass(f2,aa,{},f0);
+ss.initClass(f3,aa,{},fn);ss.initClass(f4,aa,{},f0);
+ss.initClass(f5,aa,{},fn);ss.initClass(f6,aa,{},fn);
+ss.initClass(f7,aa,{},fn);ss.initClass(f8,aa,{},f0);
+ss.initClass(f9,aa,{});ss.initClass(ga,aa,{},f0);ss.initClass(gb,aa,{});
+ss.initClass(gc,aa,{},fs);ss.initClass(gd,aa,{},fn);
+ss.initClass(fO,aa,{get_experiments:function(){return[]
+},get_isGuest:function(){return true},get_isBasic:function(){return false
+},get_isPro:function(){return false},get_isTest:function(){return false
+},get_userId:function(){return 0},get_localeId:function(){return 0
+},get_languageId:function(){return 0},get_page:function(){return 0
+},get_templateId:function(){return 0},get_themeId:function(){return 0
+},get_overrides:function(){return new (ss.makeGenericType(ss.Dictionary$2,[String,String]))()
+}},null,[fS]);ss.setMetadata(eU,{enumFlags:true});ss.setMetadata(gO,{enumFlags:true});
+ss.setMetadata(gf,{enumFlags:true});(function(){gG.codeDefinedTypes=[1,2,13]
+})();(function(){av.myActivitiesItemLimit=500;av.myResultsItemLimit=500
+})();(function(){ax.cdn="//app.cdn.wordwall.net/";ax.blob="//wordwallapp.blob.core.windows.net/"
+})();(function(){az.static$1="static";az.test="test";
+az.about="about";az.imagePreviews="previews"})();(function(){aB.utmSource="utm_source";
+aB.utmMedium="utm_medium";aB.utmCampaign="utm_campaign";
+aB.utmContent="utm_content";aB.utmTerm="utm_term";aB.gclid="gclid";
+aB.fbclid="fbclid";aB.gbraid="gbraid";aB.wbraid="wbraid"
+})();(function(){aD.blob="//wordwallcache.blob.core.windows.net/"
+})();(function(){aF.community="community";aF.exchangeRate="exchange-rates";
+aF.imageSearch="image";aF.prebuild="prebuild";aF.embeddings="embeddings";
+aF.print="print";aF.search="search";aF.siteMap="sitemap"
+})();(function(){aH.basic=10;aH.individual=14;aH.standard=15;
+aH.pro=16;aH.basicPlus=17})();(function(){aJ.liveBitRate=64;
+aJ.maleVoice="male";aJ.femaleVoice="female"})();(function(){aL.categoryEssential="essential";
+aL.categoryFunctional="functional";aL.categoryAnalytics="analytics";
+aL.categoryMarketing="marketing";aL.serviceGoogleClassroom="googleClassroom";
+aL.serviceYouTube="youTube"})();(function(){aN.desktopMinWidth=951
+})();(function(){aP.blob="//wordwalldata.blob.core.windows.net/"
+})();(function(){aR.experimentScreenshots="experiment-screenshots";
+aR.activitySamples="activity-samples";aR.feedback="feedback";
+aR.experimentReports="experiment-reports"})();(function(){aT.one="DEBUG1";
+aT.two="DEBUG2";aT.three="DEBUG3";aT.four="DEBUG4"})();
+(function(){aV.pageVisit=500;aV.pageLanding=100})();
+(function(){aX.fonts="/content/icons/fonts/";aX.themes="/content/icons/themes/";
+aX.printers="/content/icons/printers/";aX.templates="/content/icons/templates/"
+})();(function(){aZ.maxPerType=3;aZ.maxIdLength=25})();
+(function(){a1.minLength=12;a1.maxLength=60;a1.minLetters=1;
+a1.minDigits=1;a1.lettersRegexPattern="\\p{L}";a1.digitsRegexPattern="\\d"
+})();(function(){a3.cdn="//screens.cdn.wordwall.net/";
+a3.blob="//wordwallscreens.blob.core.windows.net/"})();
+(function(){af.contentSoundsVolume=0.25;af.soundEffectsVolume=0.1;
+af.musicVolume=0.05;af.loopingSoundVolume=0.05})();
+(function(){ah.maxAgeBands=3;ah.maxSubjects=3;ah.maxTopics=3
+})();(function(){aj.cdn="//themes.cdn.wordwall.net/";
+aj.blob="//wordwallthemes.blob.core.windows.net/";aj.assetsBlob="//wordwallthemeassets.blob.core.windows.net/";
+aj.containerName="editing-themes";aj.soundsSourceFolder="sounds/src/";
+aj.audioExperimentsSourceFolder="sounds/src/sound-experiments/";
+aj.imagesSourceFolder="images/src/";aj.themeXmlsFolderPattern="xml/{0}/";
+aj.xmlsNamePattern="xml/{0}/{1}/{2}/{3}";aj.audiosXmlName="Audios.xml";
+aj.animationsXmlName="Animations.xml";aj.buildersFolderName="Builders";
+aj.scenesFolderName="Scenes";aj.settingsXmlName="Settings.xml";
+aj.paletteXmlName="Palette.xml";aj.debugXmlName="Debug.xml";
+aj.workNameRegex="^[a-zA-Z0-9]+$";aj.assetNameRegex="^[a-z0-9._/-]+$";
+aj.maxSoundAssetFileSize=512000})();(function(){al.blobDev="//wordwalluserdev.blob.core.windows.net/";
+al.blobLive="//wordwalluser.blob.core.windows.net/";
+al.cdnDev="//wordwalluserdev-eff8heh8e8hxhcc7.z02.azurefd.net/";
+al.cdnLive="//user.cdn.wordwall.net/";al.cdn="//user.cdn.wordwall.net/";
+al.blob="//wordwalluser.blob.core.windows.net/";al.testGuid="00000000000000000000000000000000"
+})();(function(){an.contentModels="content-models";
+an.contentSounds="content-sounds";an.contentImages="content-images";
+an.assignmentGameStates="assignment-gamestates";an.assignmentPlayerStates="assignment-playerstates";
+an.profileImages="profile-images"})();(function(){ap.noTimeout=0;
+ap.$0=100})();(function(){c7.LikedActivitiesFolderId=-1
+})();(function(){eY.AllTemplateValue="All"})();(function(){fv.allStudentsAssigneeMode="ALL_STUDENTS";
+fv.individualStudentsAssigneeMode="INDIVIDUAL_STUDENTS"
+})();(function(){fz.iframeInitializationFailed="idpiframe_initialization_failed";
+fz.popUpClosedByUserErrorCode="popup_closed";fz.accessDenied="access_denied";
+fz.immediateFailed="immediate_failed"})();(function(){eX.submissionStateTurnedIn="TURNED_IN"
+})();(function(){fs.keys=new (ss.makeGenericType(ss.Dictionary$2,[String,fT]))();
+fs.$0=false})();(function(){fy.userInfo="userinfo";
+fy.experiment="expt";fy.device="device";fy.licenseToBeExpiredBanner="licensetobeexpired";
+fy.newSubscriberFeedbackBanner="newsubscriberfeedback";
+fy.referrer="referrer2";fy.switchOverrides="__debug__override";
+fy.cookieConsent="cc_cookie";fy.debugCookieConsentHideFromBots="__debug_cc_hide_from_bots";
+fy.tempData="temp";fy.googleAnalytics="_ga";fy.isTest="test_user"
+})();(function(){f9.login="login10";f9.oAuthCsrf="oauthcsrf"
+})();(function(){gb.$7=new (ss.makeGenericType(ss.Dictionary$2,[String,fI]))();
+gb.$6=[];gb.static$1=new fO();gb.allPagesSwitchKey=(10000).toString()
+})();(function(){gc.userFeedback=new ff("User_Feedback",false);
+gc.allowDuplicateItemsInMatchUp=new ff("Allow_Duplicates_In_Match_Up",false);
+gc.musicDefaultMuteSetting=new fh("Music_Default_Mute_Setting",0);
+gc.whackAMoleDecreaseMinimum=new ff("Whack_A_Mole_Decrease_Minimum",false);
+gc.labeledDiagramHighlightPinsWithLabels=new ff("Labeled_Diagram_Highlight_Pins_With_Labels",false);
+gc.cancelSubscriptionModal=new ff("Cancel_Subscription_Modal",true);
+gc.watchAndMemorizeEditorItemsHeader=new ff("Watch_And_Memorize_Editor_Items_Header",false);
+gc.pairsTurnOverTiming=new ff("Pairs_Turn_Over_Timing",false);
+gc.pairsFinishButton=new ff("Pairs_Finish_Button",false);
+gc.showBasicLimitBlock=new ff("Show_Basic_Limit_Block",true);
+gc.quizEditorNoPoll=new ff("Quiz_Editor_No_Poll",false);
+gc.showBalloonPopLivesOption=new ff("Show_Balloon_Pop_Lives_Option",false);
+gc.speedsortInitialItems=new fh("Speedsort_Initial_Items",1);
+gc.unifiedShareModal=new fh("Unified_Share_Modal",0);
+gc.homepageVideo=new ff("Homepage_Video",false);gc.homepageIndependentResearch=new fh("Homepage_Independent_Research",0);
+gc.notifyForNewSubmissions=new ff("Notify_For_New_Submissions",false);
+gc.updatedPolicyEffectiveDate=new fj("Updated_Policy_Effective_Date",null);
+gc.emailMarketingConsent=new ff("Email_Marketing_Consent",false);
+gc.showFollowCreator=new ff("Show_Follow_Creator",false);
+gc.orderProTemplatesByEcr=new fh("Order_Pro_Templates_By_Ecr",0);
+gc.maxAnswersOnQuiz=new fh("Max_Answers_On_Quiz",6);
+gc.maxGroupsOnGroupSort=new fh("Max_Groups_On_Group_Sort",8);
+gc.maxItemsPerGroupsOnGroupSort=new fh("Max_Items_Per_Groups_On_Group_Sort",20);
+gc.totalMaxItemsOnGroupSort=new fh("Total_Max_Items_On_Group_Sort",40);
+gc.maxItemsOnWheel=new fh("Max_Items_On_Wheel",50);
+gc.maxItemsOnSpellTheWord=new fh("Max_Items_On_Spell_The_Word",20);
+gc.maxItemsOnHangman=new fh("Max_Items_On_Hangman",20);
+gc.maxItemsOnTypeTheAnswer=new fh("Max_Items_On_Type_The_Answer",30);
+gc.genAiAllowFiles=new ff("GenAI_AllowFiles",true);
+gc.genAiGenerateFeedback=new ff("GenAI_Generate_Feedback",false);
+gc.genAiThumbsUpDown=new ff("GenAI_Thumbs_Up_Down",false);
+gc.genAiMoreTemplates=new ff("GenAI_More_Templates",false);
+gc.testUserDefault=new fh("Test_User_Default",0);gc.editorFakeDoorForUnsupportedAudio=new ff("Editor_Fake_Door_For_Unsupported_Audio",false);
+gc.allowCompleteTheSentenceSounds=new ff("Allow_Complete_The_Sentence_Description_Sounds",false);
+gc.signUpCtaText=new fj("Sign_Up_Cta_Text",null);gc.gameOptionsDiscovery=new ff("Game_Options_Discovery",false);
+gc.resourceSignUpModalVisualUpdate=new ff("Resource_Sign_Up_Modal_Visual_Update",false);
+gc.resourceProactiveSignUpModal=new ff("Resource_Proactive_Sign_Up_Modal",false);
+gc.matchUpEditorPlaceholders=new ff("Match_Up_Editor_Placeholders",false);
+gc.showResourceTutorial=new ff("Show_Resource_Tutorial",false);
+gc.proUpgradeLink=new fh("Pro_Upgrade_Link",0);gc.improvedEditorMinItemsValidation=new ff("Improved_Editor_Min_Items_Validation",false);
+gc.ttsLanguageRequests=new ff("Tts_Language_Requests",false);
+gc.useAltEditContentText=new ff("Use_Alt_Edit_Content_Text",false);
+gc.coppaFerpaEffectiveDate=new fj("Coppa_Ferpa_Effective_Date",null);
+gc.matchUpAboutTemplatePageSeoVariant=new ff("Match_Up_About_Template_Page_Seo_Variant",false);
+gc.matchUpAboutTemplatePageMetadataVariant=new ff("Match_Up_About_Template_Page_Metadata_Variant",false);
+gc.bookmarkText=new fh("Bookmark_Text",0);gc.assignmentNudgeInShareModal=new ff("Assignment_Nudge_In_Share_Modal",false);
+gc.showLikedActivitiesOnCommunity=new ff("Show_Liked_Activities_On_Community",false);
+gc.showSwitchTemplateSafetyMessage=new ff("Show_Switch_Template_Safety_Message",false);
+gc.showResultInsightsPanel=new ff("Show_Results_Insights_Panel",false);
+gc.fakeDoorForMergingActivities=new ff("Fake_Door_For_Merging_Activities",false);
+gc.showLeaderboardScrollButton=new ff("Show_Leaderboard_Scroll_Button",false);
+gc.enableNotificationSystem=new ff("Enable_Notification_System",true)
+})()})();

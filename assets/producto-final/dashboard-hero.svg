@@ -1,0 +1,18 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder dashboard hero</title>
+  <desc id="desc">Ilustraci�n temporal para el dashboard Wordwall del producto final.</desc>
+  <rect width="720" height="520" rx="42" fill="#CFECFF"/>
+  <circle cx="612" cy="82" r="72" fill="#FFD25D"/>
+  <circle cx="98" cy="430" r="86" fill="#FF8F2F" opacity=".24"/>
+  <rect x="82" y="86" width="556" height="348" rx="30" fill="white" stroke="#1769C2" stroke-width="8"/>
+  <rect x="126" y="136" width="170" height="116" rx="18" fill="#2B9BF4"/>
+  <rect x="320" y="136" width="170" height="116" rx="18" fill="#FF8F2F"/>
+  <rect x="514" y="136" width="70" height="116" rx="18" fill="#7D5CFF"/>
+  <rect x="126" y="278" width="170" height="106" rx="18" fill="#20BF7A"/>
+  <rect x="320" y="278" width="264" height="106" rx="18" fill="#08224A"/>
+  <path d="M171 200h80M365 194h80M157 331h108M364 331h174" stroke="white" stroke-width="16" stroke-linecap="round" opacity=".9"/>
+  <path d="M216 176l18 18-18 18-18-18 18-18z" fill="white"/>
+  <circle cx="405" cy="194" r="26" fill="white" opacity=".95"/>
+  <path d="M502 320l18 34 37-62" stroke="#FFD25D" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="360" y="474" fill="#08224A" font-family="Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle">Reemplazar: dashboard-hero.svg/png</text>
+</svg>

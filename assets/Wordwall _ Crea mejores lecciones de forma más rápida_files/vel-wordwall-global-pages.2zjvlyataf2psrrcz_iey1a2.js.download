@@ -1,0 +1,812 @@
+(function(){var K={};global.VEL=global.VEL||{};global.VEL.Wordwall=global.VEL.Wordwall||{};
+global.VEL.Wordwall.Global=global.VEL.Wordwall.Global||{};
+global.VEL.Wordwall.Global.Pages=global.VEL.Wordwall.Global.Pages||{};
+global.VEL.Wordwall.Global.Pages.About=global.VEL.Wordwall.Global.Pages.About||{};
+global.VEL.Wordwall.Global.Pages.Account=global.VEL.Wordwall.Global.Pages.Account||{};
+global.VEL.Wordwall.Global.Pages.Community=global.VEL.Wordwall.Global.Pages.Community||{};
+global.VEL.Wordwall.Global.Pages.Features=global.VEL.Wordwall.Global.Pages.Features||{};
+global.VEL.Wordwall.Global.Pages.Home=global.VEL.Wordwall.Global.Pages.Home||{};
+global.VEL.Wordwall.Global.Pages.NpsSurvey=global.VEL.Wordwall.Global.Pages.NpsSurvey||{};
+global.VEL.Wordwall.Global.Pages.Payment=global.VEL.Wordwall.Global.Pages.Payment||{};
+global.VEL.Wordwall.Global.Pages.Payment.Individual=global.VEL.Wordwall.Global.Pages.Payment.Individual||{};
+global.VEL.Wordwall.Global.Pages.Payment.School=global.VEL.Wordwall.Global.Pages.Payment.School||{};
+ss.initAssembly(K,"VEL.Wordwall.Global.Pages");var M=function(){};
+M.__typeName="VEL.Wordwall.Global.Pages.About.AboutIndexPage";
+global.VEL.Wordwall.Global.Pages.About.AboutIndexPage=M;
+var O=function(){};O.__typeName="VEL.Wordwall.Global.Pages.About.AboutTemplatePage";
+global.VEL.Wordwall.Global.Pages.About.AboutTemplatePage=O;
+var Q=function(){this.$1=null;this.$0=null;this.$3=null;
+this.$4=0;this.$2=null};Q.__typeName="VEL.Wordwall.Global.Pages.Account.$0";
+Q.$0=function(a,b,c,d,e){this.$1=null;this.$0=null;
+this.$3=null;this.$4=0;this.$2=null;this.$1=a;this.$0=b;
+this.$3=c;this.$4=d;this.$2=e};Q.getDefaultValue=function(){return new Q()
+};var S=function(){this.$5=null;this.$e=null;this.$6=null;
+this.$d=null;this.$a=null;this.$b=null;this.$c=null;
+this.$7=null;this.$9=null;this.$8=null;U.call(this)
+};S.__typeName="VEL.Wordwall.Global.Pages.Account.AccountDetailsPage";
+global.VEL.Wordwall.Global.Pages.Account.AccountDetailsPage=S;
+var U=function(){this.$0=null};U.__typeName="VEL.Wordwall.Global.Pages.Account.AccountPage";
+U.populateAttributionFields=function(){var a=VEL.Wordwall.Global.Helpers.UserAttributionHelper.get();
+if(ss.isNullOrUndefined(a)){return}U.$0(".js-attribution-captured-at",a.CapturedAt);
+U.$0(".js-utm-source",a.UtmSource);U.$0(".js-utm-medium",a.UtmMedium);
+U.$0(".js-utm-campaign",a.UtmCampaign);U.$0(".js-utm-content",a.UtmContent);
+U.$0(".js-utm-term",a.UtmTerm);U.$0(".js-click-id-type",(ss.isValue(a.ClickIdType)?ss.unbox(a.ClickIdType).toString():null));
+U.$0(".js-click-id-value",a.ClickIdValue)};U.$0=function(a,b){if(ss.isNullOrEmptyString(b)){return
+}var c=new VEL.Wordwall.Global.Controls.Input.$ctor1(a);
+if(c.get_exists()){c.set_value(b)}};U.initializeEmailMarketing=function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-email-marketing");
+if(!a.get_exists()){return}if(VEL.Wordwall.Global.Server.Switches.getBoolean(VEL.Wordwall.Global.Server.Switches.static$1,VEL.Wordwall.Global.Server.SwitchKeys.emailMarketingConsent)){a.set_isVisible(true)
+}else{a.remove()}};global.VEL.Wordwall.Global.Pages.Account.AccountPage=U;
+var W=function(){this.$5=null;this.$3=null;this.$4=null;
+this.$2=null;this.$7=null;this.$6=null;U.call(this)
+};W.__typeName="VEL.Wordwall.Global.Pages.Account.ActivateKeyPage";
+global.VEL.Wordwall.Global.Pages.Account.ActivateKeyPage=W;
+var Y=function(){U.call(this)};Y.__typeName="VEL.Wordwall.Global.Pages.Account.FinishGoogleSignUpPage";
+global.VEL.Wordwall.Global.Pages.Account.FinishGoogleSignUpPage=Y;
+var aa=function(){this.$7=null;this.$b=null;this.$a=null;
+this.$6=null;this.$4=null;this.$3=null;this.$5=null;
+this.$9=false;this.$8=null;U.call(this)};aa.__typeName="VEL.Wordwall.Global.Pages.Account.LicenceInvitePage";
+global.VEL.Wordwall.Global.Pages.Account.LicenceInvitePage=aa;
+var ac=function(){this.$5=null;this.$7=null;this.$8=null;
+this.$9=null;this.$a=null;this.$4=null;this.$6=null;
+U.call(this)};ac.__typeName="VEL.Wordwall.Global.Pages.Account.LocalizationPage";
+global.VEL.Wordwall.Global.Pages.Account.LocalizationPage=ac;
+var ae=function(){U.call(this)};ae.__typeName="VEL.Wordwall.Global.Pages.Account.LoginPage";
+global.VEL.Wordwall.Global.Pages.Account.LoginPage=ae;
+var af=function(){this.$d=null;U.call(this)};af.__typeName="VEL.Wordwall.Global.Pages.Account.MySchoolPage";
+global.VEL.Wordwall.Global.Pages.Account.MySchoolPage=af;
+var ag=function(){ak.call(this)};ag.__typeName="VEL.Wordwall.Global.Pages.Account.SetupYourAccountPage";
+global.VEL.Wordwall.Global.Pages.Account.SetupYourAccountPage=ag;
+var ah=function(){this.$4=null;this.$3=null;this.$5=null;
+U.call(this)};ah.__typeName="VEL.Wordwall.Global.Pages.Account.SignUp1Page";
+global.VEL.Wordwall.Global.Pages.Account.SignUp1Page=ah;
+var ai=function(){this.$a=null;this.$f=null;this.$9=null;
+this.$b=null;this.$h=null;this.$c=null;this.$g=null;
+this.$i=new VEL.Wordwall.Global.Helpers.Validation.FormValidator();
+this.$d=false;this.$e=false;U.call(this)};ai.__typeName="VEL.Wordwall.Global.Pages.Account.SignUp2Page";
+global.VEL.Wordwall.Global.Pages.Account.SignUp2Page=ai;
+var aj=function(){};aj.__typeName="VEL.Wordwall.Global.Pages.Account.SubscribedPage";
+global.VEL.Wordwall.Global.Pages.Account.SubscribedPage=aj;
+var ak=function(){this.$d=null;this.$b=null;this.$e=null;
+this.$9=null;this.$a=null;this.submit=null;this.form=null;
+this.$7=null;this.$c=null;this.$8=null;this.isSubmitting=false;
+U.call(this)};ak.__typeName="VEL.Wordwall.Global.Pages.Account.UserProfilePage";
+global.VEL.Wordwall.Global.Pages.Account.UserProfilePage=ak;
+var al=function(){this.$f=null;this.$m=null;this.$q=null;
+this.$h=null;this.$p=null;this.$o=0;this.$n=0;this.$g=false;
+this.$k=0;this.$l=null;this.$j=null;this.$r=null;this.$i=null
+};al.__typeName="VEL.Wordwall.Global.Pages.Community.SearchPage";
+al.$0=function(a){var b=new VEL.Wordwall.Global.Controls.SocialSharingBar(new VEL.Wordwall.Global.Controls.Control.$ctor1(a));
+b.add_shareNative(al.$4);b.add_shareByFacebook(al.$2);
+b.add_shareByPinterest(al.$3)};al.$4=function(a,b){VEL.Wordwall.Global.Helpers.NativeShareHelper.share(a,b,b)
+};al.$2=function(a,b){al.$1(234,VEL.Wordwall.Global.Helpers.SocialMediaHelper.createFacebookShareLink(a,b))
+};al.$3=function(a,b){al.$1(243,VEL.Wordwall.Global.Helpers.SocialMediaHelper.createPinterestShareLink(a,b))
+};al.$1=function(a,b){VEL.Wordwall.Global.Helpers.EventsHelper.addShareEvent(a,4,window.pageData.query);
+VEL.Wordwall.Global.Modals.Modal.openPopup(b)};global.VEL.Wordwall.Global.Pages.Community.SearchPage=al;
+var am=function(){this.$u=null;this.$t=null;al.call(this)
+};am.__typeName="VEL.Wordwall.Global.Pages.Community.TagsPage";
+global.VEL.Wordwall.Global.Pages.Community.TagsPage=am;
+var an=function(){};an.__typeName="VEL.Wordwall.Global.Pages.Features.FeaturesPage";
+global.VEL.Wordwall.Global.Pages.Features.FeaturesPage=an;
+var ao=function(){this.$4=0;this.$3=null};ao.__typeName="VEL.Wordwall.Global.Pages.Home.HomePage";
+global.VEL.Wordwall.Global.Pages.Home.HomePage=ao;var ap=function(){this.$2=null;
+this.$4=null;this.$3=null};ap.__typeName="VEL.Wordwall.Global.Pages.NpsSurvey.NpsSurveyIndexPage";
+global.VEL.Wordwall.Global.Pages.NpsSurvey.NpsSurveyIndexPage=ap;
+var aq=function(){};aq.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.CancellationHelper";
+aq.sendCancelReasonRequest=function(a,b,c,d,e,f){var g={};
+g.message=c;g.reason=a;g.subReason=b;g.didCancel=d;
+$.ajax({type:"POST",url:"/FeedbackAjax/ReportCancellation",data:g,success:function(h,i,j){var k=ss.cast(h,VEL.Wordwall.Global.Json.CancelFeedbackJson);
+e(k.CancelFeedbackId)},error:function(h,i,j){f()}})
+};aq.sendCancelDay0ReasonRequest=function(a,b,c,d,e,f,g){var h={};
+h.message=ss.coalesce(d,"");h.reason=a;h.subReason=b;
+h.didCancel=e;h.isDay0=true;if(ss.isValue(c)){h.reminderOptIn=ss.unbox(c)
+}$.ajax({type:"POST",url:"/FeedbackAjax/ReportCancellation",data:h,success:function(i,j,k){var l=ss.cast(i,VEL.Wordwall.Global.Json.CancelFeedbackJson);
+f(l.CancelFeedbackId)},error:function(i,j,k){g()}})
+};aq.showCancelRequestErrorAndReload=function(){VEL.Wordwall.Global.Shell.displayErrorMessage("Strings.global_ErrorPrefixStrings.account_ManagePayments_CancelSubmitError",true,0);
+window.setTimeout(function(){window.location.reload()
+},400)};global.VEL.Wordwall.Global.Pages.Payment.Individual.CancellationHelper=aq;
+var ar=function(){this.$2=null};ar.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.CancelSubscriptionPage";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.CancelSubscriptionPage=ar;
+var at=function(){this.$g=null;this.$f=null;this.$j=null;
+this.$h=null;this.$i=null;au.call(this)};at.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.ManagePaymentsPage";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.ManagePaymentsPage=at;
+var au=function(){this.card=null;this.stripe=null};
+au.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.PaymentPage";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.PaymentPage=au;
+var L=function(){this.$d=null;this.$c=null;this.$3=null;
+this.$a=null;this.$h=null;this.$b=null;this.$4=null;
+this.$6=null;this.$e=null;this.$5=null;this.$7=null;
+this.$j=null;this.$g=null;this.$i=null;this.$f=null;
+this.$8=false;this.$9=false;U.call(this)};L.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage=L;
+var N=function(){this.$1$1=false;this.$1$2=false;this.$1$3=null
+};N.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$ButtonState";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$ButtonState=N;
+var P=function(){};P.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$ButtonStateMap";
+P.$0=function(a,b,c){return a+":"+b+":"+c};P.get=function(a,b,c){var d=(a?"pro":"standard");
+var e=(b?"annual":"monthly");var f=P.$0(d,e,c);return P.$4.get_item(f)
+};global.VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$ButtonStateMap=P;
+var R=function(){this.$1$1=null;this.$1$2=null};R.__typeName="VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$PageButtonState";
+global.VEL.Wordwall.Global.Pages.Payment.Individual.PricePlanPage$PageButtonState=R;
+var T=function(){this.$w=false;this.$u=null;this.$D=null;
+this.$s=null;this.$F=null;this.$r=null;this.$E=null;
+this.$K=0;this.$t=0;this.$v=null;this.$y=null;this.$x=null;
+this.$J=null;this.$C=null;this.$L=null;this.$G=null;
+this.$I=null;this.$H=null;this.$z=null;this.$B=null;
+this.$A=null;L.call(this)};T.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolPlanPage";
+T.$0=function(a,b,c,d,e){if(e!==d){b.set_text(d.toString());
+c.set_text(e.toString());a.set_isVisible(true)}else{a.set_isVisible(false)
+}};global.VEL.Wordwall.Global.Pages.Payment.School.SchoolPlanPage=T;
+var V=function(){this.$7=false;this.$a=null;this.$6=null;
+this.$j=null;this.$8=null;this.$i=null;this.$h=null;
+this.$d=null;this.$e=null;this.$b=null;this.$c=null;
+this.$9=null;this.$g=null;this.$f=null;ad.call(this)
+};V.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolStep2Page";
+global.VEL.Wordwall.Global.Pages.Payment.School.SchoolStep2Page=V;
+var X=function(){ad.call(this)};X.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolStep3Page";
+global.VEL.Wordwall.Global.Pages.Payment.School.SchoolStep3Page=X;
+var Z=function(){this.$j=false;this.$x=true;this.$v=null;
+this.$f=null;this.$k=null;this.$h=null;this.$t=null;
+this.$u=null;this.$i=null;this.$w=null;this.$p=null;
+this.$n=null;this.$l=null;this.$o=null;this.$m=null;
+this.$s=null;this.$r=null;this.$q=null;this.$g=null;
+ad.call(this)};Z.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolStep4Page";
+global.VEL.Wordwall.Global.Pages.Payment.School.SchoolStep4Page=Z;
+var ab=function(){};ab.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolStep5Page";
+global.VEL.Wordwall.Global.Pages.Payment.School.SchoolStep5Page=ab;
+var ad=function(){U.call(this)};ad.__typeName="VEL.Wordwall.Global.Pages.Payment.School.SchoolStepPage";
+global.VEL.Wordwall.Global.Pages.Payment.School.SchoolStepPage=ad;
+ss.initClass(M,K,{initialize:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-team-videos-carousel");
+var b=JSON.parse('{"0": { "slideBy": 1, "items": 1 }}');
+this.$0(a.get_domObject(),".js-team-container",b,ss.mkdel(this,this.$1));
+var c=(new VEL.Wordwall.Global.Controls.Controls(".js-team-videos-card")).getEach();
+for(var d=0;d<c.length;d++){var e={$:c[d]};var f={$:e.$.find(VEL.Wordwall.Global.Controls.Control).call(e.$,".js-btn-video-play")};
+var g=e.$.find(VEL.Wordwall.Global.Controls.Control).call(e.$,".js-btn-video-pause");
+var h=e.$.find(VEL.Wordwall.Global.Controls.Control).call(e.$,"video");
+var i=h.get_element();var j={$:ss.safeCast(i,ss.isValue(i)&&(ss.isInstanceOfType(i,Element)&&i.tagName==="VIDEO"))};
+f.$.onClick(ss.mkdel({videoElement:j},function(){this.videoElement.$.play()
+}),false,true);g.onClick(ss.mkdel({videoElement:j},function(){this.videoElement.$.pause()
+}),false,true);j.$.addEventListener("play",ss.mkdel({videoCard:e,playButton:f},function(){if(!this.videoCard.$.hasClass("in-pause")){var k=this.videoCard.$.find(VEL.Wordwall.Global.Controls.Control).call(this.videoCard.$,".js-video-cover");
+k.get_domObject().hide()}this.playButton.$.set_isVisible(false);
+this.videoCard.$.removeClass("in-pause");this.videoCard.$.addClass("in-playing")
+}));j.$.addEventListener("pause",ss.mkdel({playButton:f,videoCard:e},function(){this.playButton.$.set_isVisible(true);
+this.videoCard.$.addClass("in-pause")}))}new VEL.Wordwall.Global.Controls.Buttons(".js-read-more-button",function(k){var l=k.get_domObject().parent();
+k.set_isVisible(false);(new VEL.Wordwall.Global.Controls.Control.$ctor3(l,".js-read-more-content")).set_isVisible(true);
+(new VEL.Wordwall.Global.Controls.Control.$ctor3(l,".js-read-less-button")).set_isVisible(true)
+},null);new VEL.Wordwall.Global.Controls.Buttons(".js-read-less-button",function(k){var l=k.get_domObject().parent();
+k.set_isVisible(false);(new VEL.Wordwall.Global.Controls.Control.$ctor3(l,".js-read-more-content")).set_isVisible(false);
+(new VEL.Wordwall.Global.Controls.Control.$ctor3(l,".js-read-more-button")).set_isVisible(true)
+},null)},$1:function(){var a=(new VEL.Wordwall.Global.Controls.Controls(".js-team-videos-card")).getEach();
+for(var b=0;b<a.length;b++){var c=a[b];c.removeClass("in-playing");
+c.removeClass("in-pause");var d=c.find(VEL.Wordwall.Global.Controls.Control).call(c,"video").get_element();
+var e=ss.safeCast(d,ss.isValue(d)&&(ss.isInstanceOfType(d,Element)&&d.tagName==="VIDEO"));
+e.pause();e.currentTime=0;var f=c.find(VEL.Wordwall.Global.Controls.Control).call(c,".js-video-cover");
+f.get_domObject().show();var g=c.find(VEL.Wordwall.Global.Controls.Control).call(c,".js-btn-video-play");
+g.set_isVisible(true)}},$0:function(a,b,c,d){a.owlCarousel({autoWidth:false,loop:false,rewind:false,dots:false,nav:true,navSpeed:100,autoRefresh:true,responsiveBaseElement:b,responsive:c,navText:(VEL.Wordwall.Global.Helpers.DeviceHelper.isRTL()?[VEL.Wordwall.Global.Helpers.HtmlTemplate.toString("feed_next_template",[]),VEL.Wordwall.Global.Helpers.HtmlTemplate.toString("feed_prev_template",[])]:[VEL.Wordwall.Global.Helpers.HtmlTemplate.toString("feed_prev_template",[]),VEL.Wordwall.Global.Helpers.HtmlTemplate.toString("feed_next_template",[])]),onTranslate:d,rtl:false,items:null,margin:20})
+}});ss.initClass(O,K,{initialize:function(){if(window.pageData.templateId!==3){return
+}if(VEL.Wordwall.Global.Server.Switches.getBoolean(VEL.Wordwall.Global.Server.Switches.static$1,VEL.Wordwall.Global.Server.SwitchKeys.matchUpAboutTemplatePageSeoVariant)){return
+}(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-match-content-panel")).removeClass("match-seo-variant");
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-examples-title")).set_text(Strings.template_Match_Name);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-examples-description-match-seo-variant")).get_domObject().replaceWith($("<h2 class='examples-description'></h2>").text(Strings.template_Match_Description));
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-about-cta")).insertBefore(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-other-templates-heading"));
+var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-cta-button");
+if(window.pageData.userId===0){a.set_text(Strings.about_Template_SignUpToCreate);
+a.addClass("white hide-on-mobile")}else{a.set_text(Strings.about_Template_CreateWithTemplate)
+}}});ss.initClass(Q,K,{getHashCode:function(){var a=(this.$1?ss.getHashCode(this.$1):0);
+a=a*397^(this.$0?ss.getHashCode(this.$0):0);a=a*397^(this.$3?ss.getHashCode(this.$3):0);
+a=a*397^this.$4;a=a*397^(this.$2?ss.getHashCode(this.$2):0);
+return a},equals:function(a){if(!ss.isInstanceOfType(a,Q)){return false
+}return ss.equals(this.$1,a.$1)&&ss.equals(this.$0,a.$0)&&ss.equals(this.$3,a.$3)&&this.$4===a.$4&&ss.equals(this.$2,a.$2)
+}});Q.$0.prototype=Q.prototype;Q.__class=false;ss.initClass(U,K,{initialize:function(){this.$0=new VEL.Wordwall.Global.Controls.IntSelect(".js-locale-select",null,ss.mkdel(this,this.onLocaleChange));
+new VEL.Wordwall.Global.Controls.GoogleButton(".js-google-button")
+},onLocaleChange:function(a){(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag")).set_isVisible(false);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag-"+a)).set_isVisible(true);
+this.$0.blur()}});ss.initClass(S,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$5=new VEL.Wordwall.Global.Controls.Input.$ctor1("#email");
+this.$e=new VEL.Wordwall.Global.Controls.Input.$ctor1("#username_input");
+this.$6=new VEL.Wordwall.Global.Controls.Input.$ctor1("#forename_input");
+this.$d=new VEL.Wordwall.Global.Controls.Input.$ctor1("#surname_input");
+this.$a=new VEL.Wordwall.Global.Controls.Input.$ctor1("#profile_image_input");
+this.$b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#remove_profile_image_input");
+this.$c=new VEL.Wordwall.Global.Controls.Button.$ctor1(".js-account-submit-btn");
+new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-use-default",ss.mkdel(this,this.$3),true);
+this.$8=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-image-preview");
+this.$7=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-image-input-wrapper input[type=file]");
+this.$7.onChange(ss.mkdel(this,this.$4),false);this.$9=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-image-input-wrapper input[type=hidden]");
+this.$5.setupValidation(ss.mkdel(this,this.$2),true,null,true,500);
+this.$6.setupValidation(ss.mkdel(this,this.$2),true,null,true,500);
+this.$d.setupValidation(ss.mkdel(this,this.$2),true,null,true,500);
+this.$a.setupValidation(ss.mkdel(this,this.$2),true,null,true,500);
+this.$b.setupValidation(ss.mkdel(this,this.$2),true,null,true,500)
+},$2:function(){var a=this.$5.get_hasValidationError()||this.$e.get_hasValidationError()||this.$6.get_hasValidationError()||this.$d.get_hasValidationError();
+if(a){this.$c.disable()}else{this.$c.enable()}},$4:function(){this.$9.set_value("0");
+var a=this.$7.get_files();if(a.length===0){this.$8.empty();
+this.$7.validate(4)}else{var b=a[0];this.$8.empty();
+var c=document.createElement("span");var d=ss.cast(c,ss.isValue(c)&&(ss.isInstanceOfType(c,Element)&&c.tagName==="SPAN"));
+d.textContent=b.name;this.$8.append(new VEL.Wordwall.Global.Controls.Control(d));
+var e=VEL.Wordwall.Global.Controls.Image.create(URL.createObjectURL(b),null,null);
+this.$8.append(e);this.$1()}this.$2()},$3:function(){this.$9.set_value("1");
+this.$9.get_domObject().trigger("change");this.$7.set_value("");
+this.$8.empty();var a=VEL.Wordwall.Global.Controls.Image.create(this.$8.getData("image-url",null,false),null,null);
+this.$8.append(a);this.$1()},$1:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-image-validation");
+this.$8.append(a);a.set_isVisible(true);this.$2()}},U);
+ss.initClass(W,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$5=new VEL.Wordwall.Global.Controls.Input.$ctor1("#name_input");
+this.$3=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_line_1_input");
+this.$4=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_line_2_input");
+this.$2=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_city_input");
+this.$7=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_state_input");
+this.$6=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_postalcode_input");
+this.$5.setupValidation(null,false,null,true,500);this.$3.setupValidation(null,false,null,true,500);
+this.$4.setupValidation(ss.mkdel(this,function(){this.$4.validate((this.$4.get_isEmpty()?3:1))
+}),false,null,true,500);this.$2.setupValidation(null,false,null,true,500);
+this.$7.setupValidation(null,false,null,true,500);this.$6.setupValidation(null,false,null,true,500);
+this.$1()},onLocaleChange:function(a){U.prototype.onLocaleChange.call(this,a);
+var b=new VEL.Wordwall.Global.Controls.Form(".js-address-form",null);
+b.submitByAjax(ss.mkdel(this,function(c){b.set_html(ss.cast(c,String));
+this.$1()}),null,null)},$1:function(){var a=!this.$5.get_isEmpty()||!this.$3.get_isEmpty()||!this.$4.get_isEmpty()||!this.$2.get_isEmpty()||!this.$7.get_isEmpty()||!this.$6.get_isEmpty();
+if(a){this.$5.validate(0);this.$3.validate(0);this.$4.validate(0);
+this.$2.validate(0);this.$7.validate(0);this.$6.validate(0)
+}}},U);ss.initClass(Y,K,{initialize:function(){U.prototype.initialize.call(this);
+U.populateAttributionFields();U.initializeEmailMarketing()
+}},U);ss.initClass(aa,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$8=new VEL.Wordwall.Global.Controls.Form("form",null);
+this.$7=new VEL.Wordwall.Global.Controls.Input.$ctor1("#forename_input");
+this.$b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#surname_input");
+this.$6=new VEL.Wordwall.Global.Controls.Input.$ctor1("#email_input");
+this.$a=new VEL.Wordwall.Global.Controls.Input.$ctor1("#password_input");
+this.$4=new VEL.Wordwall.Global.Controls.Checkbox.$ctor1("#attach_checkbox",null);
+this.$5=new VEL.Wordwall.Global.Controls.Checkbox.$ctor1("label[for='attach_checkbox']",null);
+this.$3=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-attach-account",ss.mkdel(this,this.$2),true);
+this.$7.setupValidation(null,false,null,true,500);this.$b.setupValidation(null,false,null,true,500);
+this.$9=!this.$a.get_exists();if(this.$9){this.$6.setupValidation(ss.mkdel(this,function(){this.$6.validate(1)
+}),false,null,true,500)}else{this.$6.setupValidation(ss.mkdel(this,this.$1),false,null,true,500)
+}},$1:function(){this.$9=false;if(this.$6.get_isEmpty()){this.$6.validate(3)
+}else{if(VEL.Wordwall.Global.Helpers.ValidityHelper.isEmail(this.$6.get_value())){$.ajax({url:"/accountajax/isemailtaken?email="+encodeURIComponent(this.$6.get_value()),success:ss.mkdel(this,function(a,b,c){if(VEL.Wordwall.Global.Helpers.AjaxHelper.isTrue(a)){this.$6.validate(1);
+this.$9=true}else{this.$6.validate(2)}})})}else{this.$6.validate(2)
+}}},$2:function(){var a=this.$4.get_isChecked();if(!a||!this.$9){VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.validation_HasErrors,true,0);
+if(!a){this.$5.CSS$1("color","#ff0000")}return}this.$8.submit(false)
+}},U);ss.initClass(ac,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$5=new VEL.Wordwall.Global.Controls.Buttons(".js-language-item",ss.mkdel(this,this.$1),null);
+this.$7=new VEL.Wordwall.Global.Controls.Buttons(".js-locale-item",ss.mkdel(this,this.$2),null);
+this.$8=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-location-more",ss.mkdel(this,this.$3),true);
+this.$a=new VEL.Wordwall.Global.Controls.IntSelect(".js-timezone",null,ss.mkdel(this,function(a){this.$9.enable()
+}));this.$9=new VEL.Wordwall.Global.Controls.Button.$ctor1(".js-submit-button");
+this.$4=new VEL.Wordwall.Global.Controls.Input.$ctor1("input[name=LanguageId]");
+this.$6=new VEL.Wordwall.Global.Controls.Input.$ctor1("input[name=LocaleId]")
+},$1:function(a){this.$4.set_value(a.getData("language",null,false));
+this.$5.removeClass("selected");a.addClass("selected");
+this.$9.enable()},$2:function(a){this.$6.set_value(a.getData("locale",null,false));
+this.$a.set_value(a.getDataAsInt("timezone",0,false));
+this.$7.removeClass("selected");a.addClass("selected");
+this.$9.enable()},$3:function(){this.$7.set_isVisible(true);
+this.$8.set_isVisible(false)}},U);ss.initClass(ae,K,{initialize:function(){U.prototype.initialize.call(this);
+if(!window.matchMedia("(pointer: coarse)").matches&&!VEL.Wordwall.Global.Helpers.DeviceHelper.isInternetExplorer()){var a=new VEL.Wordwall.Global.Controls.Input.$ctor1("#Email");
+var b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#Password");
+if(a.get_isEmpty()){a.focus()}else{b.focus()}}}},U);
+ss.initClass(af,K,{$c:function(){return window.pageData.licenceId
+},initialize:function(){U.prototype.initialize.call(this);
+this.$d=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-invite-input");
+var a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-invite-copy",ss.mkdel(this.$d,this.$d.copy),true);
+var b=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-invite-email",function(){(new VEL.Wordwall.Global.Modals.SendAsEmailModal()).open()
+},true);var c=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-invite-myself",ss.mkdel(this,this.$a),true);
+var d=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-admin-myself",ss.mkdel(this,this.$1),true);
+var e=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-change-admin",ss.mkdel(this,this.$2),true);
+var f=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-detach-school",ss.mkdel(this,this.$4),true);
+var g=new VEL.Wordwall.Global.Controls.Buttons(".js-detach-user",ss.mkdel(this,this.$6),null)
+},onLocaleChange:function(a){U.prototype.onLocaleChange.call(this,a);
+var b=new VEL.Wordwall.Global.Controls.Form(".js-address-form",null);
+$.post("/paymentajax/getaddressform",b.serialize(),function(c){b.set_html(ss.cast(c,String))
+})},$a:function(){VEL.Wordwall.Global.Shell.showProgress();
+$.ajax({url:"/accountajax/invitemyself?licenceId="+this.$c(),success:ss.mkdel(this,this.$b),error:ss.mkdel(this,this.$9)})
+},$1:function(){VEL.Wordwall.Global.Shell.showProgress();
+$.ajax({url:"/accountajax/adminmyself?licenceId="+this.$c(),success:ss.mkdel(this,this.$b),error:ss.mkdel(this,this.$9)})
+},$2:function(){var a=new VEL.Wordwall.Global.Modals.EmailInputModal(Strings.account_MySchool_ConfirmChangeAdmin,ss.mkdel(this,this.$3),200,Strings.account_Email,"",false,Strings.menu_Done);
+a.open()},$3:function(a){VEL.Wordwall.Global.Shell.showProgress();
+if(VEL.Wordwall.Global.Helpers.ValidityHelper.isEmail(a)){$.ajax({url:"/accountajax/changeadmin?licenceId="+this.$c()+"&email="+a,success:ss.mkdel(this,this.$b),error:ss.mkdel(this,this.$9)})
+}else{this.$8(Strings.share_Email_NotValid)}},$b:function(a,b,c){VEL.Wordwall.Global.Shell.displayMessage(Strings.account_ManagePayments_UpdateAccepted,true,0);
+window.setTimeout(function(){window.location.reload()
+},400)},$9:function(a,b,c){this.$8(Strings.myActivities_DefaultError)
+},$8:function(a){VEL.Wordwall.Global.Shell.displayErrorMessage(a,true,0);
+VEL.Wordwall.Global.Shell.hideProgress();VEL.Wordwall.Global.Modals.Modal.closeActiveModal()
+},$6:function(a){var b=a.getData("username",null,false);
+var c=Strings.account_MySchool_ConfirmDetachUser;c+="<br/><br/>";
+c+=Strings.account_MySchool_DetachExplainer;var d=new VEL.Wordwall.Global.Modals.YesNoModal(ss.replaceAllString(c,"{0}","<b>"+b+"</b>"),ss.mkdel(this,function(){this.$7(a)
+}),null,null,false);d.open()},$7:function(a){VEL.Wordwall.Global.Shell.showProgress();
+var b=a.getDataAsInt("user-id",0,false);$.ajax({url:"/accountajax/detachuser?licenceId="+this.$c()+"&userId="+b,success:ss.mkdel(this,this.$b),error:ss.mkdel(this,this.$9)})
+},$4:function(){var a=Strings.account_MySchool_ConfirmDetachSchool;
+a+="<br/><br/>";a+=Strings.account_MySchool_DetachExplainer;
+var b=new VEL.Wordwall.Global.Modals.YesNoModal(a,ss.mkdel(this,this.$5),null,null,false);
+b.open()},$5:function(){VEL.Wordwall.Global.Shell.showProgress();
+$.ajax({url:"/accountajax/detachschool?licenceId="+this.$c(),success:ss.mkdel(this,this.$b),error:ss.mkdel(this,this.$9)})
+}},U);ss.initClass(ak,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$d=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-tags-and-usage-section");
+this.$b=new VEL.Wordwall.Global.Controls.Radio(".js-teaching-role-radio",ss.mkdel(this,this.$3));
+this.$e=new VEL.Wordwall.Global.Controls.Radio(".js-usage-radio",ss.mkdel(this,this.$4));
+var a=new VEL.Wordwall.Global.Controls.Input.$ctor1("#other_teaching_role_input");
+a.set_maxLength(50);this.$9=a;var b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#other_usage_input");
+b.set_maxLength(50);this.$a=b;this.submit=new VEL.Wordwall.Global.Controls.Button.$ctor1(".js-profile-submit-btn");
+this.form=new VEL.Wordwall.Global.Controls.Form("#user_profile_form",null);
+this.form.onSubmit(ss.mkdel(this,function(c){this.onSubmit()
+}),true);this.$8=this.form.serialize();this.$9.setupValidation(ss.mkdel(this,this.$6),true,null,true,500);
+this.$a.setupValidation(ss.mkdel(this,this.$6),true,null,true,500);
+this.$7=new VEL.Wordwall.Global.Controls.TagGroup(".js-ageband-tag","ageband",function(c){},ss.mkdel(this,function(c){this.$6()
+}));this.$c=new VEL.Wordwall.Global.Controls.TagGroup(".js-subject-tag","subject",function(c){},ss.mkdel(this,function(c){this.$6()
+}))},onSubmit:function(){if(this.isSubmitting){return
+}this.isSubmitting=true;this.submit.addLoadingGif();
+var a=this.$2();this.$1();this.form.submitByAjax(ss.mkdel(this,function(b){VEL.Wordwall.Global.Shell.displayMessage(Strings.account_UserProfile_SubmitSuccessful,true,0);
+VEL.Wordwall.Global.Shell.showProgress();this.$8=this.form.serialize();
+this.$6()}),ss.mkdel(this,function(){VEL.Wordwall.Global.Shell.displayNetworkErrorMessage();
+this.$5(a)}),ss.mkdel(this,function(){this.submit.resetLoadingGif();
+this.isSubmitting=false}))},$3:function(){this.$d.set_isVisible(this.$b.get_value()!==4);
+this.$9.set_isVisible(this.$b.get_value()===5);this.$6()
+},$4:function(){this.$a.set_isVisible(this.$e.get_value()===3);
+this.$6()},$6:function(){var a=!ss.referenceEquals(this.form.serialize(),this.$8);
+var b=this.$9.get_isVisible()&&this.$9.get_hasValidationError()||this.$d.get_isVisible()&&this.$a.get_isVisible()&&this.$a.get_hasValidationError();
+if(b||!a){this.submit.disable()}else{this.submit.enable()
+}},$2:function(){var a=this.$9.get_value();var b=this.$7.getCheckedIds();
+var c=this.$c.getCheckedIds();var d=this.$e.get_value();
+var e=this.$a.get_value();return new Q.$0(a,b,c,d,e)
+},$1:function(){if(!this.$9.get_isVisible()){this.$9.set_value("")
+}if(!this.$d.get_isVisible()||!this.$a.get_isVisible()){this.$a.set_value("")
+}if(!this.$d.get_isVisible()){this.$7.clear();this.$c.clear();
+this.$e.clear()}},$5:function(a){this.$9.set_value(a.$1);
+this.$7.checkTagsById(a.$0);this.$c.checkTagsById(a.$3);
+this.$e.set_value(a.$4);this.$a.set_value(a.$2)}},U);
+ss.initClass(ag,K,{initialize:function(){ak.prototype.initialize.call(this);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-skip")).onClick$1(function(a){VEL.Wordwall.Global.Helpers.EventsHelper.postEvent(307,"step:"+a.getAttribute("data-step"),false);
+window.open(a.getAttribute("href"),"_self")},false,true);
+if(window.pageData.accountCreated){VEL.Wordwall.Global.Shell.displayMessage(Strings.account_SetupYourAccount_AccountCreated,true,0)
+}},onSubmit:function(){if(this.isSubmitting){return
+}this.isSubmitting=true;this.submit.disable();this.submit.addLoadingGif();
+this.form.submit(true)}},ak);ss.initClass(ah,K,{initialize:function(){U.prototype.initialize.call(this);
+this.$4=new VEL.Wordwall.Global.Controls.Input.$ctor1("#licence_key_input");
+this.$3=new VEL.Wordwall.Global.Controls.Control.$ctor1("#licence_information");
+this.$5=new VEL.Wordwall.Global.Controls.Control.$ctor1("#no_key_information");
+this.$3.set_isVisible(false);this.$5.set_isVisible(false);
+if(this.$4.get_isEmpty()){if(!window.matchMedia("(pointer: coarse)").matches){this.$4.focus()
+}}else{this.$1();this.$4.blur()}this.$4.setupValidation(ss.mkdel(this,this.$1),false,null,true,500)
+},$1:function(){var a=this.$4.get_value();if(ss.isNullOrEmptyString(a)){this.$3.set_isVisible(false);
+this.$5.set_isVisible(false)}else{$.ajax({url:"/accountajax/iskeyvalid?key="+a,success:ss.mkdel(this,this.$2)})
+}},$2:function(a,b,c){var d=ss.cast(a,String);if(ss.isNullOrEmptyString(d)){this.$3.set_isVisible(false);
+this.$5.set_isVisible(true);this.$4.validate(2)}else{this.$3.set_html(d);
+this.$3.set_isVisible(true);this.$5.set_isVisible(false);
+this.$4.validate(1)}}},U);ss.initClass(ai,K,{initialize:function(){U.prototype.initialize.call(this);
+if(window.location.href.toLowerCase().indexOf("basicsignup")!==-1&&VEL.Wordwall.Global.Helpers.SettingsHelper.get$2("basicsignup",null)==="blocked"){window.location.href="/account/basiclimit";
+return}this.$a=new VEL.Wordwall.Global.Controls.Input.$ctor1("#email_input");
+this.$f=new VEL.Wordwall.Global.Controls.StrengthPasswordInput("#password_input");
+this.$9=new VEL.Wordwall.Global.Controls.PasswordInput("#confirm_password_input");
+this.$b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#forename_input");
+this.$h=new VEL.Wordwall.Global.Controls.Input.$ctor1("#surname_input");
+this.$c=new VEL.Wordwall.Global.Controls.Form("#sign_up_form",null);
+this.$c.onSubmit(ss.mkdel(this,this.$2),true);this.$g=new VEL.Wordwall.Global.Controls.Button.$ctor1(".js-signup-submit");
+if(this.$a.get_isEmpty()&&!VEL.Wordwall.Global.Helpers.DeviceHelper.isInternetExplorer()&&!window.matchMedia("(pointer: coarse)").matches){this.$a.focus()
+}$(document).on("keypress",ss.mkdel(this,function(a){this.$d=true
+}));this.$1();U.populateAttributionFields();U.initializeEmailMarketing()
+},$1:function(){this.$4();this.$6();this.$3();this.$5();
+this.$7();this.$8()},$4:function(){var a=this.$i;var b=this.$a;
+var c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-email-required");
+a.addInput(b,new VEL.Wordwall.Global.Helpers.Validation.ValidationRule(function(d){return VEL.Wordwall.Global.Helpers.ValidityHelper.isEmail(d.get_value())
+},new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-email-invalid"),6),new VEL.Wordwall.Global.Helpers.Validation.AjaxValidationRule(function(d){return"/accountajax/isemailavailable?email="+encodeURIComponent(d.get_value())
+},ss.mkdel(this,function(d,e){if(e){return}if(!d){var f=new VEL.Wordwall.Global.Modals.WelcomeBackModal(this.$a.get_value());
+if(f.get_exists()){f.open()}}}),null,6),null,true,c,500)
+},$6:function(){this.$i.addInput(this.$f,new VEL.Wordwall.Global.Helpers.Validation.ValidationRule(function(a){return VEL.Wordwall.Global.Helpers.ValidityHelper.isPassword(a.get_value())
+},null,6),null,ss.mkdel(this,function(){this.$f.updateValidationStatus(3);
+if(!this.$9.get_isEmpty()){this.$9.validate(0)}}),true,null,500)
+},$3:function(){var a=this.$i;var b=this.$9;var c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-confirm-password-required");
+a.addInput$1(b,[new VEL.Wordwall.Global.Helpers.Validation.ValidationRule(ss.mkdel(this,function(d){return ss.referenceEquals(d.get_value(),this.$f.get_value())
+}),new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-confirm-password-invalid"),6),new VEL.Wordwall.Global.Helpers.Validation.ValidationRule(ss.mkdel(this,function(d){return VEL.Wordwall.Global.Helpers.ValidityHelper.isPassword(this.$f.get_value())
+}),null,6)],null,null,true,c,500)},$5:function(){this.$i.addInput$1(this.$b,null,null,null,true,new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-forename-required"),0)
+},$7:function(){this.$i.addInput$1(this.$h,null,null,null,true,new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-surname-required"),0)
+},$8:function(){this.$i.addCheckbox(new VEL.Wordwall.Global.Controls.Checkbox.$ctor1(".js-checkbox-terms",null),new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-terms-invalid"))
+},$2:function(a){if(this.$e){return}this.$e=true;if(!this.$i.validateAll()){VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.account_SignUp_FixValidationErrors,true,0);
+this.$f.onBlurOrSubmit(true);this.$e=false;return}this.$g.addLoadingGif();
+this.$e=false;this.$c.submit(true)}},U);ss.initClass(aj,K,{initialize:function(){VEL.Wordwall.Global.Helpers.SettingsHelper.set("basicsignup","paid",false)
+}});ss.initClass(al,K,{initialize:function(){this.$j=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-more-button",ss.mkdel(this,this.$b),true);
+this.$l=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-results-page");
+this.$f=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-search-input");
+this.$i=new VEL.Wordwall.Global.Controls.Checkbox.$ctor1(".js-likes-filter-checkbox",ss.mkdel(this,this.$d));
+if(this.$f.get_exists()){this.$m=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-search-btn",ss.mkdel(this,function(){this.$9(false)
+}),true);this.initializeSearchInput()}this.$l.onClick$2(".js-follow-creator-button",function(a){VEL.Wordwall.Global.Helpers.FollowCreatorHelper.onClickFollowButton(a)
+},false,true);al.$0(".js-social-sharing-side-bar");
+al.$0(".js-social-sharing-inline-bar");this.$6();this.$4()
+},$6:function(){new VEL.Wordwall.Global.Controls.Buttons(".js-search-tags > .js-search-tag",ss.mkdel(this,function(a){var b=this.$f.get_value();
+var c=a.getData("tag",null,false);if(!((" "+b+" ").toLowerCase().indexOf(" "+c.toLowerCase()+" ")!==-1)){this.$f.set_value(this.$f.get_value()+" "+c);
+VEL.Wordwall.Global.Helpers.EventsHelper.addSearchFakeDoorEvent("search-tag");
+this.$9(false)}}),null)},$4:function(){this.$3();this.$5("js-search-age-bands");
+this.$5("js-search-subjects")},$3:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-browse-tags-panel");
+this.$r=new VEL.Wordwall.Global.Controls.Button.$ctor4(a.get_domObject(),".js-show-all-browse-tags",ss.mkdel(this,function(){if(a.hasClass("expanded")){a.removeClass("expanded");
+this.$r.set_text(Strings.community_ShowAllTags)}else{a.addClass("expanded");
+this.$r.set_text(Strings.community_ShowFewerTags)}}))
+},$5:function(a){new VEL.Wordwall.Global.Controls.Buttons("."+a+" > .js-browse-tag",ss.mkdel(this,function(b){var c=this.$f.get_value();
+var d=b.getData("tag",null,false);this.$f.set_value(d);
+VEL.Wordwall.Global.Helpers.EventsHelper.addSearchFakeDoorEvent("browse-tag");
+this.$9(false)}),null)},initializeSearchInput:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-community-search-disabled");
+if(!a.get_exists()){this.initializeSearch()}},initializeSearch:function(){var a="/searchajax/getsuggestions?localeId="+window.pageData.localeId+"&languageId="+window.pageData.languageId;
+$.getJSON(a,ss.mkdel(this,function(b){this.$q=ss.cast(b,Array)
+}));this.$f.onEnter(ss.mkdel(this,function(){this.$9(false)
+}));this.$f.onChange(ss.mkdel(this,this.$c),true);this.$f.onKeyDown(ss.mkdel(this,this.$8));
+if(!window.matchMedia("(pointer: coarse)").matches){this.$f.focus()
+}this.$p=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-reg-search-suggestions-wrapper");
+this.$o=-1},$d:function(){var a=(this.$f.get_exists()?this.$f.get_value().trim():window.pageData.query);
+if(ss.isNullOrEmptyString(a)){return}var b=this.$i.get_isChecked();
+this.$i.offClick();this.$i.onClick(ss.mkdel(this,function(){this.$i.set_isChecked(b)
+}),false,true);window.location.href=this.$1(a,false,b)
+},$b:function(){this.$j.disable();this.$j.addLoadingGif();
+this.$k=parseInt((new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-end-page-value")).get_domObject().last().attr("value"));
+var a=this.$0();$.get(a,ss.mkdel(this,function(b){this.$a(ss.cast(b,String),true)
+}))},$a:function(a,b){this.$l.removeClass("loading-spinner");
+this.$j.remove();this.$l.set_html((b?(this.$l.get_html()+a):a));
+this.$j=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-more-button",ss.mkdel(this,this.$b),true)
+},$0:function(){return"/searchajax/getresults?query="+encodeURIComponent(window.pageData.query)+"&searchId="+window.pageData.searchId+"&page="+this.$k+"&localeId="+window.pageData.localeId+"&languageId="+window.pageData.languageId+"&likesFilter="+this.$i.get_isChecked()
+},$1:function(a,b,c){return VEL.Wordwall.Global.Helpers.UrlHelper.localize("/search?localeId="+window.pageData.localeId+"&suggest="+b+"&query="+encodeURIComponent(a)+"&likesFilter="+c)
+},$9:function(a){var b=this.$f.get_value().trim();if(ss.isNullOrEmptyString(b)){return
+}this.$m.addLoadingGif();window.location.href=this.$1(b,a,this.$i.get_isChecked())
+},$2:function(a,b){var c=this.$1(b,true,false);return'<a id="query_'+a+'" href="'+c+'">'+b+"</a>"
+},$c:function(){var a=10;var b=this.$f.get_value().toLowerCase().trim();
+if(this.$g||ss.isNullOrUndefined(this.$q)){return}if(!ss.referenceEquals(this.$h,b)){this.$h=b;
+this.$o=-1;var c="";if(!ss.isNullOrEmptyString(b)){var d=[];
+for(var e=0;e<this.$q.length;e++){var f=this.$q[e];
+if(ss.startsWithString(f.toLowerCase(),b)){c+=this.$2(d.length,f);
+d.push(f);if(d.length===a){break}}}if(d.length<a){var g=Enumerable.from(this.$q).where(function(o){return !ss.contains(d,o)
+}).getEnumerator();try{while(g.moveNext()){var h=g.current();
+if(h.toLowerCase().indexOf(b)!==-1){c+=this.$2(d.length,h);
+d.push(h);if(d.length===a){break}}}}finally{g.dispose()
+}}if(d.length<a){var i=b.split(String.fromCharCode(32));
+if(i.length>1){for(var j=0;j<i.length;j++){var k=i[j];
+var l=Enumerable.from(this.$q).where(function(o){return !ss.contains(d,o)
+}).getEnumerator();try{while(l.moveNext()){var m=l.current();
+if(m.toLowerCase().indexOf(k)!==-1){c+=this.$2(d.length,m);
+d.push(m);if(d.length===a){break}}}}finally{l.dispose()
+}if(d.length===a){break}}}}this.$n=d.length}else{this.$n=0
+}this.$p.set_html(c);if(c!==""){this.$p.fadeIn(50);
+var n=new VEL.Wordwall.Global.Controls.Buttons(".js-search-suggestions-wrapper a",ss.mkdel(this,this.$7),null)
+}}},$7:function(a){this.$g=true;this.$f.set_value(a.get_text());
+this.$p.set_html("");this.$9(true)},$e:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-suggestions-wrapper:visible a");
+a.removeClass("is-focused");var b=new VEL.Wordwall.Global.Controls.Control.$ctor1("#query_"+this.$o);
+if(b.get_exists()){b.addClass("is-focused");this.$f.set_value(b.get_text())
+}else{this.$f.set_value("")}},$8:function(a){if(a===38){if(this.$o>0){this.$o--;
+this.$e()}return false}if(a===40){if(this.$o<this.$n-1){this.$o++;
+this.$e()}return false}return true}});ss.initClass(am,K,{initialize:function(){al.prototype.initialize.call(this);
+VEL.Wordwall.Global.Helpers.FollowCreatorHelper.initializeFollowButtons();
+this.$u=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-results-paywalled");
+this.$t=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-results-free");
+this.$s();$(window).on("resize",ss.mkdel(this,function(b){this.$s()
+}));var a="/communityajax/getlimitcommunitytagsuserstate";
+$.getJSON(a,ss.mkdel(this,function(b){var c=b.IsPaid;
+var d=b.IsGuest;var e=b.CommunityTagPageResultsLimit;
+if(c){return}var f=new VEL.Wordwall.Global.Controls.Controls(".js-search-results-free .js-search-result-item");
+var g=new VEL.Wordwall.Global.Controls.Controls(".js-search-results-paywalled .js-search-result-item");
+var h=g.get_length();var i=f.get_length()+h;if(i===0){return
+}var j=((e===0)?-h:(f.get_length()-e));if(j>0){for(var k=f.get_length()-1;
+k>=e;k--){f.get(k).prependTo(this.$u);h++}}else{if(j<0){var l=Math.min(Math.abs(j),h);
+for(var m=0;m<l;m++){g.get(m).appendTo(this.$t);h--
+}}}this.$s();if(h<=0){return}(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-show-more-button-wrapper")).remove();
+var n=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-panel");
+new VEL.Wordwall.Global.Controls.Control.$ctor4(n,"search_paywall_banner_template",null,false);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-paywall-sign-up")).set_isVisible(d)
+}))},$s:function(){var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-results-paywalled .js-search-result-item");
+if(!a.get_exists()){this.$u.CSS("height",0);return}this.$u.CSS$1("height",a.get_domObject().outerHeight()+"px")
+},initializeSearchInput:function(){var a="/accountajax/ispaid";
+$.getJSON(a,ss.mkdel(this,function(b){var c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-community-search-disabled");
+var d=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-search-input-wrapper");
+if(!b){c.set_isVisible(true);d.remove();return}d.set_isVisible(true);
+c.remove();this.initializeSearch()}))}},al);ss.initClass(an,K,{initialize:function(){var a=new VEL.Wordwall.Global.Controls.Buttons(".js-foldable-title",function(b){b.get_domObject().closest(".js-foldable-wrapper").toggleClass("open")
+},null)}});ss.initClass(ao,K,{initialize:function(){this.$4=window.pageData.resourceCount;
+this.$3=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-resource-count");
+var a=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-top-panel");
+var b=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-top-image");
+var c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-homepage-video");
+var d=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-homepage-video-no-youtube");
+var e=new VEL.Wordwall.Global.Controls.Controls(".js-easy123-image");
+var f=VEL.Wordwall.Global.Server.Switches.getBoolean(VEL.Wordwall.Global.Server.Switches.static$1,VEL.Wordwall.Global.Server.SwitchKeys.homepageVideo);
+if(f){d.set_isVisible(true);b.set_isVisible(false);
+a.addClass("top-video-panel");e.get_children()[0].set_isVisible(false);
+e.get_children()[1].set_isVisible(true);e.get_children()[2].set_isVisible(false);
+e.get_children()[3].set_isVisible(true);e.get_children()[4].set_isVisible(false);
+e.get_children()[5].set_isVisible(true);if(VEL.Wordwall.Global.Helpers.CookieConsentHelper.areFunctionalYouTubeCookiesAllowed()){d.set_isVisible(false);
+c.set_isVisible(true);c.onClick(ss.mkdel(this,function(){this.$0(c)
+}),false,true)}}this.$2();if(this.$4===0){return}var g=window.pageData.resourceIncrease;
+window.setInterval(ss.mkdel(this,function(){window.setTimeout(ss.mkdel(this,this.$1),ss.Int32.trunc(Math.random()*g))
+}),g)},$2:function(){var a=VEL.Wordwall.Global.Server.Switches.getInteger(VEL.Wordwall.Global.Server.Switches.static$1,VEL.Wordwall.Global.Server.SwitchKeys.homepageIndependentResearch);
+if(a===0){return}var b=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-independent-research-panel");
+b.onClick$2("a",function(c){var d=c.getAttribute("href");
+VEL.Wordwall.Global.Helpers.EventsHelper.postEvent(1201,"link:"+d+",panelPosition:"+a,false);
+window.open(d,"_blank","noopener")},false,true);if(a===1){b.insertAfter(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-how-it-works-panel"))
+}b.set_isVisible(true)},$0:function(a){var b="https://www.youtube.com/embed/oOEYC5c0nwE";
+if(VEL.Wordwall.Global.Helpers.DeviceHelper.isPortraitPhoneSized()){var c=VEL.Wordwall.Global.Helpers.HtmlTemplate.buildTemplate("video_modal_template",[b]);
+a.get_domObject().html(c)}else{(new VEL.Wordwall.Global.Modals.VideoModal(b)).open()
+}},$1:function(){this.$4++;this.$3.set_text(this.$4.toLocaleString(window.pageData.iso6391Code))
+}});ss.initClass(ap,K,{initialize:function(){this.$2=new VEL.Wordwall.Global.Controls.Form(".js-nps-survey-form",null);
+this.$4=new VEL.Wordwall.Global.Controls.Radio("UserProfile",ss.mkdel(this,this.$1));
+this.$3=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-nps-user-profile-other");
+this.$2.onSubmit(ss.mkdel(this,function(a){this.$0()
+}),true);this.$1()},$0:function(){VEL.Wordwall.Global.Shell.displayMessage(Strings.npsSurvey_Toast_ThankYou,true,0);
+VEL.Wordwall.Global.Shell.showProgress();window.setTimeout(ss.mkdel(this,function(){var a=this.$2.get_domObject().get(0);
+ss.cast(a,ss.isValue(a)&&(ss.isInstanceOfType(a,Element)&&a.tagName==="FORM")).submit()
+}),3000)},$1:function(){if(this.$4.get_value()===5){this.$3.set_isVisible(true);
+this.$3.focus()}else{this.$3.set_isVisible(false);this.$3.set_value("")
+}}});ss.initClass(aq,K,{});ss.initClass(ar,K,{initialize:function(){this.$2=new VEL.Wordwall.Global.Controls.Form(".js-cancel-subscription-form",null);
+new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-cancel-subscription",ss.mkdel(this,this.$0),true)
+},$0:function(){VEL.Wordwall.Global.Shell.showProgress();
+this.$1(function(){window.location.href="/Payment/ManagePayments"
+},aq.showCancelRequestErrorAndReload)},$1:function(a,b){this.$2.submitByAjax(function(c){var d=ss.cast(c,VEL.Wordwall.Global.Json.ErrorJson);
+if(ss.isNullOrEmptyString(d.ErrorMessage)){VEL.Wordwall.Global.Shell.displayMessage(Strings.account_ManagePayments_UpdateAccepted,true,0);
+a()}else{VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.global_ErrorPrefix+d.ErrorMessage,true,0);
+window.setTimeout(function(){window.location.reload()
+},400)}},function(){b()},null)}});ss.initClass(au,K,{initialize:function(){if(ss.isValue(window.pageData.stripeKey)){this.stripe=Stripe(window.pageData.stripeKey);
+if((new VEL.Wordwall.Global.Controls.Control.$ctor1("#card_element")).get_exists()){this.card=this.stripe.elements({locale:window.pageData.iso6391Code}).create("card");
+this.card.mount("#card_element")}}var a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-label-1",ss.mkdel(this,function(){this.$0(false)
+}),true);var b=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-switch",ss.mkdel(this,function(){this.$0(null)
+}),true);var c=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-label-2",ss.mkdel(this,function(){this.$0(true)
+}),true)},$0:function(a){var b=window.location.href.toLowerCase();
+var c=b.indexOf("/annual")!==-1;if(ss.isNullOrUndefined(a)){a=!c
+}if(a===c){return}if(ss.unbox(a)){b=ss.replaceAllString(b,"/monthly","/annual")
+}else{b=ss.replaceAllString(b,"/annual","/monthly")
+}window.location.href=b}});ss.initClass(at,K,{initialize:function(){au.prototype.initialize.call(this);
+this.$g=new VEL.Wordwall.Global.Controls.Input.$ctor1("#authorize_card_payment_intent_id");
+this.$f=new VEL.Wordwall.Global.Controls.Form("#authorize_card_form",null);
+this.$j=new VEL.Wordwall.Global.Controls.Form(".js-cancel-subscription-form",null);
+this.$h=new VEL.Wordwall.Global.Controls.Form(".js-begin-cancellation-form",null);
+this.$i=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-cancel-subscription",ss.mkdel(this,this.$3),true);
+var a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-authorize-card",ss.mkdel(this,this.$1),true);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-email-support-link")).onClick(function(){VEL.Wordwall.Global.Helpers.EventsHelper.postEvent(1301,"",false)
+},false,false);(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-help-centre-link")).onClick(function(){VEL.Wordwall.Global.Helpers.EventsHelper.postEvent(1302,"",false)
+},false,false);(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-resubscribe-expired")).onClick(function(){VEL.Wordwall.Global.Helpers.EventsHelper.postEvent(1303,"",false)
+},false,false);var b=new VEL.Wordwall.Global.Controls.Form(".js-view-invoices-form",null);
+var c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-view-invoices-link");
+c.onClick(function(){b.submit(false)},false,true);if(window.pageData.cancelSurveyPending){this.$d()
+}},$d:function(){if(window.pageData.cancelSurveyIsDay0){var a=new VEL.Wordwall.Global.Modals.CancelSubscriptionModal.$ctor1(function(b,c,d,e){aq.sendCancelDay0ReasonRequest(b,c,d,e,true,function(f){},function(){})
+});a.open();return}this.$9(function(b,c,d){aq.sendCancelReasonRequest(b,c,d,true,function(e){},function(){})
+})},$7:function(a,b){var c=ss.cast(a,VEL.Wordwall.Global.Json.ErrorJson);
+if(ss.isNullOrEmptyString(c.ErrorMessage)){VEL.Wordwall.Global.Shell.displayMessage(Strings.account_ManagePayments_UpdateAccepted,true,0);
+if(!ss.staticEquals(b,null)){b()}this.$6()}else{VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.global_ErrorPrefix+c.ErrorMessage,true,0);
+this.$6()}VEL.Wordwall.Global.Modals.Modal.closeActiveModal()
+},$1:function(){VEL.Wordwall.Global.Shell.showProgress();
+this.stripe.confirmCardPayment(window.pageData.clientSecret).then(ss.mkdel(this,function(a){if(ss.isValue(a.error)){VEL.Wordwall.Global.Shell.displayErrorMessage(a.error.message,true,0);
+this.$6()}else{this.$g.set_value(a.paymentIntent.id);
+this.$f.submitByAjax(ss.mkdel(this,function(b){this.$7(b,null)
+}),null,null)}}))},$6:function(){window.setTimeout(function(){window.location.reload()
+},400)},$3:function(){VEL.Wordwall.Global.Shell.showProgress();
+this.$h.submitByAjax(ss.mkdel(this,function(a){var b=ss.cast(a,VEL.Wordwall.Global.Json.BeginCancellationJson);
+if(b.CancellationPage){window.location.href="/Payment/CancelSubscription";
+return}VEL.Wordwall.Global.Shell.hideProgress();if(b.IsDay0){this.$2(b)
+}else{if(b.SurveyBeforeConfirmInCancel){this.$5(b)}else{this.$4(b)
+}}}),ss.mkdel(this,function(){VEL.Wordwall.Global.Shell.displayErrorMessage("Strings.global_ErrorPrefixStrings.account_ManagePayments_CancelError",true,0);
+this.$6()}),null)},$2:function(a){var b=null;var c=new VEL.Wordwall.Global.Modals.CancelSubscriptionModal.$ctor1(ss.mkdel(this,function(d,e,f,g){VEL.Wordwall.Global.Shell.showProgress();
+aq.sendCancelDay0ReasonRequest(d,e,f,g,null,ss.mkdel(this,function(h){b=h;
+this.$c(a,b)}),ss.mkdel(this,function(){this.$c(a,b)
+}))}));c.open()},$5:function(a){var b=null;this.$9(ss.mkdel(this,function(c,d,e){VEL.Wordwall.Global.Shell.showProgress();
+aq.sendCancelReasonRequest(c,d,e,null,ss.mkdel(this,function(f){b=f;
+this.$c(a,b)}),ss.mkdel(this,function(){this.$c(a,b)
+}))}))},$c:function(a,b){VEL.Wordwall.Global.Shell.hideProgress();
+this.$8(ss.mkdel(this,function(){this.$a(ss.mkdel(this,function(){if(ss.isValue(b)){this.$e(true,ss.unbox(b))
+}}),aq.showCancelRequestErrorAndReload)}),ss.mkdel(this,function(){VEL.Wordwall.Global.Shell.hideProgress();
+if(ss.isValue(b)){this.$e(false,ss.unbox(b))}}),a.EmphasizeLossInCancel,a.CancellationModalMessageEnum)
+},$4:function(a){this.$8(ss.mkdel(this,function(){VEL.Wordwall.Global.Shell.showProgress();
+if(VEL.Wordwall.Global.Server.Switches.getBoolean(VEL.Wordwall.Global.Server.Switches.static$1,VEL.Wordwall.Global.Server.SwitchKeys.cancelSubscriptionModal)){this.$9(ss.mkdel(this,function(b,c,d){this.$b(b,c,d)
+}))}else{this.$b(0,0,null)}}),function(){},a.EmphasizeLossInCancel,a.CancellationModalMessageEnum)
+},$b:function(a,b,c){this.$a(function(){aq.sendCancelReasonRequest(a,b,c,true,function(d){},function(){})
+},aq.showCancelRequestErrorAndReload)},$8:function(a,b,c,d){if(c){(new VEL.Wordwall.Global.Modals.CancelSubscriptionConfirmModal(this.$i.get_text(),a,b)).open();
+return}var e="<h1>"+this.$i.get_text()+"</h1>";var f=at.$0.get_item(d);
+(new VEL.Wordwall.Global.Modals.YesNoModal(e+f,a,b,null,true)).open()
+},$9:function(a){var b=new VEL.Wordwall.Global.Modals.CancelSubscriptionModal(a);
+b.open()},$a:function(a,b){this.$j.submitByAjax(ss.mkdel(this,function(c){this.$7(c,a)
+}),b,null)},$e:function(a,b){var c={};c.cancelFeedbackId=b;
+c.didCancel=a;$.ajax({type:"POST",url:"/FeedbackAjax/UpdateCancellationDidCancel",data:c})
+}},au);ss.initClass(L,K,{initialize:function(){U.prototype.initialize.call(this);
+new VEL.Wordwall.Global.Controls.Buttons(".js-faq-question",function(a){var b=new VEL.Wordwall.Global.Controls.Control.$ctor2(a.get_domObject().closest(".js-faq-item"));
+if(!b.hasClass("open")){VEL.Wordwall.Global.Helpers.EventsHelper.addFaqEvent(ss.coalesce(b.getAttributeAsNullableInt("data-question"),-1),ss.coalesce(b.getAttributeAsNullableInt("data-position"),-1))
+}b.toggleClass("open")},null);this.$d=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-monthly-price");
+this.$c=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-monthly");
+this.$3=new VEL.Wordwall.Global.Controls.Controls(".js-annual");
+this.$4=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-chip");
+this.$6=new VEL.Wordwall.Global.Controls.Controls(".js-discount");
+this.$e=new VEL.Wordwall.Global.Controls.Controls(".js-no-discount");
+this.$a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-label-1",ss.mkdel(this,function(){this.$1(false)
+}),true);this.$h=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-switch",ss.mkdel(this,function(){this.$1(null)
+}),true);this.$b=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-toggleswitch-label-2",ss.mkdel(this,function(){this.$1(true)
+}),true);this.$5=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-current-plan");
+this.$7=new VEL.Wordwall.Global.Controls.Inputs(".js-hidden-annual-input",function(a){});
+this.$j=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-switch-to-standard-form");
+this.$g=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-standard-disabled");
+this.$i=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-switch-to-pro-form");
+this.$f=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pro-disabled");
+new VEL.Wordwall.Global.Controls.Buttons(".js-collapsible-feature",function(a){a.toggleClass("open")
+},null);this.$8=window.pageData.isAnnualUser;this.$9=window.pageData.isPro
+},$1:function(a){var b=Enumerable.from(this.$3.getEach()).all(function(p){return p.get_isVisible()
+});if(ss.isNullOrUndefined(a)){a=!b}if(a===b){return
+}this.$d.toggleClass("minimised");this.$c.set_isVisible(!ss.unbox(a));
+this.$h.toggleClass("right");this.$b.toggleClass("selected");
+this.$a.toggleClass("selected");var c=this.$3.getEach();
+for(var d=0;d<c.length;d++){var e=c[d];e.set_isVisible(ss.unbox(a))
+}if(this.$4.get_exists()){this.$4.toggleClass("selected")
+}if(this.$6.get_exists()){var f=this.$6.getEach();for(var g=0;
+g<f.length;g++){var h=f[g];h.set_isVisible(ss.unbox(a))
+}}if(this.$e.get_exists()){var i=this.$e.getEach();
+for(var j=0;j<i.length;j++){var k=i[j];k.set_isVisible(!ss.unbox(a))
+}}var l=this.$7.getEach();for(var m=0;m<l.length;m++){var n=l[m];
+n.set_value(ss.unbox(a).toString())}this.$5.set_isVisible(ss.unbox(a)===this.$8);
+var o=P.get(this.$9,this.$8,ss.unbox(a));this.$2(this.$j,this.$g,o.get_standardButton());
+this.$2(this.$i,this.$f,o.get_proButton())},$2:function(a,b,c){var d=new VEL.Wordwall.Global.Controls.Control.$ctor3(a.get_domObject(),"button[type=submit]");
+a.set_isVisible(c.get_visible());d.set_text(c.get_text());
+b.set_isVisible(!c.get_visible()&&!c.get_currentPlan())
+}},U);ss.initClass(N,K,{get_currentPlan:function(){return this.$1$1
+},set_currentPlan:function(a){this.$1$1=a},get_visible:function(){return this.$1$2
+},set_visible:function(a){this.$1$2=a},get_text:function(){return this.$1$3
+},set_text:function(a){this.$1$3=a}});ss.initClass(P,K,{});
+ss.initClass(R,K,{get_proButton:function(){return this.$1$1
+},set_proButton:function(a){this.$1$1=a},get_standardButton:function(){return this.$1$2
+},set_standardButton:function(a){this.$1$2=a}});ss.initClass(T,K,{initialize:function(){L.prototype.initialize.call(this);
+this.$D=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-plan-slider");
+this.$J=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-std-price");
+this.$C=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pro-price");
+this.$L=new VEL.Wordwall.Global.Controls.Controls(".js-tax-label");
+this.$G=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-std-discount");
+this.$I=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-std-users");
+this.$H=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-std-price-of");
+this.$z=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pro-discount");
+this.$B=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pro-users");
+this.$A=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pro-price-of");
+if(this.$D.get_exists()){this.$K=this.$D.getDataAsInt("step-count",0,false);
+this.$F=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-plan-slider-label-wrapper");
+this.$E=new VEL.Wordwall.Global.Controls.Buttons(".js-plan-slider-label-wrapper div",ss.mkdel(this,this.$n),null);
+this.$x=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-price-available");
+this.$y=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-price-on-request");
+this.$s=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-custom-user-count-selector");
+this.$r=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-custom-user-count-selector input");
+this.$r.onChange(ss.mkdel(this,this.$l),true);this.$k();
+this.$v=new VEL.Wordwall.Global.Controls.Form("form",null)
+}},$n:function(a){var b=a.getDataAsInt("step-index",0,false);
+this.$u.setStep(b,0,false)},$l:function(){var a=parseInt(this.$r.get_value());
+this.$q(a)},$k:function(){var a=this.$D.get_domObject().get(0);
+var b=new VEL.Wordwall.Global.Interop.DragDealerOptions();
+b.steps=this.$K;b.speed=0.6;b.slide=false;b.css3=true;
+b.callback=ss.mkdel(this,this.$m);this.$u=new Dragdealer(a,b);
+var c=1+this.$D.getDataAsInt("initial-step",0,false);
+this.$u.setStep(c,0,true);this.$w=true},$q:function(a){window.clearTimeout(this.$t);
+this.$t=window.setTimeout(ss.mkdel(this,function(){this.$o(a)
+}),600)},$m:function(){var a=this.$u.getStep()[0]-1;
+this.$E.removeClass("active");var b=this.$E.get(a);
+b.addClass("active");var c=b.getDataAsInt("user-count",0,false);
+if(c===0){this.$p(true)}else{this.$p(false);this.$o(c)
+}},$p:function(a){if(a){this.$s.slideDown(400,null);
+this.$l()}else{this.$s.slideUp(400,null)}},$o:function(a){if(!this.$w){return
+}this.$v.setByName("users",a.toString());var b=parseInt(this.$r.getAttribute("max"));
+if(a>b){this.$r.set_value(b.toString());a=b}var c=this.$F.getData("plan-ajax",null,false)+"&users="+a;
+if(ss.endsWithString(c,"NaN")){return}$.ajax({url:c,dataType:"json",success:ss.mkdel(this,function(d,e,f){this.$x.set_isVisible(true);
+this.$y.set_isVisible(false);var g=ss.cast(d,VEL.Wordwall.Global.Json.SchoolPricingJson);
+this.$J.set_html(g.StandardPrice);this.$C.set_html(g.ProPrice);
+var h=this.$L.getEach();for(var i=0;i<h.length;i++){var j=h[i];
+j.set_text(g.TaxLabel)}T.$0(this.$G,this.$I,this.$H,g.StandardUsers,g.StandardForThePriceOf);
+T.$0(this.$z,this.$B,this.$A,g.ProUsers,g.ProForThePriceOf)
+}),error:ss.mkdel(this,function(d,e,f){this.$x.set_isVisible(false);
+this.$y.set_isVisible(true)})})}},L);ss.initClass(ad,K,{initialize:function(){U.prototype.initialize.call(this);
+var a=new VEL.Wordwall.Global.Controls.Buttons(".js-data-href",null,null);
+var b=a.getEach();for(var c=0;c<b.length;c++){var d=b[c];
+var e=d.getAttribute("href");var f=e.indexOf(String.fromCharCode(63));
+if(f===-1){e+="?"}else{e+="&"}d.setAttribute("href",e+"data="+window.pageData.dataUrl)
+}}},U);ss.initClass(V,K,{initialize:function(){ad.prototype.initialize.call(this);
+this.$a=new VEL.Wordwall.Global.Controls.Form("form",null);
+this.$j=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-website-url-wrapper");
+this.$8=new VEL.Wordwall.Global.Controls.Checkbox.$ctor1(".js-website-question-checkbox",ss.mkdel(this,this.$3));
+this.$i=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-website-url-input-wrapper");
+this.$h=new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-website-url-input");
+this.$d=new VEL.Wordwall.Global.Controls.IntSelect(".js-locale-select",null,ss.mkdel(this,this.$4));
+this.$6=new VEL.Wordwall.Global.Controls.Form(".js-address-form",null);
+this.$1();this.$2(true)},$1:function(){this.$e=new VEL.Wordwall.Global.Controls.Input.$ctor1("#name_input");
+this.$b=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_line_1_input");
+this.$c=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_line_2_input");
+this.$9=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_city_input");
+this.$g=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_state_input");
+this.$f=new VEL.Wordwall.Global.Controls.Input.$ctor1("#address_postalcode_input");
+this.$e.setupValidation(null,false,null,true,500);this.$b.setupValidation(null,false,null,true,500);
+this.$c.setupValidation(ss.mkdel(this,function(){this.$c.validate((this.$c.get_isEmpty()?3:1))
+}),false,null,true,500);this.$9.setupValidation(null,false,null,true,500);
+this.$g.setupValidation(null,false,null,true,500);this.$f.setupValidation(null,false,null,true,500)
+},$2:function(a){this.$7=this.$5();this.$j.set_isVisible(this.$7);
+if(!this.$7){this.$h.set_value("")}if(a&&this.$7&&!this.$h.get_isEmpty()){this.$8.set_isChecked(true);
+this.$3()}this.$h.setupValidation(ss.mkdel(this,function(){this.$h.validate((this.$h.get_isEmpty()?3:1))
+}),false,null,true,500)},$5:function(){return this.$d.get_selectedOption().getDataAsBool("ask-for-website-url",false,false)
+},$3:function(){this.$i.set_isVisible(this.$8.get_isChecked());
+if(!this.$8.get_isChecked()){this.$h.set_value("")}},$4:function(a){(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag")).set_isVisible(false);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag-"+a)).set_isVisible(true);
+this.$d.blur();this.$7=this.$d.get_selectedOption().getDataAsBool("ask-for-website-url",false,false);
+$.ajax({url:"/paymentajax/getaddressform",data:this.$a.serialize(),type:"POST",success:ss.mkdel(this,function(b,c,d){this.$6.set_html(ss.cast(b,String));
+this.$1();this.$2(false)})})}},ad);ss.initClass(X,K,{initialize:function(){ad.prototype.initialize.call(this);
+var a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-send-as-email",ss.mkdel(this,this.$2),true);
+var b=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-print-pdf",ss.mkdel(this,this.$1),true)
+},$2:function(){var a=new VEL.Wordwall.Global.Modals.SendAsEmailModal();
+a.open()},$1:function(){var a=(new VEL.Wordwall.Global.Controls.Button.$ctor1(".js-download-pdf")).get_href();
+window.open(a).print()}},ad);ss.initClass(Z,K,{initialize:function(){ad.prototype.initialize.call(this);
+this.$k=new VEL.Wordwall.Global.Controls.Form("form",null);
+this.$h=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-download-pdf",ss.mkdel(this,this.$3),false);
+this.$t=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-print-pdf",ss.mkdel(this,this.$a),true);
+this.$u=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-send-as-email",ss.mkdel(this,this.$b),true);
+this.$p=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-pay-with-card",ss.mkdel(this,this.$9),true);
+this.$n=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-pay-by-invoice-header",ss.mkdel(this,this.$8),true);
+this.$l=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-pay-by-card-header",ss.mkdel(this,this.$7),true);
+this.$i=new VEL.Wordwall.Global.Controls.Input.$ctor1("#email_input");
+this.$w=new VEL.Wordwall.Global.Controls.Input.$ctor1("#your_ref_input");
+this.$s=new VEL.Wordwall.Global.Controls.IntSelect("#phone_locale",null,ss.mkdel(this,this.$5));
+this.$v=Stripe(window.pageData.stripeKey);this.$f=this.$v.elements({locale:window.pageData.iso6391Code}).create("card");
+this.$f.mount("#card_element");var a=this.$i;var b=ss.mkdel(this,function(){this.$c(null)
+});a.setupValidation(ss.mkdel(this,this.$1),false,b,!this.$i.get_isEmpty(),500);
+var c=this.$w;var d=ss.mkdel(this,function(){this.$c(null)
+});c.setupValidation(ss.mkdel(this,this.$2),false,d,true,500);
+this.$r=new VEL.Wordwall.Global.Controls.Input.$ctor1("#payment_method_id");
+this.$q=new VEL.Wordwall.Global.Controls.Input.$ctor1("#payment_intent_id");
+this.$m=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pay-by-card-wrapper");
+this.$o=new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-pay-by-invoice-wrapper")
+},$5:function(a){(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag")).set_isVisible(false);
+(new VEL.Wordwall.Global.Controls.Control.$ctor1(".js-flag-"+a)).set_isVisible(true);
+this.$d()},$e:function(){this.$1();this.$2();if(this.$j&&this.$x){return true
+}VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.validation_HasErrors,true,0);
+return false},$d:function(){if(ss.isValue(this.$g)){this.$g.abort();
+this.$g=null}this.$c(null);if(this.$j&&this.$x){this.$g=$.ajax({url:"/paymentajax/getproformainvoiceurl",data:this.$k.serialize(),type:"POST",success:ss.mkdel(this,function(a,b,c){this.$c(ss.cast(a,String))
+})}).always(ss.mkdel(this,function(){this.$g=null}))
+}},$c:function(a){var b=(!ss.isNullOrEmptyString(a)?a:null);
+this.$h.setAttribute("href",b);this.$h.setEnable(ss.isValue(b));
+this.$t.setAttribute("href",b);this.$t.setEnable(ss.isValue(b));
+this.$u.setAttribute("href",b);this.$u.setEnable(ss.isValue(b))
+},$b:function(){$.ajax({url:"/paymentajax/sendinvoiceemail",data:this.$k.serialize(),type:"POST",success:function(a,b,c){VEL.Wordwall.Global.Shell.displayMessage(Strings.share_Email_Success,true,0)
+},error:function(a,b,c){VEL.Wordwall.Global.Shell.displayErrorMessage(Strings.share_Email_Error,true,0)
+}})},$3:function(){$.ajax({url:"/paymentajax/downloadinvoice",data:this.$k.serialize(),type:"POST"})
+},$a:function(){window.open(this.$h.get_href()).print();
+$.ajax({url:"/paymentajax/printinvoice",data:this.$k.serialize(),type:"POST"})
+},$1:function(){if(VEL.Wordwall.Global.Helpers.ValidityHelper.isEmail(this.$i.get_value())){this.$i.validate(1);
+this.$j=true}else{this.$i.validate(2);this.$j=false
+}this.$d()},$2:function(){if(this.$w.get_isEmpty()){this.$w.validate(3);
+this.$x=true}else{if(this.$w.get_value().length<=50){this.$w.validate(1);
+this.$x=true}else{this.$w.validate(2);this.$x=false
+}}this.$d()},$9:function(){if(!this.$e()){return}VEL.Wordwall.Global.Shell.scrollToTop();
+VEL.Wordwall.Global.Shell.showProgress();this.$v.createPaymentMethod({type:"card",card:this.$f}).then(ss.mkdel(this,function(a){if(ss.isValue(a.error)){this.$4(a.error.message)
+}else{this.$r.set_value(a.paymentMethod.id);this.$k.submitByAjax(ss.mkdel(this,function(b){this.$6(ss.cast(b,VEL.Wordwall.Global.Json.SubscribeJson))
+}),ss.mkdel(this,function(){this.$4(null)}),null)}}))
+},$6:function(a){if(ss.isValue(a.RedirectTo)){window.location.href=a.RedirectTo
+}else{if(ss.isValue(a.Error)){this.$4(a.Error)}else{if(ss.isValue(a.ClientSecret)){this.$v.confirmCardPayment(a.ClientSecret,{payment_method:{card:this.$f}}).then(ss.mkdel(this,function(b){if(ss.isValue(b.error)){this.$4(b.error.message)
+}else{this.$q.set_value(b.paymentIntent.id);this.$k.submitByAjax(ss.mkdel(this,function(c){this.$6(ss.cast(c,VEL.Wordwall.Global.Json.SubscribeJson))
+}),ss.mkdel(this,function(){this.$4(null)}),null)}}))
+}else{this.$4(null)}}}},$8:function(){this.$l.removeClass("selected");
+this.$n.addClass("selected");this.$m.set_isVisible(false);
+this.$o.set_isVisible(true)},$7:function(){this.$l.addClass("selected");
+this.$n.removeClass("selected");this.$m.set_isVisible(true);
+this.$o.set_isVisible(false)},$4:function(a){if(ss.isNullOrEmptyString(a)){a=Strings.myActivities_DefaultError
+}VEL.Wordwall.Global.Shell.hideProgress();VEL.Wordwall.Global.Shell.displayErrorMessage(a,true,0);
+this.$r.set_value("");this.$q.set_value("")}},ad);ss.initClass(ab,K,{initialize:function(){var a=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-invite-email",ss.mkdel(this,this.$1),true);
+var b=new VEL.Wordwall.Global.Controls.Button.$ctor3(".js-invite-copy",ss.mkdel(this,this.$0),true)
+},$0:function(){(new VEL.Wordwall.Global.Controls.Input.$ctor1(".js-invite-input")).copy()
+},$1:function(){(new VEL.Wordwall.Global.Modals.SendAsEmailModal()).open()
+}});(function(){O.$0=3})();(function(){al.$5="expanded"
+})();(function(){var a=new (ss.makeGenericType(ss.Dictionary$2,[VEL.Wordwall.Global.Enums.CancellationModalMessageEnum,String]))();
+a.add(1,Strings.account_ManagePayments_CancelSubscription3);
+a.add(3,Strings.account_ManagePayments_CancelSubscription);
+at.$0=a})();(function(){P.$1="annual";P.$5="monthly";
+P.$7="standard";P.$6="pro";var h=new N();h.set_currentPlan(false);
+h.set_visible(false);h.set_text("");P.$3=h;var h=new N();
+h.set_currentPlan(true);h.set_visible(false);h.set_text("");
+P.$2=h;var h=new (ss.makeGenericType(ss.Dictionary$2,[String,R]))();
+var i=P.$0("standard","monthly",false);var j=new R();
+var k=new N();k.set_currentPlan(false);k.set_visible(true);
+k.set_text(Strings.pricePlans_UpgradeToPro);j.set_proButton(k);
+j.set_standardButton(P.$2);h.add(i,j);var l=P.$0("standard","monthly",true);
+var m=new R();var n=new N();n.set_currentPlan(false);
+n.set_visible(true);n.set_text(Strings.pricePlans_UpgradeToProAnnual);
+m.set_proButton(n);var o=new N();o.set_currentPlan(false);
+o.set_visible(true);o.set_text(Strings.pricePlans_SwitchToAnnual);
+m.set_standardButton(o);h.add(l,m);var p=P.$0("standard","annual",false);
+var q=new R();var r=new N();r.set_currentPlan(false);
+r.set_visible(true);r.set_text(Strings.pricePlans_UpgradeToPro);
+q.set_proButton(r);q.set_standardButton(P.$3);h.add(p,q);
+var s=P.$0("standard","annual",true);var t=new R();
+var u=new N();u.set_currentPlan(false);u.set_visible(true);
+u.set_text(Strings.pricePlans_UpgradeToProAnnual);t.set_proButton(u);
+t.set_standardButton(P.$2);h.add(s,t);var v=P.$0("pro","monthly",false);
+var w=new R();w.set_proButton(P.$2);w.set_standardButton(P.$3);
+h.add(v,w);var a=P.$0("pro","monthly",true);var b=new R();
+var c=new N();c.set_currentPlan(false);c.set_visible(true);
+c.set_text(Strings.pricePlans_SwitchToAnnual);b.set_proButton(c);
+b.set_standardButton(P.$3);h.add(a,b);var d=P.$0("pro","annual",false);
+var e=new R();e.set_proButton(P.$3);e.set_standardButton(P.$3);
+h.add(d,e);var f=P.$0("pro","annual",true);var g=new R();
+g.set_proButton(P.$2);g.set_standardButton(P.$3);h.add(f,g);
+P.$4=h})()})();
