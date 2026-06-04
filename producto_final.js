@@ -46,20 +46,60 @@ document.addEventListener('DOMContentLoaded', () => {
   let countersStarted = false;
 
   if (hasGsap) {
-    gsap.utils.toArray('.pf-reveal').forEach((element, index) => {
-      gsap.to(element, {
-        opacity: 1,
-        y: 0,
-        duration: 0.65,
-        delay: Math.min(index * 0.03, 0.2),
-        ease: 'power2.out'
-      });
-    });
+    initDashboardScrollReveal();
   } else {
     document.querySelectorAll('.pf-reveal').forEach((element) => {
-      element.style.opacity = '1';
-      element.style.transform = 'none';
+      element.classList.add('is-visible');
     });
+  }
+
+  function initDashboardScrollReveal() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reveals = document.querySelectorAll('.pf-reveal');
+
+    if (prefersReducedMotion) {
+      reveals.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    reveals.forEach((element) => {
+      const group = element.closest('[data-reveal-group], .pf-reveal-group');
+      if (group) {
+        const siblings = [...group.querySelectorAll('.pf-reveal')];
+        element.dataset.revealDelay = String(siblings.indexOf(element) * 0.09);
+      } else {
+        element.dataset.revealDelay = '0';
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const element = entry.target;
+        observer.unobserve(element);
+
+        if (element.classList.contains('is-visible')) return;
+
+        element.classList.add('is-visible');
+        gsap.fromTo(element,
+          { opacity: 0, y: 22 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.72,
+            delay: Number(element.dataset.revealDelay || 0),
+            ease: 'power2.out',
+            clearProps: 'transform'
+          }
+        );
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -6% 0px'
+    });
+
+    reveals.forEach((element) => observer.observe(element));
   }
 
   document.querySelectorAll('[data-open-activity]').forEach((trigger) => {

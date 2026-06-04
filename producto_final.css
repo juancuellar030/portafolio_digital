@@ -130,49 +130,79 @@ button {
 
 /* ===== Top banner ===== */
 .pf-top-banner {
-  padding: 1.25rem clamp(1rem, 4vw, 2rem) 0;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem) 0;
 }
 
 .pf-top-banner-inner {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(231, 243, 249, 0.95));
-  border: 1px solid rgba(16, 160, 240, 0.18);
-  border-radius: 6px;
-  box-shadow: var(--ww-shadow);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(207, 238, 255, 0.55));
+  border: 1px solid rgba(16, 160, 240, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(16, 160, 240, 0.12);
 }
 
 .pf-uni-shield {
-  width: 64px;
-  height: 64px;
+  flex-shrink: 0;
+  width: clamp(72px, 8vw, 96px);
+  height: clamp(72px, 8vw, 96px);
   object-fit: contain;
 }
 
+.pf-banner-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .pf-banner-kicker {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.5rem;
   color: var(--ww-blue-link);
-  font-size: 0.82rem;
+  font-size: clamp(0.78rem, 1.4vw, 0.92rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 .pf-top-banner h1 {
   margin: 0;
   font-family: var(--ww-font-display);
-  font-size: clamp(1.15rem, 2.6vw, 1.65rem);
+  font-size: clamp(1.35rem, 2.6vw, 2.05rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.28;
+  color: var(--ww-text);
+}
+
+.pf-banner-title-main {
+  display: block;
+  color: #0a3d62;
+}
+
+.pf-banner-title-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: clamp(1rem, 1.85vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ww-text);
 }
 
 .pf-banner-meta {
+  margin: 0.85rem 0 0;
+  color: var(--ww-text);
+  font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.pf-banner-institution {
   margin: 0.35rem 0 0;
   color: var(--ww-muted);
-  font-size: 0.88rem;
+  font-size: clamp(0.82rem, 1.2vw, 0.92rem);
+  line-height: 1.45;
 }
 
 /* ===== Create wrapper (pick template page) ===== */
@@ -372,8 +402,13 @@ button {
 }
 
 .pf-footer img {
-  width: min(160px, 50%);
-  margin-bottom: 0.75rem;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(180px, 55vw);
+  max-height: 180px;
+  margin: 0 auto 0.75rem;
+  object-fit: contain;
 }
 
 .pf-license {
@@ -385,7 +420,20 @@ button {
 /* Reveal animation base */
 .pf-reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(22px);
+  will-change: opacity, transform;
+}
+
+.pf-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ===== Modal overlay ===== */
@@ -1493,6 +1541,16 @@ button {
 }
 
 @media (max-width: 950px) {
+  .pf-top-banner-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pf-banner-copy {
+    width: 100%;
+  }
+
   .pf-template-grid-v2 {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
