@@ -263,18 +263,26 @@
         </div>
 
         <!-- Resultados -->
-        <div class="pf-activity-panel pf-maze" data-activity-panel="resultados" hidden>
-          <div class="pf-maze-board">
-            <div class="pf-maze-path" aria-hidden="true">
-              <span class="pf-maze-runner"><i class="fa-solid fa-child-reaching"></i></span>
-              <span class="pf-maze-goal"><i class="fa-solid fa-star"></i></span>
+        <div class="pf-activity-panel pf-mazechase" data-activity-panel="resultados" hidden>
+          <div class="pf-mazechase-game" id="pfMazeChaseGame">
+            <div class="pf-mazechase-stage" id="pfMazeStage">
+              <div class="pf-mazechase-hud">
+                <span class="pf-mazechase-lives"><i class="fa-solid fa-heart"></i> <span id="pfMazeLives">3</span></span>
+                <span class="pf-mazechase-score"><i class="fa-solid fa-check"></i> <span id="pfMazeScore">0</span></span>
+              </div>
+              <div class="pf-mazechase-grid" id="pfMazeGrid" aria-label="Laberinto de resultados"></div>
+              <div class="pf-mazechase-player" id="pfMazePlayer" aria-hidden="true">
+                <img id="pfMazePlayerSprite" src="assets/blog/player-down.png" alt="">
+              </div>
+              <div class="pf-mazechase-controls" id="pfMazeControls" hidden>
+                <button type="button" class="pf-mazechase-btn pf-mazechase-btn--up" data-maze-dir="up" aria-label="Arriba"><i class="fa-solid fa-chevron-up"></i></button>
+                <button type="button" class="pf-mazechase-btn pf-mazechase-btn--left" data-maze-dir="left" aria-label="Izquierda"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="pf-mazechase-btn pf-mazechase-btn--down" data-maze-dir="down" aria-label="Abajo"><i class="fa-solid fa-chevron-down"></i></button>
+                <button type="button" class="pf-mazechase-btn pf-mazechase-btn--right" data-maze-dir="right" aria-label="Derecha"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
             </div>
-            <div class="pf-result-cards">
-              <article><span>Pre-test</span><strong data-count-to="80">0</strong><small>% promedio</small></article>
-              <article><span>Post-test</span><strong data-count-to="88.75">0</strong><small>% promedio</small></article>
-              <article><span>Ganancia Hake</span><strong data-count-to="0.65">0</strong><small>media-alta</small></article>
-            </div>
-            <p class="pf-impact-note">La gamificación redujo la ansiedad lingüística y aumentó la confianza de los niños al expresarse en inglés.</p>
+            <p class="pf-mazechase-hint" id="pfMazeHint">Prepárate…</p>
+            <p class="pf-mazechase-impact">La gamificación redujo la ansiedad lingüística y aumentó la confianza de los niños al expresarse en inglés.</p>
           </div>
         </div>
 

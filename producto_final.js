@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRankOrderGame();
 
   initGameshowQuiz();
+  initMazeChaseGame();
 
   buildWordsearch();
 
@@ -169,13 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
     resetActivityState(id);
 
     const modalView = activityOverlay.querySelector('.pf-modal-view');
-    modalView.classList.toggle('pf-activity-modal-wide', id === 'referenciando' || id === 'metodologia' || id === 'disenando');
+    modalView.classList.toggle('pf-activity-modal-wide', id === 'referenciando' || id === 'metodologia' || id === 'disenando' || id === 'resultados');
 
     activityOverlay.classList.add('is-open');
     activityOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    if (!countersStarted && (id === 'resultados' || id === 'disenando')) {
+    if (!countersStarted && id === 'disenando') {
       countersStarted = true;
       document.querySelectorAll('[data-count-to]').forEach((counter) => {
         animateCounter(counter, Number(counter.dataset.countTo));
@@ -194,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeActivity = null;
 
     stopGameshowQuiz();
+    stopMazeChaseGame();
 
     activityOverlay.querySelector('.pf-modal-view')?.classList.remove('pf-activity-modal-wide');
 
@@ -224,6 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (id === 'disenando') {
       resetGameshowQuiz();
+    }
+    if (id === 'resultados') {
+      resetMazeChaseGame();
     }
   }
 });
@@ -1087,6 +1092,493 @@ function animateCounter(element, target) {
   }
 
   requestAnimationFrame(frame);
+}
+
+const MAZE_COLS = 14;
+const MAZE_ROWS = 10;
+
+const MAZE_CELL = {
+  w: 'wall',
+  p: 'path',
+  s: 'path'
+};
+
+/* 14×10 — grass walls + continuous brown path; stat boxes overlay path clearings */
+const MAZE_LAYOUT = [
+  'wwwwwwswwwwwww',
+  'wwppppppppppww',
+  'wwppppppppppww',
+  'wpwwpppppwwppw',
+  'wpwwpppppwwppw',
+  'wpppppppppppww',
+  'wwwpwpppwwpwww',
+  'wwwpwpppwwpwww',
+  'wwppppppppppww',
+  'wwwwwwwwwwwwww'
+];
+
+const MAZE_START = { row: 0, col: 6 };
+
+const MAZE_ISLANDS = [
+  { id: 'pretest', row: 2, col: 2, rows: 3, cols: 5, label: 'Pre-test', value: 80, sub: '% promedio' },
+  { id: 'posttest', row: 2, col: 9, rows: 3, cols: 3, label: 'Post-test', value: 88.75, sub: '% promedio' },
+  { id: 'hake', row: 7, col: 3, rows: 2, cols: 5, label: 'Ganancia Hake', value: 0.65, sub: 'media-alta' }
+];
+
+const MAZE_TOUR_PATH = [
+  { row: 0, col: 6 },
+  { row: 1, col: 6 },
+  { row: 1, col: 2 },
+  { row: 2, col: 4 },
+  { row: 3, col: 1 },
+  { row: 4, col: 1 },
+  { row: 5, col: 1 },
+  { row: 5, col: 9 },
+  { row: 7, col: 5 },
+  { row: 8, col: 6 }
+];
+
+const PLAYER_SPRITES = {
+  up: 'assets/blog/player-up.png',
+  down: 'assets/blog/player-down.png',
+  left: 'assets/blog/player-left.png',
+  right: 'assets/blog/player-right.png'
+};
+
+const MAZE_DIRS = {
+  up: { dr: -1, dc: 0, dir: 'up' },
+  down: { dr: 1, dc: 0, dir: 'down' },
+  left: { dr: 0, dc: -1, dir: 'left' },
+  right: { dr: 0, dc: 1, dir: 'right' }
+};
+
+let mazeGridEl;
+let mazeStageEl;
+let mazePlayerEl;
+let mazePlayerSprite;
+let mazeHintEl;
+let mazeControlsEl;
+let mazeScoreEl;
+let mazeLivesEl;
+let mazeTourTimeline = null;
+let mazeKeyHandler = null;
+let mazePlayerState = null;
+let mazeIslandElements = new Map();
+let mazeCellSize = { w: 0, h: 0 };
+let mazeResizeObserver = null;
+
+function initMazeChaseGame() {
+  mazeGridEl = document.getElementById('pfMazeGrid');
+  mazeStageEl = document.getElementById('pfMazeStage');
+  mazePlayerEl = document.getElementById('pfMazePlayer');
+  mazePlayerSprite = document.getElementById('pfMazePlayerSprite');
+  mazeHintEl = document.getElementById('pfMazeHint');
+  mazeControlsEl = document.getElementById('pfMazeControls');
+  mazeScoreEl = document.getElementById('pfMazeScore');
+  mazeLivesEl = document.getElementById('pfMazeLives');
+
+  if (!mazeGridEl || !mazeStageEl || !mazePlayerEl) return;
+
+  if (!mazeResizeObserver && typeof ResizeObserver !== 'undefined') {
+    mazeResizeObserver = new ResizeObserver(() => {
+      if (!mazePlayerState) return;
+      updatePlayerDimensions();
+      positionPlayerAt(mazePlayerState.row, mazePlayerState.col, true);
+    });
+    mazeResizeObserver.observe(mazeStageEl);
+  }
+
+  document.querySelectorAll('[data-maze-dir]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dir = MAZE_DIRS[button.dataset.mazeDir];
+      if (dir) movePlayer(dir.dr, dir.dc, dir.dir);
+    });
+  });
+
+  mazeKeyHandler = (event) => {
+    if (!mazePlayerState || mazePlayerState.tourActive) return;
+    const keyDirs = {
+      ArrowUp: MAZE_DIRS.up,
+      ArrowDown: MAZE_DIRS.down,
+      ArrowLeft: MAZE_DIRS.left,
+      ArrowRight: MAZE_DIRS.right
+    };
+    const dir = keyDirs[event.key];
+    if (!dir) return;
+    event.preventDefault();
+    movePlayer(dir.dr, dir.dc, dir.dir);
+  };
+}
+
+function stopMazeChaseGame() {
+  if (mazeTourTimeline) {
+    mazeTourTimeline.kill();
+    mazeTourTimeline = null;
+  }
+  if (typeof gsap !== 'undefined' && mazePlayerEl) {
+    gsap.killTweensOf(mazePlayerEl);
+    gsap.set(mazePlayerEl, { clearProps: 'transform,scale' });
+  }
+  if (mazeKeyHandler) {
+    document.removeEventListener('keydown', mazeKeyHandler);
+  }
+  if (mazePlayerState) {
+    mazePlayerState.tourActive = false;
+    mazePlayerState.isMoving = false;
+  }
+}
+
+function resetMazeChaseGame() {
+  stopMazeChaseGame();
+  buildMazeGrid();
+  mazePlayerState = {
+    row: MAZE_START.row,
+    col: MAZE_START.col,
+    direction: 'up',
+    isMoving: false,
+    tourActive: true,
+    visited: new Set()
+  };
+
+  if (mazeScoreEl) mazeScoreEl.textContent = '0';
+  if (mazeLivesEl) mazeLivesEl.textContent = '3';
+  if (mazeHintEl) mazeHintEl.textContent = 'Prepárate…';
+  if (mazeControlsEl) mazeControlsEl.hidden = true;
+  if (mazePlayerSprite) mazePlayerSprite.src = PLAYER_SPRITES.up;
+
+  updatePlayerDimensions();
+  positionPlayerAt(MAZE_START.row, MAZE_START.col, true);
+
+  window.requestAnimationFrame(() => {
+    updatePlayerDimensions();
+    positionPlayerAt(mazePlayerState.row, mazePlayerState.col, true);
+    runMazeTour();
+  });
+}
+
+function getMazeCellType(row, col) {
+  if (row < 0 || col < 0 || row >= MAZE_ROWS || col >= MAZE_COLS) return 'wall';
+  const code = MAZE_LAYOUT[row][col];
+  return MAZE_CELL[code] || 'wall';
+}
+
+function isMazeWalkable(row, col) {
+  return getMazeCellType(row, col) === 'path';
+}
+
+function getIslandAt(row, col) {
+  return MAZE_ISLANDS.find((island) =>
+    row >= island.row
+    && row < island.row + island.rows
+    && col >= island.col
+    && col < island.col + island.cols
+  ) || null;
+}
+
+function getStatIdAt(row, col) {
+  if (!isMazeWalkable(row, col)) return null;
+  return getIslandAt(row, col)?.id || null;
+}
+
+function isMazePathSurface(type) {
+  return type === 'path';
+}
+
+function islandContainsCell(island, row, col) {
+  return row >= island.row
+    && row < island.row + island.rows
+    && col >= island.col
+    && col < island.col + island.cols;
+}
+
+function applyMazeEdgeShadows() {
+  if (!mazeGridEl) return;
+
+  const pathInset = {
+    n: 'inset 0 5px 4px -2px rgba(0, 0, 0, 0.55)',
+    w: 'inset 5px 0 4px -2px rgba(0, 0, 0, 0.55)',
+    s: 'inset 0 -5px 4px -2px rgba(0, 0, 0, 0.45)',
+    e: 'inset -5px 0 4px -2px rgba(0, 0, 0, 0.45)'
+  };
+
+  mazeGridEl.querySelectorAll('.pf-mazechase-cell').forEach((cell) => {
+    const row = Number(cell.dataset.row);
+    const col = Number(cell.dataset.col);
+    const type = getMazeCellType(row, col);
+
+    if (!isMazePathSurface(type)) return;
+
+    const shadows = ['inset 0 0 0 1px rgba(0, 0, 0, 0.1)'];
+    [[-1, 0, 'n'], [1, 0, 's'], [0, -1, 'w'], [0, 1, 'e']].forEach(([dr, dc, edge]) => {
+      if (getMazeCellType(row + dr, col + dc) === 'wall') {
+        shadows.push(pathInset[edge]);
+      }
+    });
+    cell.style.setProperty('--path-inset', shadows.join(', '));
+  });
+}
+
+function buildMazeGrid() {
+  if (!mazeGridEl) return;
+
+  mazeGridEl.innerHTML = '';
+  mazeIslandElements = new Map();
+
+  MAZE_LAYOUT.forEach((rowStr, row) => {
+    [...rowStr].forEach((code, col) => {
+      const type = MAZE_CELL[code] || 'wall';
+      const cell = document.createElement('div');
+      cell.className = `pf-mazechase-cell pf-mazechase-cell--${type}`;
+      cell.dataset.row = String(row);
+      cell.dataset.col = String(col);
+
+      if (code === 's') {
+        cell.classList.add('pf-mazechase-cell--entrance');
+      }
+
+      const island = getIslandAt(row, col);
+      if (island) {
+        cell.classList.add('pf-mazechase-cell--clearing');
+        cell.dataset.clearing = island.id;
+      }
+
+      if (type === 'wall') {
+        const decorSeed = (row * 17 + col * 31) % 12;
+        if (decorSeed === 2) cell.classList.add('pf-mazechase-cell--decor-rock');
+        if (decorSeed === 6) cell.classList.add('pf-mazechase-cell--decor-bush');
+        if (decorSeed === 10) cell.classList.add('pf-mazechase-cell--decor-stump');
+      }
+
+      mazeGridEl.appendChild(cell);
+    });
+  });
+
+  applyMazeEdgeShadows();
+
+  MAZE_ISLANDS.forEach((island) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'pf-mazechase-island-wrap';
+    wrap.style.gridColumn = `${island.col + 1} / span ${island.cols}`;
+    wrap.style.gridRow = `${island.row + 1} / span ${island.rows}`;
+    wrap.dataset.islandId = island.id;
+
+    wrap.innerHTML = `
+      <div class="pf-mazechase-island" id="pfMazeIsland-${island.id}">
+        <span>${island.label}</span>
+        <strong data-count-to="${island.value}">0</strong>
+        <small>${island.sub}</small>
+      </div>
+    `;
+
+    mazeGridEl.appendChild(wrap);
+    mazeIslandElements.set(island.id, wrap.querySelector('.pf-mazechase-island'));
+  });
+}
+
+function updateMazeCellSize() {
+  if (!mazeStageEl) return;
+  mazeCellSize = {
+    w: mazeStageEl.clientWidth / MAZE_COLS,
+    h: mazeStageEl.clientHeight / MAZE_ROWS
+  };
+}
+
+function updatePlayerDimensions() {
+  if (!mazePlayerEl || !mazePlayerSprite) return;
+
+  updateMazeCellSize();
+  const spriteSize = Math.round(Math.min(mazeCellSize.w, mazeCellSize.h) * 1.08);
+
+  mazePlayerEl.style.width = `${mazeCellSize.w}px`;
+  mazePlayerEl.style.height = `${mazeCellSize.h}px`;
+
+  mazePlayerSprite.style.width = `${spriteSize}px`;
+  mazePlayerSprite.style.height = `${spriteSize}px`;
+  mazePlayerSprite.style.left = `${Math.round((mazeCellSize.w - spriteSize) / 2)}px`;
+  mazePlayerSprite.style.bottom = '0';
+  mazePlayerSprite.style.objectFit = 'contain';
+}
+
+function positionPlayerAt(row, col, instant = false) {
+  if (!mazePlayerEl || !mazeStageEl) return null;
+
+  updatePlayerDimensions();
+  const x = col * mazeCellSize.w;
+  const y = row * mazeCellSize.h;
+
+  if (instant || typeof gsap === 'undefined') {
+    mazePlayerEl.style.left = `${x}px`;
+    mazePlayerEl.style.top = `${y}px`;
+    if (typeof gsap !== 'undefined') {
+      gsap.set(mazePlayerEl, { scale: 1, x: 0, y: 0 });
+    }
+    return null;
+  }
+
+  return gsap.to(mazePlayerEl, {
+    left: x,
+    top: y,
+    scale: 1,
+    duration: 0.25,
+    ease: 'power2.out'
+  });
+}
+
+function setPlayerDirection(direction) {
+  if (!mazePlayerSprite || !PLAYER_SPRITES[direction]) return;
+  mazePlayerSprite.src = PLAYER_SPRITES[direction];
+  if (mazePlayerState) mazePlayerState.direction = direction;
+}
+
+function movePlayer(dr, dc, direction) {
+  if (!mazePlayerState || mazePlayerState.isMoving || mazePlayerState.tourActive) return Promise.resolve();
+
+  const nextRow = mazePlayerState.row + dr;
+  const nextCol = mazePlayerState.col + dc;
+  if (!isMazeWalkable(nextRow, nextCol)) return Promise.resolve();
+
+  mazePlayerState.isMoving = true;
+  setPlayerDirection(direction);
+  mazePlayerState.row = nextRow;
+  mazePlayerState.col = nextCol;
+
+  const tween = positionPlayerAt(nextRow, nextCol, typeof gsap === 'undefined');
+
+  const finish = () => {
+    mazePlayerState.isMoving = false;
+    handleStatEncounter(getStatIdAt(nextRow, nextCol));
+  };
+
+  if (tween && tween.eventCallback) {
+    return new Promise((resolve) => {
+      tween.eventCallback('onComplete', () => {
+        finish();
+        resolve();
+      });
+    });
+  }
+
+  finish();
+  return Promise.resolve();
+}
+
+function handleStatEncounter(statId) {
+  if (!statId || !mazePlayerState) return;
+
+  const islandEl = mazeIslandElements.get(statId);
+  if (islandEl) {
+    islandEl.classList.remove('is-highlight');
+    void islandEl.offsetWidth;
+    islandEl.classList.add('is-highlight');
+  }
+
+  if (mazePlayerState.visited.has(statId)) return;
+  onStatVisit(statId);
+}
+
+function onStatVisit(statId) {
+  if (!mazePlayerState || mazePlayerState.visited.has(statId)) return;
+
+  mazePlayerState.visited.add(statId);
+
+  const island = MAZE_ISLANDS.find((entry) => entry.id === statId);
+  if (island) {
+    MAZE_LAYOUT.forEach((rowStr, row) => {
+      [...rowStr].forEach((code, col) => {
+        if (!islandContainsCell(island, row, col)) return;
+        const cell = mazeGridEl?.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+        cell?.classList.add('pf-mazechase-cell--visited');
+      });
+    });
+  }
+
+  const islandEl = mazeIslandElements.get(statId);
+  const counter = islandEl?.querySelector('[data-count-to]');
+
+  if (counter && island) {
+    counter.textContent = '0';
+    animateCounter(counter, island.value);
+  }
+
+  if (mazeScoreEl) mazeScoreEl.textContent = String(mazePlayerState.visited.size);
+}
+
+function runMazeTour() {
+  if (!mazePlayerState) return;
+
+  if (typeof gsap === 'undefined') {
+    MAZE_TOUR_PATH.slice(1).forEach((point) => {
+      mazePlayerState.row = point.row;
+      mazePlayerState.col = point.col;
+      positionPlayerAt(point.row, point.col, true);
+      const statId = getStatIdAt(point.row, point.col);
+      if (statId) onStatVisit(statId);
+    });
+    enableFreeControl();
+    return;
+  }
+
+  mazePlayerState.tourActive = true;
+  if (mazeHintEl) mazeHintEl.textContent = 'Recorriendo resultados…';
+
+  mazeTourTimeline = gsap.timeline({
+    onComplete: enableFreeControl
+  });
+
+  MAZE_TOUR_PATH.forEach((point, index) => {
+    if (index === 0) return;
+
+    const prev = MAZE_TOUR_PATH[index - 1];
+    const dr = point.row - prev.row;
+    const dc = point.col - prev.col;
+    let direction = 'down';
+    if (dr < 0) direction = 'up';
+    else if (dr > 0) direction = 'down';
+    else if (dc < 0) direction = 'left';
+    else if (dc > 0) direction = 'right';
+
+    mazeTourTimeline.call(() => {
+      setPlayerDirection(direction);
+      mazePlayerState.row = point.row;
+      mazePlayerState.col = point.col;
+    });
+
+    mazeTourTimeline.to(mazePlayerEl, {
+      left: () => {
+        updateMazeCellSize();
+        return point.col * mazeCellSize.w;
+      },
+      top: () => {
+        updateMazeCellSize();
+        return point.row * mazeCellSize.h;
+      },
+      scale: 1,
+      duration: 0.22,
+      ease: 'power2.out'
+    });
+
+    const statId = getStatIdAt(point.row, point.col);
+    mazeTourTimeline.call(() => {
+      if (statId) onStatVisit(statId);
+    });
+
+    mazeTourTimeline.to({}, { duration: statId ? 0.85 : 0.05 });
+  });
+}
+
+function enableFreeControl() {
+  if (!mazePlayerState) return;
+
+  mazePlayerState.tourActive = false;
+  mazePlayerState.isMoving = false;
+  mazeTourTimeline = null;
+
+  if (mazeHintEl) {
+    mazeHintEl.textContent = 'Usa las flechas del teclado o el pad direccional para explorar el laberinto.';
+  }
+  if (mazeControlsEl) mazeControlsEl.hidden = false;
+
+  document.addEventListener('keydown', mazeKeyHandler);
 }
 
 function buildWordsearch() {

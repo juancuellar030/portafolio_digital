@@ -559,7 +559,8 @@ button {
 .pf-modal-content:has(.pf-openbox:not([hidden])),
 .pf-modal-content:has(.pf-revealcards:not([hidden])),
 .pf-modal-content:has(.pf-rankorder:not([hidden])),
-.pf-modal-content:has(.pf-gameshow:not([hidden])) {
+.pf-modal-content:has(.pf-gameshow:not([hidden])),
+.pf-modal-content:has(.pf-mazechase:not([hidden])) {
   display: flex;
   overflow: hidden;
 }
@@ -582,9 +583,14 @@ button {
   padding: 0 0.65rem 0.65rem;
 }
 
+.pf-modal-content:has(.pf-mazechase:not([hidden])) {
+  padding: 0 0.65rem 0.65rem;
+}
+
 .pf-activity-panel.pf-openbox,
 .pf-activity-panel.pf-revealcards,
-.pf-activity-panel.pf-rankorder {
+.pf-activity-panel.pf-rankorder,
+.pf-activity-panel.pf-mazechase {
   flex: 1;
   display: flex;
   min-height: 0;
@@ -621,8 +627,7 @@ button {
   display: none !important;
 }
 
-.pf-box-grid,
-.pf-result-cards {
+.pf-box-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
@@ -1321,10 +1326,10 @@ button {
   justify-content: center;
   gap: 0.25rem;
   min-height: clamp(60px, 8vh, 80px);
-  height: auto;
+  height: 130px;
   padding: 0.5rem 0.6rem;
   border: clamp(3px, 0.5vw, 5px) solid #ffe000;
-  background: #16294f;
+  background: #16294f90;
   color: #ffe000;
   font-family: inherit;
   cursor: pointer;
@@ -1337,13 +1342,13 @@ button {
 }
 
 .pf-gameshow-answer-letter {
-  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-size: clamp(1.5rem, 1.6vw, 1.35rem);
   font-weight: 600;
   opacity: 0.85;
 }
 
 .pf-gameshow-answer-text {
-  font-size: clamp(0.88rem, 1.35vw, 1.15rem);
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
@@ -1393,84 +1398,289 @@ button {
   font-weight: 600;
 }
 
-.pf-maze-path {
-  position: relative;
-  height: 160px;
-  margin-bottom: 0.85rem;
-  border: 1px solid var(--ww-border);
-  border-radius: 6px;
-  background: var(--ww-blue-light);
+/* ===== Maze Chase (Resultados) ===== */
+.pf-mazechase-game {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  gap: clamp(0.35rem, 1vh, 0.65rem);
 }
 
-.pf-maze-path::before {
+.pf-mazechase-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  aspect-ratio: 14 / 10;
+  max-height: min(72vh, 620px);
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 3px #689f38, 0 4px 14px rgba(0, 0, 0, 0.18);
+  background-color: #aed581;
+  background-image:
+    radial-gradient(circle at center, rgba(76, 120, 40, 0.18) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.pf-mazechase-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  background-color: #aed581;
+}
+
+.pf-mazechase-cell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Grass — flat lawn tiles */
+.pf-mazechase-cell--wall {
+  background-color: #aed581;
+  background-image:
+    radial-gradient(circle at center, rgba(76, 120, 40, 0.22) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.pf-mazechase-cell--wall.pf-mazechase-cell--decor-rock::after {
   content: "";
   position: absolute;
-  left: 8%;
-  right: 9%;
-  top: 50%;
-  height: 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #ff8c00, var(--ww-green-text));
-  transform: translateY(-50%);
+  right: 12%;
+  bottom: 14%;
+  width: 42%;
+  height: 34%;
+  border-radius: 45% 55% 50% 50%;
+  background: linear-gradient(145deg, #bdbdbd, #757575);
+  box-shadow: inset -1px -2px 0 rgba(0, 0, 0, 0.2);
 }
 
-.pf-maze-runner,
-.pf-maze-goal {
+.pf-mazechase-cell--wall.pf-mazechase-cell--decor-bush::after {
+  content: "";
   position: absolute;
-  top: calc(50% - 24px);
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
+  left: 16%;
+  bottom: 10%;
+  width: 58%;
+  height: 44%;
+  border-radius: 50% 50% 40% 40%;
+  background: radial-gradient(circle at 35% 35%, #558b2f, #33691e);
+  box-shadow: 7px 0 0 -2px #437a27;
+}
+
+.pf-mazechase-cell--wall.pf-mazechase-cell--decor-stump::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  bottom: 12%;
+  width: 44%;
+  height: 38%;
+  border-radius: 40% 40% 20% 20%;
+  background: linear-gradient(180deg, #a1887f 0%, #6d4c41 55%, #4e342e 100%);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Dirt path — recessed trench carved into grass */
+.pf-mazechase-cell--path {
+  background-color: #5d4037;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 0 2px,
+      transparent 2px 6px
+    ),
+    linear-gradient(180deg, #6d4c41 0%, #5d4037 45%, #4e342e 100%);
+  box-shadow: var(--path-inset, inset 0 0 0 1px rgba(0, 0, 0, 0.15));
+}
+
+.pf-mazechase-cell--path.pf-mazechase-cell--clearing {
+  background-color: #6d4c41;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 0 3px,
+      transparent 3px 8px
+    ),
+    linear-gradient(180deg, #795548 0%, #6d4c41 50%, #5d4037 100%);
+}
+
+.pf-mazechase-cell--path.pf-mazechase-cell--visited {
+  filter: brightness(1.1);
+}
+
+.pf-mazechase-cell--path.pf-mazechase-cell--entrance::before {
+  content: "";
+  position: absolute;
+  inset: 22% 24%;
+  z-index: 1;
   border-radius: 50%;
-  color: var(--ww-white);
-  font-size: 1.35rem;
+  background: radial-gradient(circle at 40% 35%, #7a7a7a, #3d3d3d 72%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
+  opacity: 0.65;
 }
 
-.pf-maze-runner {
-  left: 8%;
-  background: #ff8c00;
-  animation: pf-runner 5s ease-in-out infinite;
+.pf-mazechase-island-wrap {
+  position: relative;
+  z-index: 4;
+  pointer-events: none;
 }
 
-.pf-maze-goal {
-  right: 7%;
-  background: var(--ww-green-text);
-}
-
-.pf-result-cards article {
-  display: grid;
-  gap: 0.15rem;
-  padding: 0.85rem;
-  border: 1px solid var(--ww-border);
+.pf-mazechase-island {
+  position: absolute;
+  inset: 6% 4% 4% 4%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  padding: 0.25rem 0.35rem;
+  border: 3px solid #fff;
   border-radius: 6px;
+  background: linear-gradient(180deg, #fff 0%, #f0f4f8 100%);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
   text-align: center;
-  background: var(--ww-white);
+  pointer-events: none;
 }
 
-.pf-result-cards span {
-  color: var(--ww-muted);
-  font-size: 0.82rem;
-  font-weight: 700;
+.pf-mazechase-island span {
+  font-size: clamp(0.55rem, 1.4vw, 0.78rem);
+  font-weight: 800;
+  color: #333;
+  line-height: 1.1;
 }
 
-.pf-result-cards strong {
-  font-size: 2.2rem;
+.pf-mazechase-island strong {
+  font-size: clamp(1.1rem, 3.2vw, 1.85rem);
   line-height: 1;
+  font-weight: 800;
   color: var(--ww-blue-link);
 }
 
-.pf-result-cards small {
-  color: var(--ww-green-text);
+.pf-mazechase-island small {
+  font-size: clamp(0.5rem, 1.2vw, 0.72rem);
   font-weight: 700;
+  color: var(--ww-green-text);
 }
 
-.pf-impact-note {
-  margin: 0.75rem 0 0;
+.pf-mazechase-island.is-highlight {
+  animation: pf-maze-pulse 0.55s ease-out;
+}
+
+.pf-mazechase-player {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.pf-mazechase-player img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45));
+}
+
+.pf-mazechase-hud {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  z-index: 12;
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  font-weight: 800;
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  color: #222;
+}
+
+.pf-mazechase-hud i {
+  color: #e74c3c;
+}
+
+.pf-mazechase-score i {
+  color: var(--ww-green-text);
+}
+
+.pf-mazechase-controls {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  z-index: 14;
+  display: grid;
+  grid-template-columns: repeat(3, 2.35rem);
+  grid-template-rows: repeat(2, 2.35rem);
+  gap: 0.25rem;
+  padding: 0.35rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.pf-mazechase-controls[hidden] {
+  display: none !important;
+}
+
+.pf-mazechase-btn {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  border: 2px solid var(--ww-border);
+  border-radius: 7px;
+  background: var(--ww-white);
+  color: var(--ww-blue-link);
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pf-mazechase-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.pf-mazechase-btn--up { grid-column: 2; grid-row: 1; }
+.pf-mazechase-btn--left { grid-column: 1; grid-row: 2; }
+.pf-mazechase-btn--down { grid-column: 2; grid-row: 2; }
+.pf-mazechase-btn--right { grid-column: 3; grid-row: 2; }
+
+.pf-mazechase-hint {
+  margin: 0;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: clamp(0.82rem, 1.3vw, 0.95rem);
+  font-weight: 700;
   color: var(--ww-muted);
-  font-size: 0.92rem;
+}
+
+.pf-mazechase-impact {
+  margin: 0;
+  flex-shrink: 0;
+  color: var(--ww-muted);
+  font-size: clamp(0.78rem, 1.2vw, 0.88rem);
   font-weight: 600;
   text-align: center;
+  line-height: 1.4;
+}
+
+@keyframes pf-maze-pulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
 
 .pf-credits-layout {
@@ -1528,11 +1738,6 @@ button {
   50% { transform: scale(1.03); opacity: 1; }
 }
 
-@keyframes pf-runner {
-  0%, 100% { left: 8%; }
-  50% { left: 72%; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1575,7 +1780,6 @@ button {
   }
 
   .pf-box-grid,
-  .pf-result-cards,
   .pf-credits-layout {
     grid-template-columns: 1fr;
   }
