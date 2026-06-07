@@ -670,4 +670,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-

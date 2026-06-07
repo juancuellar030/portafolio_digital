@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprendiendo Jugando — Blog del Proyecto</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ww-purple: #5B2FBB;
+    --ww-purple-light: #EDE9FF;
+    --ww-purple-mid: #8B5CF6;
+    --ww-orange: #EA580C;
+    --ww-orange-light: #FFF4EE;
+    --ww-green: #16A34A;
+    --ww-green-light: #DCFCE7;
+    --ww-teal: #0891B2;
+    --ww-teal-light: #E0F9FF;
+    --ww-amber: #D97706;
+    --ww-amber-light: #FFFBEB;
+    --ww-red: #DC2626;
+    --ww-red-light: #FEF2F2;
+    --ww-pink: #DB2777;
+    --ww-pink-light: #FDF2F8;
+    --bg: #F7F5FF;
+    --white: #FFFFFF;
+    --text: #1e1b4b;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --shadow: 0 2px 12px rgba(91,47,187,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--ww-purple);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 1.5rem;
+    display: flex; align-items: center; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-logo {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900; font-size: 18px; color: #fff;
+    white-space: nowrap; padding: 1rem 1.5rem 1rem 0; margin-right: 1rem;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: #FCD34D; }
+  .nav-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.75); font-family: 'Nunito', sans-serif;
+    font-size: 13.5px; font-weight: 700; padding: 0.85rem 0.85rem;
+    white-space: nowrap; transition: color 0.2s; flex-shrink: 0;
+    border-bottom: 3px solid transparent;
+    position: relative; top: 1px;
+  }
+  .nav-btn:hover { color: #fff; }
+  .nav-btn.active { color: #FCD34D; border-bottom-color: #FCD34D; }
+
+  /* ── PAGES ── */
+  .page { display: none; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ww-purple);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    color: #fff; text-align: center;
+    position: relative; overflow: hidden; margin-bottom: 2rem;
+  }
+  .hero::before {
+    content: '🎮 🎯 🌟 🎲 🏆 🎮 🎯 🌟';
+    position: absolute; top: 10px; left: 0; right: 0;
+    font-size: 28px; opacity: 0.12; letter-spacing: 20px;
+    white-space: nowrap;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2); border-radius: 40px;
+    padding: 4px 16px; font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 1rem; color: #FCD34D;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 30px); font-weight: 900;
+    line-height: 1.25; margin-bottom: 1.25rem;
+  }
+  .hero p { font-size: 16px; opacity: 0.9; max-width: 580px; margin: 0 auto 1.75rem; }
+  .hero-authors {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  }
+  .hero-author {
+    background: rgba(255,255,255,0.15); border-radius: 40px;
+    padding: 5px 16px; font-size: 13px; font-weight: 700;
+  }
+  .hero-cta {
+    display: inline-block; background: #FCD34D; color: var(--ww-purple);
+    border-radius: 40px; padding: 10px 28px; font-family: 'Nunito', sans-serif;
+    font-weight: 900; font-size: 15px; margin-top: 1.5rem; cursor: default;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+  }
+  .section-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .section-header h2 { font-size: 22px; font-weight: 800; }
+  .section-header p { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    margin-bottom: 1.25rem; box-shadow: var(--shadow);
+  }
+  .card h3 { font-size: 16px; font-weight: 800; margin-bottom: 0.5rem; }
+  .card p, .card li { font-size: 14.5px; color: #374151; line-height: 1.7; }
+  .card ul { padding-left: 1.25rem; }
+  .card ul li { margin-bottom: 4px; }
+
+  .card-accent-left {
+    border-left: 4px solid var(--ww-purple); padding-left: 1.25rem;
+  }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+
+  /* ── GAME BADGES ── */
+  .badge {
+    display: inline-block; border-radius: 6px; padding: 2px 10px;
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .badge-purple { background: var(--ww-purple-light); color: var(--ww-purple); }
+  .badge-green { background: var(--ww-green-light); color: var(--ww-green); }
+  .badge-amber { background: var(--ww-amber-light); color: var(--ww-amber); }
+  .badge-teal { background: var(--ww-teal-light); color: var(--ww-teal); }
+  .badge-orange { background: var(--ww-orange-light); color: var(--ww-orange); }
+  .badge-pink { background: var(--ww-pink-light); color: var(--ww-pink); }
+
+  /* ── OBJECTIVE LEVELS ── */
+  .level-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    margin-bottom: 0.9rem; display: flex; align-items: flex-start; gap: 14px;
+    box-shadow: var(--shadow);
+  }
+  .level-badge {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 17px; color: #fff;
+  }
+  .lvl1 { background: var(--ww-orange); }
+  .lvl2 { background: var(--ww-teal); }
+  .lvl3 { background: var(--ww-green); }
+  .lvl4 { background: var(--ww-pink); }
+  .lvl0 { background: var(--ww-purple); }
+  .level-card h4 { font-size: 14.5px; font-weight: 800; margin-bottom: 4px; }
+  .level-card p { font-size: 13.5px; color: #374151; line-height: 1.6; }
+
+  /* ── ACTIVITY MOCKUP (Wordwall style) ── */
+  .ww-activity {
+    border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); margin-bottom: 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .ww-activity-header {
+    padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .ww-activity-header .title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 15px; color: #fff; }
+  .ww-activity-header .type-tag { font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.25); color: #fff; border-radius: 20px; padding: 2px 10px; }
+  .ww-activity-body { background: var(--white); padding: 1.25rem 1.5rem; }
+
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .match-card-item {
+    border: 2px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; font-size: 13.5px; font-weight: 700;
+    text-align: center; cursor: default;
+  }
+  .match-card-item.a { border-color: var(--ww-purple); background: var(--ww-purple-light); color: var(--ww-purple); }
+  .match-card-item.b { border-color: var(--ww-teal); background: var(--ww-teal-light); color: var(--ww-teal); }
+  .match-card-item.c { border-color: var(--ww-green); background: var(--ww-green-light); color: var(--ww-green); }
+  .match-card-item.d { border-color: var(--ww-amber); background: var(--ww-amber-light); color: var(--ww-amber); }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option {
+    border: 2px solid var(--border); border-radius: 10px;
+    padding: 10px 16px; font-size: 14px; font-weight: 700; cursor: default;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quiz-option.correct { border-color: var(--ww-green); background: var(--ww-green-light); color: var(--ww-green); }
+  .quiz-option .opt-letter {
+    width: 26px; height: 26px; border-radius: 6px; background: var(--ww-purple);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; flex-shrink: 0;
+  }
+  .quiz-option.correct .opt-letter { background: var(--ww-green); }
+
+  /* ── STAT CARDS ── */
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.25rem 1rem; text-align: center; box-shadow: var(--shadow);
+  }
+  .stat-card .number { font-family: 'Nunito', sans-serif; font-size: 32px; font-weight: 900; }
+  .stat-card .label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+  .stat-card.purple .number { color: var(--ww-purple); }
+  .stat-card.green .number { color: var(--ww-green); }
+  .stat-card.amber .number { color: var(--ww-amber); }
+  .stat-card.teal .number { color: var(--ww-teal); }
+  .stat-card.orange .number { color: var(--ww-orange); }
+
+  /* ── BAR CHART ── */
+  .chart-container { padding: 0.5rem 0; }
+  .chart-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .chart-label { font-size: 12.5px; font-weight: 700; width: 130px; flex-shrink: 0; text-align: right; color: var(--text-muted); }
+  .chart-bars { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .bar { height: 20px; border-radius: 6px; transition: width 0.5s; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; }
+  .bar span { font-size: 11px; font-weight: 900; color: #fff; }
+  .bar-pre { background: #C4B5FD; }
+  .bar-post { background: var(--ww-purple); }
+  .bar-legend { display: flex; gap: 16px; margin-top: 0.75rem; font-size: 12px; font-weight: 700; }
+  .bar-legend span { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--ww-purple-light); }
+  .timeline-item { position: relative; margin-bottom: 1.5rem; }
+  .timeline-dot {
+    position: absolute; left: -2rem; top: 4px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--ww-purple); border: 3px solid var(--bg);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .timeline-item h4 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .timeline-item p { font-size: 14px; color: #374151; }
+
+  /* ── THEORY CARD ── */
+  .theory-strip {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem; box-shadow: var(--shadow);
+  }
+  .theory-icon { font-size: 28px; flex-shrink: 0; }
+  .theory-strip h4 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .theory-strip p { font-size: 13.5px; color: #374151; line-height: 1.6; }
+
+  /* ── DIARY QUOTE ── */
+  .diary-quote {
+    background: var(--ww-purple-light);
+    border-left: 4px solid var(--ww-purple);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1rem 1.5rem; margin-bottom: 1rem;
+  }
+  .diary-quote .session-tag { font-size: 11.5px; font-weight: 800; color: var(--ww-purple); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .diary-quote p { font-size: 14px; color: #374151; font-style: italic; }
+
+  /* ── IMPACT GRID ── */
+  .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .impact-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .impact-card .impact-icon { font-size: 26px; margin-bottom: 8px; }
+  .impact-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 6px; }
+  .impact-card p { font-size: 13px; color: #374151; line-height: 1.6; }
+
+  /* ── CREDITS ── */
+  .author-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: var(--shadow); margin-bottom: 1rem;
+  }
+  .author-avatar {
+    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 18px; color: #fff;
+  }
+  .author-card h4 { font-size: 15px; font-weight: 800; }
+  .author-card p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: var(--ww-purple); border-radius: var(--radius);
+    padding: 1.5rem 2rem; color: #fff; text-align: center; margin: 1.5rem 0;
+  }
+  .pull-quote p { font-size: 18px; font-family: 'Nunito', sans-serif; font-weight: 700; line-height: 1.5; }
+
+  /* ── SECTION INTRO ── */
+  .section-intro { font-size: 15.5px; color: #374151; margin-bottom: 1.75rem; line-height: 1.75; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .match-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .chart-label { width: 90px; font-size: 11px; }
+  }
+
+  /* ── STRUCTURE NOTE BOX ── */
+  .note-box {
+    background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius);
+    padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13.5px;
+  }
+  .note-box strong { color: var(--ww-amber); font-weight: 800; }
+
+  /* ── PHASE PILL ── */
+  .phase-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--ww-purple); color: #fff; border-radius: 40px;
+    padding: 4px 14px; font-family: 'Nunito', sans-serif; font-weight: 800;
+    font-size: 12.5px; margin-bottom: 8px;
+  }
+
+  /* ── WORDWALL FEATURE CARDS ── */
+  .feature-strip {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .feature-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 40px; padding: 6px 14px; font-size: 13px; font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+
+  /* Print helper */
+  @media print { nav { position: static; } .page { display: block !important; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+  NAV
+════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">🎮 <span>Jugando</span> Aprendo</div>
+  <button class="nav-btn active" onclick="show('home')">Inicio</button>
+  <button class="nav-btn" onclick="show('proyecto')">El Proyecto</button>
+  <button class="nav-btn" onclick="show('objetivos')">Objetivos</button>
+  <button class="nav-btn" onclick="show('contexto')">Contexto</button>
+  <button class="nav-btn" onclick="show('fundamentos')">Fundamentos</button>
+  <button class="nav-btn" onclick="show('wordwall')">Wordwall</button>
+  <button class="nav-btn" onclick="show('metodologia')">Metodología</button>
+  <button class="nav-btn" onclick="show('intervencion')">Intervención</button>
+  <button class="nav-btn" onclick="show('resultados')">Resultados</button>
+  <button class="nav-btn" onclick="show('conclusiones')">Conclusiones</button>
+  <button class="nav-btn" onclick="show('creditos')">Créditos</button>
+</nav>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 1 — INICIO
+════════════════════════════════════════ -->
+<div class="page active" id="home">
+
+  <div class="hero">
+    <div class="hero-tag">🏫 Colegio Colombo Inglés del Huila · Grado 1°</div>
+    <h1>Integración del juego y Wordwall como estrategia pedagógica en la competencia comunicativa</h1>
+    <p>¿Qué pasa cuando devolvemos el juego al aula? 40 estudiantes de 6 y 7 años, 8 sesiones y una plataforma transformaron la forma de aprender inglés.</p>
+    <div class="hero-authors">
+      <span class="hero-author">Alexandra Catalina Lozada B.</span>
+      <span class="hero-author">Juan Diego Cuellar M.</span>
+      <span class="hero-author">Karla Fabiana Cabrera R.</span>
+    </div>
+    <div class="hero-cta">¡Explora el proyecto! 🚀</div>
+  </div>
+
+  <div class="note-box">
+    <strong>💡 Sobre este blog:</strong> Este espacio digital presenta de manera sintética e interactiva los resultados del proyecto de investigación de Trabajo de Grado I, Maestría en Recursos Digitales Aplicados a la Educación — Universidad de Cartagena (2026). Navega usando el menú superior para explorar cada sección.
+  </div>
+
+  <!-- Quick stats -->
+  <div class="stats-row">
+    <div class="stat-card purple"><div class="number">40</div><div class="label">Estudiantes grado 1°</div></div>
+    <div class="stat-card teal"><div class="number">8</div><div class="label">Sesiones de 45 min</div></div>
+    <div class="stat-card green"><div class="number">12</div><div class="label">Actividades Wordwall</div></div>
+    <div class="stat-card amber"><div class="number">0.65</div><div class="label">Factor de ganancia Hake</div></div>
+  </div>
+
+  <!-- Summary card -->
+  <div class="card">
+    <h3>¿De qué trata este proyecto?</h3>
+    <p>Este proyecto analiza el impacto del juego, apoyado en la plataforma <strong>Wordwall</strong>, como estrategia de mediación pedagógica en la <strong>competencia comunicativa en inglés</strong> de estudiantes de grado primero del Colegio Colombo Inglés del Huila (Neiva). Se partió de una realidad observada en el aula: el juego, lenguaje natural de la infancia, iba perdiendo terreno frente a las exigencias curriculares y los métodos tradicionales. Usando un diseño <strong>pre-experimental</strong> con pre-test y post-test, 40 niñas y niños de 6 y 7 años participaron en secuencias didácticas gamificadas diseñadas en Wordwall, logrando una mejora estadísticamente significativa en su rendimiento académico y una transformación visible en su motivación y confianza para comunicarse en inglés.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"¿Cómo devolverle al juego el lugar que merece como mediador del aprendizaje, sin dejar de lado los compromisos institucionales?"</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 2 — EL PROYECTO
+════════════════════════════════════════ -->
+<div class="page" id="proyecto">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-orange-light)">🔍</div>
+    <div><h2>El Proyecto</h2><p>Problema, pregunta de investigación y justificación</p></div>
+  </div>
+
+  <p class="section-intro">El juego es un derecho fundamental de la infancia y una herramienta esencial para el desarrollo integral. Sin embargo, en muchas aulas de primer grado está siendo desplazado por enfoques memorísticos y presiones curriculares.</p>
+
+  <div class="card card-accent-left" style="border-left-color: var(--ww-orange)">
+    <div class="badge badge-orange" style="margin-bottom:0.75rem">Problema identificado</div>
+    <h3>El aula sin juego</h3>
+    <p>En el Colegio Colombo Inglés del Huila, los niños y niñas de primer grado llegaban cada mañana llenos de energía y ganas de explorar el mundo. Sin embargo, ese entusiasmo se iba apagando: el aula, que debería ser un espacio de movimiento e imaginación, se convertía progresivamente en un lugar donde primaban la quietud, las fichas impresas y el cumplimiento de objetivos curriculares en tiempo reducido.</p>
+    <p style="margin-top:0.75rem">Esta situación tiene raíces multicausales: exigencias del currículo, horarios apretados, presión por resultados estandarizados y pedagogías tradicionales que aún dominan la práctica docente en muchos contextos de América Latina y Colombia.</p>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-purple" style="margin-bottom:0.75rem">Árbol de problemas — síntesis</div>
+    <div class="card-grid">
+      <div style="background:var(--ww-red-light);border-radius:10px;padding:1rem">
+        <p style="font-weight:800;font-size:13px;color:var(--ww-red);margin-bottom:4px">⬆ EFECTOS</p>
+        <ul style="font-size:13px;padding-left:1rem">
+          <li>Desmotivación y baja participación</li>
+          <li>Bajo rendimiento en competencia comunicativa</li>
+          <li>Ansiedad frente al inglés</li>
+        </ul>
+      </div>
+      <div style="background:var(--ww-orange-light);border-radius:10px;padding:1rem">
+        <p style="font-weight:800;font-size:13px;color:var(--ww-orange);margin-bottom:4px">⚡ PROBLEMA CENTRAL</p>
+        <p style="font-size:13px">Reducción del juego en el aula de 1° grado y ausencia de estrategias mediadas por tecnología lúdica</p>
+      </div>
+      <div style="background:var(--ww-amber-light);border-radius:10px;padding:1rem">
+        <p style="font-weight:800;font-size:13px;color:var(--ww-amber);margin-bottom:4px">⬇ CAUSAS</p>
+        <ul style="font-size:13px;padding-left:1rem">
+          <li>Enfoques pedagógicos tradicionales</li>
+          <li>Presión curricular y evaluativa</li>
+          <li>Desarticulación TIC-lúdica</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px solid var(--ww-purple)">
+    <div class="badge badge-purple" style="margin-bottom:0.75rem">❓ Pregunta de investigación</div>
+    <p style="font-size:17px; font-family:'Nunito',sans-serif; font-weight:700; color:var(--ww-purple); line-height:1.5">¿De qué manera el uso del juego, apoyado en la plataforma Wordwall, impacta el rendimiento académico en la competencia comunicativa de los estudiantes de grado primero del Colegio Colombo Inglés del Huila?</p>
+  </div>
+
+  <div class="card">
+    <h3>Justificación</h3>
+    <p>La evidencia científica confirma que el juego potencia el pensamiento crítico, la resolución de problemas y el aprendizaje significativo en los primeros años escolares. A nivel internacional, estudios en Indonesia, Ecuador y Ucrania con la plataforma Wordwall demuestran mejoras notables en vocabulario, competencia comunicativa y motivación. En Colombia, investigaciones en El Carmen de Bolívar y otras instituciones ratifican la viabilidad de la gamificación digital en básica primaria.</p>
+    <p style="margin-top:0.75rem">Este proyecto genera evidencia local que permite a los docentes del Huila integrar el juego de manera efectiva en el aula bilingüe, alineando la innovación pedagógica con los lineamientos del MEN y el Plan de Desarrollo Huila Grande.</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 3 — OBJETIVOS
+════════════════════════════════════════ -->
+<div class="page" id="objetivos">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-purple-light)">🏆</div>
+    <div><h2>Objetivos</h2><p>Misión general y niveles del proyecto</p></div>
+  </div>
+
+  <p class="section-intro">Como en todo buen juego, este proyecto tiene un objetivo principal y cuatro retos específicos que se deben superar en secuencia para completar la misión.</p>
+
+  <div class="level-card" style="border:2px solid var(--ww-purple)">
+    <div class="level-badge lvl0">🎯</div>
+    <div>
+      <h4>Objetivo General</h4>
+      <p>Analizar la influencia del uso del juego, apoyado en la plataforma Wordwall, en el rendimiento académico de la competencia comunicativa de los estudiantes de grado primero del Colegio Colombo Inglés del Huila, mediante el diseño e implementación de secuencias didácticas gamificadas.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;margin-bottom:0.75rem">
+    <span class="badge badge-purple">Objetivos específicos — 4 retos</span>
+  </div>
+
+  <div class="level-card">
+    <div class="level-badge lvl1">1</div>
+    <div>
+      <h4>Reto 1 — Diagnóstico</h4>
+      <p>Diagnosticar el nivel inicial de rendimiento académico en la competencia comunicativa en inglés de los estudiantes de grado primero, mediante la aplicación de una prueba objetiva (pre-test).</p>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-badge lvl2">2</div>
+    <div>
+      <h4>Reto 2 — Diseño</h4>
+      <p>Diseñar secuencias didácticas gamificadas en la plataforma Wordwall, alineadas con los Derechos Básicos de Aprendizaje (DBA) y los contenidos temáticos de grado primero del currículo bilingüe institucional.</p>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-badge lvl3">3</div>
+    <div>
+      <h4>Reto 3 — Implementación</h4>
+      <p>Implementar la propuesta de intervención pedagógica gamificada a través de 8 sesiones de 45 minutos, aplicadas al grupo completo de 40 estudiantes de grado primero, y evaluar la percepción estudiantil mediante escala Likert pictográfica.</p>
+    </div>
+  </div>
+
+  <div class="level-card">
+    <div class="level-badge lvl4">4</div>
+    <div>
+      <h4>Reto 4 — Evaluación</h4>
+      <p>Evaluar la influencia de la estrategia mediada por Wordwall en el rendimiento académico final de la competencia comunicativa, mediante la aplicación de una prueba objetiva (post-test) y el cálculo del Factor de Ganancia de Hake.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 4 — CONTEXTO
+════════════════════════════════════════ -->
+<div class="page" id="contexto">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-teal-light)">📍</div>
+    <div><h2>Nuestro Contexto</h2><p>¿Dónde y con quiénes se desarrolló el proyecto?</p></div>
+  </div>
+
+  <p class="section-intro">Conoce el escenario donde 40 pequeños aprendices cambiaron su relación con el inglés jugando.</p>
+
+  <div class="card-grid">
+    <div class="card" style="border-top:4px solid var(--ww-teal)">
+      <div style="font-size:28px;margin-bottom:8px">🗺️</div>
+      <h3>Contexto Regional</h3>
+      <p>Neiva, capital del departamento del Huila, es una ciudad del sur de Colombia con creciente interés en la educación bilingüe. El Plan de Desarrollo <em>Huila Grande</em> y la Ley 1651 de 2013 impulsan el fortalecimiento de competencias lingüísticas en entornos competitivos y globales desde etapas tempranas.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ww-purple)">
+      <div style="font-size:28px;margin-bottom:8px">🏫</div>
+      <h3>Institución</h3>
+      <p>El <strong>Colegio Colombo Inglés del Huila</strong> es una institución de carácter bilingüe con infraestructura tecnológica de vanguardia. Dispone de un ecosistema digital robusto que facilita la integración de herramientas TIC en el aula y respalda protocolos de privacidad para menores.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-purple" style="margin-bottom:0.75rem">👥 Población y muestra</div>
+    <div class="stats-row" style="margin-bottom:1rem">
+      <div class="stat-card purple"><div class="number">40</div><div class="label">Estudiantes (muestra censal)</div></div>
+      <div class="stat-card teal"><div class="number">6–7</div><div class="label">Años de edad</div></div>
+      <div class="stat-card green"><div class="number">100%</div><div class="label">Consentimiento informado</div></div>
+    </div>
+    <p>La muestra es <strong>censal</strong>: se trabajó con la totalidad del grado primero, lo que elimina el error de muestreo y fortalece la validez interna del estudio. Los estudiantes constituyen un grupo intacto — ya conformado por la administración escolar — que cumple con criterios de pertinencia, permanencia y dimensión ética.</p>
+  </div>
+
+  <div class="card">
+    <h3>Perfil del estudiante</h3>
+    <p>Niñas y niños de 6 y 7 años en transición del juego simbólico al juego de reglas. Esta etapa es determinante: la aceptación de normas prepara al estudiante para interactuar con sistemas complejos como el lenguaje. El juego de reglas fomenta el pensamiento lógico, la disciplina social y la capacidad de escucha — pilares de la competencia comunicativa que este proyecto busca fortalecer.</p>
+    <p style="margin-top:0.75rem">En el entorno bilingüe del colegio, los estudiantes tienen exposición al inglés desde etapas tempranas, lo que amplifica el impacto potencial de las estrategias de gamificación digital en la adquisición del idioma.</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 5 — FUNDAMENTOS TEÓRICOS
+════════════════════════════════════════ -->
+<div class="page" id="fundamentos">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-green-light)">📚</div>
+    <div><h2>Fundamentos Teóricos</h2><p>Las ideas que sostienen el proyecto</p></div>
+  </div>
+
+  <p class="section-intro">Cinco pilares conceptuales articulan la propuesta pedagógica. Lejos de ser conceptos abstractos, cada uno tiene una traducción directa en lo que ocurrió en el aula.</p>
+
+  <!-- Constructivismo -->
+  <div class="theory-strip">
+    <div class="theory-icon">🧱</div>
+    <div>
+      <h4>Constructivismo y aprendizaje activo</h4>
+      <p>Piaget y Vygotsky coinciden: el conocimiento no se recibe pasivamente, se construye activamente. El juego proporciona el espacio perfecto para que el niño experimente con la realidad de forma directa, integrando nuevos saberes a sus esquemas mentales previos. La Zona de Desarrollo Próximo de Vygotsky justifica el andamiaje que ofrece Wordwall: el reto está justo por encima de lo que el niño puede hacer solo, pero lo suficientemente accesible con apoyo.</p>
+    </div>
+  </div>
+
+  <!-- Teoría del juego -->
+  <div class="theory-strip">
+    <div class="theory-icon">🎲</div>
+    <div>
+      <h4>Teoría del juego</h4>
+      <p>El juego es el lenguaje natural de la infancia. En el rango de 6-7 años se produce la transición del juego simbólico al de <em>reglas</em>, una etapa determinante porque acepta normas y prepara al estudiante para sistemas complejos como el lenguaje. El juego actúa como catalizador de motivación, autorregulación y aprendizaje posterior (Courtois et al., 2024).</p>
+    </div>
+  </div>
+
+  <!-- Gamificación -->
+  <div class="theory-strip">
+    <div class="theory-icon">🏅</div>
+    <div>
+      <h4>Gamificación y Aprendizaje Basado en Juegos (GBL)</h4>
+      <p>La gamificación transposiciona mecánicas de juego — puntos, niveles, retroalimentación inmediata, tablas de clasificación — a entornos no lúdicos con el fin de incrementar la motivación intrínseca y el compromiso. En este proyecto, Wordwall actúa como el andamiaje que convierte el esfuerzo cognitivo en una actividad gratificante. La evidencia internacional muestra que la gamificación reduce la ansiedad lingüística, mejora la fluidez verbal y crea atmósferas de clase más dinámicas y participativas.</p>
+    </div>
+  </div>
+
+  <!-- Motivación intrínseca -->
+  <div class="theory-strip">
+    <div class="theory-icon">🔥</div>
+    <div>
+      <h4>Motivación intrínseca</h4>
+      <p>Según la Teoría de la Autodeterminación (Deci y Ryan, 1985), la motivación intrínseca florece cuando se satisface la autonomía, la competencia y la vinculación. En un aula gamificada, el niño aprende no por obligación sino por el placer de descubrir sus habilidades: el error se convierte en oportunidad, no en motivo de miedo, y la confianza en las propias capacidades crece sesión a sesión.</p>
+    </div>
+  </div>
+
+  <!-- TIC -->
+  <div class="theory-strip">
+    <div class="theory-icon">💻</div>
+    <div>
+      <h4>TIC y desarrollo integral</h4>
+      <p>Las tecnologías de la información y la comunicación dejan de ser instrumentos auxiliares para convertirse en un ecosistema que redefine las interacciones de enseñanza. Integradas correctamente, permiten diversificar las estrategias de mediación pedagógica y preparar a los alumnos para las exigencias del siglo XXI. El desarrollo integral — cognitivo, socioafectivo y ético — es el horizonte final: el rendimiento académico es un indicador dentro de un espectro amplio de formación.</p>
+    </div>
+  </div>
+
+  <!-- Mini activity mockup to illustrate theories -->
+  <div class="ww-activity">
+    <div class="ww-activity-header" style="background:var(--ww-purple)">
+      <span class="title">💡 Conecta teoría y autor</span>
+      <span class="type-tag">Matching</span>
+    </div>
+    <div class="ww-activity-body">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px">Actividad de ejemplo — tipo usada en el proyecto</p>
+      <div class="match-grid">
+        <div class="match-card-item a">Construcción activa del conocimiento</div>
+        <div class="match-card-item a">Piaget / Vygotsky</div>
+        <div class="match-card-item b">Motivación por placer, no por recompensa</div>
+        <div class="match-card-item b">Deci y Ryan (1985)</div>
+        <div class="match-card-item c">Mecánicas de juego en entornos educativos</div>
+        <div class="match-card-item c">Gamificación / GBL</div>
+        <div class="match-card-item d">Juego de reglas en 6-7 años</div>
+        <div class="match-card-item d">Teoría del Juego</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 6 — WORDWALL
+════════════════════════════════════════ -->
+<div class="page" id="wordwall">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-purple-light)">⚡</div>
+    <div><h2>Wordwall</h2><p>La herramienta protagonista</p></div>
+  </div>
+
+  <p class="section-intro">Wordwall no es solo una plataforma tecnológica. En este proyecto se convirtió en el puente entre el juego motivador y la consolidación del conocimiento formal en inglés.</p>
+
+  <div class="card" style="border:2px solid var(--ww-purple)">
+    <h3>¿Qué es Wordwall?</h3>
+    <p>Wordwall es una plataforma web multifuncional que transforma contenidos estáticos en experiencias dinámicas y participativas. A través de plantillas interactivas que incluyen cuestionarios, juegos de correspondencia, ruletas, anagramas y crucigramas, permite al docente convertir cualquier objetivo curricular en una actividad gamificada de alta participación. Su interfaz intuitiva facilita la decodificación de información y el refuerzo de conceptos básicos mediante estímulos visuales y auditivos.</p>
+  </div>
+
+  <div class="feature-strip">
+    <span class="feature-pill">🎯 Retroalimentación inmediata</span>
+    <span class="feature-pill">⏱️ Temporizador ajustable</span>
+    <span class="feature-pill">❤️ Sistema de vidas</span>
+    <span class="feature-pill">🏆 Tabla de clasificación</span>
+    <span class="feature-pill">🔄 Actividades reutilizables</span>
+    <span class="feature-pill">📱 Acceso desde cualquier dispositivo</span>
+    <span class="feature-pill">🎨 Múltiples plantillas</span>
+    <span class="feature-pill">🔒 Seguro para menores</span>
+  </div>
+
+  <div style="margin-bottom:0.75rem"><span class="badge badge-purple">Tipos de actividades usadas en el proyecto</span></div>
+
+  <!-- Activity type cards -->
+  <div class="card-grid">
+    <div class="ww-activity" style="margin:0">
+      <div class="ww-activity-header" style="background:#7C3AED">
+        <span class="title">Quiz</span>
+        <span class="type-tag">Preguntas</span>
+      </div>
+      <div class="ww-activity-body">
+        <p style="font-size:13px">Preguntas de selección múltiple con tiempo límite. Los estudiantes eligen la respuesta correcta y reciben puntos instantáneos.</p>
+      </div>
+    </div>
+    <div class="ww-activity" style="margin:0">
+      <div class="ww-activity-header" style="background:#0891B2">
+        <span class="title">Match Up</span>
+        <span class="type-tag">Correspondencia</span>
+      </div>
+      <div class="ww-activity-body">
+        <p style="font-size:13px">Asociar imagen-palabra o concepto-definición. Ideal para vocabulario temático (animales, alimentos).</p>
+      </div>
+    </div>
+    <div class="ww-activity" style="margin:0">
+      <div class="ww-activity-header" style="background:#16A34A">
+        <span class="title">Word Wall</span>
+        <span class="type-tag">Vocabulario</span>
+      </div>
+      <div class="ww-activity-body">
+        <p style="font-size:13px">Muro interactivo de palabras agrupadas por categoría. Estudiantes pueden hacer clic para revelar pronunciación o imagen.</p>
+      </div>
+    </div>
+    <div class="ww-activity" style="margin:0">
+      <div class="ww-activity-header" style="background:#EA580C">
+        <span class="title">Anagram</span>
+        <span class="type-tag">Ortografía</span>
+      </div>
+      <div class="ww-activity-body">
+        <p style="font-size:13px">Reorganizar letras para formar la palabra correcta. Refuerza spelling y conciencia fonológica en inglés.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>¿Por qué Wordwall para grado primero?</h3>
+    <ul>
+      <li><strong>Versatilidad:</strong> Permite adaptar el mismo contenido a múltiples formatos lúdicos, manteniendo el interés a lo largo de las sesiones.</li>
+      <li><strong>Accesibilidad visual:</strong> Interfaz con íconos, colores y sonidos que facilitan la comprensión sin depender completamente del texto escrito, ideal para estudiantes de 6-7 años.</li>
+      <li><strong>Integración curricular:</strong> Las actividades se alinean directamente con los Derechos Básicos de Aprendizaje (DBA) del MEN y los contenidos del currículo bilingüe institucional.</li>
+      <li><strong>Retroalimentación inmediata:</strong> El estudiante sabe de inmediato si respondió correctamente, actuando como regulador de la atención y el esfuerzo.</li>
+      <li><strong>Seguridad:</strong> El protocolo del CCIH garantiza el resguardo de la privacidad de los menores y el cumplimiento de la normativa sobre datos.</li>
+    </ul>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 7 — METODOLOGÍA
+════════════════════════════════════════ -->
+<div class="page" id="metodologia">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-amber-light)">🔬</div>
+    <div><h2>Metodología</h2><p>Ruta de investigación y diseño</p></div>
+  </div>
+
+  <p class="section-intro">Este proyecto sigue un camino metodológico riguroso que combina evidencia cuantitativa con la observación directa de lo que ocurre en el aula real.</p>
+
+  <div class="card-grid">
+    <div class="card" style="border-top:4px solid var(--ww-purple)">
+      <div class="badge badge-purple" style="margin-bottom:8px">Enfoque</div>
+      <h3>Cuantitativo</h3>
+      <p>Recolección y análisis sistemático de datos numéricos para validar el impacto pedagógico con objetividad y capacidad de generalización.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ww-teal)">
+      <div class="badge badge-teal" style="margin-bottom:8px">Tipo</div>
+      <h3>Pre-experimental</h3>
+      <p>Diseño pre-test / post-test con grupo único. Trabaja con el grupo intacto de 40 estudiantes del grado, manteniendo el rigor metodológico adaptado a contextos escolares reales.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ww-green)">
+      <div class="badge badge-green" style="margin-bottom:8px">Modelo</div>
+      <h3>Evaluativo</h3>
+      <p>Orienta el análisis a la emisión de juicios de valor sobre la eficacia de la intervención, articulando perspectivas cuantitativas y cualitativas.</p>
+    </div>
+  </div>
+
+  <!-- Fases -->
+  <div style="margin-bottom:0.75rem"><span class="badge badge-amber">3 fases del proceso</span></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <span class="phase-pill">F1</span>
+      <h4>Momento diagnóstico — Pre-test</h4>
+      <p>Exploración de saberes previos y aplicación del pre-test (11 ítems: selección múltiple, preguntas orales, completación y descripción). Define el estado basal de la competencia comunicativa en cuatro dimensiones: vocabulario básico, adjetivos, expresiones y estructuras gramaticales.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <span class="phase-pill">F2</span>
+      <h4>Núcleo de intervención — Wordwall en acción</h4>
+      <p>8 sesiones de 45 minutos (dos por semana) donde se implementan 12 actividades gamificadas diseñadas en Wordwall. Se manipula la variable independiente: estrategia pedagógica gamificada. Los estudiantes interactúan con retos de vocabulario, gramática y producción oral con mecánicas de puntos, temporizadores y feedback inmediato.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <span class="phase-pill">F3</span>
+      <h4>Evaluación de impacto — Post-test</h4>
+      <p>Aplicación del post-test bajo las mismas condiciones del diagnóstico inicial. Cálculo del Factor de Ganancia de Hake para clasificar el impacto: bajo (&lt;0.30), medio (0.30–0.70), alto (&gt;0.70). Aplicación de escala Likert pictográfica (5 niveles con emoticonos) para medir percepción estudiantil.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Instrumentos de recolección</h3>
+    <div class="card-grid">
+      <div>
+        <div class="badge badge-purple" style="margin-bottom:8px">Instrumento 1</div>
+        <p><strong>Cédula de Test (Pre y Post-test)</strong><br>Prueba objetiva con 11 ítems. Evalúa tres dimensiones: comprensión auditiva, producción oral e identificación de estructuras gramaticales. Validada por dos expertos con título de maestría o doctorado en Educación o TIC.</p>
+      </div>
+      <div>
+        <div class="badge badge-teal" style="margin-bottom:8px">Instrumento 2</div>
+        <p><strong>Escala Likert pictográfica</strong><br>Cuestionario de 10 ítems con íconos visuales (emoticonos de 5 niveles). Evalúa: interactividad, usabilidad, engagement y percepción de impacto. Diseñado en lenguaje accesible para niños de 6-7 años.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 8 — LA INTERVENCIÓN
+════════════════════════════════════════ -->
+<div class="page" id="intervencion">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-orange-light)">🚀</div>
+    <div><h2>La Intervención Pedagógica</h2><p>Lo que realmente sucedió en el aula</p></div>
+  </div>
+
+  <p class="section-intro">Cuatro semanas, ocho sesiones, doce actividades y cuarenta niños que descubrieron que aprender inglés podía ser la mejor parte del día.</p>
+
+  <div class="stats-row">
+    <div class="stat-card purple"><div class="number">4</div><div class="label">Unidades temáticas</div></div>
+    <div class="stat-card orange"><div class="number">8</div><div class="label">Sesiones × 45 min</div></div>
+    <div class="stat-card teal"><div class="number">12</div><div class="label">Actividades en Wordwall</div></div>
+    <div class="stat-card green"><div class="number">95%</div><div class="label">Participación activa</div></div>
+  </div>
+
+  <!-- Semana 1 -->
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
+      <div class="level-badge lvl1" style="width:36px;height:36px;font-size:14px">S1</div>
+      <div>
+        <h3 style="margin:0">🐄 "Fun on the Farm" — Semanas 1 y 2</h3>
+        <span class="badge badge-orange">Sesiones 1-4</span>
+      </div>
+    </div>
+    <p>Se trabajaron actividades de vocabulario de animales de granja, adjetivos descriptivos y estructuras is/are y has/hasn't got. Las sesiones iniciaron con una breve explicación y demostración de la plataforma. Los estudiantes mostraron gran curiosidad y entusiasmo desde el primer momento — quienes normalmente esperaban a que otros respondieran comenzaron a levantar la mano por iniciativa propia.</p>
+    <p style="margin-top:0.75rem">Contenidos: animales de la granja (cow, pig, sheep, horse, duck), adjetivos descriptivos (big/small, fast/slow, soft/hard), estructuras is/are + adjective, has/hasn't got.</p>
+  </div>
+
+  <!-- Semana 2-3 -->
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
+      <div class="level-badge lvl2" style="width:36px;height:36px;font-size:14px">S2</div>
+      <div>
+        <h3 style="margin:0">🍎 "Food with Friends" — Semanas 2 y 3</h3>
+        <span class="badge badge-teal">Sesiones 5-7</span>
+      </div>
+    </div>
+    <p>Se abordaron temas de alimentos y bebidas, expresiones de gusto y disgusto (like / don't like) y solicitudes y ofrecimientos (Can I have…?, Would you like…?, Here you are.). Se incrementó progresivamente el nivel de autonomía de los estudiantes, quienes comenzaron a corregirse entre sí durante las actividades de matching.</p>
+  </div>
+
+  <!-- Semana 4 -->
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
+      <div class="level-badge lvl3" style="width:36px;height:36px;font-size:14px">S3</div>
+      <div>
+        <h3 style="margin:0">🗣️ Consolidación y producción oral — Semana 4</h3>
+        <span class="badge badge-green">Sesión 8</span>
+      </div>
+    </div>
+    <p>Actividades integradoras donde los estudiantes produjeron lenguaje oral utilizando el vocabulario y las estructuras trabajadas en las semanas anteriores. Se crearon diálogos cortos de forma más fluida. La gamificación había reducido considerablemente la ansiedad al hablar en inglés.</p>
+  </div>
+
+  <!-- Diary quotes -->
+  <div style="margin:1.5rem 0 0.75rem"><span class="badge badge-purple">📓 Extractos del diario de campo</span></div>
+
+  <div class="diary-quote">
+    <div class="session-tag">Sesión 3 — Semana 2</div>
+    <p>"Hoy los estudiantes pidieron repetir la actividad de Matching dos veces. Varios niños que usualmente son tímidos participaron activamente al ver que podían ganar puntos."</p>
+  </div>
+  <div class="diary-quote">
+    <div class="session-tag">Sesión 6 — Semana 3</div>
+    <p>"Se evidenció una notable mejora en el uso de las estructuras has/hasn't got. Los niños se corrigen entre ellos mientras juegan. La tabla de clasificación genera entusiasmo colectivo sin generar rivalidad."</p>
+  </div>
+  <div class="diary-quote">
+    <div class="session-tag">Sesión 8 — Semana 4</div>
+    <p>"Los estudiantes lograron crear diálogos cortos de forma más fluida. La gamificación ha reducido considerablemente la ansiedad al hablar en inglés. Ver a los niños reírse mientras aprenden valida todo el diseño de la intervención."</p>
+  </div>
+
+  <!-- Example activity -->
+  <div style="margin-top:1.5rem"><span class="badge badge-purple">🎮 Ejemplo de actividad diseñada en Wordwall</span></div>
+  <div class="ww-activity" style="margin-top:0.75rem">
+    <div class="ww-activity-header" style="background:var(--ww-teal)">
+      <span class="title">🐄 Farm Animals Quiz</span>
+      <span class="type-tag">Quiz · 45 seg</span>
+    </div>
+    <div class="ww-activity-body">
+      <p style="font-weight:700;font-size:15px;margin-bottom:10px">The animal has four legs, goes "moo" and gives us milk. It is…</p>
+      <div class="quiz-options">
+        <div class="quiz-option"><div class="opt-letter">A</div> a sheep</div>
+        <div class="quiz-option correct"><div class="opt-letter">B</div> a cow ✓</div>
+        <div class="quiz-option"><div class="opt-letter">C</div> a pig</div>
+        <div class="quiz-option"><div class="opt-letter">D</div> a horse</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 9 — RESULTADOS
+════════════════════════════════════════ -->
+<div class="page" id="resultados">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-green-light)">📊</div>
+    <div><h2>Resultados</h2><p>Los números que confirman lo que los niños vivieron</p></div>
+  </div>
+
+  <p class="section-intro">Los datos cuantitativos validan lo que el diario de campo ya anticipaba: jugar en Wordwall transformó la competencia comunicativa de los 40 estudiantes.</p>
+
+  <!-- Summary stats -->
+  <div class="stats-row">
+    <div class="stat-card purple"><div class="number">80%</div><div class="label">Promedio Pre-test</div></div>
+    <div class="stat-card green"><div class="number">88.75%</div><div class="label">Promedio Post-test</div></div>
+    <div class="stat-card amber"><div class="number">0.65</div><div class="label">Factor Hake (medio-alto)</div></div>
+    <div class="stat-card teal"><div class="number">+8.75</div><div class="label">Ganancia porcentual</div></div>
+  </div>
+
+  <!-- Bar chart comparison -->
+  <div class="card">
+    <h3>Comparación Pre-test vs. Post-test por dimensión</h3>
+    <div class="chart-container" style="margin-top:1rem">
+
+      <div class="chart-row">
+        <div class="chart-label">Vocabulario básico</div>
+        <div class="chart-bars">
+          <div class="bar-wrap"><div class="bar bar-pre" style="width:87.5%"><span>87.5%</span></div></div>
+          <div class="bar-wrap"><div class="bar bar-post" style="width:95%"><span>95.0%</span></div></div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-label">Adjetivos descriptivos</div>
+        <div class="chart-bars">
+          <div class="bar-wrap"><div class="bar bar-pre" style="width:75%"><span>75.0%</span></div></div>
+          <div class="bar-wrap"><div class="bar bar-post" style="width:85%"><span>85.0%</span></div></div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-label">Expresiones comunicativas</div>
+        <div class="chart-bars">
+          <div class="bar-wrap"><div class="bar bar-pre" style="width:95%"><span>95.0%</span></div></div>
+          <div class="bar-wrap"><div class="bar bar-post" style="width:97.5%"><span>97.5%</span></div></div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-label">Estructuras gramaticales</div>
+        <div class="chart-bars">
+          <div class="bar-wrap"><div class="bar bar-pre" style="width:62.5%"><span>62.5%</span></div></div>
+          <div class="bar-wrap"><div class="bar bar-post" style="width:77.5%"><span>77.5%</span></div></div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-label" style="font-weight:900;color:var(--text)">PROMEDIO GENERAL</div>
+        <div class="chart-bars">
+          <div class="bar-wrap"><div class="bar bar-pre" style="width:80%"><span>80.0%</span></div></div>
+          <div class="bar-wrap"><div class="bar bar-post" style="width:88.75%"><span>88.75%</span></div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="bar-legend">
+      <span><div class="dot" style="background:#C4B5FD"></div> Pre-test</span>
+      <span><div class="dot" style="background:var(--ww-purple)"></div> Post-test</span>
+    </div>
+  </div>
+
+  <!-- Hake factor -->
+  <div class="card" style="border:2px solid var(--ww-green)">
+    <div class="badge badge-green" style="margin-bottom:0.75rem">Factor de Ganancia de Hake</div>
+    <h3>Resultado: <span style="color:var(--ww-green)">g = 0.65 — Ganancia Media-Alta</span></h3>
+    <p>El Factor de Ganancia normaliza el incremento del aprendizaje en relación con el máximo puntaje posible. Un valor de <strong>0.65</strong> se clasifica en el rango medio-alto (0.30 – 0.70), lo que indica que la intervención tuvo un impacto pedagógico significativo y estadísticamente robusto. Esto valida la hipótesis de investigación: Wordwall como estrategia gamificada sí impacta positivamente el rendimiento académico en la competencia comunicativa.</p>
+  </div>
+
+  <!-- Likert scale -->
+  <div class="card">
+    <h3>Percepción estudiantil — Escala Likert pictográfica</h3>
+    <p style="margin-bottom:1rem">Los 40 estudiantes respondieron el cuestionario de 10 ítems usando emoticonos (😢😟😐😊😄). Los resultados muestran una percepción muy positiva en las cuatro dimensiones evaluadas:</p>
+    <div class="card-grid">
+      <div style="text-align:center;padding:1rem;background:var(--ww-purple-light);border-radius:var(--radius)">
+        <div style="font-size:24px">😄</div>
+        <div style="font-weight:900;color:var(--ww-purple);font-size:18px">Alta</div>
+        <div style="font-size:12.5px;color:var(--text-muted)">Interactividad</div>
+      </div>
+      <div style="text-align:center;padding:1rem;background:var(--ww-teal-light);border-radius:var(--radius)">
+        <div style="font-size:24px">😄</div>
+        <div style="font-weight:900;color:var(--ww-teal);font-size:18px">Alta</div>
+        <div style="font-size:12.5px;color:var(--text-muted)">Usabilidad</div>
+      </div>
+      <div style="text-align:center;padding:1rem;background:var(--ww-green-light);border-radius:var(--radius)">
+        <div style="font-size:24px">😄</div>
+        <div style="font-weight:900;color:var(--ww-green);font-size:18px">Muy alta</div>
+        <div style="font-size:12.5px;color:var(--text-muted)">Engagement</div>
+      </div>
+      <div style="text-align:center;padding:1rem;background:var(--ww-amber-light);border-radius:var(--radius)">
+        <div style="font-size:24px">😊</div>
+        <div style="font-weight:900;color:var(--ww-amber);font-size:18px">Positiva</div>
+        <div style="font-size:12.5px;color:var(--text-muted)">Impacto percibido</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"La experiencia vivida por los estudiantes revela que el juego digital no solo mejoró el dominio lingüístico, sino que transformó su relación con el aprendizaje del inglés."</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 10 — CONCLUSIONES E IMPACTO
+════════════════════════════════════════ -->
+<div class="page" id="conclusiones">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-pink-light)">🌟</div>
+    <div><h2>Conclusiones e Impacto</h2><p>¿Qué aprendimos y qué sigue?</p></div>
+  </div>
+
+  <p class="section-intro">Los números confirman la hipótesis. Pero el mayor logro fue ver a los niños disfrutar del proceso, participar con entusiasmo y sentirse más seguros al comunicarse en inglés.</p>
+
+  <!-- Key conclusions -->
+  <div class="card">
+    <div class="badge badge-purple" style="margin-bottom:0.75rem">✅ Conclusiones principales</div>
+    <div class="level-card" style="background:var(--ww-green-light);border-color:var(--ww-green)">
+      <div class="level-badge lvl3" style="width:32px;height:32px;font-size:12px">1</div>
+      <div><h4>El diagnóstico reveló la necesidad</h4><p>Los estudiantes mostraron disposición natural para aprender, pero las estructuras gramaticales representaban la mayor dificultad. Las estrategias tradicionales no lograban despertar su curiosidad ni favorecer participación activa.</p></div>
+    </div>
+    <div class="level-card" style="background:var(--ww-purple-light);border-color:var(--ww-purple)">
+      <div class="level-badge lvl0" style="width:32px;height:32px;font-size:12px">2</div>
+      <div><h4>El juego como aliado pedagógico real</h4><p>Al transformar las clases en experiencias dinámicas, los estudiantes más reservados comenzaron a involucrarse con confianza. En un entorno gamificado, equivocarse deja de ser motivo de miedo y se convierte en una oportunidad para seguir.</p></div>
+    </div>
+    <div class="level-card" style="background:var(--ww-amber-light);border-color:var(--ww-amber)">
+      <div class="level-badge lvl1" style="width:32px;height:32px;font-size:12px">3</div>
+      <div><h4>Mejora significativa y sostenible</h4><p>El factor Hake de 0.65 valida científicamente que la intervención produjo una ganancia académica media-alta. El logro más significativo fue la transformación actitudinal: de la frustración a la confianza.</p></div>
+    </div>
+    <div class="level-card" style="background:var(--ww-teal-light);border-color:var(--ww-teal)">
+      <div class="level-badge lvl2" style="width:32px;height:32px;font-size:12px">4</div>
+      <div><h4>Wordwall como mediador, no como fin</h4><p>La plataforma actuó como el puente entre el juego motivador y la consolidación del conocimiento formal. Su valor pedagógico radica en la intencionalidad con que el docente diseña las actividades, no en la tecnología per se.</p></div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="card">
+    <div class="badge badge-teal" style="margin-bottom:0.75rem">🔧 Recomendaciones para la institución</div>
+    <ul>
+      <li><strong>Práctica pedagógica:</strong> Incorporar al menos dos sesiones semanales de actividades gamificadas con Wordwall en el plan de estudios de grado primero, especialmente para gramática y producción oral.</li>
+      <li><strong>Banco de recursos:</strong> Crear un repositorio institucional de actividades Wordwall alineadas con el currículo bilingüe (granja, alimentos, descripciones, expresiones cotidianas).</li>
+      <li><strong>Formación docente:</strong> Diseñar un taller de 20 horas sobre diseño de secuencias didácticas gamificadas, con énfasis en alineación curricular y evaluación.</li>
+      <li><strong>Continuidad:</strong> Incluir la estrategia en el PEI como práctica innovadora y extender el piloto a grado segundo en el siguiente año lectivo.</li>
+      <li><strong>Futura investigación:</strong> Realizar un estudio cuasi-experimental con grupo control para comparar el impacto de Wordwall frente a estrategias lúdicas tradicionales.</li>
+    </ul>
+  </div>
+
+  <!-- Impact grid -->
+  <div style="margin-bottom:0.75rem"><span class="badge badge-pink">🌍 Impacto en múltiples niveles</span></div>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-icon">👧</div>
+      <h4>En los estudiantes</h4>
+      <p>Mejora en competencia comunicativa, aumento de motivación intrínseca y reducción de ansiedad lingüística.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">👩‍🏫</div>
+      <h4>En los docentes</h4>
+      <p>Fortalecimiento de competencias en diseño gamificado y práctica docente reflexiva e innovadora.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏫</div>
+      <h4>En el aula</h4>
+      <p>Transformación del espacio en un entorno dinámico centrado en el estudiante como protagonista.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">👨‍👩‍👧</div>
+      <h4>En la comunidad</h4>
+      <p>Mayor interés de familias al ver avances visibles, fortaleciendo el vínculo escuela-hogar.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏛️</div>
+      <h4>En el Estado</h4>
+      <p>Evidencia local que puede alimentar políticas públicas sobre gamificación en contextos bilingües del Huila.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">📚</div>
+      <h4>En la academia</h4>
+      <p>Contribución empírica al campo de los recursos digitales aplicados a la educación inicial.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  PAGE 11 — CRÉDITOS
+════════════════════════════════════════ -->
+<div class="page" id="creditos">
+
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--ww-purple-light)">👥</div>
+    <div><h2>Créditos</h2><p>El equipo detrás del proyecto</p></div>
+  </div>
+
+  <p class="section-intro">Este proyecto es el resultado del compromiso de tres docentes investigadores que creyeron que el juego puede devolver el brillo a los ojos de los niños en el aula.</p>
+
+  <div class="author-card">
+    <div class="author-avatar" style="background:var(--ww-purple)">AL</div>
+    <div>
+      <h4>Alexandra Catalina Lozada Babativa</h4>
+      <p>Docente investigadora · Maestría en Recursos Digitales Aplicados a la Educación</p>
+      <p>Universidad de Cartagena · Neiva, Huila</p>
+    </div>
+  </div>
+
+  <div class="author-card">
+    <div class="author-avatar" style="background:var(--ww-teal)">JD</div>
+    <div>
+      <h4>Juan Diego Cuellar Mazabel</h4>
+      <p>Docente investigador · Maestría en Recursos Digitales Aplicados a la Educación</p>
+      <p>Universidad de Cartagena · Neiva, Huila</p>
+    </div>
+  </div>
+
+  <div class="author-card">
+    <div class="author-avatar" style="background:var(--ww-pink)">KF</div>
+    <div>
+      <h4>Karla Fabiana Cabrera Roa</h4>
+      <p>Docente investigadora · Maestría en Recursos Digitales Aplicados a la Educación</p>
+      <p>Universidad de Cartagena · Neiva, Huila</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <h3>Información institucional</h3>
+    <div class="card-grid">
+      <div>
+        <p style="font-size:13px;color:var(--text-muted);font-weight:700;margin-bottom:4px">INSTITUCIÓN DE APLICACIÓN</p>
+        <p>Colegio Colombo Inglés del Huila<br>Neiva, Huila, Colombia</p>
+      </div>
+      <div>
+        <p style="font-size:13px;color:var(--text-muted);font-weight:700;margin-bottom:4px">PROGRAMA ACADÉMICO</p>
+        <p>Maestría en Recursos Digitales Aplicados a la Educación — Facultad de Ciencias Sociales y Educación, Universidad de Cartagena</p>
+      </div>
+      <div>
+        <p style="font-size:13px;color:var(--text-muted);font-weight:700;margin-bottom:4px">ASESORES</p>
+        <p>John Mauricio Sandoval Granados<br>Yuliet Ximena Villamil Rodríguez</p>
+      </div>
+      <div>
+        <p style="font-size:13px;color:var(--text-muted);font-weight:700;margin-bottom:4px">FECHA</p>
+        <p>Mayo 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Este trabajo de grado reafirma la necesidad de que los docentes investigadores mantengamos una actitud de indagación permanente frente a nuestra práctica, utilizando la evidencia para tomar decisiones pedagógicas que realmente impacten en la calidad del aprendizaje."</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+  JS NAVIGATION
+════════════════════════════════════════ -->
+<script>
+function show(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const order = ['home','proyecto','objetivos','contexto','fundamentos','wordwall','metodologia','intervencion','resultados','conclusiones','creditos'];
+  document.querySelectorAll('.nav-btn')[order.indexOf(id)].classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>

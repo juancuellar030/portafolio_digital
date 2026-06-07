@@ -1,0 +1,283 @@
+/* Producto Final — portfolio gateway landing */
+
+.pf-intro-body {
+  height: 100dvh;
+  min-height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background: var(--ink-black);
+}
+
+.pf-intro-body::after {
+  content: none;
+}
+
+.pf-intro-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(26, 26, 46, 0.35) 0%,
+      rgba(26, 26, 46, 0.08) 35%,
+      rgba(26, 26, 46, 0.08) 65%,
+      rgba(26, 26, 46, 0.4) 100%
+    ),
+    url('assets/classroom-illustration.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.pf-intro-paper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+  background-image: url('assets/paper_texture.jpg');
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+}
+
+.pf-intro-back {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--paper-white);
+  text-decoration: none;
+  background: rgba(26, 26, 46, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: pfIntroBackIn 0.55s var(--ease-out) 0.15s forwards;
+  transition: transform var(--duration-fast) var(--ease-spring),
+    background var(--duration-fast),
+    box-shadow var(--duration-fast);
+}
+
+.pf-intro-back:hover {
+  background: rgba(26, 26, 46, 0.88);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pf-intro-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100dvh;
+  min-height: 0;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.pf-intro-card {
+  width: min(680px, 100%);
+  max-height: calc(100dvh - 2.5rem);
+  flex-shrink: 1;
+  min-height: 0;
+  opacity: 0;
+  animation: pfIntroCardIn 0.75s var(--ease-out) 0.2s forwards;
+}
+
+.pf-intro-card-svg {
+  display: block;
+  width: min(680px, 100%);
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 2.5rem);
+  overflow: hidden;
+}
+
+.pf-intro-card-path {
+  vector-effect: non-scaling-stroke;
+}
+
+.pf-intro-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  gap: 0.55em;
+  padding: 0.45em 0.55em 1.5em;
+  font-size: 11px;
+  color: var(--paper-cream);
+  text-align: center;
+}
+
+.pf-intro-card-inner > * {
+  opacity: 0;
+  animation: pfIntroFadeUp 0.55s var(--ease-out) forwards;
+}
+
+.pf-intro-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0.28em 0.7em;
+  border-radius: var(--radius-full);
+  background: rgba(255, 224, 102, 0.18);
+  border: 1px solid rgba(255, 224, 102, 0.45);
+  font-family: var(--font-body);
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--highlight-yellow);
+  animation-delay: 0.45s;
+}
+
+.pf-intro-card h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.38em;
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--paper-white);
+  animation-delay: 0.55s;
+}
+
+.pf-intro-card p {
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.82em;
+  line-height: 1.4;
+  color: rgba(248, 246, 241, 0.88);
+  animation-delay: 0.65s;
+}
+
+.pf-intro-authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35em;
+  margin: 0;
+  animation-delay: 0.75s;
+}
+
+.pf-intro-author {
+  padding: 0.28em 0.6em;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-body);
+  font-size: 0.72em;
+  font-weight: 600;
+  color: rgba(248, 246, 241, 0.82);
+}
+
+.pf-intro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: 0.15em;
+  padding: 0.45em 1.1em;
+  border-radius: var(--radius-full);
+  background: var(--highlight-yellow);
+  color: var(--ink-black);
+  font-family: var(--font-display);
+  font-size: 1.05em;
+  font-weight: 400;
+  text-decoration: none;
+  animation-delay: 0.88s;
+  transition: transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast);
+}
+
+.pf-intro-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 224, 102, 0.4);
+}
+
+.pf-intro-cta i {
+  font-size: 0.85em;
+}
+
+@keyframes pfIntroCardIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pfIntroBackIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pfIntroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-intro-back,
+  .pf-intro-card,
+  .pf-intro-card-inner > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .pf-intro-back {
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .pf-intro-stage {
+    padding: 1rem;
+  }
+
+  .pf-intro-card,
+  .pf-intro-card-svg {
+    max-height: calc(100dvh - 2rem);
+  }
+
+  .pf-intro-card {
+    width: min(680px, 94vw);
+  }
+
+  .pf-intro-card-inner {
+    font-size: 10px;
+    padding: 0.35em 0.4em 1.4em;
+  }
+}
