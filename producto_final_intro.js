@@ -1,9 +1,10 @@
 (function () {
   var FO_Y = 28;
-  var FO_BOTTOM_PAD = 32;
+  var FO_BOTTOM_PAD = 44;
   var SVG_WIDTH = 312.02;
   var STAGE_PAD_PX = 40;
   var MAX_CARD_WIDTH = 680;
+  var CTA_GLOW_PAD_PX = 8;
 
   function measureCard(svg, fo, inner) {
     fo.setAttribute('height', '400');
@@ -11,7 +12,7 @@
     var scale = svg.getBoundingClientRect().width / SVG_WIDTH;
     if (!scale) return null;
 
-    var contentPx = inner.getBoundingClientRect().height;
+    var contentPx = inner.getBoundingClientRect().height + CTA_GLOW_PAD_PX;
     var foHeightSvg = Math.ceil(contentPx / scale);
     var viewBoxH = FO_Y + foHeightSvg + FO_BOTTOM_PAD;
 
