@@ -9,79 +9,54 @@
     <title>Video Tutorial | Portafolio Digital</title>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="flipbook.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Londrina+Solid:wght@300;400;900&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
 
     <style>
-        /* ─── Reset & base ─── */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --accent: #7EC8E3;
-            --accent2: #F5C842;
-            --dark: #0d1117;
-            --card-bg: rgba(255, 255, 255, 0.07);
-            --card-border: rgba(255, 255, 255, 0.16);
-            --glass-blur: 14px;
-            --radius: 20px;
-            --shadow-glow: 0 8px 40px rgba(126, 200, 227, 0.22);
-        }
-
-        html,
-        body {
-            height: 100%;
-            font-family: 'Nunito Sans', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* ─── Full-page background ─── */
-        body {
-            background:
-                linear-gradient(to bottom, rgba(13, 17, 23, 0.55) 0%, rgba(13, 17, 23, 0.75) 100%),
-                url('assets/video-tutorial/video-tutorial-background.jpeg') no-repeat center center fixed;
+        /* ─── Page Specific Styles ─── */
+        .vt-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.55) 0%, rgba(13, 17, 23, 0.75) 100%),
+                url('assets/video-tutorial/video-tutorial-background.jpeg') no-repeat center center;
             background-size: cover;
-            min-height: 100vh;
+            z-index: -2;
         }
 
-        /* ─── Back link ─── */
         .vt-back {
             position: fixed;
-            top: 1.2rem;
-            left: 1.4rem;
+            top: 1.5rem;
+            left: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--font-display, 'Londrina Solid', cursive);
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+            z-index: 100;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 40px;
-            padding: 8px 18px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: background 0.2s, color 0.2s;
-            z-index: 100;
+            gap: 0.5rem;
         }
 
         .vt-back:hover {
-            background: rgba(255, 255, 255, 0.22);
-            color: #fff;
+            background: var(--highlight-yellow, #ffe066);
+            color: var(--ink-dark);
+            border-color: var(--ink-dark);
+            box-shadow: 4px 4px 0 var(--ink-dark);
+            transform: translateY(-2px);
         }
 
-        /* ─── Main layout ─── */
         .vt-main {
             min-height: 100vh;
             display: flex;
@@ -92,492 +67,232 @@
             gap: 3rem;
         }
 
-        /* ─── Header ─── */
         .vt-header {
             text-align: center;
-            max-width: 640px;
-        }
-
-        .vt-tag {
-            display: inline-block;
-            background: rgba(126, 200, 227, 0.18);
-            border: 1px solid rgba(126, 200, 227, 0.4);
-            border-radius: 40px;
-            padding: 5px 18px;
-            font-size: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 1.1rem;
+            color: #fff;
         }
 
         .vt-header h1 {
-            font-family: 'Nunito', sans-serif;
-            font-size: clamp(26px, 4.5vw, 42px);
-            font-weight: 900;
-            line-height: 1.2;
-            color: #fff;
-            margin-bottom: 0.9rem;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            font-family: var(--font-display, 'Londrina Solid', cursive);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-shadow: 3px 3px 0 var(--ink-dark, #2d2d44);
+            margin-bottom: 0.5rem;
         }
 
         .vt-header p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.75);
-            font-weight: 600;
-            line-height: 1.6;
+            font-family: var(--font-body, 'Source Sans Pro', sans-serif);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* ─── Video Cards Row ─── */
         .vt-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             width: 100%;
-            max-width: 860px;
+            max-width: 900px;
         }
 
-        /* ─── Individual Video Card ─── */
-        .vt-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-            position: relative;
-        }
-
-        .vt-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--accent);
-        }
-
-        /* Thumbnail area */
-        .vt-thumb {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #111827;
-        }
-
-        .vt-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease, filter 0.4s ease;
-            filter: brightness(0.85);
-        }
-
-        .vt-card:hover .vt-thumb img {
-            transform: scale(1.04);
-            filter: brightness(1);
-        }
-
-        /* Play overlay */
-        .vt-play-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.28);
-            transition: background 0.25s;
-        }
-
-        .vt-card:hover .vt-play-overlay {
-            background: rgba(0, 0, 0, 0.12);
-        }
-
-        .vt-play-btn {
-            width: 68px;
-            height: 68px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.92);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #1a1a2e;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .vt-card:hover .vt-play-btn {
-            transform: scale(1.12);
-            background: var(--accent);
-            color: #fff;
-        }
-
-        /* Card badge */
-        .vt-badge {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-            background: rgba(13, 17, 23, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-            color: var(--accent);
-            backdrop-filter: blur(6px);
-        }
-
-        /* Card body */
-        .vt-card-body {
-            padding: 1.4rem 1.5rem 1.6rem;
-        }
-
-        .vt-card-body h2 {
-            font-family: 'Nunito', sans-serif;
-            font-size: 19px;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 0.45rem;
-            line-height: 1.3;
-        }
-
-        .vt-card-body p {
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.6;
-            margin-bottom: 1.1rem;
-        }
-
-        .vt-cta-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 900;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .vt-cta-row i {
-            font-size: 15px;
-        }
-
-        /* ─── Video Modal ─── */
-        .vt-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9000;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-
-        .vt-modal.active {
-            display: flex;
-        }
-
-        .vt-modal-inner {
-            position: relative;
-            width: 90vw;
-            max-width: 860px;
-            background: #0d1117;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            overflow: hidden;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.7);
-            animation: modalIn 0.3s ease;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.92) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* Modal header bar */
-        .vt-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.9rem 1.2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .vt-modal-title {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 900;
-            font-size: 15px;
-            color: #fff;
-        }
-
-        .vt-modal-close {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 15px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .vt-modal-close:hover {
-            background: rgba(255, 255, 255, 0.22);
-        }
-
-        /* 16:9 video wrapper */
-        .vt-iframe-wrap {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            background: #000;
-        }
-
-        .vt-iframe-wrap iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Placeholder (second card) */
-        .vt-thumb--placeholder {
-            background: linear-gradient(135deg, #1a2540 0%, #0d1117 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 16/9;
-            position: relative;
-        }
-
-        .vt-placeholder-icon {
-            font-size: 52px;
-            color: rgba(255, 255, 255, 0.15);
-        }
-
-        .vt-badge--soon {
-            color: var(--accent2);
-        }
-
-        /* ─── Responsive ─── */
-        @media (max-width: 640px) {
-            .vt-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .vt-header h1 {
-                font-size: 24px;
-            }
+        /* Customize the title for bright background */
+        .referenciando-media-title.vt-title {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 0 var(--ink-dark);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Back link -->
+    <div class="vt-bg"></div>
+
     <a href="index.html#disenando" class="vt-back">
-        <i class="fa-solid fa-arrow-left"></i> Volver al Portafolio
+        <i class="fa-solid fa-arrow-left"></i> Volver
     </a>
 
     <main class="vt-main">
-
-        <!-- Section header -->
         <header class="vt-header reveal">
-            <span class="vt-tag"><i class="fa-solid fa-film"></i> &nbsp;Pestaña 5 — Video Tutorial</span>
-            <h1>Visualizando el Proyecto</h1>
+            <h1>Video Tutorial y Metodología</h1>
             <p>Explora el recorrido audiovisual por el portafolio digital y el video pitch de la metodología de
                 investigación.</p>
         </header>
 
-        <!-- Video Cards -->
         <div class="vt-cards">
-
-            <!-- CARD 1 — Video Tutorial (portfolio tour) -->
-            <div class="vt-card reveal" id="vt-card-tour" role="button" tabindex="0"
-                aria-label="Reproducir Video Tutorial del Portafolio" data-modal="modal-tour">
-                <div class="vt-thumb">
-                    <img src="assets/video-tutorial/video-tutorial-thumbnail.png"
-                        alt="Miniatura Video Tutorial del Portafolio">
-                    <div class="vt-play-overlay">
-                        <div class="vt-play-btn" aria-hidden="true">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                    </div>
-                    <span class="vt-badge"><i class="fa-solid fa-compass"></i> &nbsp;Tour del portafolio</span>
+            <!-- CARD 1: Video Tutorial -->
+            <div class="video-thumbnail-trigger reveal" id="vt-tour-trigger" data-modal="vt-modal-tour" tabindex="0"
+                role="button" aria-label="Abrir Video Tutorial">
+                <h3 class="referenciando-media-title vt-title">Video Tutorial del Portafolio</h3>
+                <div class="video-thumb-container">
+                    <img src="assets/video-tutorial/video-tutorial-thumbnail.png" alt="Video Tutorial">
+                    <span class="video-clapper-badge" aria-hidden="true">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </span>
+                    <span class="play-overlay" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                    </span>
                 </div>
-                <div class="vt-card-body">
-                    <h2>Video Tutorial del Portafolio</h2>
-                    <p>Recorrido audiovisual completo por cada sección del portafolio digital, explicando los recursos y
-                        artefactos creados durante la intervención pedagógica.</p>
-                    <div class="vt-cta-row">
-                        <i class="fa-solid fa-circle-play"></i> Haz clic para reproducir
-                    </div>
-                </div>
+                <p class="referenciando-media-hint" style="color:#fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
+                    <i class="fa-solid fa-circle-play"></i> Haz clic para reproducir
+                </p>
             </div>
 
-            <!-- CARD 2 — Video Pitch de la Metodología (placeholder) -->
-            <div class="vt-card reveal" id="vt-card-pitch" role="button" tabindex="0"
-                aria-label="Video Pitch de la Metodología — Próximamente" data-modal="modal-pitch">
-                <div class="vt-thumb">
-                    <img src="assets/video-tutorial/video-methodology-thumbnail.jpeg"
-                        alt="Miniatura Video Pitch de la Metodología">
-                    <div class="vt-play-overlay">
-                        <div class="vt-play-btn" aria-hidden="true">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                    </div>
-                    <span class="vt-badge vt-badge--soon"><i class="fa-solid fa-flask"></i> &nbsp;Metodología</span>
+            <!-- CARD 2: Video Pitch -->
+            <div class="video-thumbnail-trigger reveal" id="vt-pitch-trigger" data-modal="vt-modal-pitch" tabindex="0"
+                role="button" aria-label="Abrir Video Pitch">
+                <h3 class="referenciando-media-title vt-title">Video Pitch — Metodología</h3>
+                <div class="video-thumb-container">
+                    <img src="assets/video-tutorial/video-methodology-thumbnail.jpeg" alt="Video Pitch Metodología">
+                    <span class="video-clapper-badge" aria-hidden="true">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </span>
+                    <span class="play-overlay" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                    </span>
                 </div>
-                <div class="vt-card-body">
-                    <h2>Video Pitch — Metodología de Investigación</h2>
-                    <p>Presentación audiovisual del diseño metodológico del proyecto: el enfoque cuantitativo, el
-                        pre-test y post-test, y la estrategia gamificada con Wordwall.</p>
-                    <div class="vt-cta-row">
-                        <i class="fa-solid fa-circle-play"></i> Haz clic para reproducir
-                    </div>
-                </div>
+                <p class="referenciando-media-hint" style="color:#fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
+                    <i class="fa-solid fa-circle-play"></i> Haz clic para reproducir
+                </p>
             </div>
-
-        </div><!-- /.vt-cards -->
-
+        </div>
     </main>
 
-    <!-- ─── Modal – Video Tutorial ─── -->
-    <div class="vt-modal" id="modal-tour" role="dialog" aria-modal="true" aria-labelledby="modal-tour-title">
-        <div class="vt-modal-inner">
-            <div class="vt-modal-header">
-                <span class="vt-modal-title" id="modal-tour-title">Video Tutorial del Portafolio</span>
-                <button class="vt-modal-close" aria-label="Cerrar video">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="vt-iframe-wrap">
-                <iframe width="560" height="315"
-                    data-src="https://www.youtube.com/embed/dhU-gljQUbY?si=VYKlncr3RVEFy6sW&autoplay=1"
-                    title="Video Tutorial del Portafolio"
+    <!-- ─── Video Modals (matching referenciando style) ─── -->
+
+    <!-- Modal 1: Tour -->
+    <div class="video-modal" id="vt-modal-tour" role="dialog" aria-modal="true" aria-labelledby="vt-tour-title">
+        <div class="video-modal-content">
+            <button class="close-video-modal" aria-label="Cerrar video" onclick="closeVtModal('vt-modal-tour')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="video-iframe-container">
+                <!-- Lazy load YouTube frame -->
+                <iframe data-src="https://www.youtube.com/embed/dhU-gljQUbY?si=VYKlncr3RVEFy6sW&autoplay=1"
+                    title="Video Tutorial"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    allowfullscreen>
                 </iframe>
             </div>
         </div>
     </div>
 
-    <!-- ─── Modal – Video Pitch (placeholder) ─── -->
-    <div class="vt-modal" id="modal-pitch" role="dialog" aria-modal="true" aria-labelledby="modal-pitch-title">
-        <div class="vt-modal-inner">
-            <div class="vt-modal-header">
-                <span class="vt-modal-title" id="modal-pitch-title">Video Pitch — Metodología de Investigación</span>
-                <button class="vt-modal-close" aria-label="Cerrar video">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="vt-iframe-wrap" id="pitch-iframe-wrap">
-                <!-- Placeholder — replace data-src with the YouTube embed URL when ready -->
-                <iframe width="560" height="315" data-src="" title="Video Pitch — Metodología"
+    <!-- Modal 2: Pitch -->
+    <div class="video-modal" id="vt-modal-pitch" role="dialog" aria-modal="true" aria-labelledby="vt-pitch-title">
+        <div class="video-modal-content">
+            <button class="close-video-modal" aria-label="Cerrar video" onclick="closeVtModal('vt-modal-pitch')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="video-iframe-container"
+                style="background:#1a1a2e; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff; text-align:center;">
+
+                <!-- Iframe ready to be used later -->
+                <iframe data-src="" title="Video Pitch"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="pitch-iframe">
+                    allowfullscreen style="display:none; z-index: 2;">
                 </iframe>
-                <!-- Shown only while no src is set -->
-                <div id="pitch-placeholder" style="
-          position:absolute; inset:0;
-          display:flex; flex-direction:column;
-          align-items:center; justify-content:center;
-          background:#0d1117; color:rgba(255,255,255,0.7);
-          gap:1rem; text-align:center; padding:2rem;">
-                    <i class="fa-solid fa-person-digging" style="font-size:48px; opacity:0.4;"></i>
-                    <p style="font-family:'Nunito',sans-serif; font-weight:900; font-size:18px;">Próximamente</p>
-                    <p style="font-size:14px; color:rgba(255,255,255,0.5);">El video pitch de la metodología estará
-                        disponible muy pronto.</p>
+
+                <!-- Placeholder content -->
+                <div style="position:absolute; padding: 2rem; z-index: 1;">
+                    <i class="fa-solid fa-person-digging"
+                        style="font-size:3rem; color:var(--highlight-yellow); margin-bottom:1rem; filter: drop-shadow(2px 2px 0 #000);"></i>
+                    <h3 style="font-family:var(--font-display, cursive); font-size:1.8rem; letter-spacing:1px;">
+                        ¡Próximamente!</h3>
+                    <p
+                        style="font-family:var(--font-body, sans-serif); color:rgba(255,255,255,0.7); max-width:400px; margin:auto; margin-top:0.5rem;">
+                        El video pitch de la metodología se publicará aquí pronto.
+                    </p>
                 </div>
+
             </div>
         </div>
     </div>
 
     <script>
-        // ── Video Modal Logic ──────────────────────────────────────
-        const cards = document.querySelectorAll('.vt-card');
-        const modals = document.querySelectorAll('.vt-modal');
-        const closeBtn = document.querySelectorAll('.vt-modal-close');
+        // Reveal script
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => { el.style.opacity = 0; el.style.transform = "translateY(30px)"; el.style.transition = "all 0.5s ease-out"; observer.observe(el); });
+        document.querySelectorAll('.reveal.visible').forEach(el => { el.style.opacity = 1; el.style.transform = "translateY(0)"; });
 
-        function openModal(modalId) {
+        // Manual reveal apply to workaround inline style
+        const styleTag = document.createElement("style");
+        styleTag.innerHTML = ".reveal.visible { opacity: 1 !important; transform: translateY(0) !important; }";
+        document.head.appendChild(styleTag);
+
+        // Modal logic
+        const triggers = document.querySelectorAll('.video-thumbnail-trigger');
+        const modals = document.querySelectorAll('.video-modal');
+
+        // Open Modal
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+
+                const iframe = modal.querySelector('iframe');
+                if (iframe && iframe.dataset.src && iframe.dataset.src !== "") {
+                    iframe.src = iframe.dataset.src;
+                    iframe.style.display = "block";
+                }
+
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Accessibility: enter key
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    trigger.click();
+                }
+            });
+        });
+
+        // Close Modal func
+        window.closeVtModal = function (modalId) {
             const modal = document.getElementById(modalId);
             if (!modal) return;
-            // Load iframe src lazily on first open
+
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+
+            // Stop video playing by wiping src
             const iframe = modal.querySelector('iframe');
-            if (iframe && iframe.dataset.src && !iframe.src.includes('youtube')) {
-                iframe.src = iframe.dataset.src;
+            if (iframe) {
+                iframe.src = '';
+                iframe.style.display = "none";
             }
-            // If it's the pitch and there's no src, show placeholder
-            if (modalId === 'modal-pitch') {
-                const placeholder = document.getElementById('pitch-placeholder');
-                const pitchIframe = document.getElementById('pitch-iframe');
-                const hasSrc = pitchIframe.dataset.src && pitchIframe.dataset.src.length > 0;
-                placeholder.style.display = hasSrc ? 'none' : 'flex';
-                pitchIframe.style.display = hasSrc ? 'block' : 'none';
-                if (hasSrc && !pitchIframe.src.includes('youtube')) {
-                    pitchIframe.src = pitchIframe.dataset.src;
+        };
+
+        // Close on background click
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeVtModal(modal.id);
+                }
+            });
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.video-modal.show');
+                if (activeModal) {
+                    closeVtModal(activeModal.id);
                 }
             }
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAllModals() {
-            modals.forEach(m => {
-                m.classList.remove('active');
-                const iframe = m.querySelector('iframe');
-                if (iframe) iframe.src = '';
-            });
-            document.body.style.overflow = '';
-        }
-
-        // Card click / keyboard
-        cards.forEach(card => {
-            const handler = () => openModal(card.dataset.modal);
-            card.addEventListener('click', handler);
-            card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); } });
         });
 
-        // Close buttons
-        closeBtn.forEach(btn => btn.addEventListener('click', closeAllModals));
-
-        // Backdrop click
-        modals.forEach(modal => {
-            modal.addEventListener('click', e => { if (e.target === modal) closeAllModals(); });
-        });
-
-        // Escape key
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllModals(); });
-
-        // ── Simple reveal-on-scroll ──────────────────────────────
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); observer.unobserve(en.target); } });
-        }, { threshold: 0.15 });
-        reveals.forEach(el => observer.observe(el));
     </script>
-
 </body>
 
 </html>
