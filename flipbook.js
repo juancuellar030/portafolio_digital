@@ -15,6 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalLeaves = leaves.length;
     let currentLeaf = 0; // index of next leaf to turn (0 = cover showing)
 
+    const viewport = document.getElementById('flipbook-viewport');
+    const inlineSlot = document.getElementById('flipbook-inline-slot');
+    const lightbox = document.getElementById('flipbook-lightbox');
+    const lightboxSlot = document.getElementById('flipbook-lightbox-slot');
+    const lightboxBackdrop = document.getElementById('flipbook-lightbox-backdrop');
+    const lightboxClose = document.getElementById('flipbook-lightbox-close');
+
+    function isInlineMode() {
+        return viewport && viewport.classList.contains('flipbook-viewport--inline');
+    }
+
+    function isLightboxOpen() {
+        return lightbox && lightbox.classList.contains('is-open');
+    }
+
+    // Keep lightbox at document root so fixed overlay isn't trapped in section stacking
+    if (lightbox && lightbox.parentElement !== document.body) {
+        document.body.appendChild(lightbox);
+    }
+
     // ================================================
     // PAGE TURN ENGINE
     // ================================================
@@ -80,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Click on leaf to turn
     leaves.forEach((leaf, i) => {
         leaf.addEventListener('click', (e) => {
+            if (isInlineMode()) return;
+
             // Don't turn if clicking interactive elements inside pages
             if (e.target.closest('a, button, iframe, audio, video, .fb-social-btn, .podcast-play-btn, .fb-doodle-btn')) return;
 
@@ -103,6 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageWidth = () => book.offsetWidth / 2;
 
     function onDragStart(e) {
+        if (isInlineMode()) return;
+
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 
         // Determine which leaf to drag
@@ -185,9 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // KEYBOARD NAVIGATION
     // ================================================
     document.addEventListener('keydown', (e) => {
-        // Only respond if flipbook is in view
-        const rect = scene.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        if (isInlineMode()) return;
+        if (!isLightboxOpen()) return;
 
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') turnNext();
         if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') turnPrev();
@@ -197,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL-TRIGGERED ENTRANCE (GSAP)
     // ================================================
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        const viewport = document.getElementById('flipbook-viewport');
         gsap.from(viewport, {
             y: 80,
             opacity: 0,
@@ -215,55 +237,117 @@ document.addEventListener('DOMContentLoaded', () => {
     updateState();
 
     // ================================================
-    // EXPAND VIEW TOGGLE
+    // FLIPBOOK LIGHTBOX (inline preview → full reader)
+    // ================================================
+    let lightboxPreviouslyFocused = null;
+
+    function resetToCover() {
+        currentLeaf = 0;
+        leaves.forEach((leaf) => {
+            leaf.classList.remove('turned', 'turning');
+            leaf.style.transform = '';
+        });
+        scene.classList.add('closed');
+        scene.classList.remove('back-closed');
+        updateState();
+    }
+
+    function openLightbox() {
+        if (!viewport || !lightbox || !lightboxSlot || !inlineSlot || isLightboxOpen()) return;
+
+        lightboxPreviouslyFocused = document.activeElement;
+        lightboxSlot.appendChild(viewport);
+        viewport.classList.remove('flipbook-viewport--inline');
+        viewport.classList.add('flipbook-viewport--lightbox');
+
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('flipbook-lightbox-open');
+        document.body.classList.add('flipbook-lightbox-open');
+
+        requestAnimationFrame(() => lightboxClose?.focus());
+    }
+
+    function closeLightbox() {
+        if (!viewport || !lightbox || !inlineSlot || !isLightboxOpen()) return;
+
+        resetToCover();
+
+        viewport.classList.remove('flipbook-viewport--lightbox', 'flipbook-expanded');
+        viewport.classList.add('flipbook-viewport--inline');
+        inlineSlot.appendChild(viewport);
+
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('flipbook-lightbox-open');
+        document.body.classList.remove('flipbook-lightbox-open');
+
+        if (isExpanded) {
+            isExpanded = false;
+            if (expandText) expandText.textContent = 'Ampliar Vista';
+            if (expandBtn) {
+                const icon = expandBtn.querySelector('i');
+                if (icon) icon.classList.replace('fa-compress', 'fa-expand');
+            }
+        }
+
+        if (lightboxPreviouslyFocused && typeof lightboxPreviouslyFocused.focus === 'function') {
+            lightboxPreviouslyFocused.focus();
+        } else {
+            viewport.focus();
+        }
+        lightboxPreviouslyFocused = null;
+    }
+
+    if (viewport && lightbox) {
+        viewport.addEventListener('click', () => {
+            if (isInlineMode()) openLightbox();
+        });
+
+        viewport.addEventListener('keydown', (e) => {
+            if (!isInlineMode()) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox();
+            }
+        });
+
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightboxBackdrop?.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isLightboxOpen()) {
+                e.preventDefault();
+                closeLightbox();
+            }
+        });
+    }
+
+    // ================================================
+    // EXPAND VIEW TOGGLE (lightbox only)
     // ================================================
     const expandBtn = document.getElementById('fb-toggle-expand');
     const expandText = document.getElementById('fb-expand-text');
-    const viewport = document.getElementById('flipbook-viewport');
     const navbar = document.getElementById('navbar');
     let isExpanded = false;
 
     if (expandBtn && viewport && navbar) {
         expandBtn.addEventListener('click', () => {
+            if (!isLightboxOpen()) return;
+
             isExpanded = !isExpanded;
             viewport.classList.toggle('flipbook-expanded', isExpanded);
 
             if (isExpanded) {
                 expandText.textContent = 'Reducir Vista';
                 expandBtn.querySelector('i').classList.replace('fa-expand', 'fa-compress');
-
-                // Hide navbar
-                navbar.style.transform = 'translateY(-100%)';
-                navbar.style.transition = 'transform 0.4s ease';
-
-                // Scroll to center viewport
-                setTimeout(() => {
-                    viewport.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 50);
-
             } else {
                 expandText.textContent = 'Ampliar Vista';
                 expandBtn.querySelector('i').classList.replace('fa-compress', 'fa-expand');
-
-                // Show navbar
-                navbar.style.transform = '';
             }
 
-            // Adjust flipbook scene transformation correctly after resize
             setTimeout(updateState, 350);
         });
-
-        // Observer to unhide header if flipbook is out of view while expanded
-        const observer = new IntersectionObserver((entries) => {
-            if (isExpanded) {
-                if (!entries[0].isIntersecting) {
-                    navbar.style.transform = ''; // Show if scrolled away
-                } else {
-                    navbar.style.transform = 'translateY(-100%)'; // Hide if in view
-                }
-            }
-        }, { threshold: 0.1 });
-        observer.observe(viewport);
     }
 
     // ================================================

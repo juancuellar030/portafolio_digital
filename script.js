@@ -196,6 +196,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Lake bubble entrance — play float-up when Diseñando scrolls into view
+  const lakeLayer = document.querySelector('.lake-items-layer');
+  const disenandoSection = document.getElementById('disenando');
+
+  if (lakeLayer && disenandoSection) {
+    const enterLakeItems = () => lakeLayer.classList.add('is-entered');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      enterLakeItems();
+    } else {
+      const lakeEntranceObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            enterLakeItems();
+            lakeEntranceObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+
+      lakeEntranceObserver.observe(disenandoSection);
+    }
+  }
+
   csClose.addEventListener('click', () => {
     overlay.classList.remove('active');
   });

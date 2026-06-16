@@ -7,6 +7,7 @@
     <title>Infografía | Portafolio Digital</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="infografia.css">
+    <link rel="stylesheet" href="svg-color-hover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
 </head>
@@ -15,6 +16,67 @@
 
     <!-- Underwater background layer -->
     <div class="info-bg-gradient"></div>
+
+    <!-- Sunlight beams & rising bubbles (visible through cave opening) -->
+    <div class="info-water-fx" aria-hidden="true">
+        <div class="info-light-cone"></div>
+        <div class="info-surface-waves">
+            <svg class="info-surface-waves__svg" viewBox="0 0 800 140" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="infoWaveFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(235, 250, 255, 0.72)" />
+                        <stop offset="45%" stop-color="rgba(190, 230, 242, 0.28)" />
+                        <stop offset="100%" stop-color="rgba(140, 200, 220, 0)" />
+                    </linearGradient>
+                    <linearGradient id="infoWaveStroke" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255, 255, 255, 0.55)" />
+                        <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
+                    </linearGradient>
+                </defs>
+                <path class="info-surface-waves__band info-surface-waves__band--1"
+                    d="M0,52 C120,34 220,68 340,46 C460,24 580,58 700,42 C740,38 770,44 800,48 L800,140 L0,140 Z"
+                    fill="url(#infoWaveFill)" />
+                <path class="info-surface-waves__band info-surface-waves__band--2"
+                    d="M0,64 C90,78 210,52 330,70 C450,88 570,56 690,74 C735,80 770,66 800,72 L800,140 L0,140 Z"
+                    fill="url(#infoWaveFill)" opacity="0.45" />
+                <path class="info-surface-waves__ripple info-surface-waves__ripple--1"
+                    d="M0,38 C140,22 260,54 400,32 C540,10 660,46 800,28" fill="none"
+                    stroke="url(#infoWaveStroke)" stroke-width="5" />
+                <path class="info-surface-waves__ripple info-surface-waves__ripple--2"
+                    d="M0,48 C110,62 250,36 390,56 C530,76 650,40 800,58" fill="none"
+                    stroke="url(#infoWaveStroke)" stroke-width="4" opacity="0.7" />
+                <path class="info-surface-waves__ripple info-surface-waves__ripple--3"
+                    d="M0,58 C160,44 300,72 480,50 C620,34 720,64 800,52" fill="none"
+                    stroke="url(#infoWaveStroke)" stroke-width="3" opacity="0.45" />
+            </svg>
+        </div>
+        <div class="info-sunbeams">
+            <div class="info-sunbeam info-sunbeam--1"></div>
+            <div class="info-sunbeam info-sunbeam--2"></div>
+            <div class="info-sunbeam info-sunbeam--3"></div>
+            <div class="info-sunbeam info-sunbeam--4"></div>
+            <div class="info-sunbeam info-sunbeam--5"></div>
+            <div class="info-sunbeam info-sunbeam--6"></div>
+        </div>
+        <div class="info-particles"></div>
+        <div class="info-rise-bubbles">
+            <span class="info-rise-bubble" style="--x:12%;--size:6px;--dur:14s;--delay:0s;--drift:18px;--opacity:0.45"></span>
+            <span class="info-rise-bubble" style="--x:22%;--size:10px;--dur:18s;--delay:2s;--drift:-12px;--opacity:0.35"></span>
+            <span class="info-rise-bubble" style="--x:31%;--size:5px;--dur:11s;--delay:4s;--drift:8px;--opacity:0.5"></span>
+            <span class="info-rise-bubble" style="--x:38%;--size:14px;--dur:22s;--delay:1s;--drift:-22px;--opacity:0.3"></span>
+            <span class="info-rise-bubble" style="--x:46%;--size:7px;--dur:13s;--delay:6s;--drift:14px;--opacity:0.4"></span>
+            <span class="info-rise-bubble" style="--x:54%;--size:9px;--dur:16s;--delay:3s;--drift:-16px;--opacity:0.38"></span>
+            <span class="info-rise-bubble" style="--x:62%;--size:5px;--dur:10s;--delay:7s;--drift:10px;--opacity:0.48"></span>
+            <span class="info-rise-bubble" style="--x:68%;--size:12px;--dur:20s;--delay:0.5s;--drift:-8px;--opacity:0.32"></span>
+            <span class="info-rise-bubble" style="--x:74%;--size:6px;--dur:12s;--delay:5s;--drift:20px;--opacity:0.42"></span>
+            <span class="info-rise-bubble" style="--x:81%;--size:8px;--dur:15s;--delay:8s;--drift:-14px;--opacity:0.36"></span>
+            <span class="info-rise-bubble" style="--x:88%;--size:4px;--dur:9s;--delay:2.5s;--drift:6px;--opacity:0.55"></span>
+            <span class="info-rise-bubble" style="--x:42%;--size:11px;--dur:19s;--delay:9s;--drift:-24px;--opacity:0.28"></span>
+            <span class="info-rise-bubble" style="--x:58%;--size:7px;--dur:17s;--delay:11s;--drift:16px;--opacity:0.4"></span>
+            <span class="info-rise-bubble" style="--x:28%;--size:9px;--dur:21s;--delay:6.5s;--drift:-10px;--opacity:0.33"></span>
+            <span class="info-rise-bubble" style="--x:92%;--size:6px;--dur:13s;--delay:4.5s;--drift:12px;--opacity:0.44"></span>
+        </div>
+    </div>
 
     <!-- Full-viewport cave frame -->
     <img src="assets/infographic/underwater-cave-frame.svg" class="cave-frame" alt="Cuevas Submarinas"
@@ -25,11 +87,12 @@
 
     <!-- Main visualizer area -->
     <main class="infographic-container">
+        <div class="info-stage">
 
         <!-- Central text display -->
         <div class="content-display" aria-live="polite">
             <h1 id="info-title">Explora la Investigación</h1>
-            <p id="info-desc">Pasa el cursor o toca los elementos marinos para descubrir cada componente del diseño
+            <p id="info-desc">Pasa el cursor o toca las burbujas para descubrir cada componente del diseño
                 metodológico.</p>
         </div>
 
@@ -114,8 +177,10 @@
             </div>
 
         </div>
+        </div>
     </main>
 
+    <script src="svg-color-hover.js"></script>
     <script src="infografia.js"></script>
 </body>
 

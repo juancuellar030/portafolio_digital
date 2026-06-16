@@ -1,0 +1,43 @@
+/* Crossfade from outline SVG to _colored variant on hover */
+
+.svg-color-hover {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.svg-color-hover__base,
+.svg-color-hover__color {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease-out, ease);
+}
+
+.svg-color-hover__color {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.svg-color-hover:hover .svg-color-hover__base,
+.lake-item__btn:hover .svg-color-hover__base,
+.info-item:hover .svg-color-hover__base {
+  opacity: 0;
+}
+
+.svg-color-hover.is-color-visible .svg-color-hover__color,
+.svg-color-hover:hover .svg-color-hover__color,
+.lake-item__btn:hover .svg-color-hover__color,
+.info-item:hover .svg-color-hover__color {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg-color-hover__color {
+    transition-duration: 0.15s;
+  }
+}

@@ -689,11 +689,23 @@ a {
   aspect-ratio: 1.1;
 }
 
-.hero-illustration img {
+.hero-illustration > img,
+.hero-illustration .svg-color-hover {
   position: absolute;
   object-fit: contain;
   height: auto;
   margin-left: 50px;
+}
+
+.hero-illustration .svg-color-hover img.svg-color-hover__base {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin-left: 0;
+}
+
+.hero-illustration .svg-color-hover img.svg-color-hover__color {
+  margin-left: 0;
 }
 
 /* Individual Illustration Placement */
@@ -805,7 +817,8 @@ a {
    is no conflict with the entrance animation forwards fill-mode.
    JS (animationend) locks the final state before transitions fire. */
 .ill-boy,
-.ill-bubble {
+.ill-bubble,
+.hero-illustration .svg-color-hover.ill-bubble {
   cursor: url('assets/cursor-default.svg') 5 5, auto !important;
   transition: transform 0.4s var(--ease-spring),
     filter 0.4s var(--ease-out);
@@ -815,7 +828,8 @@ a {
   transform: translateY(-10px) scale(1.05) rotate(-2deg) !important;
 }
 
-.ill-bubble:hover {
+.ill-bubble:hover,
+.hero-illustration .svg-color-hover.ill-bubble:hover {
   transform: scale(1.13) translateY(-6px) !important;
   z-index: 10 !important;
 }
@@ -2476,7 +2490,8 @@ input[type="button"],
 .disenando-section {
   position: relative;
   padding: 0;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background: transparent;
 }
 
@@ -2484,12 +2499,19 @@ input[type="button"],
   position: relative;
   z-index: 5;
   text-align: center;
-  padding: 4rem 1.5rem 2.5rem;
+  padding: 2.5rem 1.5rem 1.75rem;
   /* Seamless gradient — matches the top of the lake body */
   background: linear-gradient(to bottom,
       #5ab4c8 0%,
       #5ab4c8 100%);
   color: #fff;
+}
+
+.disenando-header .section-tag {
+  color: #2e6b7e;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 8px rgba(0 0 0 / 0.08);
 }
 
 .disenando-header .section-title {
@@ -2506,8 +2528,11 @@ input[type="button"],
 .lake-container {
   position: relative;
   width: 100%;
-  min-height: 880px;
-  overflow: hidden;
+  --lake-depth: 890px;
+  min-height: var(--lake-depth);
+  container-type: size;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 /* -- Water gradient body: wave-blue (#5ab4c8) → deep lake (#0d2c3f) -- */
@@ -2527,40 +2552,62 @@ input[type="button"],
 .lake-items-layer {
   position: absolute;
   inset: 0;
-  /* Must be above the floor SVG (z-index 3) */
   z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  /* Headroom for float/hover glow; bottom inset uses container height, not width */
+  padding: 36px clamp(12px, 2vw, 28px) calc(var(--lake-depth) * 0.55 + 12px);
+  box-sizing: border-box;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lake-items-layer .lake-item {
+  pointer-events: auto;
 }
 
 /* -- Individual floating item -- */
 .lake-item {
-  position: absolute;
-  left: var(--float-left, 50%);
-  /* Keep items in the blue water area */
-  bottom: calc(58% + 12px);
-  transform: translateX(-50%);
+  position: relative;
+  justify-self: center;
+  width: max-content;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  /* Entrance animation animating bottom and opacity + continuous lake float animating transform */
-  animation: floatEntrance 1s cubic-bezier(0, 0.5, 0.3, 1) backwards,
-    lakefloat 4s ease-in-out infinite;
-  /* The entrance has an offset delay so it looks deliberate, followed by the continuous delay */
-  animation-delay: calc(0.3s + var(--float-delay, 0s)), calc(1s + var(--float-delay, 0s));
+  opacity: 0;
+  transform: translateY(120px);
   cursor: pointer;
+}
+
+.lake-items-layer.is-entered .lake-item {
+  animation-name: floatEntrance, lakefloat;
+  animation-duration: 1s, 4s;
+  animation-timing-function: cubic-bezier(0, 0.5, 0.3, 1), ease-in-out;
+  animation-delay: calc(0.3s + var(--float-delay, 0s)), calc(1.3s + var(--float-delay, 0s));
+  animation-fill-mode: forwards, none;
+  animation-iteration-count: 1, infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lake-items-layer.is-entered .lake-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 @keyframes floatEntrance {
   0% {
     opacity: 0;
-    bottom: -150px;
-    /* start below the floor */
+    transform: translateY(120px);
   }
 
   100% {
     opacity: 1;
-    bottom: calc(58% + 12px);
-    /* Must match .lake-item bottom */
+    transform: translateY(0);
   }
 }
 
@@ -2568,19 +2615,19 @@ input[type="button"],
 
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 
   50% {
-    transform: translateX(-50%) translateY(-18px);
+    transform: translateY(-18px);
   }
 }
 
 /* -- Button inside each item -- */
 .lake-item__btn {
   position: relative;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   background: rgba(255 255 255 / 0.12);
   border: 2px solid rgba(255 255 255 / 0.3);
   border-radius: 50%;
@@ -2626,32 +2673,43 @@ a.lake-item__btn:focus-visible {
 }
 
 /* -- SVG image inside the button -- */
+.lake-item__btn .svg-color-hover,
 .lake-item__img {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
+}
+
+.lake-item__img,
+.lake-item__btn .svg-color-hover__base,
+.lake-item__btn .svg-color-hover__color {
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0 0 0 / 0.4));
   pointer-events: none;
   transition: filter 0.25s;
 }
 
-.lake-item__btn:hover .lake-item__img {
+.lake-item__btn:hover .lake-item__img,
+.lake-item__btn:hover .svg-color-hover__base,
+.lake-item__btn:hover .svg-color-hover__color {
   filter: drop-shadow(0 4px 14px rgba(255 255 255 / 0.6));
 }
 
 /* -- Text label under each item -- */
 .lake-item__label {
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: rgba(255 255 255 / 0.0);
-  /* hidden by default */
   text-shadow: 0 1px 8px rgba(0 0 0 / 0.8);
   text-align: center;
+  max-width: 100%;
   white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
   letter-spacing: 0.04em;
   transition: color 0.2s, opacity 0.2s;
   pointer-events: none;
+  padding-bottom: 4px;
 }
 
 .lake-item:hover .lake-item__label {
@@ -2700,12 +2758,14 @@ a.lake-item__btn:focus-visible {
     height: 80px;
   }
 
+  .lake-item__btn .svg-color-hover,
   .lake-item__img {
     width: 52px;
     height: 52px;
   }
 
   .lake-container {
-    min-height: 420px;
+    --lake-depth: 420px;
+    min-height: var(--lake-depth);
   }
 }

@@ -9,6 +9,7 @@
   <title>Portafolio Digital | Integración de Wordwall — Universidad de Cartagena</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="flipbook.css">
+  <link rel="stylesheet" href="svg-color-hover.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/logo-unicaragena.svg" type="image/svg+xml">
 </head>
@@ -529,35 +530,52 @@
       </p>
     </div>
 
-    <!-- VIDEO PITCH -->
-    <div class="video-thumbnail-trigger reveal" id="video-pitch-trigger"
-      style="max-width: 400px; margin: 0 auto 2rem; position: relative; z-index: 10; display: block;">
-      <h3
-        style="margin-bottom: 0.8rem; font-size: 1.1rem; color: whitesmoke; text-align: center; font-family: var(--font-display, 'Londrina Solid', cursive);">
-        Video Pitch</h3>
-      <div class="video-thumb-container">
-        <img src="https://img.youtube.com/vi/gWz4uMo9FlQ/hqdefault.jpg" alt="Video Pitch Thumbnail">
-        <div class="play-overlay">
-          <i class="fa-solid fa-play"></i>
+    <!-- VIDEO + E-BOOK side by side -->
+    <div class="referenciando-media-row reveal">
+
+      <!-- VIDEO PITCH (left) -->
+      <div class="referenciando-video-col">
+        <div class="video-thumbnail-trigger" id="video-pitch-trigger">
+          <h3 class="referenciando-media-title">Video Pitch</h3>
+          <div class="video-thumb-container">
+            <img src="assets/portafolio-digital-video-pitch.jpg" alt="Video Pitch">
+            <span class="video-clapper-badge" aria-hidden="true">
+              <i class="fa-solid fa-clapperboard"></i>
+            </span>
+            <span class="play-overlay" aria-hidden="true">
+              <i class="fa-solid fa-play"></i>
+            </span>
+          </div>
+          <p class="referenciando-media-hint">
+            <i class="fa-solid fa-circle-play"></i> Haz clic para reproducir
+          </p>
         </div>
       </div>
-    </div>
 
-    <!-- ---- INTERACTIVE FLIPBOOK ---- -->
-    <div id="flipbook-viewport">
-      <div id="flipbook-scene" class="closed">
-        <button id="fb-prev" class="fb-nav fb-nav-prev" aria-label="Página anterior">‹</button>
-        <button id="fb-next" class="fb-nav fb-nav-next" aria-label="Siguiente página">›</button>
+      <!-- E-BOOK preview (right) — click to open lightbox -->
+      <div class="referenciando-ebook-col" id="flipbook-inline-slot">
+        <h3 class="referenciando-media-title">E-book Interactivo</h3>
+        <div id="flipbook-viewport" class="flipbook-viewport--inline" role="button" tabindex="0"
+          aria-label="Abrir e-book en vista ampliada">
 
-        <div id="flipbook">
+          <div class="flipbook-inline-preview">
+          <div id="flipbook-scene" class="closed">
+            <button id="fb-prev" class="fb-nav fb-nav-prev" aria-label="Página anterior">‹</button>
+            <button id="fb-next" class="fb-nav fb-nav-next" aria-label="Siguiente página">›</button>
+
+            <div id="flipbook">
 
           <!-- LEAF 0: Cover / Page 2 -->
           <div class="fb-leaf" data-leaf="0">
             <div class="fb-face fb-front cover-front">
-              <div class="fb-page-content">
+              <img class="cover-bg-image" src="assets/e-book/book-cover.jpg" alt="" aria-hidden="true">
+              <div class="fb-page-content cover-content">
                 <h1 class="cover-title">Marco de Referencia:<br>El Corazón del Laboratorio Pedagógico Virtual</h1>
-                <p class="cover-subtitle">Sustento legal, teórico y conceptual del uso de Wordwall en el Colegio Colombo
-                  Inglés.</p>
+                <p class="cover-subtitle">
+                  <span class="cover-subtitle-mark">Sustento legal, teórico y conceptual del</span><br>
+                  <span class="cover-subtitle-mark">uso de Wordwall en el Colegio Colombo</span><br>
+                  <span class="cover-subtitle-mark">Inglés.</span>
+                </p>
                 <img src="assets/e-book/cover-illustration.png" alt="Portada"
                   class="cover-illustration fb-illustration">
               </div>
@@ -789,7 +807,9 @@
               <span class="fb-page-num">9</span>
             </div>
             <div class="fb-face fb-back back-cover">
-              <div class="fb-page-content"
+              <img class="cover-bg-image cover-bg-image--flipped" src="assets/e-book/book-cover.jpg" alt=""
+                aria-hidden="true">
+              <div class="fb-page-content cover-content"
                 style="align-items:center; justify-content:center; text-align:center; gap:0.6rem;">
                 <h2 style="font-size:1.1rem;">Marco de Referencia</h2>
                 <p style="font-size:0.75rem;">Portafolio Digital — Universidad de Cartagena</p>
@@ -799,18 +819,27 @@
           </div>
 
         </div><!-- /#flipbook -->
-      </div><!-- /#flipbook-scene -->
+        </div><!-- /#flipbook-scene -->
+        </div><!-- /.flipbook-inline-preview -->
 
-      <div
-        style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.5rem; z-index: 30; position: relative;">
-        <button id="fb-toggle-expand" class="fb-download-btn" style="background: #eaf2fe;">
-          <i class="fa-solid fa-expand"></i> <span id="fb-expand-text">Ampliar Vista</span>
-        </button>
-        <button id="fb-download" class="fb-download-btn"><i class="fa-solid fa-file-pdf"></i> Descargar como
-          PDF</button>
-      </div>
-      <p class="fb-helper-text">Haz clic en las páginas o arrastra para pasar. También puedes usar las flechas.</p>
-    </div><!-- /#flipbook-viewport -->
+          <div class="flipbook-inline-hint referenciando-media-hint">
+            <i class="fa-solid fa-book-open"></i> Haz clic para leer
+          </div>
+
+          <div class="flipbook-viewport-controls">
+            <div class="flipbook-toolbar">
+              <button id="fb-toggle-expand" class="fb-download-btn" style="background: #eaf2fe;">
+                <i class="fa-solid fa-expand"></i> <span id="fb-expand-text">Ampliar Vista</span>
+              </button>
+              <button id="fb-download" class="fb-download-btn"><i class="fa-solid fa-file-pdf"></i> Descargar como
+                PDF</button>
+            </div>
+            <p class="fb-helper-text">Haz clic en las páginas o arrastra para pasar. También puedes usar las flechas.</p>
+          </div>
+        </div><!-- /#flipbook-viewport -->
+      </div><!-- /.referenciando-ebook-col -->
+
+    </div><!-- /.referenciando-media-row -->
 
     <!-- Flipbook and Podcast Audio -->
     <audio id="page-flip-audio" src="assets/e-book/page-flip.mp3" preload="auto"></audio>
@@ -830,6 +859,7 @@
   <section class="section disenando-section" id="disenando" aria-label="Diseñando">
 
     <div class="disenando-header">
+      <span class="section-tag">Pestaña 4</span>
       <h2 class="section-title">Diseñando</h2>
       <p class="section-subtitle">Explora los artefactos de diseño de esta propuesta pedagógica</p>
     </div>
@@ -844,7 +874,7 @@
       <div class="lake-items-layer">
 
         <!-- ANCHOR – Unidad Didáctica (ACTIVE) -->
-        <div class="lake-item" data-label="Unidad Didáctica" style="--float-delay:0s; --float-left:10%;">
+        <div class="lake-item" data-label="Unidad Didáctica" style="--float-delay:0s;">
           <a href="https://canva.link/xv79d8aturmkod3" target="_blank" rel="noopener" class="lake-item__btn"
             aria-label="Abrir Unidad Didáctica">
             <img src="assets/design-tab-buttons/anchor.svg" alt="Ancla" class="lake-item__img">
@@ -853,7 +883,7 @@
         </div>
 
         <!-- LAMP – Infografía (ACTIVE) -->
-        <div class="lake-item" data-label="Infografía" style="--float-delay:1.2s; --float-left:28%;">
+        <div class="lake-item" data-label="Infografía" style="--float-delay:1.2s;">
           <a href="infografia.html" class="lake-item__btn" aria-label="Abrir Infografía">
             <img src="assets/design-tab-buttons/lamp.svg" alt="Lámpara" class="lake-item__img">
           </a>
@@ -861,7 +891,7 @@
         </div>
 
         <!-- CRYSTAL – Diseño Instruccional (ACTIVE) -->
-        <div class="lake-item" data-label="Diseño Instruccional" style="--float-delay:0.6s; --float-left:48%;">
+        <div class="lake-item" data-label="Diseño Instruccional" style="--float-delay:0.6s;">
           <a href="diseno_instruccional.html" class="lake-item__btn" aria-label="Abrir Diseño Instruccional">
             <img src="assets/design-tab-buttons/crystal.svg" alt="Cristal" class="lake-item__img">
           </a>
@@ -869,7 +899,7 @@
         </div>
 
         <!-- OYSTER – Producto Final (ACTIVE) -->
-        <div class="lake-item" data-label="Producto Final" style="--float-delay:1.8s; --float-left:68%;">
+        <div class="lake-item" data-label="Producto Final" style="--float-delay:1.8s;">
           <a href="producto_final.html" class="lake-item__btn"
             aria-label="Abrir Producto Final">
             <img src="assets/design-tab-buttons/oyster.svg" alt="Ostra" class="lake-item__img">
@@ -880,9 +910,9 @@
         <!-- LAMP (periscope placeholder) – Video Tutorial (LOCKED) -->
         <div class="lake-item" data-coming-soon="Video Tutorial"
           data-cs-message="Recorrido audiovisual por la propuesta pedagógica"
-          style="--float-delay:0.9s; --float-left:86%;">
+          style="--float-delay:0.9s;">
           <button class="lake-item__btn lake-item__btn--locked" aria-label="Video Tutorial – Próximamente">
-            <img src="assets/design-tab-buttons/lamp.svg" alt="Periscopio" class="lake-item__img">
+            <img src="assets/design-tab-buttons/film-camera.svg" alt="Periscopio" class="lake-item__img">
             <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
           </button>
           <span class="lake-item__label">Video Tutorial</span>
@@ -898,6 +928,18 @@
     </div><!-- /.lake-container -->
 
   </section><!-- /#disenando -->
+
+  <!-- E-book lightbox (full-screen reader — must live outside sections for correct stacking) -->
+  <div id="flipbook-lightbox" class="flipbook-lightbox" aria-hidden="true">
+    <div class="flipbook-lightbox-backdrop" id="flipbook-lightbox-backdrop"></div>
+    <button type="button" id="flipbook-lightbox-close" class="flipbook-lightbox-close"
+      aria-label="Cerrar e-book">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="flipbook-lightbox-panel" role="dialog" aria-modal="true" aria-label="E-book interactivo">
+      <div id="flipbook-lightbox-slot"></div>
+    </div>
+  </div>
 
   <!-- ======== VIDEO PITCH MODAL ======== -->
   <div id="video-modal" class="video-modal">
@@ -920,6 +962,7 @@
   <!-- GSAP + ScrollTrigger for scroll-driven SVG animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="svg-color-hover.js"></script>
   <script src="script.js"></script>
   <script src="flipbook.js"></script>
 </body>
