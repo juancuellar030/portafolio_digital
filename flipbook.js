@@ -282,14 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.remove('flipbook-lightbox-open');
         document.body.classList.remove('flipbook-lightbox-open');
 
-        if (isExpanded) {
-            isExpanded = false;
-            if (expandText) expandText.textContent = 'Ampliar Vista';
-            if (expandBtn) {
-                const icon = expandBtn.querySelector('i');
-                if (icon) icon.classList.replace('fa-compress', 'fa-expand');
-            }
-        }
+
 
         if (lightboxPreviouslyFocused && typeof lightboxPreviouslyFocused.focus === 'function') {
             lightboxPreviouslyFocused.focus();
@@ -323,32 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ================================================
-    // EXPAND VIEW TOGGLE (lightbox only)
-    // ================================================
-    const expandBtn = document.getElementById('fb-toggle-expand');
-    const expandText = document.getElementById('fb-expand-text');
-    const navbar = document.getElementById('navbar');
-    let isExpanded = false;
 
-    if (expandBtn && viewport && navbar) {
-        expandBtn.addEventListener('click', () => {
-            if (!isLightboxOpen()) return;
-
-            isExpanded = !isExpanded;
-            viewport.classList.toggle('flipbook-expanded', isExpanded);
-
-            if (isExpanded) {
-                expandText.textContent = 'Reducir Vista';
-                expandBtn.querySelector('i').classList.replace('fa-expand', 'fa-compress');
-            } else {
-                expandText.textContent = 'Ampliar Vista';
-                expandBtn.querySelector('i').classList.replace('fa-compress', 'fa-expand');
-            }
-
-            setTimeout(updateState, 350);
-        });
-    }
 
     // ================================================
     // PODCAST AUDIO PLAYER + VISUALIZER
