@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Cuestionario de Calificación con Escala de Likert</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:    #e8303a;
+    --orange-red: #e85c20;
+    --orange: #e8922a;
+    --yellow: #d4b800;
+    --green:  #3aac3a;
+    --bg: #fefdf8;
+    --card-bg: #ffffff;
+    --radius: 18px;
+    --shadow: 0 4px 18px rgba(0,0,0,0.10);
+  }
+
+  html, body {
+    min-height: 100%;
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* ── Diagonal stripe background ── */
+  .bg-stripes {
+    position: fixed; inset: 0; z-index: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      #f9c6c6 0px, #f9c6c6 28px,
+      #fde5b8 28px, #fde5b8 56px,
+      #fef9c3 56px, #fef9c3 84px,
+      #d4f0c8 84px, #d4f0c8 112px,
+      #c8e8f9 112px, #c8e8f9 140px,
+      #e4d0f8 140px, #e4d0f8 168px
+    );
+    opacity: 0.55;
+  }
+
+  /* ── Screens ── */
+  #screen-name, #screen-survey, #screen-results {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px 40px;
+  }
+  .active { display: flex !important; }
+
+  /* ── Name screen ── */
+  #screen-name { justify-content: center; gap: 24px; }
+  .name-card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    max-width: 460px;
+    width: 100%;
+  }
+  .name-card h1 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .name-card p { color: #666; font-size: 1rem; margin-bottom: 24px; }
+  .name-input {
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: 3px solid #e0e0e0;
+    border-radius: 14px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color .2s;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .name-input:focus { border-color: #f0c040; }
+  .btn-start {
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f9c840, #f0a020);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(240,160,32,.35);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn-start:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(240,160,32,.3); }
+
+  /* ── Survey screen ── */
+  #screen-survey { gap: 0; max-width: 900px; margin: 0 auto; width: 100%; }
+
+  .survey-header {
+    background: white;
+    border-radius: 24px;
+    padding: 24px 28px 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+  .survey-header h1 {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    font-weight: 900;
+    color: #222;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .survey-header p {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    color: #555;
+    max-width: 580px;
+    margin: 0 auto 14px;
+    line-height: 1.5;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #444;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-emoji { font-size: 1.3rem; }
+
+  /* Student badge */
+  .student-badge {
+    background: linear-gradient(135deg, #f9c840, #f0a020);
+    color: white;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-radius: 30px;
+    padding: 6px 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(240,160,32,.3);
+    align-self: flex-start;
+  }
+
+  /* Questions grid */
+  .questions-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 600px) {
+    .questions-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Section header */
+  .section-header {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #f9c840, #f0a020);
+    color: white;
+    font-weight: 900;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    padding: 10px 18px;
+    text-align: center;
+    margin-top: 6px;
+    box-shadow: 0 2px 10px rgba(240,160,32,.25);
+  }
+  .section-header.green {
+    background: linear-gradient(135deg, #50c878, #2e9e50);
+    box-shadow: 0 2px 10px rgba(50,180,80,.25);
+  }
+  .section-header.blue {
+    background: linear-gradient(135deg, #60b8f0, #3888d8);
+    box-shadow: 0 2px 10px rgba(60,140,220,.25);
+  }
+
+  /* Question card */
+  .q-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px 16px 16px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    transition: box-shadow .2s;
+  }
+  .q-card.answered { box-shadow: 0 4px 18px rgba(80,200,120,.25); }
+  .q-text {
+    font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    line-height: 1.45;
+  }
+
+  /* Likert row */
+  .likert-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .face-btn {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .face-btn svg { width: 100%; height: 100%; display: block; }
+  .face-btn:active { transform: scale(0.92); }
+  .face-btn.selected {
+    border-color: #333;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.12);
+    transform: scale(1.15);
+  }
+  @media (max-width: 480px) {
+    .face-btn { width: 46px; height: 46px; }
+    .likert-row { gap: 7px; }
+  }
+
+  /* Submit */
+  .btn-submit {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #50c878, #2e9e50);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(50,180,80,.35);
+    transition: transform .12s, box-shadow .12s, opacity .2s;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 6px;
+  }
+  .btn-submit:active { transform: scale(0.97); }
+  .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .progress-bar-wrap {
+    width: 100%; max-width: 500px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 30px;
+    height: 8px;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f9c840, #f0a020);
+    border-radius: 30px;
+    transition: width .4s ease;
+  }
+  .progress-label { font-size: 0.82rem; font-weight: 700; color: #888; margin-bottom: 14px; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: #222; color: white; font-weight: 700; font-size: 1rem;
+    border-radius: 30px; padding: 12px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    z-index: 999; white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── Results screen ── */
+  #screen-results { gap: 20px; max-width: 900px; margin: 0 auto; width: 100%; }
+  .results-header {
+    background: white; border-radius: 24px; padding: 24px 28px;
+    text-align: center; box-shadow: var(--shadow); width: 100%;
+  }
+  .results-header h1 { font-size: 1.7rem; font-weight: 900; color: #222; margin-bottom: 6px; }
+  .results-header p { color: #666; }
+
+  .results-controls {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%;
+  }
+  .btn-action {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem; font-weight: 800;
+    border: none; border-radius: 12px;
+    padding: 12px 22px; cursor: pointer;
+    transition: transform .12s;
+  }
+  .btn-action:active { transform: scale(0.96); }
+  .btn-action.gold { background: linear-gradient(135deg,#f9c840,#f0a020); color: white; box-shadow: 0 3px 12px rgba(240,160,32,.3); }
+  .btn-action.blue { background: linear-gradient(135deg,#60b8f0,#3888d8); color: white; box-shadow: 0 3px 12px rgba(60,140,220,.3); }
+  .btn-action.green { background: linear-gradient(135deg,#50c878,#2e9e50); color: white; box-shadow: 0 3px 12px rgba(50,180,80,.3); }
+  .btn-action.red { background: linear-gradient(135deg,#f06060,#d03030); color: white; box-shadow: 0 3px 12px rgba(200,50,50,.3); }
+
+  .results-table-wrap {
+    width: 100%; overflow-x: auto;
+    background: white; border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: #f9f3e0; font-weight: 800; color: #555; padding: 10px 14px; text-align: center; border-bottom: 2px solid #eee; white-space: nowrap; }
+  th:first-child { text-align: left; }
+  td { padding: 9px 14px; text-align: center; border-bottom: 1px solid #f0f0f0; color: #444; }
+  td:first-child { text-align: left; font-weight: 700; color: #222; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  .no-data { text-align: center; padding: 40px; color: #aaa; font-weight: 700; font-size: 1rem; }
+
+  /* Summary averages */
+  .avg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+  .avg-card {
+    background: white; border-radius: var(--radius); padding: 16px;
+    box-shadow: var(--shadow); text-align: center;
+  }
+  .avg-card .q-num { font-size: 0.78rem; color: #aaa; font-weight: 700; margin-bottom: 4px; }
+  .avg-card .q-short { font-size: 0.82rem; color: #555; font-weight: 700; line-height: 1.3; margin-bottom: 10px; }
+  .avg-bar-wrap { background: #f0f0f0; border-radius: 30px; height: 10px; overflow: hidden; margin-bottom: 6px; }
+  .avg-bar { height: 100%; border-radius: 30px; transition: width .6s ease; }
+  .avg-val { font-size: 1.2rem; font-weight: 900; }
+
+  .section-label {
+    grid-column: 1 / -1;
+    font-weight: 900; font-size: 0.95rem;
+    color: #888; padding: 4px 0;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+
+  /* ── Thank you overlay ── */
+  .thankyou-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+  }
+  .thankyou-overlay.show { display: flex; }
+  .thankyou-box {
+    background: white; border-radius: 28px;
+    padding: 44px 36px; text-align: center;
+    box-shadow: 0 12px 50px rgba(0,0,0,0.2);
+    max-width: 360px; width: 90%;
+    animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .thankyou-box .stars { font-size: 2.5rem; margin-bottom: 12px; }
+  .thankyou-box h2 { font-size: 1.5rem; font-weight: 900; color: #222; margin-bottom: 8px; }
+  .thankyou-box p { color: #666; font-size: 1rem; margin-bottom: 24px; }
+  .btn-next {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem; font-weight: 800;
+    background: linear-gradient(135deg, #f9c840, #f0a020);
+    color: white; border: none; border-radius: 14px;
+    padding: 14px 32px; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(240,160,32,.35);
+    width: 100%;
+  }
+
+  /* Footer banner */
+  .footer-banner {
+    background: linear-gradient(90deg, #f9c840, #f0a020);
+    color: white; font-weight: 900;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    border-radius: 14px;
+    padding: 14px 28px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 3px 12px rgba(240,160,32,.3);
+  }
+</style>
+</head>
+<body>
+<div class="bg-stripes"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════ NAME SCREEN ══════════════════ -->
+<div id="screen-name" class="active">
+  <div class="name-card">
+    <div style="font-size:3rem;margin-bottom:12px">📋✏️</div>
+    <h1>Cuestionario de Calificación<br>con Escala de Likert</h1>
+    <p style="margin-top:10px">Antes de empezar, escribe tu nombre o apodo.</p>
+    <input class="name-input" id="student-name-input" type="text" placeholder="Tu nombre..." maxlength="50" autocomplete="off">
+    <button class="btn-start" id="btn-go">¡Empezar encuesta! 🚀</button>
+    <div style="margin-top:18px; border-top:2px solid #f5f5f5; padding-top:16px;">
+      <button class="btn-action blue" id="btn-view-results" style="width:100%">📊 Ver resultados guardados</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ SURVEY SCREEN ══════════════════ -->
+<div id="screen-survey">
+  <div class="survey-header">
+    <h1>Cuestionario de Calificación con Escala de Likert</h1>
+    <p>Mira cada frase y elige la cara que mejor se adapte a lo que piensas. Si te gusta mucho, elige la cara superfeliz; si no te gusta nada, elige la cara triste.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-emoji">😡</span> No me gusta nada</div>
+      <div class="legend-item">·</div>
+      <div class="legend-item"><span class="legend-emoji">😕</span> Un poco</div>
+      <div class="legend-item">·</div>
+      <div class="legend-item"><span class="legend-emoji">👍</span> Regular</div>
+      <div class="legend-item">·</div>
+      <div class="legend-item"><span class="legend-emoji">🙂</span> Me gusta</div>
+      <div class="legend-item">·</div>
+      <div class="legend-item"><span class="legend-emoji">😄</span> ¡Me encanta!</div>
+    </div>
+  </div>
+
+  <div class="student-badge" id="student-badge">👤 Estudiante</div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+  <div class="progress-label" id="progress-label">0 de 10 respondidas</div>
+
+  <div class="questions-grid" id="questions-grid">
+    <!-- Injected by JS -->
+  </div>
+
+  <button class="btn-submit" id="btn-submit" disabled>Enviar respuestas ✅</button>
+
+  <div class="footer-banner" style="margin-top:18px">
+    ✨ ¡Gracias por compartir tus pensamientos!
+  </div>
+</div>
+
+<!-- ══════════════════ RESULTS SCREEN ══════════════════ -->
+<div id="screen-results">
+  <div class="results-header">
+    <h1>📊 Resultados compilados</h1>
+    <p id="results-count">0 estudiantes han completado la encuesta</p>
+  </div>
+  <div class="results-controls">
+    <button class="btn-action gold" id="btn-new-survey">➕ Nueva encuesta</button>
+    <button class="btn-action blue" id="btn-export-csv">⬇️ Exportar CSV</button>
+    <button class="btn-action green" id="btn-export-json">⬇️ Exportar JSON</button>
+    <button class="btn-action red" id="btn-clear-data">🗑️ Borrar todo</button>
+  </div>
+
+  <div style="font-weight:900;font-size:1.1rem;color:#444;align-self:flex-start;padding-left:4px">Promedios por pregunta</div>
+  <div class="avg-grid" id="avg-grid"></div>
+
+  <div style="font-weight:900;font-size:1.1rem;color:#444;align-self:flex-start;padding-left:4px">Respuestas individuales</div>
+  <div class="results-table-wrap">
+    <table id="results-table">
+      <thead id="table-head"></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Thank you overlay -->
+<div class="thankyou-overlay" id="thankyou-overlay">
+  <div class="thankyou-box">
+    <div class="stars">🌟🌟🌟</div>
+    <h2>¡Genial, <span id="ty-name"></span>!</h2>
+    <p>Tus respuestas han sido guardadas. ¡Gracias por participar!</p>
+    <button class="btn-next" id="btn-next-student">👤 Siguiente estudiante</button>
+  </div>
+</div>
+
+<script>
+// ── Face SVGs ──────────────────────────────────────────────
+const FACE_COLORS = ['#e8303a','#e85c20','#e8922a','#d4b800','#3aac3a'];
+const FACE_LABELS = ['No me gusta nada','Un poco','Regular','Me gusta','¡Me encanta!'];
+
+function makeFaceSVG(score) {
+  // score 1-5
+  const c = FACE_COLORS[score-1];
+  // Eyes: all angry/sad have specific shapes
+  const eyeShapes = {
+    1: `<!-- angry eyebrows -->
+        <line x1="14" y1="14" x2="22" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="38" y1="14" x2="30" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="18" cy="21" r="3" fill="white"/>
+        <circle cx="34" cy="21" r="3" fill="white"/>`,
+    2: `<circle cx="18" cy="20" r="3" fill="white"/>
+        <circle cx="34" cy="20" r="3" fill="white"/>`,
+    3: `<!-- neutral: lines -->
+        <rect x="14" y="19" width="8" height="3" rx="1.5" fill="white"/>
+        <rect x="30" y="19" width="8" height="3" rx="1.5" fill="white"/>`,
+    4: `<circle cx="18" cy="20" r="3" fill="white"/>
+        <circle cx="34" cy="20" r="3" fill="white"/>`,
+    5: `<!-- big happy eyes -->
+        <path d="M14 22 Q18 16 22 22" fill="white"/>
+        <path d="M30 22 Q34 16 38 22" fill="white"/>`
+  };
+  const mouthShapes = {
+    1: `<path d="M15 35 Q26 28 37 35" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>`,
+    2: `<path d="M16 34 Q26 30 36 34" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>`,
+    3: `<line x1="16" y1="33" x2="36" y2="33" stroke="white" stroke-width="2.5" stroke-linecap="round"/>`,
+    4: `<path d="M16 31 Q26 38 36 31" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>`,
+    5: `<path d="M13 30 Q26 42 39 30" fill="white" opacity="0.9"/>`
+  };
+  // score 5: big grin with teeth
+  const extra5 = score === 5
+    ? `<path d="M13 30 Q26 42 39 30" fill="white" opacity="0.15"/>
+       <path d="M13 30 Q26 42 39 30 Q26 36 13 30" fill="white"/>` : '';
+
+  return `<svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="26" cy="26" r="25" fill="${c}"/>
+    ${eyeShapes[score]}
+    ${mouthShapes[score]}
+  </svg>`;
+}
+
+// ── Survey data ────────────────────────────────────────────
+const QUESTIONS = [
+  { section: 'Mis juegos en la pantalla', sectionClass: '' },
+  { id:'q1', text:'Cuando toco algo en el juego, la respuesta aparece superrápido.' },
+  { id:'q2', text:'Puedo jugar y pasar de un desafío a otro yo solo, sin pedir ayuda.' },
+  { id:'q3', text:'Los sonidos, imágenes y colores me ayudan a entender mejor de qué trata el juego.' },
+  { id:'q4', text:'Entiendo muy bien lo que tengo que hacer para ganar y aprender.' },
+  { section: '¿Es fácil de jugar?', sectionClass: 'green' },
+  { id:'q5', text:'Entiendo rápidamente cómo jugar; no es difícil encontrar dónde tocar.' },
+  { id:'q6', text:'El juego carga rápido y no se congela mientras estoy en clase.' },
+  { section: '¿Cuánto me gusta?', sectionClass: 'blue' },
+  { id:'q7', text:'Ganar puntos, pasar de nivel y ver el reloj me da muchas ganas de terminar el juego.' },
+  { id:'q8', text:'Disfruto mucho participar y usar la computadora o tableta para estas clases.' },
+  { id:'q9', text:'Si cometo un error, el juego me lo dice de inmediato y me da ganas de intentarlo de nuevo hasta lograrlo.' },
+  { section: '¿Qué aprendí hoy?', sectionClass: '' },
+  { id:'q10', text:'Siento que ahora entiendo mejor las palabras y cómo hablar inglés mejor gracias a estos juegos.' },
+];
+
+const Q_ITEMS = QUESTIONS.filter(q => q.id);
+const TOTAL_Q = Q_ITEMS.length;
+
+// ── State ──────────────────────────────────────────────────
+let currentAnswers = {};
+let studentName = '';
+const STORAGE_KEY = 'likert_results_v1';
+
+function loadResults() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveResults(arr) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+// ── Build survey ───────────────────────────────────────────
+function buildSurvey() {
+  const grid = document.getElementById('questions-grid');
+  grid.innerHTML = '';
+  currentAnswers = {};
+
+  QUESTIONS.forEach(item => {
+    if (item.section) {
+      const sh = document.createElement('div');
+      sh.className = 'section-header' + (item.sectionClass ? ' ' + item.sectionClass : '');
+      sh.textContent = item.section;
+      grid.appendChild(sh);
+      return;
+    }
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + item.id;
+
+    const qText = document.createElement('div');
+    qText.className = 'q-text';
+    qText.textContent = item.text;
+
+    const row = document.createElement('div');
+    row.className = 'likert-row';
+
+    for (let v = 1; v <= 5; v++) {
+      const btn = document.createElement('button');
+      btn.className = 'face-btn';
+      btn.setAttribute('aria-label', FACE_LABELS[v-1]);
+      btn.setAttribute('data-q', item.id);
+      btn.setAttribute('data-v', v);
+      btn.innerHTML = makeFaceSVG(v);
+      btn.addEventListener('click', handleFaceClick);
+      btn.addEventListener('touchstart', () => {}, { passive: true }); // improve touch responsiveness
+      row.appendChild(btn);
+    }
+
+    card.appendChild(qText);
+    card.appendChild(row);
+    grid.appendChild(card);
+  });
+
+  updateProgress();
+  document.getElementById('btn-submit').disabled = true;
+}
+
+function handleFaceClick(e) {
+  const btn = e.currentTarget;
+  const qId = btn.getAttribute('data-q');
+  const val = parseInt(btn.getAttribute('data-v'));
+
+  currentAnswers[qId] = val;
+
+  // Update selected state
+  document.querySelectorAll(`[data-q="${qId}"]`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  // Mark card answered
+  const card = document.getElementById('card-' + qId);
+  if (card) card.classList.add('answered');
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = Object.keys(currentAnswers).length;
+  const pct = (answered / TOTAL_Q) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `${answered} de ${TOTAL_Q} respondidas`;
+  document.getElementById('btn-submit').disabled = answered < TOTAL_Q;
+}
+
+// ── Submit ─────────────────────────────────────────────────
+document.getElementById('btn-submit').addEventListener('click', () => {
+  const results = loadResults();
+  const entry = {
+    name: studentName,
+    timestamp: new Date().toLocaleString('es-CO'),
+    answers: { ...currentAnswers }
+  };
+  results.push(entry);
+  saveResults(results);
+
+  document.getElementById('ty-name').textContent = studentName;
+  document.getElementById('thankyou-overlay').classList.add('show');
+});
+
+document.getElementById('btn-next-student').addEventListener('click', () => {
+  document.getElementById('thankyou-overlay').classList.remove('show');
+  showScreen('name');
+  document.getElementById('student-name-input').value = '';
+  document.getElementById('student-name-input').focus();
+});
+
+// ── Navigation ─────────────────────────────────────────────
+function showScreen(name) {
+  ['name','survey','results'].forEach(s =>
+    document.getElementById('screen-' + s).classList.remove('active')
+  );
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+document.getElementById('btn-go').addEventListener('click', () => {
+  const name = document.getElementById('student-name-input').value.trim();
+  if (!name) { showToast('✏️ Por favor escribe tu nombre'); return; }
+  studentName = name;
+  document.getElementById('student-badge').textContent = '👤 ' + name;
+  buildSurvey();
+  showScreen('survey');
+});
+
+document.getElementById('student-name-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-go').click();
+});
+
+document.getElementById('btn-view-results').addEventListener('click', () => {
+  renderResults();
+  showScreen('results');
+});
+
+document.getElementById('btn-new-survey').addEventListener('click', () => {
+  showScreen('name');
+  document.getElementById('student-name-input').value = '';
+});
+
+// ── Results ────────────────────────────────────────────────
+function renderResults() {
+  const results = loadResults();
+  document.getElementById('results-count').textContent =
+    `${results.length} estudiante${results.length !== 1 ? 's han' : ' ha'} completado la encuesta`;
+
+  // Averages
+  const avgGrid = document.getElementById('avg-grid');
+  avgGrid.innerHTML = '';
+
+  if (results.length === 0) {
+    avgGrid.innerHTML = '<div class="no-data" style="grid-column:1/-1">Sin datos aún.</div>';
+  } else {
+    Q_ITEMS.forEach((q, i) => {
+      const vals = results.map(r => r.answers[q.id]).filter(v => v);
+      const avg = vals.length ? (vals.reduce((a,b) => a+b, 0) / vals.length) : 0;
+      const pct = (avg / 5) * 100;
+      const color = avg < 2 ? '#e8303a' : avg < 3 ? '#e8922a' : avg < 4 ? '#d4b800' : '#3aac3a';
+
+      const card = document.createElement('div');
+      card.className = 'avg-card';
+      const shortText = q.text.length > 55 ? q.text.slice(0, 52) + '…' : q.text;
+      card.innerHTML = `
+        <div class="q-num">Pregunta ${i+1}</div>
+        <div class="q-short">${shortText}</div>
+        <div class="avg-bar-wrap">
+          <div class="avg-bar" style="width:${pct}%;background:${color}"></div>
+        </div>
+        <div class="avg-val" style="color:${color}">${avg.toFixed(1)} / 5</div>
+      `;
+      avgGrid.appendChild(card);
+    });
+  }
+
+  // Table
+  const head = document.getElementById('table-head');
+  const body = document.getElementById('table-body');
+
+  head.innerHTML = '<tr><th>Nombre</th><th>Fecha/Hora</th>' +
+    Q_ITEMS.map((q, i) => `<th title="${q.text}">P${i+1}</th>`).join('') +
+    '<th>Promedio</th></tr>';
+
+  if (results.length === 0) {
+    body.innerHTML = '<tr><td class="no-data" colspan="' + (TOTAL_Q + 3) + '">Sin datos aún.</td></tr>';
+    return;
+  }
+
+  body.innerHTML = results.map(r => {
+    const vals = Q_ITEMS.map(q => r.answers[q.id] || '—');
+    const numVals = vals.filter(v => v !== '—').map(Number);
+    const avg = numVals.length ? (numVals.reduce((a,b)=>a+b,0)/numVals.length).toFixed(1) : '—';
+    const faceMap = ['','😡','😕','😐','🙂','😄'];
+    return `<tr>
+      <td>${escHtml(r.name)}</td>
+      <td style="font-size:.82rem;white-space:nowrap">${escHtml(r.timestamp)}</td>
+      ${vals.map(v => `<td title="${v !== '—' ? FACE_LABELS[v-1] : ''}">${v !== '—' ? faceMap[v] + ' ' + v : '—'}</td>`).join('')}
+      <td><strong>${avg}</strong></td>
+    </tr>`;
+  }).join('');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Export ─────────────────────────────────────────────────
+document.getElementById('btn-export-csv').addEventListener('click', () => {
+  const results = loadResults();
+  if (!results.length) { showToast('Sin datos para exportar'); return; }
+  const headers = ['Nombre','Fecha/Hora', ...Q_ITEMS.map((q,i) => `P${i+1}`), 'Promedio'];
+  const rows = results.map(r => {
+    const vals = Q_ITEMS.map(q => r.answers[q.id] || '');
+    const numVals = vals.filter(v=>v).map(Number);
+    const avg = numVals.length ? (numVals.reduce((a,b)=>a+b,0)/numVals.length).toFixed(1) : '';
+    return [r.name, r.timestamp, ...vals, avg].map(v => `"${v}"`).join(',');
+  });
+  const csv = [headers.join(','), ...rows].join('\n');
+  downloadFile('resultados_likert.csv', csv, 'text/csv');
+});
+
+document.getElementById('btn-export-json').addEventListener('click', () => {
+  const results = loadResults();
+  if (!results.length) { showToast('Sin datos para exportar'); return; }
+  downloadFile('resultados_likert.json', JSON.stringify(results, null, 2), 'application/json');
+});
+
+document.getElementById('btn-clear-data').addEventListener('click', () => {
+  if (confirm('¿Estás seguro de que quieres borrar todos los datos?')) {
+    localStorage.removeItem(STORAGE_KEY);
+    renderResults();
+    showToast('🗑️ Datos borrados');
+  }
+});
+
+function downloadFile(filename, content, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ── Toast ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── Init ───────────────────────────────────────────────────
+document.getElementById('student-name-input').focus();
+</script>
+</body>
+</html>

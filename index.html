@@ -68,10 +68,11 @@
             </a>
           </li>
           <li role="menuitem">
-            <span class="nav-subtab-item">
+            <a href="video_tutorial.html"
+              style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-decoration: none; color: inherit;"
+              class="nav-subtab-item">
               <span class="nav-subtab-left"><i class="fa-solid fa-video"></i> Video Tutorial</span>
-              <span class="coming-soon-badge"><i class="fa-solid fa-lock"></i></span>
-            </span>
+            </a>
           </li>
         </ul>
       </li>
@@ -921,13 +922,11 @@
           <span class="lake-item__label">Producto Final</span>
         </div>
 
-        <!-- LAMP (periscope placeholder) – Video Tutorial (LOCKED) -->
-        <div class="lake-item" data-coming-soon="Video Tutorial"
-          data-cs-message="Recorrido audiovisual por la propuesta pedagógica" style="--float-delay:0.9s;">
-          <button class="lake-item__btn lake-item__btn--locked" aria-label="Video Tutorial – Próximamente">
-            <img src="assets/design-tab-buttons/film-camera.svg" alt="Periscopio" class="lake-item__img">
-            <span class="lake-lock-badge"><i class="fa-solid fa-lock"></i></span>
-          </button>
+        <!-- FILM-CAMERA – Video Tutorial (ACTIVE) -->
+        <div class="lake-item" data-label="Video Tutorial" style="--float-delay:0.9s;">
+          <a href="video_tutorial.html" class="lake-item__btn" aria-label="Abrir Video Tutorial">
+            <img src="assets/design-tab-buttons/film-camera.svg" alt="Cámara de cine" class="lake-item__img">
+          </a>
           <span class="lake-item__label">Video Tutorial</span>
         </div>
 

@@ -286,11 +286,40 @@
     }
 
     /* Different backgrounds for visual variety */
-    .card:nth-child(5n+1), .level-card:nth-child(5n+1), .theory-strip:nth-child(5n+1), .author-card:nth-child(5n+1) { background: var(--ww-card-yellow); }
-    .card:nth-child(5n+2), .level-card:nth-child(5n+2), .theory-strip:nth-child(5n+2), .author-card:nth-child(5n+2) { background: var(--ww-card-cyan); }
-    .card:nth-child(5n+3), .level-card:nth-child(5n+3), .theory-strip:nth-child(5n+3), .author-card:nth-child(5n+3) { background: var(--ww-card-pink); }
-    .card:nth-child(5n+4), .level-card:nth-child(5n+4), .theory-strip:nth-child(5n+4), .author-card:nth-child(5n+4) { background: var(--ww-card-lime); }
-    .card:nth-child(5n+5), .level-card:nth-child(5n+5), .theory-strip:nth-child(5n+5), .author-card:nth-child(5n+5) { background: var(--ww-card-orange); }
+    .card:nth-child(5n+1),
+    .level-card:nth-child(5n+1),
+    .theory-strip:nth-child(5n+1),
+    .author-card:nth-child(5n+1) {
+      background: var(--ww-card-yellow);
+    }
+
+    .card:nth-child(5n+2),
+    .level-card:nth-child(5n+2),
+    .theory-strip:nth-child(5n+2),
+    .author-card:nth-child(5n+2) {
+      background: var(--ww-card-cyan);
+    }
+
+    .card:nth-child(5n+3),
+    .level-card:nth-child(5n+3),
+    .theory-strip:nth-child(5n+3),
+    .author-card:nth-child(5n+3) {
+      background: var(--ww-card-pink);
+    }
+
+    .card:nth-child(5n+4),
+    .level-card:nth-child(5n+4),
+    .theory-strip:nth-child(5n+4),
+    .author-card:nth-child(5n+4) {
+      background: var(--ww-card-lime);
+    }
+
+    .card:nth-child(5n+5),
+    .level-card:nth-child(5n+5),
+    .theory-strip:nth-child(5n+5),
+    .author-card:nth-child(5n+5) {
+      background: var(--ww-card-orange);
+    }
 
     .card.card-accent-left {
       background: var(--ww-purple-light);
@@ -930,51 +959,148 @@
       animation-delay: 0.3s;
     }
 
-        /* ── MODAL ── */
+    /* ── MODAL ── */
     .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(30,27,75,0.85); z-index: 1000;
-      display: none; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 27, 75, 0.85);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
       backdrop-filter: blur(4px);
     }
-    .modal-overlay.active { display: flex; opacity: 1; }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
     .modal-content {
-      width: 90%; max-width: 900px; height: 80vh; background: transparent;
-      border-radius: var(--radius-lg); position: relative;
-      border: 4px solid var(--ww-border); box-shadow: 0 12px 0 var(--ww-border);
+      width: 90%;
+      max-width: 900px;
+      height: 80vh;
+      background: transparent;
+      border-radius: var(--radius-lg);
+      position: relative;
+      border: 4px solid var(--ww-border);
+      box-shadow: 0 12px 0 var(--ww-border);
       overflow: visible;
-      transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .modal-overlay.active .modal-content { transform: scale(1); }
-    .modal-close-wrapper { position: absolute; top: -16px; right: -16px; z-index: 10; }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close-wrapper {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      z-index: 10;
+    }
+
     .modal-close {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: #ff4757; color: #fff; border: 4px solid var(--ww-border);
-      font-size: 28px; font-weight: 900; cursor: pointer; display: flex;
-      align-items: center; justify-content: center; 
-      box-shadow: 0 4px 0 var(--ww-border); transition: all 0.1s;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ff4757;
+      color: #fff;
+      border: 4px solid var(--ww-border);
+      font-size: 28px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 var(--ww-border);
+      transition: all 0.1s;
     }
-    .modal-close:active { transform: translateY(4px); box-shadow: 0 0 0 var(--ww-border); }
-    
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+
+    .modal-close:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 var(--ww-border);
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
     .game-btn {
-      background: var(--ww-card-yellow); border: 4px solid var(--ww-border);
-      border-radius: var(--radius); padding: 1.5rem; text-align: center;
-      cursor: pointer; position: relative;
-      box-shadow: 0 8px 0 var(--ww-border); transition: all 0.1s;
-      font-family: inherit; color: var(--text);
+      background: var(--ww-card-yellow);
+      border: 4px solid var(--ww-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 8px 0 var(--ww-border);
+      transition: all 0.1s;
+      font-family: inherit;
+      color: var(--text);
     }
-    .game-btn:nth-child(1) { background: var(--ww-card-yellow); }
-    .game-btn:nth-child(2) { background: var(--ww-card-cyan); }
-    .game-btn:nth-child(3) { background: var(--ww-card-pink); }
-    .game-btn:nth-child(4) { background: var(--ww-card-lime); }
-    
-    .game-btn:active { transform: translateY(8px); box-shadow: 0 0 0 var(--ww-border); }
-    .game-btn .icon { font-size: 40px; margin-bottom: 12px; display: inline-flex; width: 64px; height: 64px; border: 3px solid var(--ww-border); border-radius: 16px; background: #fff; align-items: center; justify-content: center; box-shadow: 0 4px 0 var(--ww-border); }
-    .game-btn .icon .lucide { width: 36px; height: 36px; }
-    .game-btn h3 { font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--ww-border); }
-    .game-btn p { font-size: 15px; font-weight: 700; opacity: 0.9; }
+
+    .game-btn:nth-child(1) {
+      background: var(--ww-card-yellow);
+    }
+
+    .game-btn:nth-child(2) {
+      background: var(--ww-card-cyan);
+    }
+
+    .game-btn:nth-child(3) {
+      background: var(--ww-card-pink);
+    }
+
+    .game-btn:nth-child(4) {
+      background: var(--ww-card-lime);
+    }
+
+    .game-btn:active {
+      transform: translateY(8px);
+      box-shadow: 0 0 0 var(--ww-border);
+    }
+
+    .game-btn .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: inline-flex;
+      width: 64px;
+      height: 64px;
+      border: 3px solid var(--ww-border);
+      border-radius: 16px;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 var(--ww-border);
+    }
+
+    .game-btn .icon .lucide {
+      width: 36px;
+      height: 36px;
+    }
+
+    .game-btn h3 {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: var(--ww-border);
+    }
+
+    .game-btn p {
+      font-size: 15px;
+      font-weight: 700;
+      opacity: 0.9;
+    }
 
     /* Print helper */
     @media print {
@@ -986,11 +1112,23 @@
         display: block !important;
       }
     }
-  
-  .lucide { width: 1.2em; height: 1.2em; vertical-align: middle; display: inline-block; }
-  .section-icon .lucide { width: 1.5em; height: 1.5em; }
-  .hero::before { content: ''; }
-</style>
+
+    .lucide {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .section-icon .lucide {
+      width: 1.5em;
+      height: 1.5em;
+    }
+
+    .hero::before {
+      content: '';
+    }
+  </style>
 </head>
 
 <body>
@@ -1033,7 +1171,8 @@
     </div>
 
     <div class="note-box">
-      <strong><i data-lucide="lightbulb"></i> Sobre este blog:</strong> Este espacio digital presenta de manera sintética e interactiva los
+      <strong><i data-lucide="lightbulb"></i> Sobre este blog:</strong> Este espacio digital presenta de manera
+      sintética e interactiva los
       resultados del proyecto de investigación de Trabajo de Grado I, Maestría en Recursos Digitales Aplicados a la
       Educación — Universidad de Cartagena (2026). Navega usando el menú superior para explorar cada sección.
     </div>
@@ -1112,7 +1251,8 @@
       <div class="badge badge-purple" style="margin-bottom:0.75rem">Árbol de problemas — síntesis</div>
       <div class="card-grid">
         <div style="background:var(--ww-red-light);border-radius:10px;padding:1rem">
-          <p style="font-weight:800;font-size:13px;color:var(--ww-red);margin-bottom:4px"><i data-lucide="arrow-up"></i> EFECTOS</p>
+          <p style="font-weight:800;font-size:13px;color:var(--ww-red);margin-bottom:4px"><i data-lucide="arrow-up"></i>
+            EFECTOS</p>
           <ul style="font-size:13px;padding-left:1rem">
             <li>Desmotivación y baja participación</li>
             <li>Bajo rendimiento en competencia comunicativa</li>
@@ -1120,12 +1260,14 @@
           </ul>
         </div>
         <div style="background:var(--ww-orange-light);border-radius:10px;padding:1rem">
-          <p style="font-weight:800;font-size:13px;color:var(--ww-orange);margin-bottom:4px"><i data-lucide="zap"></i> PROBLEMA CENTRAL</p>
+          <p style="font-weight:800;font-size:13px;color:var(--ww-orange);margin-bottom:4px"><i data-lucide="zap"></i>
+            PROBLEMA CENTRAL</p>
           <p style="font-size:13px">Reducción del juego en el aula de 1° grado y ausencia de estrategias mediadas por
             tecnología lúdica</p>
         </div>
         <div style="background:var(--ww-amber-light);border-radius:10px;padding:1rem">
-          <p style="font-weight:800;font-size:13px;color:var(--ww-amber);margin-bottom:4px"><i data-lucide="arrow-down"></i> CAUSAS</p>
+          <p style="font-weight:800;font-size:13px;color:var(--ww-amber);margin-bottom:4px"><i
+              data-lucide="arrow-down"></i> CAUSAS</p>
           <ul style="font-size:13px;padding-left:1rem">
             <li>Enfoques pedagógicos tradicionales</li>
             <li>Presión curricular y evaluativa</li>
@@ -1136,7 +1278,8 @@
     </div>
 
     <div class="card" style="border:2px solid var(--ww-purple)">
-      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="help-circle"></i> Pregunta de investigación</div>
+      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="help-circle"></i> Pregunta de
+        investigación</div>
       <p
         style="font-size:17px; font-family:'Nunito',sans-serif; font-weight:700; color:var(--ww-purple); line-height:1.5">
         ¿De qué manera el uso del juego, apoyado en la plataforma Wordwall, impacta el rendimiento académico en la
@@ -1263,7 +1406,8 @@
     </div>
 
     <div class="card">
-      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="users"></i> Población y muestra</div>
+      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="users"></i> Población y muestra
+      </div>
       <div class="stats-row" style="margin-bottom:1rem">
         <div class="stat-card purple">
           <div class="number">40</div>
@@ -1630,35 +1774,40 @@
 
     <!-- Actividades Wordwall (Clickables) -->
     <div class="note-box" style="margin-top:2rem">
-      <i data-lucide="gamepad-2"></i> <strong>Juega tú también:</strong> Haz clic en los botones para interactuar con las actividades reales utilizadas en el proyecto.
+      <i data-lucide="gamepad-2"></i> <strong>Juega tú también:</strong> Haz clic en los botones para interactuar con
+      las actividades reales utilizadas en el proyecto.
     </div>
 
     <div class="games-grid">
-      <button class="game-btn" onclick="openModal('https://wordwall.net/embed/c968e77b27e54d289bcf64d42866a972?themeId=55&templateId=38&fontStackId=12')">
+      <button class="game-btn"
+        onclick="openModal('https://wordwall.net/embed/c968e77b27e54d289bcf64d42866a972?themeId=55&templateId=38&fontStackId=12')">
         <div class="icon"><i data-lucide="paw-print"></i></div>
         <h3>Farm Animals</h3>
         <p>Semana 1 - Vocabulario de la granja</p>
       </button>
 
-      <button class="game-btn" onclick="openModal('https://wordwall.net/embed/72a7ecfcacf04cb1a949ee2a00f631ee?themeId=27&templateId=82&fontStackId=15')">
+      <button class="game-btn"
+        onclick="openModal('https://wordwall.net/embed/72a7ecfcacf04cb1a949ee2a00f631ee?themeId=27&templateId=82&fontStackId=15')">
         <div class="icon"><i data-lucide="apple"></i></div>
         <h3>Food Game</h3>
         <p>Semana 2 - Alimentos y bebidas</p>
       </button>
 
-      <button class="game-btn" onclick="openModal('https://wordwall.net/embed/3421db303cf04a169637d43ec16c12c2?themeId=66&templateId=72&fontStackId=12')">
+      <button class="game-btn"
+        onclick="openModal('https://wordwall.net/embed/3421db303cf04a169637d43ec16c12c2?themeId=66&templateId=72&fontStackId=12')">
         <div class="icon"><i data-lucide="message-circle"></i></div>
         <h3>Have got Game</h3>
         <p>Repaso de estructuras</p>
       </button>
 
-      <button class="game-btn" onclick="openModal('https://wordwall.net/embed/b7e7ba945121458d82c5fb4e295c2c1d?themeId=62&templateId=38&fontStackId=12')">
+      <button class="game-btn"
+        onclick="openModal('https://wordwall.net/embed/b7e7ba945121458d82c5fb4e295c2c1d?themeId=62&templateId=38&fontStackId=12')">
         <div class="icon"><i data-lucide="heart"></i></div>
         <h3>Like/Don't like</h3>
         <p>Expresar preferencias</p>
       </button>
     </div>
-    
+
   </div>
 
   <!-- ════════════════════════════════════════
@@ -1788,7 +1937,18 @@
     <div class="card">
       <h3>Percepción estudiantil — Escala Likert pictográfica</h3>
       <p style="margin-bottom:1rem">Los 40 estudiantes respondieron el cuestionario de 10 ítems usando emoticonos
-        (<i data-lucide="frown"></i><i data-lucide="frown"></i><i data-lucide="meh"></i><i data-lucide="smile"></i><i data-lucide="smile"></i>). Los resultados muestran una percepción muy positiva en las cuatro dimensiones evaluadas:</p>
+        (<i data-lucide="frown"></i><i data-lucide="frown"></i><i data-lucide="meh"></i><i data-lucide="smile"></i><i
+          data-lucide="smile"></i>). Los resultados muestran una percepción muy positiva en las cuatro dimensiones
+        evaluadas:</p>
+
+      <div style="margin-bottom: 2rem; text-align: center;">
+        <a href="likert_survey.html" target="_blank" class="hero-cta"
+          style="margin-top:0; font-size: 16px; padding: 10px 24px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+          <i data-lucide="external-link" style="width: 18px; height: 18px;"></i>
+          Ver Escala Interactiva
+        </a>
+      </div>
+
       <div class="card-grid">
         <div style="text-align:center;padding:1rem;background:var(--ww-purple-light);border-radius:var(--radius)">
           <div style="font-size:24px"><i data-lucide="smile"></i></div>
@@ -1839,7 +1999,8 @@
 
     <!-- Key conclusions -->
     <div class="card">
-      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="check-circle"></i> Conclusiones principales</div>
+      <div class="badge badge-purple" style="margin-bottom:0.75rem"><i data-lucide="check-circle"></i> Conclusiones
+        principales</div>
       <div class="level-card" style="background:var(--ww-green-light);border-color:var(--ww-green)">
         <div class="level-badge lvl3" style="width:32px;height:32px;font-size:12px">1</div>
         <div>
@@ -1880,7 +2041,8 @@
 
     <!-- Recommendations -->
     <div class="card">
-      <div class="badge badge-teal" style="margin-bottom:0.75rem"><i data-lucide="wrench"></i> Recomendaciones para la institución</div>
+      <div class="badge badge-teal" style="margin-bottom:0.75rem"><i data-lucide="wrench"></i> Recomendaciones para la
+        institución</div>
       <ul>
         <li><strong>Práctica pedagógica:</strong> Incorporar al menos dos sesiones semanales de actividades gamificadas
           con Wordwall en el plan de estudios de grado primero, especialmente para gramática y producción oral.</li>
@@ -1896,7 +2058,8 @@
     </div>
 
     <!-- Impact grid -->
-    <div style="margin-bottom:0.75rem"><span class="badge badge-pink"><i data-lucide="globe"></i> Impacto en múltiples niveles</span></div>
+    <div style="margin-bottom:0.75rem"><span class="badge badge-pink"><i data-lucide="globe"></i> Impacto en múltiples
+        niveles</span></div>
     <div class="impact-grid">
       <div class="impact-card">
         <div class="impact-icon"><i data-lucide="user"></i></div>
@@ -2029,7 +2192,7 @@
       document.getElementById('ww-iframe').src = url;
       document.getElementById('ww-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
-      if(window.lucide) window.lucide.createIcons();
+      if (window.lucide) window.lucide.createIcons();
     }
 
     function closeModal(e) {
@@ -2046,12 +2209,13 @@
       <div class="modal-close-wrapper">
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
-      <iframe id="ww-iframe" src="" width="100%" height="100%" frameborder="0" allowfullscreen style="border-radius:var(--radius-lg); background:#fff;"></iframe>
+      <iframe id="ww-iframe" src="" width="100%" height="100%" frameborder="0" allowfullscreen
+        style="border-radius:var(--radius-lg); background:#fff;"></iframe>
     </div>
   </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
+  <script>lucide.createIcons();</script>
 </body>
 
 </html>
