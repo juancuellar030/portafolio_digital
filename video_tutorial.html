@@ -183,27 +183,13 @@
             <button class="close-video-modal" aria-label="Cerrar video" onclick="closeVtModal('vt-modal-pitch')">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="video-iframe-container"
-                style="background:#1a1a2e; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff; text-align:center;">
-
-                <!-- Iframe ready to be used later -->
-                <iframe data-src="" title="Video Pitch"
+            <div class="video-iframe-container">
+                <!-- Iframe injected -->
+                <iframe data-src="https://www.youtube.com/embed/qQ1watZAotw?si=SsWicvaw2AMUUZji&autoplay=1"
+                    title="Video Pitch"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen style="display:none; z-index: 2;">
+                    allowfullscreen style="display:none;">
                 </iframe>
-
-                <!-- Placeholder content -->
-                <div style="position:absolute; padding: 2rem; z-index: 1;">
-                    <i class="fa-solid fa-person-digging"
-                        style="font-size:3rem; color:var(--highlight-yellow); margin-bottom:1rem; filter: drop-shadow(2px 2px 0 #000);"></i>
-                    <h3 style="font-family:var(--font-display, cursive); font-size:1.8rem; letter-spacing:1px;">
-                        ¡Próximamente!</h3>
-                    <p
-                        style="font-family:var(--font-body, sans-serif); color:rgba(255,255,255,0.7); max-width:400px; margin:auto; margin-top:0.5rem;">
-                        El video pitch de la metodología se publicará aquí pronto.
-                    </p>
-                </div>
-
             </div>
         </div>
     </div>

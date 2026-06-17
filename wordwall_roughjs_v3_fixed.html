@@ -1,0 +1,912 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&family=Nunito:wght@400;600;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
+
+  :root {
+    --ink: #2c3e50;
+    --cream: #fdfbf7;
+    --yellow: #f1c40f;
+    --blue: #3498db;
+    --green: #2ecc71;
+    --red: #e74c3c
+  }
+
+  .stage {
+    width: 100%;
+    height: 480px;
+    background: var(--cream);
+    background-image: radial-gradient(circle, #c9c5bc 1px, transparent 1px);
+    background-size: 22px 22px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid var(--ink);
+    font-family: 'Nunito', sans-serif
+  }
+
+  .scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s
+  }
+
+  .scene.active {
+    opacity: 1;
+    pointer-events: all
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--ink);
+    border-radius: 0 0 10px 10px
+  }
+
+  .nav button {
+    background: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s
+  }
+
+  .nav button:hover {
+    background: rgba(255, 255, 255, 0.15)
+  }
+
+  .dots {
+    display: flex;
+    gap: 7px
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.2s
+  }
+
+  .dot.on {
+    background: var(--yellow)
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0);
+      opacity: 0
+    }
+
+    70% {
+      transform: scale(1.08);
+      opacity: 1
+    }
+
+    85% {
+      transform: scale(0.96)
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px)
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+
+  @keyframes jumpUp {
+    0% {
+      transform: translateY(200px) rotate(0deg);
+      opacity: 0
+    }
+
+    70% {
+      transform: translateY(-10px) rotate(var(--rot));
+      opacity: 1
+    }
+
+    85% {
+      transform: translateY(4px) rotate(var(--rot))
+    }
+
+    100% {
+      transform: translateY(0) rotate(var(--rot));
+      opacity: 1
+    }
+  }
+
+  @keyframes nodeIn {
+    from {
+      transform: scale(0);
+      opacity: 0
+    }
+
+    70% {
+      transform: scale(1.1)
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1
+    }
+  }
+
+  @keyframes lineGrow {
+    from {
+      stroke-dashoffset: 300
+    }
+
+    to {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @keyframes barGrow {
+    from {
+      transform: scaleY(0)
+    }
+
+    to {
+      transform: scaleY(1)
+    }
+  }
+
+  @keyframes starPop {
+    0% {
+      transform: scale(0) rotate(-180deg);
+      opacity: 0
+    }
+
+    70% {
+      transform: scale(1.2) rotate(10deg)
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1
+    }
+  }
+
+  @keyframes floatIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px)
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+
+  @keyframes arrowDraw {
+    from {
+      stroke-dashoffset: 80
+    }
+
+    to {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @keyframes beat {
+
+    0%,
+    100% {
+      transform: scale(1)
+    }
+
+    50% {
+      transform: scale(1.15)
+    }
+  }
+
+  @keyframes xAxis {
+    from {
+      stroke-dashoffset: 400
+    }
+
+    to {
+      stroke-dashoffset: 0
+    }
+  }
+
+  @keyframes stampIn {
+    0% {
+      transform: scale(0) rotate(-15deg);
+      opacity: 0
+    }
+
+    70% {
+      transform: scale(1.15) rotate(3deg);
+      opacity: 1
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1
+    }
+  }
+
+  .s1-inner.run {
+    animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both
+  }
+
+  .s1-sub.run {
+    animation: fadeUp 0.5s 0.6s both;
+    opacity: 0
+  }
+
+  .s2-card.run {
+    animation: jumpUp 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+    opacity: 0
+  }
+
+  .s2-card:nth-child(1) {
+    --rot: -3deg;
+    animation-delay: 0.1s
+  }
+
+  .s2-card:nth-child(2) {
+    --rot: 2deg;
+    animation-delay: 0.35s
+  }
+
+  .s2-card:nth-child(3) {
+    --rot: -1.5deg;
+    animation-delay: 0.6s
+  }
+
+  .s3-node {
+    opacity: 0;
+  }
+
+  .s3-node.run {
+    animation: nodeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  #s3n1.run {
+    animation-delay: 0.1s
+  }
+
+  #s3n2.run {
+    animation-delay: 0.5s
+  }
+
+  #s3n3.run {
+    animation-delay: 0.9s
+  }
+
+  .s3-arr {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300
+  }
+
+  .s3-arr.a1.run {
+    animation: lineGrow 0.4s 0.35s ease forwards
+  }
+
+  .s3-arr.a2.run {
+    animation: lineGrow 0.4s 0.75s ease forwards
+  }
+
+  .s4-left.run {
+    animation: floatIn 0.5s 0.1s ease both;
+    opacity: 0
+  }
+
+  .s4-right.run {
+    animation: floatIn 0.5s 0.3s ease both;
+    opacity: 0
+  }
+
+  .s4-stamp.run {
+    animation: stampIn 0.6s 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    opacity: 0
+  }
+
+  .s5-bar {
+    opacity: 0;
+  }
+
+  .s5-bar.b1.run {
+    animation: barGrow 0.7s 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+    transform-origin: bottom;
+    opacity: 1;
+  }
+
+  .s5-bar.b2.run {
+    animation: barGrow 0.7s 0.8s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+    transform-origin: bottom;
+    opacity: 1;
+  }
+
+  .s5-xline {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+
+  .s5-xline.run {
+    animation: xAxis 0.5s 0.1s ease forwards
+  }
+
+  .s5-star.run {
+    animation: starPop 0.6s 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    opacity: 0
+  }
+
+  .s6-row {
+    opacity: 0
+  }
+
+  .s6-row.run {
+    animation: floatIn 0.5s ease both
+  }
+
+  .s6-row:nth-child(1) {
+    animation-delay: 0.1s
+  }
+
+  .s6-row:nth-child(2) {
+    animation-delay: 0.35s
+  }
+
+  .s6-row:nth-child(3) {
+    animation-delay: 0.6s
+  }
+
+  .s6-arr {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80
+  }
+
+  .s6-arr.run {
+    animation: arrowDraw 0.4s ease forwards
+  }
+
+  .beat {
+    animation: beat 1.5s infinite ease-in-out;
+    display: inline-block
+  }
+
+  .s7-inner.run {
+    animation: popIn 0.7s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    opacity: 0
+  }
+</style>
+
+<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Wordwall gamificación — 7 escenas
+  animadas con trazos a mano</h2>
+
+<div class="wordwall-wrapper"
+  style="width: 100%; max-width: 720px; margin: 40px auto; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.15); border-radius: 12px;">
+  <div class="stage" id="stage"
+    style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none;">
+
+    <!-- S1: Apertura -->
+    <div class="scene" id="s1">
+      <div style="position:relative;text-align:center;">
+        <svg id="s1bg" style="position:absolute;pointer-events:none" width="0" height="0"></svg>
+        <div class="s1-inner"
+          style="background:var(--ink);padding:36px 48px;max-width:520px;position:relative;z-index:1;">
+          <div style="font-family:'Londrina Solid',cursive;font-size:44px;color:var(--yellow);letter-spacing:1px;">
+            Wordwall + Juego:</div>
+          <div class="s1-sub"
+            style="font-family:'Nunito',sans-serif;font-size:15px;color:#fff;margin-top:8px;line-height:1.5;">¿Puede la
+            gamificación<br>mejorar el inglés en grado primero?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2: Metodología -->
+    <div class="scene" id="s2">
+      <div style="text-align:center">
+        <div
+          style="font-family:'Londrina Solid',cursive;font-size:18px;color:var(--ink);margin-bottom:20px;letter-spacing:1px;">
+          METODOLOGÍA</div>
+        <div style="display:flex;gap:20px" id="s2cards">
+          <div class="s2-card"
+            style="width:148px;height:148px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <svg id="s2s1" style="position:absolute;inset:0" width="148" height="148"></svg>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:46px;color:var(--blue);position:relative;z-index:1;line-height:1">1</span>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:15px;color:var(--ink);position:relative;z-index:1;">Cuantitativo</span>
+          </div>
+          <div class="s2-card"
+            style="width:148px;height:148px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <svg id="s2s2" style="position:absolute;inset:0" width="148" height="148"></svg>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:46px;color:var(--yellow);position:relative;z-index:1;line-height:1">2</span>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:15px;color:var(--ink);position:relative;z-index:1;">Pre-experimental</span>
+          </div>
+          <div class="s2-card"
+            style="width:148px;height:148px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <svg id="s2s3" style="position:absolute;inset:0" width="148" height="148"></svg>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:46px;color:var(--green);position:relative;z-index:1;line-height:1">3</span>
+            <span
+              style="font-family:'Londrina Solid',cursive;font-size:15px;color:var(--ink);position:relative;z-index:1;">Evaluativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3: Intervención — pure SVG with Rough injected -->
+    <div class="scene" id="s3">
+      <div style="width:94%;text-align:center">
+        <div style="font-family:'Londrina Solid',cursive;font-size:18px;color:var(--ink);margin-bottom:10px;">
+          INTERVENCIÓN
+        </div>
+        <svg id="s3svg" viewBox="0 0 540 150" width="100%">
+          <defs>
+            <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            </marker>
+          </defs>
+          <!-- rough rects injected by JS into these groups, text on top -->
+          <g class="s3-node" id="s3n1">
+            <text x="85" y="70" font-family="'Londrina Solid',cursive" font-size="21" fill="#2c3e50"
+              text-anchor="middle" font-weight="900">PRE-TEST</text>
+            <text x="85" y="96" font-family="Nunito,sans-serif" font-size="13" fill="#2c3e50" text-anchor="middle">63%
+              Gramática</text>
+          </g>
+          <line class="s3-arr a1" x1="168" y1="75" x2="204" y2="75" stroke="#2c3e50" stroke-width="2.5"
+            stroke-dasharray="7,5" marker-end="url(#a3)" />
+          <g class="s3-node" id="s3n2">
+            <text x="265" y="66" font-family="'Londrina Solid',cursive" font-size="18" fill="#fff"
+              text-anchor="middle">8
+              SESIONES</text>
+            <text x="265" y="90" font-family="Nunito,sans-serif" font-size="13" fill="rgba(255,255,255,0.9)"
+              text-anchor="middle">Wordwall</text>
+          </g>
+          <line class="s3-arr a2" x1="328" y1="75" x2="364" y2="75" stroke="#2c3e50" stroke-width="2.5"
+            stroke-dasharray="7,5" marker-end="url(#a3)" />
+          <g class="s3-node" id="s3n3">
+            <text x="450" y="80" font-family="'Londrina Solid',cursive" font-size="21" fill="#fff"
+              text-anchor="middle">POS-TEST</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- S4: Instrumentos -->
+    <div class="scene" id="s4">
+      <div style="display:flex;align-items:center;gap:14px;width:88%">
+        <div class="s4-left"
+          style="flex:1;text-align:center;position:relative;padding:20px 14px;min-height:110px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <svg id="s4s1" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+          <div style="position:relative;z-index:1">
+            <svg width="50" height="50" viewBox="0 0 54 54">
+              <rect x="8" y="4" width="34" height="46" rx="5" fill="#e8f4fd" stroke="#3498db" stroke-width="2" />
+              <rect x="18" y="1" width="14" height="8" rx="3" fill="#3498db" />
+              <polyline points="14,20 17,24 25,15" fill="none" stroke="#2ecc71" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,30 17,34 25,25" fill="none" stroke="#2ecc71" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="16" y1="20" x2="36" y2="20" stroke="#3498db" stroke-width="1.2" opacity="0.4" />
+              <line x1="16" y1="30" x2="36" y2="30" stroke="#3498db" stroke-width="1.2" opacity="0.4" />
+              <line x1="16" y1="40" x2="28" y2="40" stroke="#3498db" stroke-width="1.2" opacity="0.4" />
+            </svg>
+            <div style="font-family:'Londrina Solid',cursive;font-size:16px;color:var(--ink);margin-top:5px;">Prueba
+              Objetiva</div>
+            <div style="font-family:Nunito,sans-serif;font-size:11px;color:#555;">Rendimiento</div>
+          </div>
+        </div>
+
+        <div class="s4-stamp" style="width:90px;flex-shrink:0;text-align:center;position:relative;">
+          <svg id="s4star" width="90" height="90" viewBox="0 0 90 90"></svg>
+          <div
+            style="font-family:'Londrina Solid',cursive;font-size:10px;color:var(--ink);margin-top:-4px;line-height:1.3">
+            VALIDADO<br>POR EXPERTOS ✔</div>
+        </div>
+
+        <div class="s4-right"
+          style="flex:1;text-align:center;position:relative;padding:20px 14px;min-height:110px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <svg id="s4s2" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+          <div style="position:relative;z-index:1">
+            <div style="font-size:22px;letter-spacing:2px;">😞😐🙂😊😄</div>
+            <div style="font-family:'Londrina Solid',cursive;font-size:16px;color:var(--ink);margin-top:5px;">Escala
+              Likert</div>
+            <div style="font-family:Nunito,sans-serif;font-size:11px;color:#555;">Percepción pictográfica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5: Resultados — pure SVG -->
+    <div class="scene" id="s5">
+      <div style="width:90%;text-align:center">
+        <div style="font-family:'Londrina Solid',cursive;font-size:18px;color:var(--ink);margin-bottom:8px;">RESULTADOS
+          GENERALES</div>
+        <svg id="s5svg" viewBox="0 0 400 240" width="100%">
+          <defs>
+            <marker id="a5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5"
+              orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#2c3e50" stroke-width="1.5" stroke-linecap="round" />
+            </marker>
+          </defs>
+          <!-- axes -->
+          <line x1="46" y1="20" x2="46" y2="182" stroke="#2c3e50" stroke-width="2" />
+          <line class="s5-xline" x1="46" y1="182" x2="310" y2="182" stroke="#2c3e50" stroke-width="2.5"
+            stroke-linecap="round" marker-end="url(#a5)" />
+          <!-- bar groups: rough fill injected, text on top -->
+          <g class="s5-bar b1" id="s5b1" style="transform-origin:46px 182px">
+            <text x="104" y="90" font-family="'Londrina Solid',cursive" font-size="20" fill="#2c3e50"
+              text-anchor="middle">80%</text>
+            <text x="104" y="202" font-family="Nunito,sans-serif" font-size="12" fill="#2c3e50"
+              text-anchor="middle">Pre-test</text>
+          </g>
+          <g class="s5-bar b2" id="s5b2" style="transform-origin:46px 182px">
+            <text x="218" y="58" font-family="'Londrina Solid',cursive" font-size="20" fill="#2c3e50"
+              text-anchor="middle">88.75%</text>
+            <text x="218" y="202" font-family="Nunito,sans-serif" font-size="12" fill="#2c3e50"
+              text-anchor="middle">Pos-test</text>
+          </g>
+          <!-- star badge — no text inside, just the star shape; label outside -->
+          <g class="s5-star run" id="s5star" style="opacity:0"></g>
+          <g class="s5-star run" style="opacity:0">
+            <text x="340" y="74" font-family="'Londrina Solid',cursive" font-size="16" fill="#2c3e50"
+              text-anchor="middle">g = 0.44</text>
+            <text x="340" y="90" font-family="Nunito,sans-serif" font-size="9" fill="#555" text-anchor="middle">Factor
+              de
+              Hake</text>
+            <text x="340" y="101" font-family="Nunito,sans-serif" font-size="9" fill="#555"
+              text-anchor="middle">Ganancia
+              Media</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- S6: Cualitativos -->
+    <div class="scene" id="s6">
+      <div style="width:86%">
+        <div
+          style="font-family:'Londrina Solid',cursive;font-size:18px;color:var(--ink);text-align:center;margin-bottom:14px;">
+          RESULTADOS CUALITATIVOS</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="s6-row"
+            style="display:flex;align-items:center;gap:14px;background:#fff;padding:13px 18px;position:relative;">
+            <svg id="s6sv1" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+            <span class="beat" style="font-size:32px;position:relative;z-index:1">🙋</span>
+            <div style="position:relative;z-index:1">
+              <div style="font-family:'Londrina Solid',cursive;font-size:26px;color:var(--blue)">95%</div>
+              <div style="font-family:Nunito,sans-serif;font-size:13px;color:var(--ink)">de Participación</div>
+            </div>
+          </div>
+          <div class="s6-row"
+            style="display:flex;align-items:center;gap:14px;background:#fff;padding:13px 18px;position:relative;">
+            <svg id="s6sv2" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+            <svg width="32" height="32" viewBox="0 0 32 32" style="flex-shrink:0;position:relative;z-index:1">
+              <line class="s6-arr" x1="16" y1="5" x2="16" y2="25" stroke="#e74c3c" stroke-width="3.5"
+                stroke-linecap="round" style="animation-delay:0.5s" />
+              <polyline class="s6-arr" points="8,17 16,25 24,17" fill="none" stroke="#e74c3c" stroke-width="3.5"
+                stroke-linecap="round" stroke-linejoin="round" style="animation-delay:0.7s" />
+            </svg>
+            <div style="position:relative;z-index:1">
+              <div style="font-family:'Londrina Solid',cursive;font-size:19px;color:var(--red)">Reducción de Ansiedad
+              </div>
+              <div style="font-family:Nunito,sans-serif;font-size:12px;color:#666">Estudiantes más tranquilos al
+                participar</div>
+            </div>
+          </div>
+          <div class="s6-row"
+            style="display:flex;align-items:center;gap:14px;background:#fff;padding:13px 18px;position:relative;">
+            <svg id="s6sv3" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+            <svg width="32" height="32" viewBox="0 0 32 32" style="flex-shrink:0;position:relative;z-index:1">
+              <line class="s6-arr" x1="16" y1="27" x2="16" y2="7" stroke="#2ecc71" stroke-width="3.5"
+                stroke-linecap="round" style="animation-delay:0.7s" />
+              <polyline class="s6-arr" points="8,15 16,7 24,15" fill="none" stroke="#2ecc71" stroke-width="3.5"
+                stroke-linecap="round" stroke-linejoin="round" style="animation-delay:0.9s" />
+            </svg>
+            <div style="position:relative;z-index:1">
+              <div style="font-family:'Londrina Solid',cursive;font-size:19px;color:var(--green)">Mayor Iniciativa</div>
+              <div style="font-family:Nunito,sans-serif;font-size:12px;color:#666">Participación espontánea en clase
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7: Créditos -->
+    <div class="scene" id="s7">
+      <div style="position:relative;text-align:center;">
+        <svg id="s7bg" style="position:absolute;pointer-events:none" width="0" height="0"></svg>
+        <div class="s7-inner"
+          style="background:var(--ink);padding:32px 44px;max-width:500px;position:relative;z-index:1;">
+          <div
+            style="font-family:Nunito,sans-serif;font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;">
+            Investigación realizada por:</div>
+          <div style="margin:12px 0 10px;border-top:1.5px dashed rgba(255,255,255,0.3);padding-top:12px;">
+            <div style="font-family:'Londrina Solid',cursive;font-size:21px;color:#fff;line-height:1.35">Alexandra
+              Catalina Lozada Babativa</div>
+            <div style="font-family:'Londrina Solid',cursive;font-size:21px;color:#fff;line-height:1.35">Juan Diego
+              Cuéllar Mazabel</div>
+            <div style="font-family:'Londrina Solid',cursive;font-size:21px;color:#fff;line-height:1.35">Karla Fabiana
+              Cabrera Roa</div>
+          </div>
+          <div style="font-family:Nunito,sans-serif;font-size:12px;color:var(--yellow);">Universidad de Cartagena ·
+            Colegio Colombo Inglés del Huila</div>
+          <div style="font-family:'Londrina Solid',cursive;font-size:20px;color:var(--yellow);margin-top:4px;">2026
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+  <button id="prevBtn" onclick="go(-1)">← Anterior</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn" onclick="go(1)">Siguiente →</button>
+</div>
+</div>
+
+<script>
+  const SCENES = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
+  const NAMES = ['Apertura', 'Metodología', 'Intervención', 'Instrumentos', 'Resultados', 'Cualitativo', 'Créditos'];
+  let cur = 0, rReady = false;
+
+  function waitR(cb) { typeof rough !== 'undefined' ? (rReady = true, cb()) : setTimeout(() => waitR(cb), 80) }
+
+  /* ---- Rough path helper: injects rough rect/polygon into an SVG element ---- */
+  function roughRect(svgEl, x, y, w, h, fill, stroke, opts) {
+    const rc = rough.svg(svgEl);
+    const node = rc.rectangle(x, y, w, h, { roughness: 1.9, strokeWidth: 2.6, bowing: 2, fill, fillStyle: 'solid', stroke, ...opts });
+    svgEl.insertBefore(node, svgEl.firstChild);
+  }
+
+  function roughPoly(svgEl, pts, fill, stroke) {
+    const rc = rough.svg(svgEl);
+    const node = rc.polygon(pts, { roughness: 1.9, strokeWidth: 2.4, bowing: 1.5, fill, fillStyle: 'solid', stroke });
+    svgEl.insertBefore(node, svgEl.firstChild);
+  }
+
+  function roughBorderSVG(svgEl, w, h, stroke, sw) {
+    if (!svgEl) return;
+    svgEl.setAttribute('width', w); svgEl.setAttribute('height', h);
+    svgEl.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    roughRect(svgEl, 5, 5, w - 10, h - 10, 'none', stroke, { fill: 'none', roughness: 1.8, strokeWidth: sw || 3 });
+  }
+
+  function starPts(cx, cy, r1, r2, n) {
+    const pts = [];
+    for (let i = 0; i < n * 2; i++) {
+      const a = (i * Math.PI / n) - Math.PI / 2;
+      const r = i % 2 === 0 ? r1 : r2;
+      pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    }
+    return pts;
+  }
+
+  /* ---- Per-scene draw ---- */
+  function drawS1() {
+    const box = document.querySelector('#s1 .s1-inner');
+    const svg = document.getElementById('s1bg');
+    if (!box || !svg) return;
+    const w = box.offsetWidth + 18, h = box.offsetHeight + 18;
+    roughBorderSVG(svg, w, h, '#f1c40f', 4);
+    svg.style.left = '-9px'; svg.style.top = '-9px'; svg.style.position = 'absolute';
+  }
+
+  function drawS2() {
+    const cols = ['#3498db', '#e67e22', '#2ecc71'];
+    ['s2s1', 's2s2', 's2s3'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      while (el.firstChild) el.removeChild(el.firstChild);
+      roughRect(el, 6, 6, 136, 136, 'none', cols[i], { fill: 'none', roughness: 2, strokeWidth: 3, bowing: 2.5 });
+    });
+  }
+
+  function drawS3() {
+    const svg = document.getElementById('s3svg');
+    svg.querySelectorAll('[data-r]').forEach(e => e.remove());
+    const rc = rough.svg(svg);
+    const configs = [
+      { g: 's3n1', x: 8, y: 40, w: 160, h: 72, fill: '#f1c40f', stroke: '#2c3e50' },
+      { g: 's3n2', x: 204, y: 40, w: 122, h: 72, fill: '#3498db', stroke: '#1a6fa0' },
+      { g: 's3n3', x: 372, y: 40, w: 160, h: 72, fill: '#2ecc71', stroke: '#1a8a4a' },
+    ];
+    configs.forEach(cfg => {
+      const gEl = document.getElementById(cfg.g);
+      if (!gEl) return;
+      // rc.rectangle returns a <g> with fill path first, stroke on top — correct paint order
+      const node = rc.rectangle(cfg.x, cfg.y, cfg.w, cfg.h, { roughness: 1.9, strokeWidth: 2.6, bowing: 2, fill: cfg.fill, fillStyle: 'solid', stroke: cfg.stroke });
+      node.setAttribute('data-r', '1');
+      gEl.insertBefore(node, gEl.firstChild); // goes before text elements so text stays on top
+    });
+  }
+
+  function drawS4() {
+    // Card borders
+    ['s4s1', 's4s2'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const parent = el.parentElement;
+      const w = parent.offsetWidth || 170, h = parent.offsetHeight || 110;
+      el.setAttribute('width', w); el.setAttribute('height', h);
+      el.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      while (el.firstChild) el.removeChild(el.firstChild);
+      roughRect(el, 5, 5, w - 10, h - 10, 'none', i === 0 ? '#3498db' : '#2ecc71', { fill: 'none', roughness: 2, strokeWidth: 3, bowing: 2 });
+    });
+    // Star
+    const starSvg = document.getElementById('s4star');
+    while (starSvg.firstChild) starSvg.removeChild(starSvg.firstChild);
+    roughPoly(starSvg, starPts(45, 45, 38, 17, 5), '#f1c40f', '#2c3e50');
+  }
+
+  function drawS5() {
+    const svg = document.getElementById('s5svg');
+    svg.querySelectorAll('[data-r]').forEach(e => e.remove());
+    // Bar 1: pre-test 80% → height 82, y=100
+    const b1 = document.getElementById('s5b1');
+    if (b1) {
+      const gen = rough.generator();
+      const s = gen.rectangle(62, 100, 84, 82, { roughness: 1.7, strokeWidth: 2.2, bowing: 1.5, fill: '#e74c3c', fillStyle: 'solid', stroke: '#c0392b' });
+      s.sets.forEach(set => {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let d = '';
+        set.ops.forEach(o => {
+          if (o.op === 'move') d += `M${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'lineTo') d += `L${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'bcurveTo') d += `C${o.data[0]},${o.data[1]},${o.data[2]},${o.data[3]},${o.data[4]},${o.data[5]} `;
+        });
+        p.setAttribute('d', d); p.setAttribute('data-r', '1');
+        p.setAttribute('fill', set.type === 'fillPath' ? '#e74c3c' : 'none');
+        p.setAttribute('stroke', set.type === 'fillPath' ? 'none' : '#c0392b');
+        p.setAttribute('stroke-width', '2.2');
+        b1.insertBefore(p, b1.firstChild);
+      });
+    }
+    // Bar 2: pos-test 88.75% → height 114, y=68
+    const b2 = document.getElementById('s5b2');
+    if (b2) {
+      const gen = rough.generator();
+      const s = gen.rectangle(174, 68, 88, 114, { roughness: 1.7, strokeWidth: 2.2, bowing: 1.5, fill: '#2ecc71', fillStyle: 'solid', stroke: '#1a8a4a' });
+      s.sets.forEach(set => {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let d = '';
+        set.ops.forEach(o => {
+          if (o.op === 'move') d += `M${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'lineTo') d += `L${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'bcurveTo') d += `C${o.data[0]},${o.data[1]},${o.data[2]},${o.data[3]},${o.data[4]},${o.data[5]} `;
+        });
+        p.setAttribute('d', d); p.setAttribute('data-r', '1');
+        p.setAttribute('fill', set.type === 'fillPath' ? '#2ecc71' : 'none');
+        p.setAttribute('stroke', set.type === 'fillPath' ? 'none' : '#1a8a4a');
+        p.setAttribute('stroke-width', '2.2');
+        b2.insertBefore(p, b2.firstChild);
+      });
+    }
+    // Star (pure shape, no text inside)
+    const starG = document.getElementById('s5star');
+    if (starG) {
+      while (starG.firstChild) starG.removeChild(starG.firstChild);
+      const gen = rough.generator();
+      const pts = starPts(340, 48, 24, 11, 5);
+      const s = gen.polygon(pts, { roughness: 1.6, strokeWidth: 2, fill: '#f1c40f', fillStyle: 'solid', stroke: '#2c3e50' });
+      s.sets.forEach(set => {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let d = '';
+        set.ops.forEach(o => {
+          if (o.op === 'move') d += `M${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'lineTo') d += `L${o.data[0]},${o.data[1]} `;
+          else if (o.op === 'bcurveTo') d += `C${o.data[0]},${o.data[1]},${o.data[2]},${o.data[3]},${o.data[4]},${o.data[5]} `;
+        });
+        p.setAttribute('d', d);
+        p.setAttribute('fill', set.type === 'fillPath' ? '#f1c40f' : 'none');
+        p.setAttribute('stroke', set.type === 'fillPath' ? 'none' : '#2c3e50');
+        p.setAttribute('stroke-width', '2');
+        starG.appendChild(p);
+      });
+    }
+  }
+
+  function drawS6() {
+    ['s6sv1', 's6sv2', 's6sv3'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const par = el.parentElement;
+      const w = par.offsetWidth || 380, h = par.offsetHeight || 64;
+      el.setAttribute('width', w); el.setAttribute('height', h);
+      el.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      while (el.firstChild) el.removeChild(el.firstChild);
+      roughRect(el, 4, 4, w - 8, h - 8, 'none', '#2c3e50', { fill: 'none', roughness: 1.8, strokeWidth: 2.5, bowing: 2 });
+    });
+  }
+
+  function drawS7() {
+    const box = document.querySelector('#s7 .s7-inner');
+    const svg = document.getElementById('s7bg');
+    if (!box || !svg) return;
+    const w = box.offsetWidth + 18, h = box.offsetHeight + 18;
+    roughBorderSVG(svg, w, h, '#f1c40f', 4);
+    svg.style.left = '-9px'; svg.style.top = '-9px'; svg.style.position = 'absolute';
+  }
+
+  const drawFns = [drawS1, drawS2, drawS3, drawS4, drawS5, drawS6, drawS7];
+
+  /* ---- Animation triggers ---- */
+  function rerun(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+
+  function triggerAnim(idx) {
+    const el = document.getElementById(SCENES[idx]);
+    if (idx === 0) { const b = el.querySelector('.s1-inner'), s = el.querySelector('.s1-sub'); if (b) rerun(b, 'run'); if (s) rerun(s, 'run'); }
+    if (idx === 1) { el.querySelectorAll('.s2-card').forEach(c => rerun(c, 'run')); }
+    if (idx === 2) {
+      el.querySelectorAll('.s3-node').forEach(n => rerun(n, 'run'));
+      el.querySelectorAll('.s3-arr').forEach(l => rerun(l, 'run'));
+    }
+    if (idx === 3) { ['s4-left', 's4-right', 's4-stamp'].forEach(c => { const e = el.querySelector('.' + c); if (e) rerun(e, 'run'); }); }
+    if (idx === 4) {
+      el.querySelectorAll('.s5-bar').forEach(b => rerun(b, 'run'));
+      const x = el.querySelector('.s5-xline'); if (x) rerun(x, 'run');
+      el.querySelectorAll('.s5-star').forEach(s => rerun(s, 'run'));
+    }
+    if (idx === 5) {
+      el.querySelectorAll('.s6-row').forEach(r => rerun(r, 'run'));
+      el.querySelectorAll('.s6-arr').forEach(a => rerun(a, 'run'));
+    }
+    if (idx === 6) { const b = el.querySelector('.s7-inner'); if (b) rerun(b, 'run'); }
+  }
+
+  function goTo(idx) {
+    document.getElementById(SCENES[cur]).classList.remove('active');
+    document.querySelectorAll('.dot')[cur].classList.remove('on');
+    cur = idx;
+    document.getElementById(SCENES[cur]).classList.add('active');
+    document.querySelectorAll('.dot')[cur].classList.add('on');
+    document.getElementById('prevBtn').style.opacity = cur === 0 ? '0.3' : '1';
+    document.getElementById('nextBtn').style.opacity = cur === SCENES.length - 1 ? '0.3' : '1';
+    setTimeout(() => { if (rReady && drawFns[cur]) drawFns[cur](); triggerAnim(cur); }, 80);
+  }
+
+  function go(d) { const n = Math.max(0, Math.min(SCENES.length - 1, cur + d)); if (n !== cur) goTo(n); }
+
+  (function buildDots() {
+    const c = document.getElementById('dots');
+    SCENES.forEach((_, i) => { const d = document.createElement('div'); d.className = 'dot' + (i === 0 ? ' on' : ''); d.title = NAMES[i]; d.onclick = () => goTo(i); c.appendChild(d); });
+  })();
+
+  waitR(() => {
+    goTo(0);
+    setTimeout(drawS2, 200);
+  });
+</script>
