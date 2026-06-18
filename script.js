@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (action === 'scroll-bottom') {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else if (action === 'goto' && sectionId) {
+        if (sectionId === 'creditos') {
+          window.location.href = 'creditos.html';
+          return;
+        }
+
         const target = document.getElementById(sectionId);
         if (target) {
           // Add a small offset so it doesn't get hidden under the navbar entirely
@@ -107,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
           let msg = 'pronto estará disponible';
           if (sectionId === 'referenciando') { name = 'Referenciando'; msg = 'bases teóricas y metodológicas'; }
           if (sectionId === 'disenando') { name = 'Diseñando'; msg = 'la propuesta pedagógica'; }
-          if (sectionId === 'creditos') { name = 'Créditos'; msg = 'participantes y asesores'; }
 
           csTitle.textContent = `${name} — Próximamente`;
           csDescription.textContent = `Esta sección aún está en construcción. Contenido: ${msg}. ¡Estén atentos!`;
